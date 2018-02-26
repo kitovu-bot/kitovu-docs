@@ -5,9 +5,9 @@
 \usepackage{url}
 \usepackage{booktabs}
 \usepackage[ngerman]{babel}
-\usepackage{blindtext}
 \usepackage{parskip}
 \usepackage{graphicx}
+\usepackage{minted}
 
 \begin{document}
 \title{
@@ -44,13 +44,11 @@ Datum & Version & Änderung & AutorIn \\
 Der Projektplan zu \emph{kitovu} gibt eine Vogelperspektive zum Engineering-Projekt. Er steckt den Rahmen ab, innerhalb dessen \emph{kitovu} vollendet wird. Diese Übersicht umfasst eine Projektübersicht, wie das Projekt organisiert ist, welche Phasen das Projekt durchläuft und die Besprechungen mit dem Betreuer organisiert sind. Zudem bespricht der Projektplan mögliche Risiken, umreisst die anstehenden Arbeitspakete und listet die wichtigen Punkte, um eine hohe Qualität des Codes, der Dokumentation und des Projekt-Managments zu garantieren.
 
 \subsection{Gültigkeitsbereich}
-\blindtext
-% FIXME
+FIXME
 % < Gültigkeitsbereich des Dokumentes>
 
 \subsection{Referenzen}
-\blindtext
-% FIXME
+FIXME
 % <Liste aller verwendeten und referenzierten Dokumente, Bücher, Links, usw.>
 % <Referenz auf ein Glossar Dokument, wo alle Abkürzungen und unklaren Begriffe erklärt werden>
 % <Die Quellen / Referenzen sollten mit dem Word Tool automatisch erstellt werden>
@@ -67,9 +65,12 @@ Zielgruppe sind primär Studierende, sekundär Dozierende der HSR. Der Client k�
 \subsubsection{Persönliche Ziele}
 \begin{description}
 \item[Nicolas Ganz] FIXME
-\item[Florian Bruhin] FIXME
+\item[Florian Bruhin] Erfahrungen sammeln bei der ``Leitung'' eines kleinen
+  Software-Teams, einige neue nützliche Tools ausprobieren, und das Endprodukt
+  selbst: Endlich alle HSR-Dokumente zu einem Modul problemlos an einem Ort!
 \item[Méline Sieber] Ausbau der Python-Programmierfähigkeiten und -kenntnisse (keine grosse Erfahrung vorhanden); erstes komplexeres Softwareprojekt durchziehen; Test-Erfahrung sammeln
-\item[Marco Zollinger] FIXME
+\item[Marco Zollinger] Schritt von Python als Skriptsprache hin zur Verwendung in einem Softwareprojekt mit professionellem Workflow und Tools; Erfahrungen sammeln über Softwareentwicklung mit mehreren Personen und der dazugehörigen Arbeitsteilung und Kommunikation; Beitrag leisten in einem Open Source-Projekt das hoffentlich auch anderen Studenten zugute kommt; Kenntnisse in GUI-Entwicklung mit PyQt5 verbessern.
+
 \end{description}
 
 \subsection{Lieferumfang}
@@ -84,7 +85,9 @@ Pro Profil lässt sich Folgendes definieren:
 \item wie mit Duplikaten/lokal bestehenden Dateien umgegangen werden soll.
 \end{itemize}
 
-Kitovu ist ausbaubar und damit modular: Zusätzlich zu den beiden Plattformen (Skripteserver, Moodle) können in zukünftigen Projekten beliebig viele Plattformen als separates Plugin realisiert werden.
+% \item FIXME: Plattform-Plugin-Framework: zu definieren, vermutlich pluggy
+
+Kitovu ist ausbaubar und damit modular: Zusätzlich zu den beiden Plattformen (Skripteserver, Moodle/Studentenportal) können in zukünftigen Projekten beliebig viele Plattformen als separates Plugin realisiert werden.
 
 Optionale Features:
 
@@ -97,14 +100,17 @@ Optionale Features:
 % <Annahmen die für diesen Projektplan getroffen werden und Einschränkungen denen er unterliegt>
 Wir berücksichtigen keine HSR-externen Anbieter wie etwa Dropbox, OneDrive, GoogleDrive.
 
+Support für macOS ist keine Priorität, auch wenn wenn die Infrastruktur dafür
+grundsätzlich existiert und dies durch Python kein Problem darstellen sollte.
+Wir werden die Tests initial auf macOS laufen lassen, sollte es da aber zu
+Problemen kommen, werden wir die Tests auf macOS ausschalten.
+
 \section{Projektorganisation}
 % <Kurze Beschreibung der Projektstruktur>
-% FIXME
-\blindtext
+FIXME
 
 \subsection{Organisationsstruktur}
 % <Projektmitglieder nennen und deren Aufgaben und Verantwortungen aufzählen>
-% FIXME
 \begin{description}
 \item[Florian Bruhin] Project Leader, Python Overseer-Wizard, Code-Quality-Garantierer
 \item[Nicolas Ganz] JIRA/Confluence-Wizard, Meeting-Leader, Code Monkey
@@ -112,28 +118,59 @@ Wir berücksichtigen keine HSR-externen Anbieter wie etwa Dropbox, OneDrive, Goo
 \item[Méline Sieber] Code Monkey, Grammar Nazi, Deadline-Auf-die-Finger-klopfen, Kommunikation mit Externen inklusive Betreuer
 \end{description}
 
-Wer testet?
-Requirements: Domain-Modell, Use Cases schreiben, nicht-funktionale Anforderunge, GUI-Design
-Wer klopft allen auf die Finger, wenn Deadlines anstehen?
-Wer (externes!) testet das Programm?
+FIXME
+% Wer testet? (siehe unten)
+% Requirements: Domain-Modell, Use Cases schreiben, nicht-funktionale Anforderunge, GUI-Design
+% Wer klopft allen auf die Finger, wenn Deadlines anstehen?
+% Wer (externes!) testet das Programm?
 
 \subsection{Externe Schnittstellen}
 % FIXME
 % <Ansprechpartner, verantwortliche Personen, Betreuer, usw. aufzählen>
-BETREUER
-Frank Koch und XXX sind die Ansprechspersonen für Moodle, Frank Koch ist bereits über das Projekt informiert worden.
+
+\begin{itemize}
+  \item Daniel Keller (\url{daniel.keller@hsr.ch}) als unser Betreuer für das Engineering-Projekt.
+  \item Frank Koch (\url{frank.koch@hsr.ch}) als verantwortliche Person für das HSR-Moodle. 
+  \item Raphael Zimmermann (\url{raphael.zimmermann@hsr.ch}) als Hauptentwickler
+    von \emph{OpenHSR
+      Connect\footnote{\url{https://github.com/openhsr/connect}}}, welches die
+    Inspiration für unser Projekt darstellt, aber nur den Skripteserver
+    unterstützt.
+  \item Externe Tester: Für Usability- und Beta-Tests wollen wir verschiedene
+    HSR-Studierende kontaktieren, ggf. auch mit einem Aufruf via e-Mail. Da das
+    Tool von jedem HSR-Studierenden nutzbar sein soll, sollte es kein Problem
+    darstellen, dafür kurzfristig Probanden zu finden.
+\end{itemize}
+
+Frank Koch und Raphael Zimmermann wurden bereits über unser Projekt informiert
+und unterstützen unser Vorhaben gerne.
 
 \section{Management-Abläufe}
 \subsection{Kostenvoranschlag}
 % <Wie viel Zeit steht zur Verfügung? In welcher Zeitspanne läuft das Projekt? Wird das Projekt früher beendet, dafür wöchentlich mehr gearbeitet?>
 
+Da es sich bei dem EPJ um ein Modul mit 4 ECTS mit vollem Aufwand im Semester handelt, ist mit einem Richtwert von 120 Stunden pro Person zu rechnen.
+Mit der Annahme, dass Marco Zollinger leider nicht im Projekt dabei sein wird,
+fällt also ein totaler Aufwand von $3 \cdot 120 = 360$ Stunden an.
+
+Wir wollen die vollen 15 Wochen für das Projekt ausnutzen, womit wöchentlich
+durchschnittlich pro Person ein Arbeitsaufwand von $120 / 15 = 8$ Stunden zu
+leisten ist.
+
+
 \subsection{Zeitliche Planung}
 % <Kurze Beschreibung der zeitlichen Planung und mit einer Grafik einen Überblick über die Phasen, Iterationen und Meilensteine geben. Das Datum des Eintreffens der Meilensteine sollte in der Phasenübersicht ersichtlich sein.>
+
+Wir nutzen das in der Vorlesung empfohlene ``Scrum plus end of
+elaboration''-Modell, wobei wir eine zusätzliche Training-Phase hinzufügen
+(siehe unten). Eine Iteration soll dabei eine Woche dauern.
+
+
 \textbf{(Übernommen von der Kurzeinführung)}
 
-\begin{tabular}{llp{12em}l}
+\begin{tabular}{llp{16em}l}
 \toprule
-Kalenderwoche & Semesterwoche & Milestone & Review \\
+KW & Sem.-Woche & Milestone & Review \\
 \midrule
 8 & 1 & M0 - Abgabe Projektantrag & \\
 9 & 2 & M2 - Abgabe Projektplan & \\
@@ -164,11 +201,34 @@ Kalenderwoche & Semesterwoche & Milestone & Review \\
 % 6. Schlusspräsentation und Demo der Software: SW15 (genaues Datum wird bekanntgegeben)
 
 \subsubsection{Phasen / Iterationen}
-\paragraph{FIXME: Bezeichnung der einzelnen Phasen}
+
+\paragraph{Phase 1: Elaboration}
+
+FIXME
+
 % <Kurze Beschreibung und Dauer der Phase angeben>
-\subparagraph{FIXME: Bezeichnung der einzelnen Iterationen}
+% \subparagraph{FIXME: Bezeichnung der einzelnen Iterationen}
 %<Kurze Beschreibung und Dauer der Iteration angeben>
 %<Vorgehen bei Iterationsplanung und Iterationsassessment>
+
+\paragraph{Phase 2: Training}
+
+Da Méline, Nicolas und Marco noch Python-Anfänger sind und es auch eines der
+Ziele ist, im Engineering-Projekt Erfahrung zu sammeln, haben wir eine separate
+Training-Phase eingeplant. Darin wird Florian den anderen Team-Mitgliedern eine
+Einführung in die Themen und Technologien geben, die beim Projekt benutzt
+werden.
+
+Danach sollten die Mitglieder das Wissen soweit möglich autodidaktisch erwerben,
+wobei Florian gerne beratend zur Seite steht.
+
+\paragraph{Phase 3: Construction}
+
+\paragraph{Phase 4: Feature Freeze}
+
+In der letzten Phase des Projekts tritt der \emph{feature freeze} ein. Es darf
+keine neue Funktionalität mehr hinzugefügt werden und wir konzentrieren uns auf
+Testing, Dokumentation und die Behebung von Bugs.
 
 \subsubsection{Meilensteine}
 \paragraph{FIXME: Bezeichnung der einzelnen Meilensteine}
@@ -186,15 +246,17 @@ Kalenderwoche & Semesterwoche & Milestone & Review \\
 \section{Risikomanagement}
 \subsection{Risiken}
 % <Verweis auf Dokument TechnischeRisiken.xlsx>
+FIXME
+
 Die Moodle-Anbindung könnte nach Rücksprache mit einem der Administratoren, Frank Koch, zu Schwierigkeiten führen (Gespräch geführt am 21.2.2018). Es existiert eine WebDAV-Schnittstelle, die jedoch unter Umständen nicht für das Projekt geöffnet werden kann. 
+
 Für das Studentenportal ist der OpenHSR-Verein verantwortlich, Kontaktperson ist XXX.
 
 \subsection{Umgang mit Risiken}
 % <Begründungen zur Tabelle. Weitere Beschreibungen zu Massnahmen und Vorbeugungen. Werden Reserven /Rückstellungen eingeplant? Wieso und wie viele? Wann werden Risiken qualitätssichernd überprüft (Vorgehen und Zeitpunkt(e) zur Neubeurteilung der Risiken)?>
 
 \section{Arbeitspakete}
-% FIXME
-\blindtext
+FIXME
 
 % <Definieren Sie in einem separaten Tool (Redmine oder XLS, o.a.) diejenigen Arbeitspakete, die Ihnen zu Beginn des Projektes schon mal einfallen. Zu Beginn können Pakete eher generisch ausfallen (z.B. ‚Domainmodell erstellen‘ oder ‚GUI Programmieren‘, oder ‚ Usability Testing‘).
 %
@@ -209,55 +271,173 @@ Für das Studentenportal ist der OpenHSR-Verein verantwortlich, Kontaktperson is
 \section{Infrastruktur}
 %<Benötigte Infrastruktur aufzählen. Spezielle Geräte, Laptop , Tools usw. und nötigenfalls aufzeigen für welche Bereiche diese verwendet werden. Eventuell auch Verfahren beschreiben (auf Tools bezogen).>
 \begin{itemize}
-  \item Jira-Server auf keltec.ch (Nicolas Ganz)
-  \item Confluence-Server auf keltec.ch (Inhaber Nicolas Ganz)
-  \item Code liegt in einem Git-Repository auf Github.com
-  \item FIXME: Simulation des Skripteservers?
+  \item Jira-Server auf keltec.ch für Issue-Tracking und Projektmanagement
+    (betrieben von Nicolas Ganz)
+  \item Confluence-Server auf keltec.ch als Wiki (betrieben von Nicolas Ganz)
+  \item Der Code liegt auf GitHub.
+    Wir benutzen GitHub Pull Requests für Code Review, nicht aber Issues ($\rightarrow$ Jira)
+    und das Wiki ($\rightarrow$ Confluence)
+  \item Wir benutzen Travis CI\footnote{\url{https://travis-ci.com/}} (Linux und
+    ggf. macOS) sowie AppVeyor\footnote{\url{https://www.appveyor.com/}} als
+    externe CI (continuous integration) Anbieter.
 \end{itemize}
 
 \section{Qualitätsmassnahmen}
 % <Was wird unternommen damit das Produkt des Projektes, sowie dessen gesamter Verlauf eine hohe Qualität erreicht? Übersicht in einer Tabelle geben mit Massnahmen, Zeitraum und Ziel der Massnahme>
 %
 %Bezug zur Roadmap weiter oben.
-Sämtlicher Code wird, bevor er in den Master-Branch des Github-Repositorys eingepflegt wird, von Florian Bruhin geprüft.
+
+Wir setzen zur Qualitätssicherung auf verschiedene Tools sowie Code Reviews,
+welche nachfolgend genauer beschrieben werden. Diese Tools werden in der
+Elaboration-Phase eingerichtet und dann über die ganze Laufzeit des Projekts
+eingesetzt.
 
 \subsection{Dokumentation}
 %<Wo befinden sich die Dokumente (SVN oder Git Server) und wie wird deren Qualität sichergestellt?>
-Die Dokumentation wird mit sphinx geschrieben, dem in der Python-Community üblichen Dokumentationswerkzeug.
+
+Wir unterscheiden zwischen vier Arten der Dokumentation:
+
+\begin{itemize}
+  \item Protokolle zu Treffen und Entscheidungen werden im Confluence (Wiki) protokolliert.
+  \item Längere Dokumente die weitergegeben werden (wie beispielsweise dieses
+    Dokument) werden mit \LaTeX{} verfasst und landen in einem
+    \texttt{doc/}-Unterordner im GitHub-Repository
+  \item Dokumentation für Endbenutzer wird in
+    Sphinx\footnote{\url{http://www.sphinx-doc.org/}} geschrieben, welches das
+    Standardwerkzeug für die Python-Community (und auch darüber hinaus, wie
+    beispielsweise den Linux-Kernel) darstellt.
+  \item Code-Dokumentation wird ebenfalls mit Sphinx verfasst, mit im Code
+    eingebetteten Python \emph{docstrings} (ähnlich zu JavaDoc).
+\end{itemize}
+
 \subsection{Projektmanagement}
 %<Welches Tool wird für Projektmanagement eingesetzt (z.B. Redmine oder Trac) und wie erfolgt dieser Einsatz? Dazugehörige Links und Logins (Gastbenutzer).>
 Das Projekt verwendet Jira und Confluence, um \emph{kitovu} zu managen, zu koordinieren und Arbeitspakete zu verteilen. Via Jira läuft auch die Zeiterfassung.
 
 \subsection{Entwicklung}
 %<Wo befindet sich der Source Code (z.B. SVN oder Git) und wie wird dessen Qualität sichergestellt?>
-Der Source-Code befindet sich auf Github: https://github.com/kitovu-bot
+Der Source-Code befindet sich auf Github im Repository \texttt{kitovu-bot/kitovu\footnote{\url{https://github.com/kitovu-bot/kitovu}}}.
+
+Wie unter \ref{sec:codereviews} beschrieben, setzen wir auf das
+Vier-Augen-Prinzip mit Code Reviews.
+
+Ausserdem setzen wir auf diverse Tools (bekannt als
+linting/metrics/formatting/static analysis) um konsistenten und möglichst
+fehlerfreien Code zu garantieren. Diese werden unter \ref{sec:tools} kurz beschrieben.
 
 \subsubsection{Vorgehen}
 % <Vorgehen in der Entwicklung>
 
+\subsubsection{Tools}
+\label{sec:tools}
+
+\paragraph{Type annotations} Mittels sogenannten \emph{type annotations} (auch
+bekannt als \emph{gradual typing}) wird die Typensicherheit im Code geprüft.
+Ähnlich zu Typescript erzwingt die Sprache selber keine expliziten
+Typendeklarationen (dynamic typing), jedoch sind diese valide Python-Syntax und
+werden einfach ignoriert. Dadurch ist kein separater ``pre-compiler'' wie bei
+Typescript nötig, jedoch ein externes Tool zur Überprüfung der Typen.
+
+Beispiel von Typenannotationen:
+
+\begin{minted}{python}
+  def calc_primes(start: int) -> List[int]:
+      primes: List[int] = []
+      ...
+\end{minted}
+
+Wir benutzen dazu das Tool \emph{mypy\footnote{\url{http://mypy-lang.org/}}}.
+Ursprünglich im Rahmen einer Doktorarbeit an der Universität Cambridge
+entwickelt hat es sich zum etablierten Werkzeug entwickelt und wird durch Firmen
+wie Dropbox benutzt und weiter entwickelt.
+
+Als Alternative dazu wollen wir uns kurz
+\emph{pytype\footnote{\url{https://github.com/google/pytype}}} von Google
+anschauen, wobei die Wahl vermutlich auf mypy als das bekanntere Werkzeug fallen wird.
+
+\paragraph{pylint} Das \emph{pylint\footnote{\url{https://pylint.org/}}}-Projekt
+kombiniert verschiedene Funktionalitäten in einem Werkzeug, welche die
+Code-Qualität erhöhen. Es hilft bei der Einhaltung von code guidelines
+(Zeilenlänge, Variablennamen, unbenutzte Imports, etc.), kann aber auch Fehler
+finden und enthält verschiedene Metrics (Anzahl Klassen, Argumente, Members, etc.).
+
+\paragraph{flake8} \emph{flake8\footnote{\url{http://flake8.pycqa.org/}}} ist
+ein weiteres bekanntes Tool. Der Fokus liegt hier eher auf Style-Problemen,
+flake8 macht im Gegensatz zu pylint keine tiefergehende statische Code-Analyse.
+Es gibt zwar einige Überschneidungen mit pylint, trotzdem macht es Sinn, beide
+Tools zu verwenden, da flake8 doch einige nützliche Checks hat, die in pylint
+nicht vorhanden sind. Ausserdem ist es viel schneller und kann gut im Editor/IDE
+eingebunden werden, um sofortiges Feedback zu kriegen.
+
+\paragraph{yapf} Bei \emph{yampf\footnote{\url{https://github.com/google/yapf}}}
+(Yet Another Python Formatter) von Google handelt sich um ein weiteres Tool aus
+der Linting/Style-Ecke, welches Probleme auch automatisiert beheben kann. Wir
+werden vermutlich primär auf pylint/flake8 setzen, aber es wäre schön, wenn wir
+auch yapf testen könnten.
+
+\paragraph{coala / GitMate} \emph{Coala\footnote{\url{https://coala.io/}}} ist
+(im Zusammenspiel mit \emph{GitMate\footnote{\url{https://gitmate.io/}}}) ein
+Tool, welches alle obengenannte Tools (und auch weitere, für andere Sprachen) in
+einem Tool vereint. Es bietet auch die Möglichkeit, Probleme automatisch als
+Kommentare für pull requests zu verfassen. Es wäre schön, wenn wir es in unseren
+Workflow integrieren können, ist aber nicht zwingend notwendig.
+
+\paragraph{Paketierung} Darüber hinaus gibt es weitere Tools welche die
+korrekte Paketierung überprüfen bzw. erleichtern:
+\emph{check-manifest\footnote{\url{https://github.com/mgedmin/check-manifest/}}}
+sowie \emph{pyroma\footnote{\url{https://github.com/regebro/pyroma/}}}. Diese
+wollen wir einsetzen, sobald dies Sinn macht - also vermutlich erst nach dem
+Feature Freeze, wenn wir das Projekt für Linux/Windows/ggf. macOS pakettieren.
+
 \subsubsection{Unit Testing}
 % <Wo werden welche Unit Tests geschrieben um die Qualität sicherzustellen? Wie wird die Testabdeckung sichergestellt (z.B. durch EclEmma)?>
+
+Wir benutzen \emph{pytest\footnote{\url{https://docs.pytest.org/}}} als Test
+Framework. Während Python ein unittest-Framework mit einer JUnit-Ähnlichen API
+eingebaut hat, vereinfacht pytest das Verfassen von Tests ungemein.
+
+Wir nutzen ausserdem verschiedene plugins für pytest:
+
 \begin{itemize}
-\item pytest als Test-Framework
-\item pytest-qt als Plugin für das GUI-Testing
-\item ggf. pytest-bdd - Plugin für Behaviour-Driven-Testing (Cucumber/Gherkin)
-\item coverage.py für Test-Coverage
-\item ggf. hypothesis für Fuzzing-Tests
-\item mypy (ggf. pytype) für Type-Checking
-\item pylint, flake8 und ggf. yapf für Linting/Metrics/Formatting/Static Analysis (ev. mit Plugins für weitere Checks). Eventuell coala als Frontend/Editor-/CI-Integration für verschiedene Checker.
-\item pyroma/check-manifest/vulture für weitere (spezialisierte) Checks
-\item Travis CI (Linux/macOS, oder ggf. Circle CI) und AppVeyor (Windows) für Continous Integration
-\item FIXME: Plattform-Plugin-Framework: zu definieren, vermutlich pluggy
+\item \emph{coverage.py\footnote{\url{https://coverage.readthedocs.io/}}} für
+    Test-Coverage sowie \emph{codecov.io\footnote{\url{https://codecov.io/}}}
+    als online-Service (Kommentare in pull-requests bei geänderter Coverage).
+\item \emph{pytest-qt\footnote{\url{https://pytest-qt.readthedocs.io/}}} für das
+    automatisierte Testen der GUI
+\item eventuell \emph{pytest-bdd\footnote{\url{https://github.com/pytest-dev/pytest-bdd/}}} für Behaviour-Driven-Testing (Cucumber/Gherkin)
+\item eventuell \emph{hypothesis\footnote{\url{http://hypothesis.works/}}} für
+  Fuzzing-Tests, wobei automatisch Test-Werte aufgrund von Typendeklarationen
+  generiert werden. Es ist aber fraglich, inwieweit dies in diesem Projekt Sinn macht.
 \end{itemize}
 
+Die Tests müssen im GitHub pull-request enthalten sein. Ziel ist, dass die
+Coverage bei keiner Änderung sinkt, und idealerweise am Ende des Projekts bei
+über 90\% liegt.
+
 \subsubsection{Code-Reviews}
+\label{sec:codereviews}
 %<Werden Code Reviews gemacht und wie werden diese gemacht?>
-Code-Reviews finden via GitHub-Pull-Requests statt.
+
+Nebst diversen Tools zur Qualitätssicherung (siehe unten) setzen wir auf GitHub
+code reviews: Sämtlicher Code wird, bevor er in den Master-Branch des
+Github-Repositories eingepflegt wird, nach dem Vier-Augen-Prinzip geprüft. Dies
+nicht nur aus Qualitätsgründen, sondern auch, weil alle involvierten Personen
+sehr viel aus code reviews lernen können.
+
+Normalerweise werden die pull requests von Florian Bruhin in seiner Rolle als
+technischem Projektleiter geprüft, wobei darauf geachtet wird, dass auch andere
+Projektmitglieder genügend Zeit haben, den Code anzuschauen.
+
+Für Änderungen von Florian selbst (oder falls Florian nicht reagieren sollte)
+darf der Code auch von einem anderen Projektmitglied geprüft werden.
 
 \subsubsection{Code-Style-Guidelines}
 %<Welche Code Style Guidelines werden angewendet? Sie brauchen keine eigenen Guidelines zu erfinden. Am besten referenzieren Sie existierende Guidelines, mit denen Sie einverstanden sind. Evtl. noch Abweichungen dazu dokumentieren>
-Wir verwenden PEP 8 (Python Enhancement Proposal), den offiziellen Style-Guide der Python Foundation:
-\url{https://www.python.org/dev/peps/pep-0008/}
+Wir verwenden PEP 8\footnote{\url{https://www.python.org/dev/peps/pep-0008/}}
+(Python Enhancement Proposal), den offiziellen Style-Guide der Python
+Foundation. Dieser wurde ursprünglich für Entwicklungen an Python selbst
+konzipiert, hat sich aber als Standardwerk verbreitet und wird auch von den
+Style-Checkern standardmässig verwendet.
 
 \subsection{Testen}
 \subsubsection {FIXME: Bezeichnung des Tests (z.B. Integrationstest oder Systemtest)}

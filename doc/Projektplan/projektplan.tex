@@ -1,0 +1,266 @@
+\documentclass[a4paper]{article}
+\usepackage[margin=3cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{cmbright}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage[ngerman]{babel}
+\usepackage{blindtext}
+\usepackage{parskip}
+\usepackage{graphicx}
+
+\begin{document}
+\title{
+  Projekt: kitovu \\
+  \Large{Projektplan} \\[3em]
+  \includegraphics[width=20em]{../../img/logo/kitovu.jpg}
+}
+\author{
+  Florian Bruhin \\ \url{florian.bruhin@hsr.ch} \and
+  Méline Sieber \\ \url{meline.sieber@hsr.ch} \and
+  Nicolas Ganz \\ \url{nicolas.ganz@hsr.ch} \and
+  Marco Zollinger\footnote{Eine definitive Antwort der Schulleitung steht
+    weiterhin aus. Momentan ist aber damit zu rechnen, dass Marco Zollinger
+    leider nicht am EPJ teilnehmen kann.} \\ \url{marco.zollinger@hsr.ch}}
+\date{\today}
+
+\maketitle
+\pagebreak
+
+\section*{Änderungsgeschichte}
+
+\begin{tabular}{llp{20em}l}
+\toprule
+Datum & Version & Änderung & AutorIn \\
+\midrule
+24.02.2018 & 1.1 & Struktur von Template übernommen, Projektantrag-Daten eingefügt, grobe Roadmap anhand der EPJ-Anleitung erstellt & Méline Sieber \\
+26.02.2018 & 1.2 & Migration nach \LaTeX{}, diverse Vervollständigungen & Florian Bruhin \\
+\bottomrule
+\end{tabular}
+\pagebreak
+
+\section{Einführung}
+\subsection{Zweck}
+Der Projektplan zu \emph{kitovu} gibt eine Vogelperspektive zum Engineering-Projekt. Er steckt den Rahmen ab, innerhalb dessen \emph{kitovu} vollendet wird. Diese Übersicht umfasst eine Projektübersicht, wie das Projekt organisiert ist, welche Phasen das Projekt durchläuft und die Besprechungen mit dem Betreuer organisiert sind. Zudem bespricht der Projektplan mögliche Risiken, umreisst die anstehenden Arbeitspakete und listet die wichtigen Punkte, um eine hohe Qualität des Codes, der Dokumentation und des Projekt-Managments zu garantieren.
+
+\subsection{Gültigkeitsbereich}
+\blindtext
+% FIXME
+% < Gültigkeitsbereich des Dokumentes>
+
+\subsection{Referenzen}
+\blindtext
+% FIXME
+% <Liste aller verwendeten und referenzierten Dokumente, Bücher, Links, usw.>
+% <Referenz auf ein Glossar Dokument, wo alle Abkürzungen und unklaren Begriffe erklärt werden>
+% <Die Quellen / Referenzen sollten mit dem Word Tool automatisch erstellt werden>
+
+\section{Projekt-Übersicht}
+% <Kurze Beschreibung des Projektes>
+Kitovu ist ein Software-Client für Studentinnen und Studenten der HSR, mit dem sie von verschiedenen Quellen Unterrichtsmaterialien lokal auf den eigenen Rechner synchronisieren können.
+
+\subsection{Zweck und Ziel}
+% <Sinn und Zweck des Projektes, sowie Zielsetzung und auch persönliche Ziele>
+An der HSR müssen sich die Studentinnen und Studenten bislang ihre Unterrichtsmaterialien vom Skripteserver, von Moodle und anderen Orten von Hand zusammensuchen. Das ist aufwändig und unübersichtlich. \emph{Kitovu} soll das ändern: ein Client, der von verschiedenen Plattformen ausgewählte Unterrichtsmaterialien auf den eigenen Rechner synchronisiert.
+Zielgruppe sind primär Studierende, sekundär Dozierende der HSR. Der Client könnte potentiell an anderen Hochschulen eingesetzt werden.
+
+\subsubsection{Persönliche Ziele}
+\begin{description}
+\item[Nicolas Ganz] FIXME
+\item[Florian Bruhin] FIXME
+\item[Méline Sieber] Ausbau der Python-Programmierfähigkeiten und -kenntnisse (keine grosse Erfahrung vorhanden); erstes komplexeres Softwareprojekt durchziehen; Test-Erfahrung sammeln
+\item[Marco Zollinger] FIXME
+\end{description}
+
+\subsection{Lieferumfang}
+% <Konkreten Lieferumfang des Projektes beschreiben>
+Kitovu bindet den Skripteserver ein. Der Terminal-basierte Client funktioniert mittels Profilen zu unterschiedlichen Plattformen (Moodle, Skripteserver, Studentenportal). Pro Profil sind Verbindungsdaten und eventuelle Login-Credentials im Client hinterlegt. Die Daten-Synchronisation erfolgt immer nur von Server zu Client, erfolgreiche und misslungene Datentransfers werden protokolliert.
+
+Pro Profil lässt sich Folgendes definieren:
+
+\begin{itemize}
+\item welche Ordner/Dateien synchronisiert werden sollen.
+\item welche Ordner/Dateien von der Synchronisation ausgeschlossen werden sollen.
+\item wie mit Duplikaten/lokal bestehenden Dateien umgegangen werden soll.
+\end{itemize}
+
+Kitovu ist ausbaubar und damit modular: Zusätzlich zu den beiden Plattformen (Skripteserver, Moodle) können in zukünftigen Projekten beliebig viele Plattformen als separates Plugin realisiert werden.
+
+Optionale Features:
+
+\begin{itemize}
+\item Moodle und/oder das Studentenportal. Die Implementation von Moodle oder dem Studentenportal ist abhängig von den weiter unten beschriebenen Risiken.
+\item Komplettes GUI, das der Funktionalität des Terminalprogramms entspricht.
+\end{itemize}
+
+\subsection{Annahmen und Einschränkungen}
+% <Annahmen die für diesen Projektplan getroffen werden und Einschränkungen denen er unterliegt>
+Wir berücksichtigen keine HSR-externen Anbieter wie etwa Dropbox, OneDrive, GoogleDrive.
+
+\section{Projektorganisation}
+% <Kurze Beschreibung der Projektstruktur>
+% FIXME
+\blindtext
+
+\subsection{Organisationsstruktur}
+% <Projektmitglieder nennen und deren Aufgaben und Verantwortungen aufzählen>
+% FIXME
+\begin{description}
+\item[Florian Bruhin] Project Leader, Python Overseer-Wizard, Code-Quality-Garantierer
+\item[Nicolas Ganz] JIRA/Confluence-Wizard, Meeting-Leader, Code Monkey
+\item[Marco Zollinger] Code Monkey, Protokoll-Sekretärin, GUI ?
+\item[Méline Sieber] Code Monkey, Grammar Nazi, Deadline-Auf-die-Finger-klopfen, Kommunikation mit Externen inklusive Betreuer
+\end{description}
+
+Wer testet?
+Requirements: Domain-Modell, Use Cases schreiben, nicht-funktionale Anforderunge, GUI-Design
+Wer klopft allen auf die Finger, wenn Deadlines anstehen?
+Wer (externes!) testet das Programm?
+
+\subsection{Externe Schnittstellen}
+% FIXME
+% <Ansprechpartner, verantwortliche Personen, Betreuer, usw. aufzählen>
+BETREUER
+Frank Koch und XXX sind die Ansprechspersonen für Moodle, Frank Koch ist bereits über das Projekt informiert worden.
+
+\section{Management-Abläufe}
+\subsection{Kostenvoranschlag}
+% <Wie viel Zeit steht zur Verfügung? In welcher Zeitspanne läuft das Projekt? Wird das Projekt früher beendet, dafür wöchentlich mehr gearbeitet?>
+
+\subsection{Zeitliche Planung}
+% <Kurze Beschreibung der zeitlichen Planung und mit einer Grafik einen Überblick über die Phasen, Iterationen und Meilensteine geben. Das Datum des Eintreffens der Meilensteine sollte in der Phasenübersicht ersichtlich sein.>
+\textbf{(Übernommen von der Kurzeinführung)}
+
+\begin{tabular}{llp{12em}l}
+\toprule
+Kalenderwoche & Semesterwoche & Milestone & Review \\
+\midrule
+8 & 1 & M0 - Abgabe Projektantrag & \\
+9 & 2 & M2 - Abgabe Projektplan & \\
+10 & 3 & & Review Projektplan mit Note \\
+11 & 4 & M2 - Requirements: Use Cases, Domain Model, nicht-funktionale Anforderung, GUI-Design & \\
+12 & 5 & & Review Anforderungen \\
+13 & 6 & M3 - End of Elaboration & \\
+14 & 7 & & Review End of Elaboration \\
+15 & 8 & M4 - Architektur: Schichten, Serverlogik, Persistenz, Deployment & \\
+16 & 9 & & Review Architektur \\
+17 & 10 & M5 - Usability-Test: Alpha-Release & \\
+18 & 11 & & \\
+19 & 12 & M6 - Feature-Freeze & Review Qualität \\
+20 & 13 & & \\
+21 & 14 & & \\
+22 & 15 & & Schluss-Präsentation \\
+\bottomrule
+\end{tabular}
+
+% TODO: Folgende Reviews müssen enthalten sein:
+% 1. Review Projektplan mit Zeitplan und aktuellen Iterationsplänen – Termin: SW03
+% 2. Review der Anforderungsspezifikation und der Domainanalyse – Termin: frei wählbar
+% (empfohlen: vor End of Elaboration)
+% 3. Ende Elaboration (s. Checkliste) mit Architekturprototyp – Termin: wählbar SW05-08
+% 4. Review von Architektur/Design und Architekturdoku – Termin: wählbar bis SW14*)
+% 5. Q-Review: Code-Qualität (u.a. Metriken), Tests und weitere Q-Massnahmen – Termin:
+% wählbar nach End of Elaboration bis SW14*)
+% 6. Schlusspräsentation und Demo der Software: SW15 (genaues Datum wird bekanntgegeben)
+
+\subsubsection{Phasen / Iterationen}
+\paragraph{FIXME: Bezeichnung der einzelnen Phasen}
+% <Kurze Beschreibung und Dauer der Phase angeben>
+\subparagraph{FIXME: Bezeichnung der einzelnen Iterationen}
+%<Kurze Beschreibung und Dauer der Iteration angeben>
+%<Vorgehen bei Iterationsplanung und Iterationsassessment>
+
+\subsubsection{Meilensteine}
+\paragraph{FIXME: Bezeichnung der einzelnen Meilensteine}
+% <Setzen Sie in Ihrem Projekt 6-8 Meilensteine. Kurze Beschreibung der Meilensteine mit genauem Datum. In der Regel auf Ende jeder Iteration einen Meilenstein setzen (diese Faustregel gilt nur für die SE-2Projekte, in realen Projekten haben Sie oft deutlich mehr Iterationen als Meilensteine, weil Meilensteine dort die nach aussen kommunizierten Ereignisse sind). Schreiben Sie zu jedem Meilenstein auf, welche Arbeitsprodukte (work products) Sie dann abliefern werden . Spezifizieren Sie wenn nötig auch den Fertigstellungsgrad der Arbeitsprodukte, z.B. „Zentrale Use Cases ‚fully dressed‘, restliche UCs im ‚brief‘ Format“, oder „Architekturskizze inkl. Definition der Interfaces zwischen Sub-Systemen und Deployment Diagramm“>
+
+\subsection{Besprechungen}
+% <regelmässige Besprechungen nennen (wann, wo, wer, Ziel und/oder Grund)>
+\begin{itemize}
+\item Gesamt-Teamsitzung: Dienstag und Mittwoch ab 17 Uhr, Mittwoch von 12-13 Uhr. Koordination, Klärung von Fragen, Besprechung des weiteren Verlaufs.
+\item Gemeinsame Arbeit, nach Bedarf: Florian Bruhin und Marco Zollinger, Montag-Nachmittag ab 13 Uhr. Individuelles Arbeiten am Projekt.
+\item Gemeinsame Arbeit, nach Bedarf: Méline Sieber und Nicolas Ganz, Mittwoch von 10-13 Uhr. Individuelles Arbeiten am Projekt.
+\item Gemeinsame Arbeit, nach Bedarf: Marco Zollinger, Méline Sieber und Florian Bruhin, Freitag ab 15 Uhr (in KW 9, 11, 14, 16, 18, 20, 22). Individuelles Arbeiten am Projekt.
+\end{itemize}
+
+\section{Risikomanagement}
+\subsection{Risiken}
+% <Verweis auf Dokument TechnischeRisiken.xlsx>
+Die Moodle-Anbindung könnte nach Rücksprache mit einem der Administratoren, Frank Koch, zu Schwierigkeiten führen (Gespräch geführt am 21.2.2018). Es existiert eine WebDAV-Schnittstelle, die jedoch unter Umständen nicht für das Projekt geöffnet werden kann. 
+Für das Studentenportal ist der OpenHSR-Verein verantwortlich, Kontaktperson ist XXX.
+
+\subsection{Umgang mit Risiken}
+% <Begründungen zur Tabelle. Weitere Beschreibungen zu Massnahmen und Vorbeugungen. Werden Reserven /Rückstellungen eingeplant? Wieso und wie viele? Wann werden Risiken qualitätssichernd überprüft (Vorgehen und Zeitpunkt(e) zur Neubeurteilung der Risiken)?>
+
+\section{Arbeitspakete}
+% FIXME
+\blindtext
+
+% <Definieren Sie in einem separaten Tool (Redmine oder XLS, o.a.) diejenigen Arbeitspakete, die Ihnen zu Beginn des Projektes schon mal einfallen. Zu Beginn können Pakete eher generisch ausfallen (z.B. ‚Domainmodell erstellen‘ oder ‚GUI Programmieren‘, oder ‚ Usability Testing‘).
+%
+%Denken Sie daran, dass es in jedem Projekt auch eine ganze Reihe von ‚overhead‘-Tätigkeiten gibt: Projektleitung und -Sitzungen, Aufsetzen der Server und Werkzeuge, Qualitätsmassnahmen, Schlusspräsentation erstellen und anderes mehr – alles Tätigkeiten, die nicht direkt zum Software-Produkt führen. Planen Sie genug Zeit auch für diese Tätigkeiten ein.
+%
+%Dann sollte es in jeder Projektplanung einige projektspezifische Arbeitspakete geben, wie sie so nicht in anderen Projekten vorkommen (z.B. ‚ Level-Editor entwerfen‘, oder ‚Verifikation der Zahlungsangaben programmieren‘). Wenn es keine solchen Arbeitspakete gibt, ist der Projektplan zu generisch. Das heisst auch, dass man sich zu wenig Gedanken über die anfallenden Arbeiten gemacht hat.
+%
+%Später im Projekt werden Sie die Arbeitspakete noch verfeinern, verschieben, jemandem zuordnen, neu schätzen, etc. Deswegen empfiehlt sich der Einsatz eines Werkzeuges wie Redmine.
+%
+%Dokumentieren Sie URL und Logins auf das Projektmanagement Tool, in welchem die Meilensteine und die dazugehörigen Arbeitspakete erfasst sind.>
+
+\section{Infrastruktur}
+%<Benötigte Infrastruktur aufzählen. Spezielle Geräte, Laptop , Tools usw. und nötigenfalls aufzeigen für welche Bereiche diese verwendet werden. Eventuell auch Verfahren beschreiben (auf Tools bezogen).>
+\begin{itemize}
+  \item Jira-Server auf keltec.ch (Nicolas Ganz)
+  \item Confluence-Server auf keltec.ch (Inhaber Nicolas Ganz)
+  \item Code liegt in einem Git-Repository auf Github.com
+  \item FIXME: Simulation des Skripteservers?
+\end{itemize}
+
+\section{Qualitätsmassnahmen}
+% <Was wird unternommen damit das Produkt des Projektes, sowie dessen gesamter Verlauf eine hohe Qualität erreicht? Übersicht in einer Tabelle geben mit Massnahmen, Zeitraum und Ziel der Massnahme>
+%
+%Bezug zur Roadmap weiter oben.
+Sämtlicher Code wird, bevor er in den Master-Branch des Github-Repositorys eingepflegt wird, von Florian Bruhin geprüft.
+
+\subsection{Dokumentation}
+%<Wo befinden sich die Dokumente (SVN oder Git Server) und wie wird deren Qualität sichergestellt?>
+Die Dokumentation wird mit sphinx geschrieben, dem in der Python-Community üblichen Dokumentationswerkzeug.
+\subsection{Projektmanagement}
+%<Welches Tool wird für Projektmanagement eingesetzt (z.B. Redmine oder Trac) und wie erfolgt dieser Einsatz? Dazugehörige Links und Logins (Gastbenutzer).>
+Das Projekt verwendet Jira und Confluence, um \emph{kitovu} zu managen, zu koordinieren und Arbeitspakete zu verteilen. Via Jira läuft auch die Zeiterfassung.
+
+\subsection{Entwicklung}
+%<Wo befindet sich der Source Code (z.B. SVN oder Git) und wie wird dessen Qualität sichergestellt?>
+Der Source-Code befindet sich auf Github: https://github.com/kitovu-bot
+
+\subsubsection{Vorgehen}
+% <Vorgehen in der Entwicklung>
+
+\subsubsection{Unit Testing}
+% <Wo werden welche Unit Tests geschrieben um die Qualität sicherzustellen? Wie wird die Testabdeckung sichergestellt (z.B. durch EclEmma)?>
+\begin{itemize}
+\item pytest als Test-Framework
+\item pytest-qt als Plugin für das GUI-Testing
+\item ggf. pytest-bdd - Plugin für Behaviour-Driven-Testing (Cucumber/Gherkin)
+\item coverage.py für Test-Coverage
+\item ggf. hypothesis für Fuzzing-Tests
+\item mypy (ggf. pytype) für Type-Checking
+\item pylint, flake8 und ggf. yapf für Linting/Metrics/Formatting/Static Analysis (ev. mit Plugins für weitere Checks). Eventuell coala als Frontend/Editor-/CI-Integration für verschiedene Checker.
+\item pyroma/check-manifest/vulture für weitere (spezialisierte) Checks
+\item Travis CI (Linux/macOS, oder ggf. Circle CI) und AppVeyor (Windows) für Continous Integration
+\item FIXME: Plattform-Plugin-Framework: zu definieren, vermutlich pluggy
+\end{itemize}
+
+\subsubsection{Code-Reviews}
+%<Werden Code Reviews gemacht und wie werden diese gemacht?>
+Code-Reviews finden via GitHub-Pull-Requests statt.
+
+\subsubsection{Code-Style-Guidelines}
+%<Welche Code Style Guidelines werden angewendet? Sie brauchen keine eigenen Guidelines zu erfinden. Am besten referenzieren Sie existierende Guidelines, mit denen Sie einverstanden sind. Evtl. noch Abweichungen dazu dokumentieren>
+Wir verwenden PEP 8 (Python Enhancement Proposal), den offiziellen Style-Guide der Python Foundation:
+\url{https://www.python.org/dev/peps/pep-0008/}
+
+\subsection{Testen}
+\subsubsection {FIXME: Bezeichnung des Tests (z.B. Integrationstest oder Systemtest)}
+%<Beschreibung der Durchführung, Umsetzung und Umfang der Tests. Wenn möglich mit Mengenangaben (wieviele Tests)>
+
+\end{document}

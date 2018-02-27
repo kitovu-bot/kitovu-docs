@@ -43,6 +43,9 @@ Datum & Version & Änderung & AutorIn \\
 \subsection{Zweck}
 Der Projektplan zu \emph{kitovu} gibt eine Vogelperspektive zum Engineering-Projekt. Er steckt den Rahmen ab, innerhalb dessen \emph{kitovu} vollendet wird. Diese Übersicht umfasst eine Projektübersicht, wie das Projekt organisiert ist, welche Phasen das Projekt durchläuft und die Besprechungen mit dem Betreuer organisiert sind. Zudem bespricht der Projektplan mögliche Risiken, umreisst die anstehenden Arbeitspakete und listet die wichtigen Punkte, um eine hohe Qualität des Codes, der Dokumentation und des Projekt-Managments zu garantieren.
 
+\subsection{Gültigkeitsbereich}
+Der vorliegende Projektplan ist für das Engineering Projekt im Frühlingssemester 2018 gültig. Falls dem Projekt grössere Veränderungen widerfahren, wird der Projektplan dementsprechend angepasst. Umfassende Änderungen werden zu Beginn des Dokumentes protokolliert.
+
 \subsection{Referenzen}
 FIXME Florian
 % <Liste aller verwendeten und referenzierten Dokumente, Bücher, Links, usw.>
@@ -105,7 +108,7 @@ Problemen kommen, werden wir die Tests auf macOS ausschalten.
 
 \section{Projektorganisation}
 % <Kurze Beschreibung der Projektstruktur>
-FIXME Nicloas schaut in vorhandene Vorlagen
+FIXME Nicolas schaut in vorhandene Vorlagen
 
 \subsection{Organisationsstruktur}
 % <Projektmitglieder nennen und deren Aufgaben und Verantwortungen aufzählen>
@@ -136,7 +139,7 @@ FIXME Nicloas schaut in vorhandene Vorlagen
   \end{itemize}
 \end{description}
 
-FIXME
+FIXME Nicolas
 % Wer testet? (siehe unten)
 % Requirements: Domain-Modell, Use Cases schreiben, nicht-funktionale Anforderunge, GUI-Design
 % Wer klopft allen auf die Finger, wenn Deadlines anstehen?
@@ -191,10 +194,10 @@ elaboration''-Modell, wobei wir eine zusätzliche Training-Phase hinzufügen
 KW & Sem.-Woche & Milestone & Review \\
 \midrule
 8 & 1 & M0 - Abgabe Projektantrag & \\
-9 & 2 & M2 - Abgabe Projektplan & \\
+9 & 2 & M1 - Abgabe Projektplan & \\
 10 & 3 & & Review Projektplan mit Note \\
-11 & 4 & M2 - Requirements: Use Cases, Domain Model, nicht-funktionale Anforderung, GUI-Design & \\
-12 & 5 & & Review Anforderungen \\
+11 & 4 & M2 - Requirements:  & \\
+12 & 5 & & Review Requirements \\
 13 & 6 & M3 - End of Elaboration & \\
 14 & 7 & & Review End of Elaboration \\
 15 & 8 & M4 - Architektur: Schichten, Serverlogik, Persistenz, Deployment & \\
@@ -223,7 +226,14 @@ KW & Sem.-Woche & Milestone & Review \\
 \paragraph{Phase 1: Elaboration}
 
 FIXME
+\begin{itemize}
 
+	\item Use Cases, 
+	\item Domain Model, 
+	\item nicht-funktionale Anforderung, 
+	\item GUI-Design
+
+\end{itemize}
 % <Kurze Beschreibung und Dauer der Phase angeben>
 % \subparagraph{FIXME: Bezeichnung der einzelnen Iterationen}
 %<Kurze Beschreibung und Dauer der Iteration angeben>
@@ -334,6 +344,9 @@ Das Projekt verwendet Jira und Confluence, um \emph{kitovu} zu managen, zu koord
 
 \subsection{Entwicklung}
 %<Wo befindet sich der Source Code (z.B. SVN oder Git) und wie wird dessen Qualität sichergestellt?>
+
+FIXME Florian libraries einfügen
+
 Der Source-Code befindet sich auf Github im Repository \texttt{kitovu-bot/kitovu\footnote{\url{https://github.com/kitovu-bot/kitovu}}}.
 
 Wie unter \ref{sec:codereviews} beschrieben, setzen wir auf das

@@ -8,6 +8,7 @@
 \usepackage{parskip}
 \usepackage{graphicx}
 \usepackage{minted}
+\usepackage{pdflscape}
 
 \begin{document}
 \title{
@@ -133,6 +134,7 @@ FIXME Nicolas schaut in vorhandene Vorlagen
 \item[Méline Sieber] \strut \\[-1em]
   \begin{itemize}
     \item Lektorin: gegenlesen und korriegeren sämtlicher Dokumente
+    \item Verantwortlich für Code- und User-Dokumentation mit Sphinx
     \item Protokolliererin: Protokolle sämtlicher Sitzungen erstellen
     \item Kommunikation nach aussen
     \item Code-Writer
@@ -189,23 +191,23 @@ elaboration''-Modell, wobei wir eine zusätzliche Training-Phase hinzufügen
 
 \textbf{(Übernommen von der Kurzeinführung)}
 
-\begin{tabular}{llp{16em}l}
+\begin{tabular}{llll}
 \toprule
-KW & Sem.-Woche & Milestone & Review \\
+KW & Sem.-Woche & Milestone / Tätigkeit & Review \\
 \midrule
-8 & 1 & M0 - Abgabe Projektantrag & \\
-9 & 2 & M1 - Abgabe Projektplan & \\
-10 & 3 & & Review Projektplan mit Note \\
-11 & 4 & M2 - Requirements:  & \\
-12 & 5 & & Review Requirements \\
-13 & 6 & M3 - End of Elaboration & \\
+8  & 1 & \textbf{M0: Projektantrag} & \\
+9  & 2 & \textbf{M1: Projektplan} & \\
+10 & 3 & \textbf{M2: Requirements} & Review Projektplan mit Note \\
+11 & 4 & Training (Python, Tools, etc.) & \\
+12 & 5 & Architekturprototyp erstellen & Review Requirements \\
+13 & 6 & \textbf{M3: End of Elaboration} & \\
 14 & 7 & & Review End of Elaboration \\
-15 & 8 & M4 - Architektur: Schichten, Serverlogik, Persistenz, Deployment & \\
-16 & 9 & & Review Architektur \\
-17 & 10 & M5 - Usability-Test: Alpha-Release & \\
-18 & 11 & & \\
-19 & 12 & M6 - Feature-Freeze & Review Qualität \\
-20 & 13 & & \\
+15 & 8 & & \\
+16 & 9 & & \\
+17 & 10 & \textbf{M4: Architektur} & \\
+18 & 11 & \textbf{M5: Usability-Test} & Review Architektur \\
+19 & 12 & & \\
+20 & 13 & \textbf{M6: Feature-Freeze} & Review Qualität \\
 21 & 14 & & \\
 22 & 15 & & Schluss-Präsentation \\
 \bottomrule
@@ -225,25 +227,16 @@ KW & Sem.-Woche & Milestone & Review \\
 
 \paragraph{Phase 1: Elaboration}
 
-FIXME
-\begin{itemize}
+FIXME Nicolas
 
-	\item Use Cases, 
-	\item Domain Model, 
-	\item nicht-funktionale Anforderung, 
-	\item GUI-Design
-
-\end{itemize}
 % <Kurze Beschreibung und Dauer der Phase angeben>
 % \subparagraph{FIXME: Bezeichnung der einzelnen Iterationen}
 %<Kurze Beschreibung und Dauer der Iteration angeben>
 %<Vorgehen bei Iterationsplanung und Iterationsassessment>
 
-\paragraph{Phase 2: Training}
-
 Da Méline, Nicolas und Marco noch Python-Anfänger sind und es auch eines der
-Ziele ist, im Engineering-Projekt Erfahrung zu sammeln, haben wir eine separate
-Training-Phase eingeplant. Darin wird Florian den anderen Team-Mitgliedern eine
+Ziele ist, im Engineering-Projekt Erfahrung zu sammeln, haben wir in der Elaboration-Phase
+eine Woche Zeit für Training eingeplant. Darin wird Florian den anderen Team-Mitgliedern eine
 Einführung in die Themen und Technologien geben, die beim Projekt benutzt
 werden.
 
@@ -252,6 +245,8 @@ wobei Florian gerne beratend zur Seite steht.
 
 \paragraph{Phase 3: Construction}
 
+FIXME Nicolas
+
 \paragraph{Phase 4: Feature Freeze}
 
 In der letzten Phase des Projekts tritt der \emph{feature freeze} ein. Es darf
@@ -259,22 +254,71 @@ keine neue Funktionalität mehr hinzugefügt werden und wir konzentrieren uns au
 Testing, Dokumentation und die Behebung von Bugs.
 
 \subsubsection{Meilensteine}
-\paragraph{FIXME: Bezeichnung der einzelnen Meilensteine}
+
+\paragraph{M0: Projektantrag}
+FIXME Nicolas
+
+\paragraph{M1: Projektplan}
+FIXME Nicolas
+
+\paragraph{M2: Requirements}
 % <Setzen Sie in Ihrem Projekt 6-8 Meilensteine. Kurze Beschreibung der Meilensteine mit genauem Datum. In der Regel auf Ende jeder Iteration einen Meilenstein setzen (diese Faustregel gilt nur für die SE-2Projekte, in realen Projekten haben Sie oft deutlich mehr Iterationen als Meilensteine, weil Meilensteine dort die nach aussen kommunizierten Ereignisse sind). Schreiben Sie zu jedem Meilenstein auf, welche Arbeitsprodukte (work products) Sie dann abliefern werden . Spezifizieren Sie wenn nötig auch den Fertigstellungsgrad der Arbeitsprodukte, z.B. „Zentrale Use Cases ‚fully dressed‘, restliche UCs im ‚brief‘ Format“, oder „Architekturskizze inkl. Definition der Interfaces zwischen Sub-Systemen und Deployment Diagramm“>
+
+In diesem Meilenstein sollten die folgenden Abgaben getätigt werden:
+
+\begin{itemize}
+	\item Use Cases,
+	\item Domain Model,
+	\item nicht-funktionale Anforderungen
+	\item GUI-Design
+\end{itemize}
+
+\paragraph{M3: End of Elaboration}
+FIXME Nicolas
+
+\paragraph{M4: Architektur}
+Schichten, Serverlogik, Persistenz, Deployment 
+
+FIXME Nicolas
+
+\paragraph{M5: Usability-Test}
+Alpha-Release
+
+FIXME Nicolas
+
+
+\paragraph{M6: Feature Freeze}
+
+FIXME Nicolas
 
 \subsection{Besprechungen}
 % <regelmässige Besprechungen nennen (wann, wo, wer, Ziel und/oder Grund)>
 \begin{itemize}
 \item Gesamt-Teamsitzung: Dienstag und Mittwoch ab 17 Uhr, Mittwoch von 12-13 Uhr. Koordination, Klärung von Fragen, Besprechung des weiteren Verlaufs.
-\item Gemeinsame Arbeit, nach Bedarf: Florian Bruhin und Marco Zollinger, Montag-Nachmittag ab 13 Uhr. Individuelles Arbeiten am Projekt.
-\item Gemeinsame Arbeit, nach Bedarf: Méline Sieber und Nicolas Ganz, Mittwoch von 10-13 Uhr. Individuelles Arbeiten am Projekt.
-\item Gemeinsame Arbeit, nach Bedarf: Marco Zollinger, Méline Sieber und Florian Bruhin, Freitag ab 15 Uhr (in KW 9, 11, 14, 16, 18, 20, 22). Individuelles Arbeiten am Projekt.
+\item Gemeinsame Arbeit, nach Bedarf: Méline Sieber und Nicolas Ganz, Mittwoch von 10-13 Uhr.
+\item Gemeinsame Arbeit, nach Bedarf: Florian Bruhin, Méline Sieber und ggf. Marco Zollinger, Freitag ab 15 Uhr (in KW 9, 11, 14, 16, 18, 20, 22).
+\item Arbeit am Projekt: Florian Bruhin und ggf. Marco Zollinger, Montag-Nachmittag ab 13 Uhr.
 \end{itemize}
 
 \section{Risikomanagement}
+\begin{landscape}
 \subsection{Risiken}
+
+\begin{tabular}{llp{8em}lllp{8em}p{15em}}
+  \toprule
+  Nr & Titel & Beschreibung & max. Schaden [h] & Eintrittswahrscheinlichkeit & Gewichteter Schaden & Vorbeugung & Verhalten beim Eintreten \\
+  \midrule
+  R1 & Ausfall CI & Travis CI oder AppVeyor (externe Services) fallen aus & 1 & 0.1\% & 0.001 & keine & Ausschalten von ``protected branches'', Nutzung von Alternativen (Circle CI) \\
+  R2 & Ausfall GitHub & GitHub fällt aus & 5 & 0.01\% & 0.0005 & Lokale Kopien des Codes & Migration auf anderen Service \\
+  R3 & Ausfall Keltec & Ausfall des keltec.ch Servers, auf dem Jira/Confluence liegen & 5 & 0.018\% & 0.0009 & Replizierung auf mehreren physischen Servern, Backups & Migration auf neuen Server, schlimmstenfalls Neueinrichtung \\
+  R4 & Moodle-Integration nicht umsetzbar & FIXME & 8 & 40\% & 3.2 & Moodle ist optional & Feature weglassen \\
+  R5 & Studentenportal-Integration nicht umsetzbar & FIXME & 8 & 30\% & 2.4 & Studentenportal ist optional & Feature weglassen oder ggf. APIs zu Studentenportal hinzufügen \\
+  \bottomrule
+\end{tabular}
+\end{landscape}
+
 % <Verweis auf Dokument TechnischeRisiken.xlsx>
-FIXME
+FIXME Florian
 
 Die Moodle-Anbindung könnte nach Rücksprache mit einem der Administratoren, Frank Koch, zu Schwierigkeiten führen (Gespräch geführt am 21.2.2018). Es existiert eine WebDAV-Schnittstelle, die jedoch unter Umständen nicht für das Projekt geöffnet werden kann. 
 
@@ -400,7 +444,7 @@ Tools zu verwenden, da flake8 doch einige nützliche Checks hat, die in pylint
 nicht vorhanden sind. Ausserdem ist es viel schneller und kann gut im Editor/IDE
 eingebunden werden, um sofortiges Feedback zu kriegen.
 
-\paragraph{yapf} Bei \emph{yampf\footnote{\url{https://github.com/google/yapf}}}
+\paragraph{yapf} Bei \emph{yapf\footnote{\url{https://github.com/google/yapf}}}
 (Yet Another Python Formatter) von Google handelt sich um ein weiteres Tool aus
 der Linting/Style-Ecke, welches Probleme auch automatisiert beheben kann. Wir
 werden vermutlich primär auf pylint/flake8 setzen, aber es wäre schön, wenn wir
@@ -471,6 +515,7 @@ konzipiert, hat sich aber als Standardwerk verbreitet und wird auch von den
 Style-Checkern standardmässig verwendet.
 
 \subsection{Testen}
+% FIXME: Nicolas
 \subsubsection {FIXME: Bezeichnung des Tests (z.B. Integrationstest oder Systemtest)}
 %<Beschreibung der Durchführung, Umsetzung und Umfang der Tests. Wenn möglich mit Mengenangaben (wieviele Tests)>
 

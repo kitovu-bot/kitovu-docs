@@ -9,6 +9,7 @@
 \usepackage{graphicx}
 \usepackage{minted}
 \usepackage{pdflscape}
+\usepackage{array}
 
 \begin{document}
 \title{
@@ -30,7 +31,9 @@
 
 \section*{Änderungsgeschichte}
 
-\begin{tabular}{llp{20em}l}
+FIXME tabelle linksbündig ausrichten
+
+\begin{tabular}{ll>{\raggedright}p{20em}l}
 \toprule
 Datum & Version & Änderung & AutorIn \\
 \midrule
@@ -42,7 +45,7 @@ Datum & Version & Änderung & AutorIn \\
 
 \section{Einführung}
 \subsection{Zweck}
-Der Projektplan zu \emph{kitovu} gibt eine Vogelperspektive zum Engineering-Projekt. Er steckt den Rahmen ab, innerhalb dessen \emph{kitovu} vollendet wird. Diese Übersicht umfasst eine Projektübersicht, wie das Projekt organisiert ist, welche Phasen das Projekt durchläuft und die Besprechungen mit dem Betreuer organisiert sind. Zudem bespricht der Projektplan mögliche Risiken, umreisst die anstehenden Arbeitspakete und listet die wichtigen Punkte, um eine hohe Qualität des Codes, der Dokumentation und des Projekt-Managments zu garantieren.
+Der Projektplan zu \emph{kitovu} gibt eine Vogelperspektive zum Engineering-Projekt. Er steckt den Rahmen ab, innerhalb dessen \emph{kitovu} vollendet wird. Dieses Dokument umfasst eine Projektübersicht, detailliert, wie das Projekt organisiert ist, welche Phasen das Projekt durchläuft und wie die Besprechungen mit dem Betreuer organisiert sind. Zudem bespricht der Projektplan mögliche Risiken, umreisst die anstehenden Arbeitspakete und listet die wichtigen Punkte, um eine entsprechende Qualität des Codes, der Dokumentation und des Projekt-Managements zu garantieren.
 
 \subsection{Gültigkeitsbereich}
 Der vorliegende Projektplan ist für das Engineering Projekt im Frühlingssemester 2018 gültig. Falls dem Projekt grössere Veränderungen widerfahren, wird der Projektplan dementsprechend angepasst. Umfassende Änderungen werden zu Beginn des Dokumentes protokolliert.
@@ -59,8 +62,30 @@ Kitovu ist ein Software-Client für Studentinnen und Studenten der HSR, mit dem 
 
 \subsection{Zweck und Ziel}
 % <Sinn und Zweck des Projektes, sowie Zielsetzung und auch persönliche Ziele>
-An der HSR müssen sich die Studentinnen und Studenten bislang ihre Unterrichtsmaterialien vom Skripteserver, von Moodle und anderen Orten von Hand zusammensuchen. Das ist aufwändig und unübersichtlich. \emph{Kitovu} soll das ändern: ein Client, der von verschiedenen Plattformen ausgewählte Unterrichtsmaterialien auf den eigenen Rechner synchronisiert.
-Zielgruppe sind primär Studierende, sekundär Dozierende der HSR. Der Client könnte potentiell an anderen Hochschulen eingesetzt werden.
+An der HSR müssen sich die Studentinnen und Studenten bislang ihre Unterrichtsmaterialien vom Skripteserver, von Moodle und anderen Orten von Hand zusammensuchen. Das ist aufwändig und unübersichtlich. Es existiert zwar bereits ein Synchronisationstool, \emph{OpenHSR Connect\footnote{\url{https://github.com/openhsr/connect}}}. Es stellt die Inspiration für unser Projekt dar, hat aber zahlreiche Unzulänglichkeiten: Dieser Client besitzt kein GUI, der Code ist weder strukturiert noch einheitlich, er ist plattformabhängig und funktioniert nur für den HSR-Skripteserver.
+
+\emph{Kitovu} soll das ändern: ein Client, der von verschiedenen Plattformen ausgewählte Unterrichtsmaterialien auf den eigenen Rechner synchronisiert, plattformunabhängig und erweiterbar für verschiedene Plattformen, nicht nur den Skripteserver. Zielgruppe sind primär Studierende, sekundär Dozierende der HSR. Der Client könnte potentiell an anderen Hochschulen eingesetzt werden.
+
+Kitovu bindet primär den Skripteserver ein. Der Terminal-basierte Client funktioniert mittels Profilen zu unterschiedlichen Plattformen (Moodle, Skripteserver, Studentenportal). Pro Profil sind Verbindungsdaten und eventuelle Login-Credentials im Client hinterlegt. Die Daten-Synchronisation erfolgt immer nur von Server zu Client, erfolgreiche und misslungene Datentransfers werden protokolliert. Ein rudimentäres GUI dient als Proof-of-Concept.
+
+Pro Profil lässt sich Folgendes definieren:
+
+\begin{itemize}
+	\item welche Ordner/Dateien synchronisiert werden sollen.
+	\item welche Ordner/Dateien von der Synchronisation ausgeschlossen werden sollen.
+	\item wie mit Duplikaten/lokal bestehenden Dateien umgegangen werden soll.
+\end{itemize}
+
+% \item FIXME: Plattform-Plugin-Framework: zu definieren, vermutlich pluggy
+
+Kitovu ist ausbaubar und damit modular: Zusätzlich zu den beiden Plattformen (Skripteserver, Moodle/Studentenportal) können in zukünftigen Projekten beliebig viele Plattformen als separates Plugin bzw. Profil realisiert werden.
+
+Optionale Features:
+
+\begin{itemize}
+	\item Moodle und/oder das Studentenportal. Die Implementation von Moodle oder dem Studentenportal ist abhängig von den weiter unten beschriebenen Risiken.
+	\item Komplettes GUI, das der Funktionalität des Terminalprogramms entspricht.
+\end{itemize}
 
 \subsubsection{Persönliche Ziele}
 \begin{description}
@@ -70,35 +95,15 @@ Zielgruppe sind primär Studierende, sekundär Dozierende der HSR. Der Client k�
 \item[Florian Bruhin] Erfahrungen sammeln bei der ``Leitung'' eines kleinen
   Software-Teams, einige neue nützliche Tools ausprobieren, und das Endprodukt
   selbst: Endlich alle HSR-Dokumente zu einem Modul problemlos an einem Ort!
-\item[Méline Sieber] FIXME Meline Ausbau der Python-Programmierfähigkeiten und -kenntnisse (keine grosse Erfahrung vorhanden); erstes komplexeres Softwareprojekt durchziehen; Test-Erfahrung sammeln
+\item[Méline Sieber] Verbessern der Python-Programmierfähigkeiten und -kenntnisse (nur Grundkenntnisse vorhanden); erstes komplexeres Softwareprojekt durchziehen und entsprechende Arbeitsschritte und Werkzeuge kennenlernen; Erfahrung im Test-Driven-Development sammeln.
 \item[Marco Zollinger] Schritt von Python als Skriptsprache hin zur Verwendung in einem Softwareprojekt mit professionellem Workflow und Tools; Erfahrungen sammeln über Softwareentwicklung mit mehreren Personen und der dazugehörigen Arbeitsteilung und Kommunikation; Beitrag leisten in einem Open Source-Projekt das hoffentlich auch anderen Studenten zugute kommt; Kenntnisse in GUI-Entwicklung mit PyQt5 verbessern.
 
 \end{description}
 
 \subsection{Lieferumfang}
 % <Konkreten Lieferumfang des Projektes beschreiben>
-FIXME Meline Abgrenzung HSR Connect 1: Gui, Plattformunabhängig, modular statt gebastel, wird innerhalb strukturiertem Softwareprojekt gebaut
+FIXME mehr auflisten als nur das, was das Projekt kann. Wir müssen auch schreiben, was sonst noch abgeliefert wird.
 
-Kitovu bindet den Skripteserver ein. Der Terminal-basierte Client funktioniert mittels Profilen zu unterschiedlichen Plattformen (Moodle, Skripteserver, Studentenportal). Pro Profil sind Verbindungsdaten und eventuelle Login-Credentials im Client hinterlegt. Die Daten-Synchronisation erfolgt immer nur von Server zu Client, erfolgreiche und misslungene Datentransfers werden protokolliert.
-
-Pro Profil lässt sich Folgendes definieren:
-
-\begin{itemize}
-\item welche Ordner/Dateien synchronisiert werden sollen.
-\item welche Ordner/Dateien von der Synchronisation ausgeschlossen werden sollen.
-\item wie mit Duplikaten/lokal bestehenden Dateien umgegangen werden soll.
-\end{itemize}
-
-% \item FIXME: Plattform-Plugin-Framework: zu definieren, vermutlich pluggy
-
-Kitovu ist ausbaubar und damit modular: Zusätzlich zu den beiden Plattformen (Skripteserver, Moodle/Studentenportal) können in zukünftigen Projekten beliebig viele Plattformen als separates Plugin realisiert werden.
-
-Optionale Features:
-
-\begin{itemize}
-\item Moodle und/oder das Studentenportal. Die Implementation von Moodle oder dem Studentenportal ist abhängig von den weiter unten beschriebenen Risiken.
-\item Komplettes GUI, das der Funktionalität des Terminalprogramms entspricht.
-\end{itemize}
 
 \subsection{Annahmen und Einschränkungen}
 % <Annahmen die für diesen Projektplan getroffen werden und Einschränkungen denen er unterliegt>
@@ -190,7 +195,7 @@ elaboration''-Modell, wobei wir eine zusätzliche Training-Phase hinzufügen
 
 
 \textbf{(Übernommen von der Kurzeinführung)}
-
+FIXME: tabelle linksbündig ausrichten, keine Blöcke
 \begin{tabular}{llll}
 \toprule
 KW & Sem.-Woche & Milestone / Tätigkeit & Review \\
@@ -304,7 +309,7 @@ FIXME Nicolas
 \begin{landscape}
 \subsection{Risiken}
 
-\begin{tabular}{llp{8em}lllp{8em}p{15em}}
+\begin{tabular}{ll>{\raggedright}p{8em}lll>{\raggedright}p{8em}p{15em}}
   \toprule
   Nr & Titel & Beschreibung & max. Schaden [h] & Eintrittswahrscheinlichkeit & Gewichteter Schaden & Vorbeugung & Verhalten beim Eintreten \\
   \midrule

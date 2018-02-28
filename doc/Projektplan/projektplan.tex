@@ -33,6 +33,7 @@
 \def\confluenceurl{https://jira.keltec.ch/wiki}
 
 \newcommand{\jiraissue}[1]{\href{\jiraurl/projects/EPJ/issues/EPJ-#1}{EPJ-#1}}
+\newcommand{\fulljiraissue}[1]{EPJ-#1 (\url{\jiraurl/projects/EPJ/issues/EPJ-#1})}
 
 \section*{Änderungsgeschichte}
 
@@ -354,15 +355,16 @@ Es darf keine neue Funktionalität mehr hinzugefügt werden und wir konzentriere
 
 Wir haben das Projekt in 8 Meilensteine eingeteilt, welche wir im JIRA über Epics abgebildet haben und sämtliche weiteren Tickets gruppiert.
 
-\paragraph{M0: Projektantrag} \strut \\[-1em]
+\paragraph{M0: Projektantrag} \fulljiraissue{5}
 
 Ziel dieses Meilenstein war es, die Grundidee für das Projekt zu eruieren und einen Projektantrag dazu zu erstellen.
 
-\paragraph{M1: Projektplan} \strut \\[-1em]
+\paragraph{M1: Projektplan} \fulljiraissue{6}
 
 Dieser Meilenstein befasst sich mit dem Zusammentragen aller Eckpunkte für das Projekt und das Erstellen dieses Projektplanes.
 
-\paragraph{M2: Requirements} \strut \\[-1em]
+\paragraph{M2: Requirements} \fulljiraissue{7}
+
 % <Setzen Sie in Ihrem Projekt 6-8 Meilensteine. Kurze Beschreibung der Meilensteine mit genauem Datum. In der Regel auf Ende jeder Iteration einen Meilenstein setzen (diese Faustregel gilt nur für die SE-2Projekte, in realen Projekten haben Sie oft deutlich mehr Iterationen als Meilensteine, weil Meilensteine dort die nach aussen kommunizierten Ereignisse sind). Schreiben Sie zu jedem Meilenstein auf, welche Arbeitsprodukte (work products) Sie dann abliefern werden . Spezifizieren Sie wenn nötig auch den Fertigstellungsgrad der Arbeitsprodukte, z.B. „Zentrale Use Cases ‚fully dressed‘, restliche UCs im ‚brief‘ Format“, oder „Architekturskizze inkl. Definition der Interfaces zwischen Sub-Systemen und Deployment Diagramm“>
 
 In diesem Meilenstein sollten die folgenden Abgaben getätigt werden:
@@ -374,32 +376,32 @@ In diesem Meilenstein sollten die folgenden Abgaben getätigt werden:
   \item GUI-Design
 \end{itemize}
 
-\paragraph{M3: End of Elaboration} \strut \\[-1em]
+\paragraph{M3: End of Elaboration} \fulljiraissue{8}
 
 Mit diesem Meilenstein werden wir das Training durch führen und einen Architekturprototypen erstellen.
 Damit können die meisten Unklarheiten geklärt werden.
 Falls es grössere Probleme gibt können wir einen Strategie-/Architekurwechsel angehen, ohne all zu grosse Umstellung an dem Code vornehmen zu müssen.
 
-\paragraph{M4: Architektur} \strut \\[-1em]
+\paragraph{M4: Architektur} \fulljiraissue{9}
 
 Am Ende dieses Meilensteines werden wir die Grundsätzlichen Funktionalitäten für die Applikation haben.
 Diese ist bereits mit Unit- und Integration-Tests gründlich getestet und von unserer Seite lauffähig.
 
 Nach diesem Meilenstein ist die erste Alpha-Version bereit um getestet zu werden.
 
-\paragraph{M5: Usability-Test} \strut \\[-1em]
+\paragraph{M5: Usability-Test} \fulljiraissue{10}
 
 In diesem Meilensten werden wir die Tests von aussenstehenden Personen durchführen.
 
 Da wir bereits im Meilenstein M4 gründliche Tests eingebaut haben geht es hier nur noch um die Test-Protokolle für die aussenstehenden Personen und dessen Auswertung.
 
-\paragraph{M6: Feature Freeze} \strut \\[-1em]
+\paragraph{M6: Feature Freeze} \fulljiraissue{11}
 
 In diesem Meilenstein werden Probleme und Verbesserungen, welche aus dem Meilenstein M5 hervorgekommen sind angegangen.
 
 Nach diesem Meilenstein werden keine Features mehr eingebaut, sondern nur noch Bugfixes.
 
-\paragraph{M7: Projektabschluss} \strut \\[-1em]
+\paragraph{M7: Projektabschluss} \fulljiraissue{12}
 
 Das Ziel dieses Meilensteins ist es sämtliche Dokumente für den Projektabschluss fertiggestellt werden und die Präsentation vorbereitet wird.
 

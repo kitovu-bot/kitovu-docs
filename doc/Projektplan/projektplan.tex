@@ -11,6 +11,15 @@
 \usepackage{pdflscape}
 \usepackage{array}
 
+% Page breaks between sections
+\let\oldsection\section
+\renewcommand\section{\clearpage\oldsection}
+
+% JIRA/Confluence shortcuts
+\def\jiraurl{https://jira.keltec.ch/jira}
+\def\confluenceurl{https://jira.keltec.ch/wiki}
+\newcommand{\jiraissue}[1]{\href{\jiraurl/projects/EPJ/issues/EPJ-#1}{EPJ-#1}}
+\newcommand{\fulljiraissue}[1]{EPJ-#1 (\url{\jiraurl/projects/EPJ/issues/EPJ-#1})}
 
 \begin{document}
 \title{
@@ -28,15 +37,7 @@
 \date{\today}
 
 \maketitle
-\pagebreak
 
-\def\jiraurl{https://jira.keltec.ch/jira}
-\def\confluenceurl{https://jira.keltec.ch/wiki}
-
-\newcommand{\jiraissue}[1]{\href{\jiraurl/projects/EPJ/issues/EPJ-#1}{EPJ-#1}}
-\newcommand{\fulljiraissue}[1]{EPJ-#1 (\url{\jiraurl/projects/EPJ/issues/EPJ-#1})}
-
-FIXME Florian neue Kapitel auf neuer Seite - Pagebreak
 FIXME Meline Marco rausnehmen, in Titelseite nur Fussnote ändern
 
 \section*{Änderungsgeschichte}

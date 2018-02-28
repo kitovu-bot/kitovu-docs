@@ -21,6 +21,9 @@
 \newcommand{\jiraissue}[1]{\href{\jiraurl/projects/EPJ/issues/EPJ-#1}{EPJ-#1}}
 \newcommand{\fulljiraissue}[1]{EPJ-#1 (\url{\jiraurl/projects/EPJ/issues/EPJ-#1})}
 
+% Tools
+\newcommand{\tool}[2]{\emph{#1\footnote{\url{#2}}}}
+
 \begin{document}
 \title{
   Projekt: kitovu \\
@@ -96,7 +99,7 @@ Kitovu ist ein Software-Client für Studentinnen und Studenten der HSR, mit dem 
 
 \subsection{Zweck und Ziel von kitovu}
 % <Sinn und Zweck des Projektes, sowie Zielsetzung und auch persönliche Ziele>
-An der HSR müssen sich die Studentinnen und Studenten bislang ihre Unterrichtsmaterialien vom Skripteserver, von Moodle und anderen Orten von Hand zusammensuchen. Das ist aufwändig und unübersichtlich. Es existiert zwar bereits ein Synchronisationstool, \emph{OpenHSR Connect\footnote{\url{https://github.com/openhsr/connect}}}. Es stellt die Inspiration für unser Projekt dar, hat aber zahlreiche Unzulänglichkeiten: Dieser Client besitzt kein GUI, der Code ist weder strukturiert noch einheitlich, er ist plattformabhängig und funktioniert nur für den HSR-Skripteserver.
+An der HSR müssen sich die Studentinnen und Studenten bislang ihre Unterrichtsmaterialien vom Skripteserver, von Moodle und anderen Orten von Hand zusammensuchen. Das ist aufwändig und unübersichtlich. Es existiert zwar bereits ein Synchronisationstool, \tool{OpenHSR Connect}{https://github.com/openhsr/connect}. Es stellt die Inspiration für unser Projekt dar, hat aber zahlreiche Unzulänglichkeiten: Dieser Client besitzt kein GUI, der Code ist weder strukturiert noch einheitlich, er ist plattformabhängig und funktioniert nur für den HSR-Skripteserver.
 
 \emph{Kitovu} soll das ändern: ein Client, der von verschiedenen Plattformen ausgewählte Unterrichtsmaterialien auf den eigenen Rechner synchronisiert, plattformunabhängig und erweiterbar für verschiedene Plattformen, nicht nur den Skripteserver. Zielgruppe sind primär Studierende, sekundär Dozierende der HSR. Der Client könnte potentiell an anderen Hochschulen eingesetzt werden.
 
@@ -567,22 +570,22 @@ Beispiel von Typenannotationen:
       ...
 \end{minted}
 
-Wir benutzen dazu das Tool \emph{mypy\footnote{\url{http://mypy-lang.org/}}}.
+Wir benutzen dazu das Tool \tool{mypy}{http://mypy-lang.org/}.
 Ursprünglich im Rahmen einer Doktorarbeit an der Universität Cambridge
 entwickelt hat es sich zum etablierten Werkzeug entwickelt und wird durch Firmen
 wie Dropbox benutzt und weiter entwickelt.
 
 Als Alternative dazu wollen wir uns kurz
-\emph{pytype\footnote{\url{https://github.com/google/pytype}}} von Google
+\tool{pytype}{https://github.com/google/pytype} von Google
 anschauen, wobei die Wahl vermutlich auf mypy als das bekanntere Werkzeug fallen wird.
 
-\paragraph{pylint} Das \emph{pylint\footnote{\url{https://pylint.org/}}}-Projekt
+\paragraph{pylint} Das \tool{pylint}{https://pylint.org/}-Projekt
 kombiniert verschiedene Funktionalitäten in einem Werkzeug, welche die
 Code-Qualität erhöhen. Es hilft bei der Einhaltung von code guidelines
 (Zeilenlänge, Variablennamen, unbenutzte Imports, etc.), kann aber auch Fehler
 finden und enthält verschiedene Metrics (Anzahl Klassen, Argumente, Members, etc.).
 
-\paragraph{flake8} \emph{flake8\footnote{\url{http://flake8.pycqa.org/}}} ist
+\paragraph{flake8} \tool{flake8}{http://flake8.pycqa.org/} ist
 ein weiteres bekanntes Tool. Der Fokus liegt hier eher auf Style-Problemen,
 flake8 macht im Gegensatz zu pylint keine tiefergehende statische Code-Analyse.
 Es gibt zwar einige Überschneidungen mit pylint, trotzdem macht es Sinn, beide
@@ -590,14 +593,14 @@ Tools zu verwenden, da flake8 doch einige nützliche Checks hat, die in pylint
 nicht vorhanden sind. Ausserdem ist es viel schneller und kann gut im Editor/IDE
 eingebunden werden, um sofortiges Feedback zu kriegen.
 
-\paragraph{yapf} Bei \emph{yapf\footnote{\url{https://github.com/google/yapf}}}
+\paragraph{yapf} Bei \tool{yapf}{https://github.com/google/yapf}
 (Yet Another Python Formatter) von Google handelt sich um ein weiteres Tool aus
 der Linting/Style-Ecke, welches Probleme auch automatisiert beheben kann. Wir
 werden vermutlich primär auf pylint/flake8 setzen, aber es wäre schön, wenn wir
 auch yapf testen könnten.
 
-\paragraph{coala / GitMate} \emph{Coala\footnote{\url{https://coala.io/}}} ist
-(im Zusammenspiel mit \emph{GitMate\footnote{\url{https://gitmate.io/}}}) ein
+\paragraph{coala / GitMate} \tool{Coala}{https://coala.io/} ist
+(im Zusammenspiel mit \tool{GitMate}{https://gitmate.io/}) ein
 Tool, welches alle obengenannte Tools (und auch weitere, für andere Sprachen) in
 einem Tool vereint. Es bietet auch die Möglichkeit, Probleme automatisch als
 Kommentare für pull requests zu verfassen. Es wäre schön, wenn wir es in unseren
@@ -605,28 +608,28 @@ Workflow integrieren können, ist aber nicht zwingend notwendig.
 
 \paragraph{Paketierung} Darüber hinaus gibt es weitere Tools welche die
 korrekte Paketierung überprüfen bzw. erleichtern:
-\emph{check-manifest\footnote{\url{https://github.com/mgedmin/check-manifest/}}}
-sowie \emph{pyroma\footnote{\url{https://github.com/regebro/pyroma/}}}. Diese
+\tool{check-manifest}{https://github.com/mgedmin/check-manifest/}
+sowie \tool{pyroma}{https://github.com/regebro/pyroma/}. Diese
 wollen wir einsetzen, sobald dies Sinn macht - also vermutlich erst nach dem
 Feature Freeze, wenn wir das Projekt für Linux/Windows/ggf. macOS pakettieren.
 
 \subsubsection{Unit Testing}
 % <Wo werden welche Unit Tests geschrieben um die Qualität sicherzustellen? Wie wird die Testabdeckung sichergestellt (z.B. durch EclEmma)?>
 
-Wir benutzen \emph{pytest\footnote{\url{https://docs.pytest.org/}}} als Test
+Wir benutzen \tool{pytest}{https://docs.pytest.org/} als Test
 Framework. Während Python ein unittest-Framework mit einer JUnit-Ähnlichen API
 eingebaut hat, vereinfacht pytest das Verfassen von Tests ungemein.
 
 Wir nutzen ausserdem verschiedene plugins für pytest:
 
 \begin{itemize}
-\item \emph{coverage.py\footnote{\url{https://coverage.readthedocs.io/}}} für
-    Test-Coverage sowie \emph{codecov.io\footnote{\url{https://codecov.io/}}}
+\item \tool{coverage.py}{https://coverage.readthedocs.io/} für
+    Test-Coverage sowie \tool{codecov.io}{https://codecov.io/}
     als online-Service (Kommentare in pull-requests bei geänderter Coverage).
-\item \emph{pytest-qt\footnote{\url{https://pytest-qt.readthedocs.io/}}} für das
+\item \tool{pytest-qt}{https://pytest-qt.readthedocs.io/} für das
     automatisierte Testen der GUI
-\item eventuell \emph{pytest-bdd\footnote{\url{https://github.com/pytest-dev/pytest-bdd/}}} für Behaviour-Driven-Testing (Cucumber/Gherkin)
-\item eventuell \emph{hypothesis\footnote{\url{http://hypothesis.works/}}} für
+\item eventuell \tool{pytest-bdd}{https://github.com/pytest-dev/pytest-bdd/} für Behaviour-Driven-Testing (Cucumber/Gherkin)
+\item eventuell \tool{hypothesis}{http://hypothesis.works/} für
   Fuzzing-Tests, wobei automatisch Test-Werte aufgrund von Typendeklarationen
   generiert werden. Es ist aber fraglich, inwieweit dies in diesem Projekt Sinn macht.
 \end{itemize}

@@ -29,6 +29,11 @@
 \maketitle
 \pagebreak
 
+\def\jiraurl{https://jira.keltec.ch/jira}
+\def\confluenceurl{https://jira.keltec.ch/wiki}
+
+\newcommand{\jiraissue}[1]{\href{\jiraurl/projects/EPJ/issues/EPJ-#1}{EPJ-#1}}
+
 \section*{Änderungsgeschichte}
 
 \begin{tabular}{ll>{\raggedright}p{20em}l}
@@ -60,8 +65,8 @@ FIXME sort table
 \begin{tabular}{ll}
 	Coding-Guideline: PEP 8 (Python Enhancement Proposal) & \url{https://www.python.org/dev/peps/pep-0008/} \\
 	Github-Repository von \emph{kitovu} & \url{https://github.com/kitovu-bot/kitovu} \\
-	Jira-Confluence	& \url{https://jira.keltec.ch/jira/} \\
-	Jira-Wiki & \url{https://jira.keltec.ch/wiki} \\
+	Jira	& \url{\jiraurl} \\
+	Confluence & \url{\confluenceurl} \\
 	Travis CI & \url{https://travis-ci.com/} \\
 	AppVeyor & \url{https://www.appveyor.com/} \\
 	Sphinx & \url{http://www.sphinx-doc.org/} \\
@@ -364,7 +369,7 @@ In diesem Meilenstein sollten die folgenden Abgaben getätigt werden:
 
 \begin{itemize}
   \item Use Cases,
-  \item Domain Model,
+  \item Domain Modell,
   \item nicht-funktionale Anforderungen
   \item GUI-Design
 \end{itemize}
@@ -446,6 +451,29 @@ FIXME
 %Später im Projekt werden Sie die Arbeitspakete noch verfeinern, verschieben, jemandem zuordnen, neu schätzen, etc. Deswegen empfiehlt sich der Einsatz eines Werkzeuges wie Redmine.
 %
 %Dokumentieren Sie URL und Logins auf das Projektmanagement Tool, in welchem die Meilensteine und die dazugehörigen Arbeitspakete erfasst sind.>
+
+\begin{tabular}{ll<{\raggedright}p{29.5em}}
+  \toprule
+  JIRA-ID & Meilenstein & Titel \\
+  \midrule
+  \midrule
+  \jiraissue{XX} & M2 & Use Cases erstellen \\
+  \jiraissue{XX} & M2 & Domain-Modell erstellen \\
+  \jiraissue{XX} & M2 & Nicht-funktionale Anforderungen erstellen \\
+  \jiraissue{XX} & M2 & GUI-Design erstellen \\
+  \midrule
+  \jiraissue{XX} & M3 & Test-Synchronisierungs-Modul mit fixen Rückgabewerten erstellen \\
+  \jiraissue{XX} & M3 & Prototyp des Core-Teils erstellen \\
+  \midrule
+  \jiraissue{XX} & M4 & Tests zu dem Core-Teil kompletieren \\
+  \jiraissue{XX} & M4 & Skripteserver-Anbindung erstellen \\
+  \jiraissue{XX} & M4 & UI-Prototyp erstellen \\
+  \midrule
+  \jiraissue{XX} & M5 & Usability-Test-Protokoll erstellen \\
+  \bottomrule
+\end{tabular}
+
+Dies Issues sind zu finden unter \jiraurl/projects/EPJ/issues/\emph{\textless JIRA-ID\textgreater} und eine Überischt unter \url{\jiraurl/projects/EPJ/issues}.
 
 \section{Infrastruktur}
 %<Benötigte Infrastruktur aufzählen. Spezielle Geräte, Laptop , Tools usw. und nötigenfalls aufzeigen für welche Bereiche diese verwendet werden. Eventuell auch Verfahren beschreiben (auf Tools bezogen).>

@@ -71,26 +71,33 @@ Der vorliegende Projektplan ist für das Engineering Projekt im Frühlingssemest
 % <Die Quellen / Referenzen sollten mit dem Word Tool automatisch erstellt werden>
 
 \begin{tabular}{ll}
-	AppVeyor & \url{https://www.appveyor.com/} \\
-	coala & \url{https://coala.io/} \\
-	Coding-Guideline: PEP 8 & \url{https://www.python.org/dev/peps/pep-0008/} \\
-	Confluence & \url{\confluenceurl} \\
-	coverage.py & \url{https://coverage.readthedocs.io/} \\
-	flake8 & \url{http://flake8.pycqa.org/} \\
-	Github-Repository von \emph{kitovu} & \url{https://github.com/kitovu-bot/kitovu} \\
-	gitmate & \url{https://gitmate.io/} \\
-	hypothesis & \url{http://hypothesis.works/} \\
-	JIRA	& \url{\jiraurl} \\
-	mypy & \url{http://mypy-lang.org/} \\
-	OpenHSR Connect & \url{https://github.com/openhsr/connect} \\
-	pylint & \url{https://pylint.org/} \\
-	pytest-bdd & \url{https://github.com/pytest-dev/pytest-bdd/} \\
-	pytest-qt & \url{https://pytest-qt.readthedocs.io/} \\
-	pytype & \url{https://github.com/google/pytype} \\ 
-	Sphinx & \url{http://www.sphinx-doc.org/} \\
-	Travis CI & \url{https://travis-ci.com/} \\
-	yapf & \url{https://github.com/google/yapf} \\
-	
+  AppVeyor & \url{https://www.appveyor.com/} \\
+  attrs & \url{http://www.attrs.org/} \\ 
+  click & \url{http://click.pocoo.org/} \\ 
+  coala & \url{https://coala.io/} \\
+  Coding-Guideline: PEP 8 & \url{https://www.python.org/dev/peps/pep-0008/} \\
+  Confluence & \url{\confluenceurl} \\
+  coverage.py & \url{https://coverage.readthedocs.io/} \\
+  flake8 & \url{http://flake8.pycqa.org/} \\
+  Github-Repository von \emph{kitovu} & \url{https://github.com/kitovu-bot/kitovu} \\
+  gitmate & \url{https://gitmate.io/} \\
+  hypothesis & \url{http://hypothesis.works/} \\
+  JIRA	& \url{\jiraurl} \\
+  keyring & \url{https://pypi.python.org/pypi/keyring} \\ 
+  mypy & \url{http://mypy-lang.org/} \\
+  OpenHSR Connect & \url{https://github.com/openhsr/connect} \\
+  pluggy & \url{https://pluggy.readthedocs.io/} \\ 
+  pylint & \url{https://pylint.org/} \\
+  PyQt5 & \url{https://www.riverbankcomputing.com/software/pyqt/intro} \\ 
+  PySMB & \url{https://miketeo.net/wp/index.php/projects/pysmb} \\ 
+  pytest-bdd & \url{https://github.com/pytest-dev/pytest-bdd/} \\
+  pytest-qt & \url{https://pytest-qt.readthedocs.io/} \\
+  pytype & \url{https://github.com/google/pytype} \\ 
+  Qt & \url{http://qt.io/} \\ 
+  Sphinx & \url{http://www.sphinx-doc.org/} \\
+  TOML & \url{https://github.com/toml-lang/toml} \\ 
+  Travis CI & \url{https://travis-ci.com/} \\
+  yapf & \url{https://github.com/google/yapf} \\
 \end{tabular}
 
 \section{Projekt-Übersicht}
@@ -537,9 +544,6 @@ Das Projekt verwendet JIRA und Confluence, um \emph{kitovu} zu managen, zu koord
 \subsection{Entwicklung}
 %<Wo befindet sich der Source Code (z.B. SVN oder Git) und wie wird dessen Qualität sichergestellt?>
 
-FIXME Florian libraries einfügen
-% \item FIXME: Plattform-Plugin-Framework: zu definieren, vermutlich pluggy
-
 Der Source-Code befindet sich auf Github im Repository \texttt{kitovu-bot/kitovu\footnote{\url{https://github.com/kitovu-bot/kitovu}}}.
 
 Wie unter \ref{sec:codereviews} beschrieben, setzen wir auf das
@@ -551,6 +555,9 @@ fehlerfreien Code zu garantieren. Diese werden unter \ref{sec:tools} kurz beschr
 
 \subsubsection{Vorgehen}
 % <Vorgehen in der Entwicklung>
+Wir benutzen ein einfaches git branching Modell mit einem \verb|master| branch
+in den funktionierende Änderungen eingepflegt werden, sowie feature/hotfix
+branches für alle Änderungen.
 
 \subsubsection{Tools}
 \label{sec:tools}
@@ -612,6 +619,173 @@ korrekte Paketierung überprüfen bzw. erleichtern:
 sowie \tool{pyroma}{https://github.com/regebro/pyroma/}. Diese
 wollen wir einsetzen, sobald dies Sinn macht - also vermutlich erst nach dem
 Feature Freeze, wenn wir das Projekt für Linux/Windows/ggf. macOS pakettieren.
+
+\subsubsection{Bibliotheken}
+
+In diesem Abschnitt werden die im Projekt verwendeten Bibliotheken kurz
+vorgestellt, inklusive einigen Codebeispielen.
+
+\paragraph{attrs} Bei \tool{attrs}{http://www.attrs.org/} handelt es sich um eine Bibliothek, die das
+erstellen von Data-Klassen stark vereinfacht. Anstatt viel ``Boilerplate-Code''
+schreiben zu müssen:
+
+\begin{minted}{python}
+class File:
+
+    def __init__(self, filename: str):
+        self._filename = filename
+
+    def __repr__(self) -> str:
+        return f'{self.__class__.__name__}("{self._filename}")'
+
+    def __hash__(self) -> int:
+        return hash(self._filename)
+
+    def __eq__(self, other) -> bool:
+        if not isinstance(other, self.__class__):
+            return NotImplemented
+        return self._filename == other._filename
+
+    def __lt__(self, other) -> bool:
+        if not isinstance(other, self.__class__):
+            return NotImplemented
+        return self._filename < other._filename
+\end{minted}
+
+kann stattdessen folgender Code geschrieben werden, welcher zum selben Ergebnis führt:
+
+\begin{minted}{python}
+import attr
+
+@attr.s
+class File:
+
+    filename: str = attr.ib()
+\end{minted}
+
+Diese Bibliothek hat sich so weit verbreitet, dass eine vergleichbare
+Funktionalität in der nächsten Python-Version eingebaut werden wird\footnote{\url{https://www.python.org/dev/peps/pep-0557/}}.
+
+\paragraph{click}
+
+\tool{click}{http://click.pocoo.org/} erlaubt es, sehr einfach
+Kommandozeilen-Interfaces zu erstellen und kümmert sich beispielsweise um die
+Behandlung von Optionen/Flags:
+
+\begin{minted}{python}
+import click
+
+@click.command()
+@click.option('--profile', help="Profile to synchronize")
+def sync(profile):
+    """Synchronize data from a HSR server."""
+    # ...
+\end{minted}
+
+Daraus wird dann ein Tool, welches man mit den definierten Optionen aufgerufen
+werden kann, und welches beispielsweise auch eine Hilfe beinhaltet:
+
+\begin{verbatim}
+$ python3 test.py --help
+Usage: test.py [OPTIONS]
+
+  Synchronize data from a HSR server.
+
+Options:
+  --profile TEXT  Profile to synchronize
+  --help          Show this message and exit.
+\end{verbatim}
+
+\paragraph{PyQt5}
+
+\tool{PyQt5}{https://www.riverbankcomputing.com/software/pyqt/intro} ist ein
+bekanntes GUI-Toolkit für Python, welches auf \tool{Qt}{http://qt.io/} (C++) aufsetzt.
+
+Es ist sehr mächtig, gleichzeitig lassen sich einfache GUIs sehr schnell
+realisieren:
+
+\begin{minted}{python}
+import sys
+from PyQt5.QtWidgets import QApplication, QLabel
+
+app = QApplication(sys.argv)
+label = QLabel("Hello World")
+label.show()
+app.exec_()
+\end{minted}
+
+\paragraph{PySMB}
+
+\tool{PySMB}{https://miketeo.net/wp/index.php/projects/pysmb} ist eine
+Bibliothek, welche plattformunabhängig das Windows Filesharing Protokoll (SMB)
+implementiert. Das \emph{OpenHSR Connect}-Projekt benutzt diese Bibliothek
+bereits, womit wir sicher sein können, dass sie zuverlässig mit dem
+HSR-Skripteserver funktioniert.
+
+\paragraph{keyring}
+
+Mit \tool{keyring}{https://pypi.python.org/pypi/keyring} lassen sich einfach
+Passwörter sicher speichern. Aus der Dokumentation:
+
+\begin{minted}{python}
+>>> import keyring
+>>> keyring.set_password("system", "username", "password")
+>>> keyring.get_password("system", "username")
+'password'
+\end{minted}
+
+Es nutzt dabei die Möglichkeiten der verschiedenen Betriebssysteme um Passwörter
+sicher abzulegen, was einer Speicherung von Passwörtern im Klartext klar zu
+bevorzugen ist.
+
+\paragraph{Plugin-Framework}
+
+Zum Laden von Plugins bietet sich ebenfalls eine externe Bibliothek an. Wir
+wollen verschiedene Lösungen dazu noch genauer evaluieren, tendieren aber zu
+\tool{pluggy}{https://pluggy.readthedocs.io/}, womit einfach eine Schnittstelle
+für Plugins definiert und von Plugins implementiert werden kann:
+
+\begin{minted}{python}
+import pluggy
+
+hookspec = pluggy.HookspecMarker("kitovu")
+hookimpl = pluggy.HookimplMarker("kitovu")
+
+class PluginSpec:
+
+    """Specification of the plugin API."""
+
+    @hookspec
+    def login(self, server: str):
+        pass
+
+
+class FileserverPlugin:
+
+    """Implementation of a plugin."""
+
+    @hookimpl
+    def login(self, server: str):
+        # ...
+
+
+pm = pluggy.PluginManager("kitovu")
+pm.add_hookspecs(PluginSpec)
+
+pm.register(FileserverPlugin())
+pm.hook.login(server="...")
+\end{minted}
+
+\paragraph{Konfiguration}
+
+Für das Einlesen der Konfiguration wollen wir ebenfalls eine Bibliothek
+benutzen. Momentan ist noch offen, welche Bibliothek dazu genau genuzt werden
+soll, wobei sich \tool{TOML}{https://github.com/toml-lang/toml} anbieten würde.
+
+\paragraph{Moodle}
+
+Für die Verbindung mit Moodle ist eventuell ebenfalls eine Bibliothek nötig.
+Die Details sind uns hier noch nicht bekannt.
 
 \subsubsection{Unit Testing}
 % <Wo werden welche Unit Tests geschrieben um die Qualität sicherzustellen? Wie wird die Testabdeckung sichergestellt (z.B. durch EclEmma)?>

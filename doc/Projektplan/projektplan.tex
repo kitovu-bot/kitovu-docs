@@ -10,6 +10,7 @@
 \usepackage{minted}
 \usepackage{pdflscape}
 \usepackage{array}
+\usepackage{tabulary}
 
 % Page breaks between sections
 \let\oldsection\section
@@ -45,7 +46,7 @@ FIXME Meline Marco rausnehmen, in Titelseite nur Fussnote ändern
 
 \section*{Änderungsgeschichte}
 
-\begin{tabular}{ll>{\raggedright}p{20em}l}
+\begin{tabulary}{\linewidth}{llLl}
 \toprule
 Datum & Version & Änderung & AutorIn \\
 \midrule
@@ -54,7 +55,7 @@ Datum & Version & Änderung & AutorIn \\
 28.02.2018 & 1.3 & Weitere Ergänzungen und Komplettierung & alle drei \\
 02.03.2018 & 1.4 & Lektorat und Abgabe & Méline Sieber \\
 \bottomrule
-\end{tabular}
+\end{tabulary}
 \pagebreak
 
 \section{Einführung}
@@ -70,7 +71,7 @@ Der vorliegende Projektplan ist für das Engineering Projekt im Frühlingssemest
 % <Referenz auf ein Glossar Dokument, wo alle Abkürzungen und unklaren Begriffe erklärt werden>
 % <Die Quellen / Referenzen sollten mit dem Word Tool automatisch erstellt werden>
 
-\begin{tabular}{ll}
+\begin{tabulary}{\linewidth}{ll}
   AppVeyor & \url{https://www.appveyor.com/} \\
   attrs & \url{http://www.attrs.org/} \\ 
   click & \url{http://click.pocoo.org/} \\ 
@@ -98,7 +99,7 @@ Der vorliegende Projektplan ist für das Engineering Projekt im Frühlingssemest
   TOML & \url{https://github.com/toml-lang/toml} \\ 
   Travis CI & \url{https://travis-ci.com/} \\
   yapf & \url{https://github.com/google/yapf} \\
-\end{tabular}
+\end{tabulary}
 
 \section{Projekt-Übersicht}
 % <Kurze Beschreibung des Projektes>
@@ -258,31 +259,30 @@ Wir nutzen das in der Vorlesung empfohlene ``Scrum plus end of
 elaboration''-Modell, wobei wir eine zusätzliche Training-Iteration hinzufügen
 (siehe unten). Eine Iteration soll dabei eine Woche dauern.
 
-\begin{tabular}{lllll}
+\begin{tabulary}{\linewidth}{lllll}
 \toprule
 KW & Sem.-Woche & Meilenstein / Tätigkeit & Review & Phase \\
 \midrule
-\midrule
 8  & 1 & \textbf{M0: Projektantrag} & & \\
-\midrule
+\hline
 9  & 2 & \textbf{M1: Projektplan} & & 1 \\
 10 & 3 & \textbf{M2: Requirements} & Review Projektplan & \\
 11 & 4 & Training (Python, Tools, etc.) & Review Requirements & \\
 12 & 5 & Architekturprototyp erstellen & \emph{Daniel Keller abwesend}& \\
 13 & 6 & \textbf{M3: End of Elaboration} & & \\
-\midrule
+\hline
 14 & 7 & & Review End of Elaboration & 2 \\
 15 & 8 & & & \\
 16 & 9 & & & \\
 17 & 10 & \textbf{M4: Architektur} & & \\
-\midrule
+\hline
 18 & 11 & \textbf{M5: Usability-Test} & Review Architektur & 3 \\
 19 & 12 & & & \\
 20 & 13 & \textbf{M6: Feature-Freeze} & Review Qualität & \\
 21 & 14 & & & \\
 22 & 15 & \textbf{M7: Projektabschluss} & Schluss-Präsentation & \\
 \bottomrule
-\end{tabular}
+\end{tabulary}
 
 % Folgende Reviews müssen enthalten sein:
 % 1. Review Projektplan mit Zeitplan und aktuellen Iterationsplänen – Termin: SW03
@@ -315,7 +315,7 @@ wobei Florian gerne beratend zur Seite steht.
 
 \subparagraph{Iterationen} \strut \\[-1em]
 
-\begin{tabular}{l>{\raggedright}p{10.6em}l>{\raggedright\arraybackslash}p{20em}}
+\begin{tabulary}{\linewidth}{lLlL}
   \toprule
   Nr & Beschreibung & Dauer & End-Resultat \\
   \midrule
@@ -325,7 +325,7 @@ wobei Florian gerne beratend zur Seite steht.
   1-4 & Architekturprototyp erstellen & 1 Woche & Ein lauffähiger Architekturprototyp \\
   1-5 & End of Elaboration & 1 Woche & Sämtliche Dokumente und zu präsentierendes Material für die Review \\
   \bottomrule
-\end{tabular}
+\end{tabulary}
 
 \paragraph{Phase 2: Construction} \strut \\[-1em]
 
@@ -336,14 +336,14 @@ Diese Phase ist am schwierigsten zu planen und die Iterationen können öfters g
 
 \subparagraph{Iterationen} \strut \\[-1em]
 
-\begin{tabular}{l>{\raggedright}p{10.6em}l>{\raggedright\arraybackslash}p{20em}}
+\begin{tabulary}{\linewidth}{lLlL}
   \toprule
   Nr & Beschreibung & Dauer & End-Resultat \\
   \midrule
   2-1 & Volle Synchronisierung mit dem Skripteserver & 3 Wochen & Getestete Grundfunktionalitäten der \emph{kitovu} Applikation \\
   2-2 & Optionale Features einbauen & 1 Woche & M4: Architektur \\
   \bottomrule
-\end{tabular}
+\end{tabulary}
 
 \paragraph{Phase 3: Transition} \strut \\[-1em]
 
@@ -352,7 +352,7 @@ Wir konzentrieren uns auf Testing, Dokumentation und die Behebung von Bugs. Fall
 
 \subparagraph{Iterationen} \strut \\[-1em]
 
-\begin{tabular}{l>{\raggedright}p{10.6em}l>{\raggedright\arraybackslash}p{20em}}
+\begin{tabulary}{\linewidth}{lLlL}
   \toprule
   Nr & Beschreibung & Dauer & End-Resultat \\
   \midrule
@@ -360,7 +360,7 @@ Wir konzentrieren uns auf Testing, Dokumentation und die Behebung von Bugs. Fall
   3-2 & Letzte Features und Verbesserungen & 1 Woche & M6: Feature Freeze \\
   3-3 & Projektabschluss & 2 Wochen & Sämtliche Dokumente und Abgabematerialien \\
   \bottomrule
-\end{tabular}
+\end{tabulary}
 
 \subsubsection{Meilensteine}
 
@@ -427,24 +427,26 @@ Das Ziel dieses Meilensteins ist es sämtliche Dokumente für den Projektabschlu
 \end{itemize}
 
 \section{Risikomanagement}
-\begin{landscape}
-\subsection{Risiken}
-
 FIXME Florian Tabellendarstellung/Text zu Risiken
-\thispagestyle{empty}
-
-\begin{tabular}{ll>{\raggedright}p{8em}lll>{\raggedright}p{8em}p{15em}}
-  \toprule
-  Nr & Titel & Beschreibung & max. Schaden [h] & Eintrittswahrscheinlichkeit & Gewichteter Schaden & Vorbeugung & Verhalten beim Eintreten \\
-  \midrule
-  R1 & Ausfall CI & Travis CI oder AppVeyor (externe Services) fallen aus & 1 & 0.1\% & 0.001 & keine & Ausschalten von ``protected branches'', Nutzung von Alternativen (Circle CI) \\
-  R2 & Ausfall GitHub & GitHub fällt aus & 5 & 0.01\% & 0.0005 & Lokale Kopien des Codes & Migration auf anderen Service \\
-  R3 & Ausfall Keltec & Ausfall des keltec.ch Servers, auf dem JIRA/Confluence liegen & 5 & 0.018\% & 0.0009 & Replizierung auf mehreren physischen Servern, Backups & Migration auf neuen Server, schlimmstenfalls Neueinrichtung \\
-  R4 & Moodle-Integration nicht umsetzbar & FIXME & 8 & 40\% & 3.2 & Moodle ist optional & Feature weglassen \\
-  R5 & Studentenportal-Integration nicht umsetzbar & FIXME & 8 & 30\% & 2.4 & Studentenportal ist optional & Feature weglassen oder ggf. APIs zu Studentenportal hinzufügen \\
-  \bottomrule
-\end{tabular}
+\newgeometry{margin=1cm}
+\begin{landscape}
+  \subsection{Risiken}
+  
+  \thispagestyle{empty}
+  
+  \begin{tabulary}{\linewidth}{lLLlLLLL}
+    \toprule
+    Nr & Titel & Beschreibung & \parbox[t]{5em}{max. \\ Schaden [h]} & \parbox[t]{8em}{Eintritts-\\wahrschein-\\lichkeit} & \parbox[t]{9em}{Gewichteter \\ Schaden} & Vorbeugung & Verhalten beim Eintreten \\
+    \midrule
+    R1 & Ausfall CI & Travis CI oder AppVeyor (externe Services) fallen aus & 1 & 0.1\% & 0.001 & keine & Ausschalten von ``protected branches'', Nutzung von Alternativen (Circle CI) \\ \hline
+    R2 & Ausfall GitHub & GitHub fällt aus & 5 & 0.01\% & 0.0005 & Lokale Kopien des Codes & Migration auf anderen Service \\ \hline
+    R3 & Ausfall Keltec & Ausfall des keltec.ch Servers, auf dem JIRA/Confluence liegen & 5 & 0.018\% & 0.0009 & Replizierung auf mehreren physischen Servern, Backups & Migration auf neuen Server, schlimmstenfalls Neueinrichtung \\ \hline
+    R4 & Moodle-Integration nicht umsetzbar & FIXME & 8 & 40\% & 3.2 & Moodle ist optional & Feature weglassen \\ \hline
+    R5 & Studentenportal-Integration nicht umsetzbar & FIXME & 8 & 30\% & 2.4 & Studentenportal ist optional & Feature weglassen oder ggf. APIs zu Studentenportal hinzufügen \\ 
+    \bottomrule
+  \end{tabulary}
 \end{landscape}
+\restoregeometry
 
 % <Verweis auf Dokument TechnischeRisiken.xlsx>
 FIXME Florian: mehr zu Risiken schreiben
@@ -471,27 +473,6 @@ FIXME Nicolas: Hier Daten zum Gastlogin einfügen
 %Später im Projekt werden Sie die Arbeitspakete noch verfeinern, verschieben, jemandem zuordnen, neu schätzen, etc. Deswegen empfiehlt sich der Einsatz eines Werkzeuges wie Redmine.
 %
 %Dokumentieren Sie URL und Logins auf das Projektmanagement Tool, in welchem die Meilensteine und die dazugehörigen Arbeitspakete erfasst sind.>
-
-\begin{tabular}{ll<{\raggedright}p{29.5em}}
-  \toprule
-  JIRA-ID & Meilenstein & Titel \\
-  \midrule
-  \midrule
-  \jiraissue{XX} & M2 & Use Cases erstellen \\
-  \jiraissue{XX} & M2 & Domain-Modell erstellen \\
-  \jiraissue{XX} & M2 & Nicht-funktionale Anforderungen erstellen \\
-  \jiraissue{XX} & M2 & GUI-Design erstellen \\
-  \midrule
-  \jiraissue{XX} & M3 & Test-Synchronisierungs-Modul mit fixen Rückgabewerten erstellen \\
-  \jiraissue{XX} & M3 & Prototyp des Core-Teils erstellen \\
-  \midrule
-  \jiraissue{XX} & M4 & Tests zu dem Core-Teil kompletieren \\
-  \jiraissue{XX} & M4 & Skripteserver-Anbindung erstellen \\
-  \jiraissue{XX} & M4 & UI-Prototyp erstellen \\
-  \midrule
-  \jiraissue{XX} & M5 & Usability-Test-Protokoll erstellen \\
-  \bottomrule
-\end{tabular}
 
 Diese Issues sind zu finden unter \jiraurl/projects/EPJ/issues/\emph{\textless JIRA-ID\textgreater} und eine Überischt unter \url{\jiraurl/projects/EPJ/issues}.
 

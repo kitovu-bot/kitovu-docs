@@ -428,6 +428,7 @@ Das Ziel dieses Meilensteins ist es sämtliche Dokumente für den Projektabschlu
 
 \section{Risikomanagement}
 FIXME Florian Tabellendarstellung/Text zu Risiken
+
 \newgeometry{margin=1cm}
 \begin{landscape}
   \subsection{Risiken}
@@ -436,13 +437,71 @@ FIXME Florian Tabellendarstellung/Text zu Risiken
   
   \begin{tabulary}{\linewidth}{lLLlLLLL}
     \toprule
-    Nr & Titel & Beschreibung & \parbox[t]{5em}{max. \\ Schaden [h]} & \parbox[t]{8em}{Eintritts-\\wahrschein-\\lichkeit} & \parbox[t]{9em}{Gewichteter \\ Schaden} & Vorbeugung & Verhalten beim Eintreten \\
+    \bfseries Nr &
+    \bfseries Titel &
+    \bfseries Beschreibung &
+    \bfseries \parbox[t]{3em}{max. \\ Schaden \\ \verb|[h]|} &
+    \bfseries \parbox[t]{14em}{Eintritts-\\wahrschein-\\lichkeit} &
+    \bfseries \parbox[t]{14em}{Gewichteter \\ Schaden} &
+    \bfseries Vorbeugung &
+    \bfseries Verhalten beim Eintreten \\
     \midrule
-    R1 & Ausfall CI & Travis CI oder AppVeyor (externe Services) fallen aus & 1 & 0.1\% & 0.001 & keine & Ausschalten von ``protected branches'', Nutzung von Alternativen (Circle CI) \\ \hline
-    R2 & Ausfall GitHub & GitHub fällt aus & 5 & 0.01\% & 0.0005 & Lokale Kopien des Codes & Migration auf anderen Service \\ \hline
-    R3 & Ausfall Keltec & Ausfall des keltec.ch Servers, auf dem JIRA/Confluence liegen & 5 & 0.018\% & 0.0009 & Replizierung auf mehreren physischen Servern, Backups & Migration auf neuen Server, schlimmstenfalls Neueinrichtung \\ \hline
-    R4 & Moodle-Integration nicht umsetzbar & FIXME & 8 & 40\% & 3.2 & Moodle ist optional & Feature weglassen \\ \hline
-    R5 & Studentenportal-Integration nicht umsetzbar & FIXME & 8 & 30\% & 2.4 & Studentenportal ist optional & Feature weglassen oder ggf. APIs zu Studentenportal hinzufügen \\ 
+
+    R1 &
+    Ausfall CI &
+    Travis CI oder AppVeyor (externe CI-Services) fallen aus. & 
+    1 & 
+    0.1\% & 
+    0.001 & 
+    keine & 
+    Ausschalten von ``protected branches'', Nutzung von Alternativen (Circle CI) \\ \hline
+
+    R2 & 
+    Ausfall GitHub & 
+    GitHub fällt aus, unsere Workflows sind daher nicht wie geplant umsetzbar. & 
+    5 & 
+    0.01\% & 
+    0.0005 & 
+    Lokale Kopien des Codes & 
+    Migration auf anderen Service \\ \hline
+
+    R3 & 
+    Ausfall Keltec & 
+    Ausfall des keltec.ch Servers, auf dem JIRA/Confluence liegen & 
+    5 & 
+    0.018\% & 
+    0.0009 & 
+    Replizierung auf mehreren physischen Servern, Backups & 
+    Migration auf neuen Server, schlimmstenfalls Neueinrichtung \\ \midrule
+
+    R4 & 
+    Moodle-Integration nicht umsetzbar & 
+    Es gibt keine nutzbare API, um auf Moodle zuzugreifen & 
+    8 & 
+    40\% & 
+    3.2 & 
+    Moodle ist optional & 
+    Feature weglassen \\ \hline
+
+    R5 & 
+    Studenten\-portal-Integration nicht umsetzbar & 
+    Es gibt keine nutzbare API, um auf das Studentenportal zuzugreifen & 
+    8 & 
+    30\% & 
+    2.4 & 
+    Studentenportal ist optional & 
+    Feature weglassen oder ggf. APIs zu Studentenportal hinzufügen \\  \hline
+
+    R6 &
+    Probleme mit Bibliotheken/Tools &
+    Verwendete Bibliotheken/Tools funktionieren nicht wie geplant / haben bugs / etc. &
+    16 &
+    10\% &
+    1.6 &
+    Verwendung von Bibliotheken mit denen wir schon Erfahrung haben, oder welche weit verbreitet sind. Suchen von Alternativen. &
+    Alternativen verwenden, Probleme selbst beheben (alle Tools/Bibliotheken sind open-source), ohne die entsprechende Bibliothek auskommen \\ \midrule
+
+    \textbf{Summe} & & & 43 & & 7.2024 & & \\
     \bottomrule
   \end{tabulary}
 \end{landscape}

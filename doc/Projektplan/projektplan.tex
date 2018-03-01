@@ -819,8 +819,48 @@ konzipiert, hat sich aber als Standardwerk verbreitet und wird auch von den
 Style-Checkern standardmässig verwendet.
 
 \subsection{Testen}
-% FIXME: Nicolas
-\subsubsection {FIXME: Bezeichnung des Tests (z.B. Integrationstest oder Systemtest)}
-%<Beschreibung der Durchführung, Umsetzung und Umfang der Tests. Wenn möglich mit Mengenangaben (wieviele Tests)>
+
+\subsubsection{Unit-Tests}
+
+Einzelne spezifische Funktionen werden wir durch Unit-Tests abgedeckt.
+Ziel dieser Tests ist es, die einzelnen Funktionen sehr detailliert zu testen und damit Edge-Cases abdecken.
+
+\subsubsection{Integration-Tests}
+
+Um die Integration sämtlicher Komponenten zu testen, werden wir Integrations-Tests schreiben.
+Diese testen nicht die Kompenenten selbst, sondern die eigentliche Anwendung des Benutzers.
+
+Wir wollen zumindest die einzelnen Use-Cases als Integrations-Tests abbilden.
+Je nach dem finden wir aber bei der genaueren Planung noch weitere Orte wo Integrations-Tests gegenüber Unit-Tests zu bevorzugen sind.
+
+\subsubsection{Vorgehen}
+
+Die Tests werden immer automatisch ausgeführt, wenn ein Push auf das Git-Repository gemacht wird.
+Ein Merge-Request von einem Feature-Branch kann nur durchgeführt werden, falls die sämtliche Tests erfolgreich ausgeführt wurden.
+
+Bei der Entwicklung gehen wir gemäss dem Test-Driven Development vor.
+Das bedeuted, dass wir bei der Umsetzung eines Features oder beheben eines Fehlers folgende Schritte durchlaufen werden:
+
+\begin{description}
+  \item[Red]
+    Ein Test für die noch fehlende Funktionalität wird erstellt.
+    Dabei schlägt dieser Test noch fehl.
+    Damit stellen wir sicher, dass der Test nicht auf etwas falsches prüft und er immer erfolgreich ist.
+  \item[Green]
+    Nun wird die Funktion auf eine einfache Art und Weise gelöst.
+    Es muss noch nicht schöner Code sein, sonder der Test muss einfach erfolgreich durchlaufen können.
+  \item[Refactor]
+    Im letzten Schritt wird der geschriebene Code überarbeitet und verschönert.
+    Erst danach kann dieser über einen Merge-Request in dem Git-Repository landen.
+\end{description}
+
+\subsubsection{Test-Coverage}
+
+Wir werden die Test-Coverage laufend mit den Tests zusammen prüfen.
+Unser Ziel ist es jeweils eine Coverage von 90\% zu erreichen.
+
+Diese Angaben sind jedoch mit Vorsicht zu geniessen.
+Eine Coverage von 100\% entspricht nicht einer kompletten Abdeckung aller möglichen Fälle.
+Es werden alle Code-Stellen mindestens einmal durchschritten, nicht aber mit allen möglichen Inputs.
 
 \end{document}

@@ -103,13 +103,13 @@ Die folgende Übersicht zeigt die in späteren Kapiteln erklärten und verwendet
 
 \section{Projekt-Übersicht}
 % <Kurze Beschreibung des Projektes>
-\emph{Kitovu} ist ein Software-Client für HSR-Studentinnen -Studenten, mit dem sie von verschiedenen Quellen Unterrichtsmaterialien auf den eigenen Rechner synchronisieren können.
+\emph{Kitovu} ist ein Software-Client für HSR-Studierende, mit dem sie von verschiedenen Quellen Unterrichtsmaterialien auf den eigenen Rechner synchronisieren können.
 
 \subsection{Zweck und Ziel von kitovu}
 % <Sinn und Zweck des Projektes, sowie Zielsetzung und auch persönliche Ziele>
 An der HSR müssen sich die Studentinnen und Studenten bislang ihre Unterrichtsmaterialien vom Skripteserver, von Moodle und anderen Orten von Hand zusammensuchen. Das ist aufwändig und unübersichtlich. Zwar existiert bereits ein Synchronisationstool, \tool{OpenHSR Connect}{https://github.com/openhsr/connect}, es stellt die Inspiration für unser Projekt dar. Doch \emph{OpenHSR Connect} hat zahlreiche Unzulänglichkeiten: Dieser Client besitzt kein GUI, der Code ist weder strukturiert noch einheitlich, er ist abhängig vom Betriebssystem und funktioniert nur für den HSR-Skripteserver.
 
-\emph{Kitovu} soll das ändern: ein Client, der von verschiedenen Plattformen ausgewählte Unterrichtsmaterialien auf den eigenen Rechner synchronisiert. Er läuft auf allen gängigen Betriebssystemen und ist erweiterbar für verschiedene Plattformen, nicht nur den Skripteserver. Die Zielgruppe besteht primär aus Studierenden, sekundär Dozierende der HSR. Der Client könnte potentiell an anderen Hochschulen eingesetzt werden.
+\emph{Kitovu} soll das ändern: ein Client, der von verschiedenen Plattformen ausgewählte Unterrichtsmaterialien auf den eigenen Rechner synchronisiert. Er läuft auf allen gängigen Betriebssystemen und ist erweiterbar für verschiedene Plattformen, nicht nur den Skripteserver. Die Zielgruppe besteht primär aus Studierenden, sekundär Dozierenden der HSR. Der Client könnte potentiell an anderen Hochschulen eingesetzt werden.
 
 Unser Projekt bindet primär den Skripteserver ein. Der Terminal-basierte Client funktioniert mittels Profilen zu unterschiedlichen Plattformen (Moodle, Skripteserver, Studentenportal). Pro Profil sind Verbindungsdaten und eventuelle Login-Credentials im Client hinterlegt. Die Daten-Synchronisation erfolgt immer nur von Server zu Client, erfolgreiche und misslungene Datentransfers werden protokolliert. Ein rudimentäres GUI dient als Proof-of-Concept.
 
@@ -121,7 +121,7 @@ Pro Profil lässt sich Folgendes definieren:
   \item wie mit Duplikaten/lokal bestehenden Dateien umgegangen wird.
 \end{itemize}
 
-\emph{Kitovu} ist ausbaubar und damit modular: Zusätzlich zu den beiden Plattformen (Skripteserver, Moodle oder Studentenportal) können in zukünftigen Projekten beliebig viele Plattformen als separates Plugin bzw. Profil realisiert werden.
+\emph{Kitovu} ist ausbaubar und damit modular: Zusätzlich zu den beiden Plattformen (Skripteserver; Moodle oder Studentenportal) können in zukünftigen Projekten beliebig viele Plattformen als separates Plugin bzw. Profil realisiert werden.
 
 Optionale Features:
 
@@ -133,7 +133,7 @@ Optionale Features:
 \subsubsection{Persönliche Ziele}
 \begin{description}
 \item[Nicolas Ganz] 
-  Mehr Erfahrung sammeln, was das Management und die Organisation eines solchen Projekts anbelangt; Zusätzlich möchte ich Erfahrungen mit Python, dessen Tools und Bibliotheken sammeln.
+  Mehr Erfahrung sammeln, was das Management und die Organisation eines solchen Projekts anbelangt; zusätzlich möchte ich Erfahrungen mit Python, dessen Tools und Bibliotheken sammeln.
 \item[Florian Bruhin] Erfahrungen sammeln bei der ''Leitung'' eines kleinen
   Software-Teams, einige neue nützliche Tools ausprobieren, und das Endprodukt selbst benutzen: Endlich alle HSR-Dokumente zu einem Modul problemlos an einem Ort!
 \item[Méline Sieber] Verbessern der Python-Programmierfähigkeiten und -kenntnisse (nur Grundkenntnisse vorhanden); allererstes Softwareprojekt durchziehen und entsprechende Arbeitsschritte, Werkzeuge und Plattformen kennenlernen; Erfahrung im Test-Driven-Development sammeln.
@@ -250,7 +250,7 @@ leisten ist. \\[3em]
 % <Kurze Beschreibung der zeitlichen Planung und mit einer Grafik einen Überblick über die Phasen, Iterationen und Meilensteine geben. Das Datum des Eintreffens der Meilensteine sollte in der Phasenübersicht ersichtlich sein.>
 
 Wir nutzen das in der Vorlesung empfohlene ``Scrum + End of
-Elaboration''-Modell, wobei wir eine zusätzliche Trainingsiteration hinzufügen (siehe unten). Eine Iteration dauert in der Regel eine Woche dauern.
+Elaboration''-Modell, wobei wir eine zusätzliche Trainingsiteration hinzufügen (siehe unten). Eine Iteration dauert in der Regel eine Woche.
 
 \begin{tabulary}{\linewidth}{lllll}
 \toprule
@@ -398,7 +398,7 @@ verbleibende Arbeiten: Testing, Dokumentation und Bugs beheben.
 
 \subsubsection{Meilensteine}
 
-Das Projekt ist in 8 Meilensteine eingeteilt, welche im JIRA in Form von ''Epics'' sind, sämtliche weitere Tickets sind gruppiert.
+Das Projekt ist in 8 Meilensteine eingeteilt, welche im JIRA in Form von ''Epics'' erfasst sind, sämtliche weitere Tickets sind gruppiert.
 
 \paragraph{M0: Projektantrag} \fulljiraissue{5}
 
@@ -434,7 +434,7 @@ Nach diesem Meilenstein ist die erste Alpha-Version bereit, um getestet zu werde
 
 \paragraph{M5: Usability-Test} \fulljiraissue{10}
 
-In diesem Meilenstein testen wir \emph{kitovu} mit externen Personen auf die Benutzbarkeit..
+In diesem Meilenstein testen wir \emph{kitovu} mit externen Personen auf die Benutzbarkeit.
 
 Da wir bereits im Meilenstein M4 gründliche Tests eingebaut haben, geht es hier nur noch um die Test-Protokolle für die externen Testerinnen und Tester und deren Auswertung.
 
@@ -639,7 +639,7 @@ fehlerfreien Code zu garantieren. Diese werden unter \ref{sec:tools} kurz beschr
 \subsubsection{Vorgehen}
 % <Vorgehen in der Entwicklung>
 Wir benutzen ein einfaches Git-Branching-Modell. Im \verb|master|-Branch
-werden funktionierende Änderungen eingepflegt, in \verb|feature/hotfix|-Branches arbeiten wir an allen Änderungen.
+werden funktionierende Änderungen eingepflegt, in \verb|feature|/\verb|hotfix|-Branches arbeiten wir an allen Änderungen.
 
 \subsubsection{Tools}
 \label{sec:tools}
@@ -928,7 +928,7 @@ Das bedeutet, dass bei der Umsetzung eines Features oder Beheben eines Fehlers f
     Damit stellen wir sicher, dass der Test nicht auf etwas Falsches prüft und immer erfolgreich ist.
   \item[Green]
     Nun wird die Funktion auf eine einfache Art und Weise gelöst.
-    Es muss noch nicht schöner Code sein, sonder der Test muss einfach erfolgreich sein.
+    Es muss noch nicht schöner Code sein, sondern der Test muss einfach erfolgreich sein.
   \item[Refactor]
     Im letzten Schritt wird der geschriebene Code überarbeitet und verschönert.
     Erst danach kann dieser über einen Merge-Request in dem Git-Repository landen.

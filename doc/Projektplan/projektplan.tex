@@ -31,8 +31,6 @@
 \title{
   Projekt: kitovu \\
   \Large{Projektplan} \\[3em]
-
-
   \includegraphics[width=20em]{../../img/logo/kitovu.jpg}
 }
 \author{
@@ -63,7 +61,7 @@ Datum & Version & Änderung & AutorIn \\
 Der Projektplan zu \emph{kitovu} stellt eine Vogelperspektive zum Engineering-Projekt dar. Er steckt den Rahmen ab, innerhalb dessen \emph{kitovu} realisiert wird. Dieses Dokument umfasst eine Projektübersicht, beschreibt, wie das Projekt organisiert ist, welche Phasen es durchläuft und wie die Besprechungen mit dem Betreuer organisiert sind. Zudem listet dieser Projektplan mögliche Risiken auf, umreisst die anstehenden Arbeitspakete und vermittelt die Eckpunkte, die die Qualität des Codes, der Dokumentation und des Projektmanagements garantieren.
 
 \subsection{Gültigkeitsbereich}
-Der vorliegende Projektplan ist für das Engineering Projekt im Frühlingssemester 2018 gültig. Falls dem Projekt grössere Veränderungen widerfahren, wird der Projektplan dementsprechend angepasst. Umfassende Änderungen werden am Anfang des Dokumentes protokolliert.
+Der vorliegende Projektplan ist für das Engineering Projekt im Frühlingssemester 2018 gültig. Falls dem Projekt grössere Veränderungen widerfahren, wird der Projektplan dementsprechend angepasst. Umfassende Änderungen werden am Anfang des Dokuments protokolliert.
 
 \subsection{Referenzen}
 
@@ -98,13 +96,13 @@ Die folgende Übersicht zeigt die in späteren Kapiteln erklärten und verwendet
   pytype & \url{https://github.com/google/pytype} \\ 
   Qt & \url{http://qt.io/} \\ 
   Sphinx & \url{http://www.sphinx-doc.org/} \\
+  Telegram & \url{https://telegram.org/} \\
   TOML & \url{https://github.com/toml-lang/toml} \\ 
   Travis CI & \url{https://travis-ci.com/} \\
   yapf & \url{https://github.com/google/yapf} \\
-  % FIXME Telegram?
 \end{tabulary}
 
-Beim Logo handelt es sich um eine stark überarbeitete Version eines GIFs (\url{https://www.animateit.net/details.php?image_id=8990}). Wir haben weder den Urheber noch das Copyright ausfindig machen können.
+Beim Logo handelt es sich um eine stark überarbeitete Version eines GIFs (\url{https://www.animateit.net/details.php?image_id=8990}). Urheber und Copyright waren nicht auffindbar.
 
 \section{Projekt-Übersicht}
 % <Kurze Beschreibung des Projektes>
@@ -112,11 +110,9 @@ Beim Logo handelt es sich um eine stark überarbeitete Version eines GIFs (\url{
 
 \subsection{Zweck und Ziel von kitovu}
 % <Sinn und Zweck des Projektes, sowie Zielsetzung und auch persönliche Ziele>
-% FIXME: zwar/doch in zwei Sätzen?
-An der HSR müssen sich die Studentinnen und Studenten bislang ihre Unterrichtsmaterialien vom Skripteserver, von Moodle und anderen Orten von Hand zusammensuchen. Das ist aufwändig und unübersichtlich. Zwar existiert bereits ein Synchronisationstool, \tool{OpenHSR Connect}{https://github.com/openhsr/connect}, es stellt die Inspiration für unser Projekt dar. Doch \emph{OpenHSR Connect} hat zahlreiche Unzulänglichkeiten: Dieser Client besitzt kein GUI, der Code ist weder strukturiert noch einheitlich, er ist abhängig vom Betriebssystem und funktioniert nur für den HSR-Skripteserver.
+An der HSR müssen sich die Studentinnen und Studenten bislang ihre Unterrichtsmaterialien vom Skripteserver, von Moodle und anderen Orten von Hand zusammensuchen. Das ist aufwändig und unübersichtlich. Zwar existiert bereits ein Synchronisationstool, \tool{OpenHSR Connect}{https://github.com/openhsr/connect}, es stellt die Inspiration für unser Projekt dar, doch \emph{OpenHSR Connect} hat zahlreiche Unzulänglichkeiten: Dieser Client besitzt kein GUI, der Code ist weder strukturiert noch einheitlich, er ist abhängig vom Betriebssystem und funktioniert nur für den HSR-Skripteserver.
 
-% FIXME: +auch?
-\emph{Kitovu} soll das ändern: ein Client, der von verschiedenen Plattformen ausgewählte Unterrichtsmaterialien auf den eigenen Rechner synchronisiert. Er läuft auf allen gängigen Betriebssystemen und ist erweiterbar für verschiedene Plattformen, nicht nur den Skripteserver. Die Zielgruppe besteht primär aus Studierenden, sekundär Dozierenden der HSR. Der Client könnte potentiell an anderen Hochschulen eingesetzt werden.
+\emph{Kitovu} soll das ändern: ein Client, der von verschiedenen Plattformen ausgewählte Unterrichtsmaterialien auf den eigenen Rechner synchronisiert. Er läuft auf allen gängigen Betriebssystemen und funktioniert nicht nur für den Skripteserver, sondern ist auch erweiterbar für verschiedene Plattformen. Die Zielgruppe besteht primär aus Studierenden, sekundär Dozierenden der HSR. Der Client könnte potentiell auch an anderen Hochschulen eingesetzt werden.
 
 Unser Projekt bindet primär den Skripteserver ein. Der Terminal-basierte Client funktioniert mittels Profilen zu unterschiedlichen Plattformen (Moodle, Skripteserver, Studentenportal). Pro Profil sind Verbindungsdaten und eventuelle Login-Credentials im Client hinterlegt. Die Daten-Synchronisation erfolgt immer nur von Server zu Client, erfolgreiche und misslungene Datentransfers werden protokolliert. Ein rudimentäres GUI dient als Proof-of-Concept.
 
@@ -133,16 +129,16 @@ Pro Profil lässt sich Folgendes definieren:
 Optionale Features:
 
 \begin{itemize}
-  \item Moodle und/oder das Studentenportal. Die Implementation von Moodle oder dem Studentenportal ist abhängig von den weiter unten beschriebenen Risiken.
+  \item Moodle und/oder das Studentenportal. Die Implementation von Moodle oder des Studentenportals ist abhängig von den weiter unten beschriebenen Risiken.
   \item Komplettes GUI, das der Funktionalität des Terminalprogramms entspricht.
 \end{itemize}
-
+\pagebreak
 \subsubsection{Persönliche Ziele}
 \begin{description}
 \item[Nicolas Ganz] 
   Mehr Erfahrung sammeln, was das Management und die Organisation eines solchen Projekts anbelangt; zusätzlich möchte ich Erfahrungen mit Python, dessen Tools und Bibliotheken sammeln.
 \item[Florian Bruhin] Erfahrungen sammeln bei der ``Leitung'' eines kleinen
-  Software-Teams, einige neue nützliche Tools ausprobieren, und das Endprodukt selbst benutzen: Endlich alle HSR-Dokumente zu einem Modul problemlos an einem Ort!
+  Software-Teams, einige neue nützliche Tools ausprobieren und das Endprodukt selbst benutzen: Endlich alle HSR-Dokumente zu einem Modul problemlos an einem Ort!
 \item[Méline Sieber] Verbessern der Python-Programmierfähigkeiten und -kenntnisse (nur Grundkenntnisse vorhanden); allererstes Softwareprojekt durchziehen und entsprechende Arbeitsschritte, Werkzeuge und Plattformen kennenlernen; Erfahrung im Test-Driven-Development sammeln.
 \end{description}
 
@@ -176,14 +172,14 @@ Optionale Features:
 
 \subsection{Annahmen und Einschränkungen}
 % <Annahmen die für diesen Projektplan getroffen werden und Einschränkungen denen er unterliegt>
-Wir berücksichtigen keine HSR-externen Anbieter wie etwa Dropbox, OneDrive, GoogleDrive.
+Wir berücksichtigen keine HSR-externen Anbieter wie etwa Dropbox, OneDrive oder GoogleDrive.
 
-% FIXME aus -> unter/für?
-Support für macOS ist keine Priorität, auch wenn wenn die Infrastruktur dafür grundsätzlich existiert und dies durch Python kein Problem darstellen sollte. Wir werden die Tests initial auf macOS laufen lassen, sollte es da aber zu Problemen kommen, werden wir die Tests auf macOS ausschalten.
+
+Support für macOS ist keine Priorität, auch wenn die Infrastruktur dafür grundsätzlich existiert und dies durch Python kein Problem darstellen sollte. Wir werden die Tests initial unter macOS laufen lassen, sollte es da aber zu Problemen kommen, werden wir die Tests für macOS ausschalten.
 
 \section{Projektorganisation}
 % <Kurze Beschreibung der Projektstruktur>
-Die Hierarchie in unserem Team ist flach, auch aufgrund der kleinstmöglichen Teamgrösse von drei Personen. Grössere Entscheidungen werden immer im Plenum besprochen und getroffen. Da sämtliche Teammitglieder einen anderen Hintergrund haben und unterschiedlich viel Erfahrung mitbringen, profitieren wir bei diesen Diskussionsrunden von unterschiedlichen Blickwinkeln. Ein gemeinsamer Telegram-Chat\footnote{\url{https://telegram.org/}} verbessert zudem die Projektkoordination, wenn wir nicht physisch am gleichen Ort sind.
+Die Hierarchie in unserem Team ist flach, auch aufgrund der kleinstmöglichen Teamgrösse von drei Personen. Grössere Entscheidungen werden immer im Plenum besprochen und getroffen. Da sämtliche Teammitglieder einen anderen Hintergrund haben und unterschiedlich viel Erfahrung mitbringen, profitieren wir bei diesen Diskussionsrunden von unterschiedlichen Blickwinkeln. Ein gemeinsamer Telegram-Chat\footnote{\url{https://telegram.org/}} verbessert zudem die Projektkoordination, wenn wir uns nicht physisch am gleichen Ort befinden.
 
 
 Die Betreuung des Projektes wird von Herrn Daniel Keller übernommen.
@@ -195,7 +191,6 @@ Die Betreuung des Projektes wird von Herrn Daniel Keller übernommen.
 \item[Florian Bruhin] \strut \\[-1em]
   \begin{itemize}
     \item Product Owner: Er hat den Gesamtüberblick über die Ziele und priorisiert die einzelnen Tasks.
-      % FIXME Komma vor wie?
     \item QA Supervisor: Er prüft die Test-Coverage, die Test-Qualität und das Linting. Zudem ist er für die Code-Qualität verantwortlich, erkennt ``Bad Practices'', wie duplizierten Code oder konzeptionelle Unschönheiten.
     \item Code-Writer: Er unterstützt Méline Sieber und Nicolas Ganz bei möglichen Programmierschwierigkeiten und ist für das GUI verantwortlich.
   \end{itemize}
@@ -216,6 +211,7 @@ Die Betreuung des Projektes wird von Herrn Daniel Keller übernommen.
   \end{itemize}
 \end{description}
 
+\pagebreak
 \subsection{Externe Ansprechspersonen}
 
 % <Ansprechpartner, verantwortliche Personen, Betreuer, usw. aufzählen>
@@ -224,10 +220,7 @@ Die Betreuung des Projektes wird von Herrn Daniel Keller übernommen.
   \item Daniel Keller (\url{daniel.keller@hsr.ch}) als unser Betreuer für das Engineering-Projekt.
   \item Frank Koch (\url{frank.koch@hsr.ch}) als verantwortliche Person für das HSR-Moodle.
   \item Raphael Zimmermann (\url{raphael.zimmermann@hsr.ch}) als Hauptentwickler
-    von \emph{OpenHSR Connect}, welches die
-    Inspiration für unser Projekt darstellt, aber nur den Skripteserver
-    unterstützt.
-    % FIXME zweiter Teilsatz redundant?
+    von \emph{OpenHSR Connect}.
   \item Externe Tester: Für Usability- und Beta-Tests wollen wir verschiedene
     HSR-Studierende kontaktieren, ggf. auch mit einem Aufruf via E-Mail. Da das Tool von jedem HSR-Studierenden nutzbar sein soll, sollte es kein Problem darstellen, kurzfristig Probanden zu finden.
 \end{itemize}
@@ -239,7 +232,7 @@ und unterstützen unser Vorhaben gerne.
 \subsection{Kostenvoranschlag}
 % <Wie viel Zeit steht zur Verfügung? In welcher Zeitspanne läuft das Projekt? Wird das Projekt früher beendet, dafür wöchentlich mehr gearbeitet?>
 
-Da es sich bei dem EPJ um ein Modul mit 4 ECTS mit vollem Aufwand im Semester handelt, ist mit einem Richtwert von 120 Stunden pro Person zu rechnen. Somit fällt also ein totaler Aufwand von $3 \cdot 120 = 360$ Stunden an.
+Da es sich bei dem EPJ um ein Modul mit 4 ECTS mit vollem Aufwand im Semester handelt, ist mit einem Richtwert von 120 Stunden pro Person zu rechnen. Somit fällt ein totaler Aufwand von $3 \cdot 120 = 360$ Stunden an.
 
 Wir wollen die vollen 15 Wochen für das Projekt ausnutzen, womit wöchentlich
 durchschnittlich pro Person ein Arbeitsaufwand von $120 / 15 = 8$ Stunden zu
@@ -264,7 +257,7 @@ Elaboration''-Modell, wobei wir eine zusätzliche Trainingsiteration hinzufügen
 
 \begin{tabulary}{\linewidth}{lllll}
 \toprule
-KW & Sem.-Woche & Meilenstein / Tätigkeit & Review & Phase \\
+KW & Sem.-Woche & Meilenstein/Tätigkeit & Review & Phase \\
 \midrule
 8  & 1 & \textbf{M0: Projektantrag} & & \\
 \hline
@@ -363,7 +356,7 @@ Danach sollten die Mitglieder das Wissen soweit möglich autodidaktisch erwerben
 
 \begin{tabulary}{\linewidth}{lLlL}
   \toprule
-  Nr & Beschreibung & Dauer & End-Resultat \\
+  Nr. & Beschreibung & Dauer & End-Resultat \\
   \midrule
   1-1 & Projektplan erstellen & 1 Woche & M1: Projektplan \\
   1-2 & Requirements erstellen & 1 Woche & M2: Requirements \\
@@ -375,13 +368,13 @@ Danach sollten die Mitglieder das Wissen soweit möglich autodidaktisch erwerben
 
 \paragraph{Phase 2: Construction} \strut \\[-1em]
 
-Die \emph{Construction}-Phase dauert 7 Wochen und wir werden uns hauptsächlich der  Entwicklungsarbeit widmen. Da an den Aufgaben parallel gearbeitet wird, können wir dies nicht in detaillierte Iterationen verpacken. Wir erwarten, dass diese Phase am schwierigsten zu planen ist und sich die Iterationen öfters ändern werden.
+Die \emph{Construction}-Phase dauert 7 Wochen, in der wir uns primär der Entwicklungsarbeit widmen. Da an den Aufgaben parallel gearbeitet wird, können wir dies nicht in detaillierte Iterationen verpacken. Wir erwarten, dass diese Phase am schwierigsten zu planen ist und sich die Iterationen öfters ändern werden.
 
 \subparagraph{Iterationen} \strut \\[-1em]
 
 \begin{tabulary}{\linewidth}{lLlL}
   \toprule
-  Nr & Beschreibung & Dauer & End-Resultat \\
+  Nr. & Beschreibung & Dauer & End-Resultat \\
   \midrule
   2-1 & Volle Synchronisierung mit dem Skripteserver & 3 Wochen & Getestete Grundfunktionalitäten der \emph{kitovu} Applikation \\
   2-2 & Optionale Features einbauen & 1 Woche & M4: Architektur \\
@@ -394,14 +387,13 @@ Die \emph{Construction}-Phase dauert 7 Wochen und wir werden uns hauptsächlich 
 \paragraph{Phase 3: Feature Freeze} \strut \\[-1em]
 
 Die \emph{Feature-Freeze}-Phase dauert 2 Wochen. Wir konzentrieren uns auf
-% FIXME und die Behebung von Bugs
-verbleibende Arbeiten: Testing, Dokumentation und Bugs beheben.
+verbleibende Arbeiten: Testing, Dokumentation und die Behebung von Bugs.
 
 \subparagraph{Iterationen} \strut \\[-1em]
 
 \begin{tabulary}{\linewidth}{lLlL}
   \toprule
-  Nr & Beschreibung & Dauer & End-Resultat \\
+  Nr. & Beschreibung & Dauer & End-Resultat \\
   \midrule
   3-1 & Projektabschluss & 2 Wochen & Sämtliche Dokumente und Abgabematerialien \\
   \bottomrule
@@ -409,17 +401,15 @@ verbleibende Arbeiten: Testing, Dokumentation und Bugs beheben.
 
 \subsubsection{Meilensteine}
 
-% FIXME weiteren?
 Das Projekt ist in 8 Meilensteine eingeteilt, welche im JIRA in Form von ``Epics'' erfasst sind, sämtliche weitere Tickets sind gruppiert.
 
 \paragraph{M0: Projektantrag} \fulljiraissue{5}
 
-% FIXME dazu -> dafür
-Ziel dieses Meilenstein ist es, die Grundidee für das Projekt zu eruieren und einen Projektantrag dazu zu erstellen.
+Ziel dieses Meilenstein ist es, die Grundidee für das Projekt zu eruieren und den vorliegenden Projektantrag zu erstellen.
 
 \paragraph{M1: Projektplan} \fulljiraissue{6}
 
-Dieser Meilenstein trägt alle Eckpunkte für das Projekt zusammen und sieht als Ergebnis diesen Projektplan.
+Dieser Meilenstein trägt alle Eckpunkte für das Projekt zusammen, das Ergebnis ist dieser Projektplan.
 
 \paragraph{M2: Requirements} \fulljiraissue{7}
 
@@ -441,7 +431,7 @@ Während dieses Meilensteins führen wir das Training durch und erstellen einen 
 
 \paragraph{M4: Architektur} \fulljiraissue{9}
 
-Am Ende dieses Meilensteins stehen die grundlegenden Funktionalitäten für die Applikation bereit. Diese ist bereits mit Unit- und Integrationstests getestet worden und von unserer Seite lauffähig.
+Am Ende dieses Meilensteins stehen die grundlegenden Funktionalitäten für die Applikation bereit. Diese sind bereits mit Unit- und Integrationstests getestet worden und von unserer Seite lauffähig.
 
 Nach diesem Meilenstein ist die erste Alpha-Version bereit, um getestet zu werden.
 
@@ -459,7 +449,7 @@ Nach diesem Meilenstein werden keine Features mehr eingebaut, sondern nur noch B
 
 \paragraph{M7: Projektabschluss} \fulljiraissue{12}
 
-Das Ziel dieses Meilensteins ist es, sämtliche Dokumente für den Projektabschluss fertig zu stellen und die Präsentation vorzubereiten.
+Das Ziel dieses Meilensteins ist, sämtliche Dokumente für den Projektabschluss fertig zu stellen und die Präsentation vorzubereiten.
 
 \subsection{Besprechungen}
 % <regelmässige Besprechungen nennen (wann, wo, wer, Ziel und/oder Grund)>
@@ -475,7 +465,7 @@ benutzten Servern/Diensten enthalten, da diese Ausfälle durch unseren geplanten
 Workflow doch relativ projektspezifisch zu betrachten sind.
 
 Die Moodle-Anbindung könnte nach Rücksprache mit einem der Administratoren,
-Frank Koch, zu Schwierigkeiten führen (mündliches Gespräch vom 21.2.2018). Es existiert eine WebDAV-Schnittstelle, die jedoch unter Umständen nicht für das Projekt geöffnet werden kann. Deshalb ist diese Anbindung optional, eine zweite optionale Anbindung an das
+Frank Koch, zu Schwierigkeiten führen.\footnote{mündliches Gespräch von Méline Sieber, 21.2.2018} Es existiert eine WebDAV-Schnittstelle, die jedoch unter Umständen nicht für das Projekt geöffnet werden kann. Deshalb ist diese Anbindung optional, eine zweite optionale Anbindung an das
 Studentenportal\footnote{\url{https://www.studentenportal.ch/}} ist als  Alternative eingeplant.
 
 \subsection{Umgang mit Risiken}
@@ -485,12 +475,12 @@ Wir pflegen in unserem Team eine offene und ehrliche Kommunikation und
 Fehlerkultur. Dadurch sollen Risiken möglichst früh erkannt und behandelt
 werden, bevor es zu spät ist.
 
-Durch die modulare Architektur, die wir für \emph{kitovu} planen, sind wir sehr flexibel, was optionale Features anbelangt, etwa die Anbindung an weitere Dienste. Fix eingeplant ist ausschliesslich die Integration mit dem HSR Skripteserver, welche im \emph{OpenHSR Connect} Projekt bereits als ``Prototyp'' getestet wurde.
+Durch die modulare Architektur, die wir für \emph{kitovu} planen, sind wir sehr flexibel, was optionale Features anbelangt, etwa die Anbindung an weitere Dienste. Fix eingeplant ist ausschliesslich die Integration mit dem HSR Skripteserver, welche im \emph{OpenHSR Connect}-Projekt bereits als ``Prototyp'' getestet wurde.
 
 Wir haben in jeder Phase Pufferphasen eingeplant. Sollten diese nicht benötigt werden, können wir das Projekt in dieser Zeit mit optionalen Anbindungen (Moodle/Studentenportal) bzw. Features erweitern.
 
 Florian Bruhin benutzt Python seit knapp 7 Jahren und weist auch 4 Jahre
-Erfahrung in grösseren Open-Source-Projekten auf. Dadurch kann er Risiken möglichst früh erkennen, aber, falls nötig, auch kurzfristig auf Probleme reagieren.
+Erfahrung in grösseren Open-Source-Projekten auf. Dadurch kann er Risiken möglichst früh erkennen, und, falls nötig, auch kurzfristig auf Probleme reagieren.
 
 \newgeometry{margin=1cm}
 \begin{landscape}
@@ -499,7 +489,6 @@ Erfahrung in grösseren Open-Source-Projekten auf. Dadurch kann er Risiken mögl
   \thispagestyle{empty}
   
   \begin{tabulary}{\linewidth}{lLLlLLLL}
-    % FIXME periods
     \toprule
     \bfseries Nr &
     \bfseries Titel &
@@ -562,7 +551,7 @@ Erfahrung in grösseren Open-Source-Projekten auf. Dadurch kann er Risiken mögl
     16 &
     10\% &
     1.6 &
-    Verwendung von Bibliotheken, mit denen wir schon Erfahrung haben, oder welche weit verbreitet sind. Suchen von Alternativen. &
+    Verwendung von Bibliotheken, mit denen wir schon Erfahrung haben, oder welche weit verbreitet sind. Suchen von Alternativen &
     Alternativen verwenden, Probleme selbst beheben (alle Tools/Bibliotheken sind Open-Source), ohne die entsprechende Bibliothek auskommen \\ \midrule
 
     \textbf{Summe} & & & 43 & & 7.2024 & & \\
@@ -573,8 +562,7 @@ Erfahrung in grösseren Open-Source-Projekten auf. Dadurch kann er Risiken mögl
 
 \section{Arbeitspakete}
 
-% FIXME sind
-Die Auflistung der Arbeitspakete sind unter folgendem Link zu finden:
+Die Auflistung der Arbeitspakete ist unter folgendem Link zu finden:
 
 \url{\jiraurl/projects/EPJ/issues}
 
@@ -595,14 +583,14 @@ Aus Sicherheitsgründen geben wir in diesem Dokument keine Zugangsdaten preis.
 %
 %Dokumentieren Sie URL und Logins auf das Projektmanagement Tool, in welchem die Meilensteine und die dazugehörigen Arbeitspakete erfasst sind.>
 
-\section{Infrastruktur}
+\oldsection{Infrastruktur}
 %<Benötigte Infrastruktur aufzählen. Spezielle Geräte, Laptop , Tools usw. und nötigenfalls aufzeigen für welche Bereiche diese verwendet werden. Eventuell auch Verfahren beschreiben (auf Tools bezogen).>
 \begin{itemize}
-  \item JIRA-Server auf keltec.ch für Issue-Tracking und Projektmanagement, betrieben von Nicolas Ganz
-  \item Confluence-Server auf keltec.ch als Wiki, betrieben von Nicolas Ganz
+  \item JIRA-Server auf keltec.ch für Issue-Tracking und Projektmanagement, betrieben von Nicolas Ganz.
+  \item Confluence-Server auf keltec.ch als Wiki, betrieben von Nicolas Ganz.
   \item Der Code liegt auf GitHub.
     Wir benutzen GitHub-Pull-Requests für Codereviews, nicht aber für Issues ($\rightarrow$ JIRA)
-    und für das Wiki ($\rightarrow$ Confluence)
+    und für das Wiki ($\rightarrow$ Confluence).
   \item Wir benutzen Travis CI\footnote{\url{https://travis-ci.com/}} (Linux und
     ggf. macOS) sowie AppVeyor\footnote{\url{https://www.appveyor.com/}} als
     externe Continuous-Integration-Anbieter.
@@ -626,7 +614,7 @@ Wir unterscheiden zwischen vier Arten der Dokumentation:
 \begin{itemize}
   \item Protokolle zu Treffen und Entscheidungen werden im Confluence (Wiki) protokolliert.
   \item Längere Dokumente, die weitergegeben werden - wie beispielsweise dieses Dokument - werden mit \LaTeX{} verfasst und landen in einem
-    \texttt{doc/}-Unterordner im GitHub-Repository
+    \texttt{doc/}-Unterordner im GitHub-Repository.
   \item Dokumentation für Endnutzer wird in
     Sphinx\footnote{\url{http://www.sphinx-doc.org/}} geschrieben, welches das
     Standardwerkzeug für die Python-Community (und auch darüber hinaus, wie
@@ -662,8 +650,8 @@ werden funktionierende Änderungen eingepflegt, in \verb|feature|/\verb|hotfix|-
 \paragraph{Type annotations} Mittels sogenannter \emph{type annotations} (auch bekannt als \emph{gradual typing}) wird die Typensicherheit im Code geprüft. Ähnlich zu Typescript erzwingt die Sprache selber keine expliziten
 Typendeklarationen (\emph{dynamic typing}), jedoch sind diese valide Python-Syntax und werden einfach ignoriert. Dadurch ist kein separater ``pre-compiler'' wie bei Typescript nötig, jedoch ein externes Tool zur Überprüfung der Typen.
 
+\pagebreak
 Beispiel von Typenannotationen:
-
 \begin{minted}{python}
   def calc_primes(start: int) -> List[int]:
       primes: List[int] = []
@@ -687,7 +675,7 @@ ein weiteres bekanntes Tool. Der Fokus liegt hier eher auf Style-Problemen,
 \emph{flake8} macht im Gegensatz zu \emph{pylint} keine tiefergehende statische Code-Analyse.
 Es gibt zwar einige Überschneidungen mit \emph{pylint}, trotzdem macht es Sinn, beide
 Tools zu verwenden, da \emph{flake8} doch einige nützliche Checks hat, die in \emph{pylint}
-nicht vorhanden sind. Ausserdem ist es viel schneller und kann gut im Editor/IDE eingebunden werden, um sofortiges Feedback zu kriegen.
+nicht vorhanden sind. Ausserdem ist es viel schneller und kann gut in der Entwicklungsumgebung eingebunden werden, um sofortiges Feedback zu kriegen.
 
 \paragraph{yapf} Bei \tool{yapf}{https://github.com/google/yapf}
 (Yet Another Python Formatter) von Google handelt sich um ein weiteres Tool aus
@@ -695,9 +683,7 @@ der Linting/Style-Ecke, welches Probleme auch automatisiert beheben kann. Wir
 werden vermutlich primär auf \emph{pylint/flake8} setzen, aber es wäre schön, wenn wir
 auch \emph{yapf} testen könnten.
 
-% FIXME vereint
-% FIXME *es* ist
-\paragraph{coala / GitMate} \tool{Coala}{https://coala.io/} im Zusammenspiel mit \tool{GitMate}{https://gitmate.io/} vereint alle obengenannte in einem einzigen Tool vereint. Es bietet auch die Möglichkeit, Probleme automatisch als Kommentare für Pull-Requests zu verfassen. Es wäre schön, wenn wir es in unseren Workflow integrieren können, ist aber nicht zwingend notwendig.
+\paragraph{coala / GitMate} \tool{Coala}{https://coala.io/} im Zusammenspiel mit \tool{GitMate}{https://gitmate.io/} vereint alle obengenannte Tools in einem einzigen. Es bietet auch die Möglichkeit, Probleme automatisch als Kommentare für Pull-Requests zu verfassen. Es wäre schön, wenn wir es in unseren Workflow integrieren können, dies ist aber nicht zwingend notwendig.
 
 \paragraph{Paketierung} Darüber hinaus gibt es weitere Tools, welche die
 korrekte Paketierung überprüfen bzw. erleichtern:
@@ -711,8 +697,7 @@ In diesem Abschnitt werden die im Projekt verwendeten Bibliotheken kurz
 vorgestellt, inklusive einigen Codebeispielen.
 
 \paragraph{attrs} Bei \tool{attrs}{http://www.attrs.org/} handelt es sich um eine Bibliothek, die das
-erstellen von Data-Klassen stark vereinfacht. Anstatt viel ``Boilerplate-Code''
-schreiben zu müssen:
+Erstellen von Data-Klassen stark vereinfacht. Anstatt ``Boilerplate-Code'' wie den folgenden zu schreiben:
 
 \begin{minted}{python}
 class File:
@@ -749,7 +734,7 @@ class File:
 \end{minted}
 
 Diese Bibliothek hat sich so weit verbreitet, dass eine vergleichbare
-Funktionalität in der nächsten Python-Version eingebaut werden wird\footnote{\url{https://www.python.org/dev/peps/pep-0557/}}.
+Funktionalität in der nächsten Python-Version eingebaut  wird\footnote{\url{https://www.python.org/dev/peps/pep-0557/}}.
 
 \paragraph{click}
 
@@ -768,8 +753,9 @@ def sync(profile):
 \end{minted}
 
 Daraus entsteht ein Werkzeug, das mit den definierten Optionen aufgerufen
-werden kann, und welches beispielsweise auch eine Hilfe beinhaltet:
+werden kann, und welches beispielsweise auch eine Hilfe enthält:
 
+\pagebreak
 \begin{verbatim}
 $ python3 test.py --help
 Usage: test.py [OPTIONS]
@@ -862,8 +848,7 @@ pm.hook.login(server="...")
 \paragraph{Konfiguration}
 
 Für das Einlesen der \emph{kitovu}-Konfiguration wollen wir ebenfalls eine Bibliothek
-benutzen. Momentan ist noch offen, welche genau dazu genutzt werden
-soll, wobei sich \tool{TOML}{https://github.com/toml-lang/toml} anbieten würde.
+benutzen. Momentan ist noch offen, welche, wobei sich \tool{TOML}{https://github.com/toml-lang/toml} anbieten würde.
 
 \paragraph{Moodle}
 
@@ -879,20 +864,18 @@ eingebaut hat, vereinfacht \emph{pytest} das Verfassen von Tests ungemein.
 Wir nutzen ausserdem verschiedene Plugins für \emph{pytest}:
 
 \begin{itemize}
-  % FIXME Periods
 \item \tool{coverage.py}{https://coverage.readthedocs.io/} für
     Test-Coverage sowie \tool{codecov.io}{https://codecov.io/}
     als Online-Service (Kommentare in Pull-Requests bei geänderter Coverage).
 \item \tool{pytest-qt}{https://pytest-qt.readthedocs.io/} für das
-    automatisierte Testen der GUI
-\item eventuell \tool{pytest-bdd}{https://github.com/pytest-dev/pytest-bdd/} für Behaviour-Driven-Testing (Cucumber/Gherkin)
+    automatisierte Testen des GUIs.
+\item eventuell \tool{pytest-bdd}{https://github.com/pytest-dev/pytest-bdd/} für Behaviour-Driven-Testing (Cucumber/Gherkin).
 \item eventuell \tool{hypothesis}{http://hypothesis.works/} für
   Fuzzing-Tests, wobei automatisch Testwerte aufgrund von Typendeklarationen
   generiert werden. Es ist aber fraglich, inwieweit dies in unserem Projekt sinnvoll ist.
 \end{itemize}
 
-% FIXME in jedem?
-Die Tests müssen im GitHub-Pull-Request enthalten sein. Ziel ist, dass die
+Die Tests müssen in jedem GitHub-Pull-Request enthalten sein. Ziel ist, dass die
 Coverage bei keiner Änderung sinkt, und idealerweise am Ende des Projekts bei
 über 90\% liegt.
 
@@ -909,7 +892,7 @@ Normalerweise werden die Pull-Requests von Florian Bruhin in seiner Rolle als
 technischem Projektleiter geprüft, wobei darauf geachtet wird, dass auch andere
 Projektmitglieder genügend Zeit haben, den Code anzuschauen.
 
-Für Änderungen von Florian selbst (oder falls Florian nicht reagieren sollte)
+Für Änderungen von Florian Bruhin selbst (oder falls er nicht reagieren sollte)
 darf der Code auch von einem anderen Projektmitglied geprüft werden.
 
 \subsubsection{Code-Style-Guidelines}
@@ -924,7 +907,7 @@ Style-Checkern standardmässig verwendet.
 
 \subsubsection{Unit-Tests}
 
-Einzelne spezifische Funktionen werden wir durch Unit-Tests abgedeckt.
+Einzelne spezifische Funktionen werden durch Unit-Tests abgedeckt.
 Ziel dieser Tests ist es, die einzelnen Funktionen sehr detailliert zu testen und damit Edge-Cases abdecken.
 
 \subsubsection{Integrationstests}
@@ -935,25 +918,22 @@ Wir wollen zumindest die einzelnen Use-Cases als Integrationstests abbilden. Je 
 \subsubsection{Vorgehen}
 
 Die Tests werden immer automatisch ausgeführt, wenn ein Push auf das Git-Repository gemacht wird.
-% FIXME Merge-Request
-Ein Merge-Request von einem Feature-Branch kann nur durchgeführt werden, falls sämtliche Tests erfolgreich ausgeführt wurden.
+Ein Pull-Request von einem Feature-Branch kann nur eingepflegt werden, falls sämtliche Tests erfolgreich ausgeführt wurden.
 
 Bei der Entwicklung gehen wir gemäss des Test-Driven-Developments vor.
-Das bedeutet, dass bei der Umsetzung eines Features oder Beheben eines Fehlers folgende Schritte durchlaufen werden:
+Somit werden bei der Umsetzung eines Features oder Beheben eines Fehlers folgende Schritte durchlaufen:
 
 \begin{description}
   \item[Red]
     Ein Test für die noch fehlende Funktionalität wird erstellt.
     Dabei schlägt dieser Test noch fehl.
-    % FIXME und immer erfolgreich
-    Damit stellen wir sicher, dass der Test nicht auf etwas Falsches prüft und immer erfolgreich ist.
+    Damit stellen wir sicher, dass der Test nicht auf etwas Falsches prüft und somit immer erfolgreich wäre.
   \item[Green]
     Nun wird die Funktion auf eine einfache Art und Weise gelöst.
     Es muss noch nicht schöner Code sein, sondern der Test muss einfach erfolgreich sein.
   \item[Refactor]
     Im letzten Schritt wird der geschriebene Code überarbeitet und verschönert.
-    % FIXME Merge
-    Erst danach kann dieser über einen Merge-Request in dem Git-Repository landen.
+    Erst danach kann dieser über einen Pull-Request in dem Git-Repository landen.
 \end{description}
 
 \subsubsection{Test-Coverage}

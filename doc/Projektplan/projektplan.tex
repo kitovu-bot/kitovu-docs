@@ -12,6 +12,7 @@
 \usepackage{array}
 \usepackage{tabulary}
 \usepackage{multicol}
+\usepackage{pgfgantt}
 
 % Page breaks between sections
 \let\oldsection\section
@@ -252,6 +253,7 @@ durchschnittlich pro Person ein Arbeitsaufwand von $120 / 15 = 8$ Stunden zu
 leisten ist.
 
 
+\pagebreak
 \subsection{Zeitliche Planung}
 % <Kurze Beschreibung der zeitlichen Planung und mit einer Grafik einen Überblick über die Phasen, Iterationen und Meilensteine geben. Das Datum des Eintreffens der Meilensteine sollte in der Phasenübersicht ersichtlich sein.>
 
@@ -283,6 +285,55 @@ KW & Sem.-Woche & Meilenstein / Tätigkeit & Review & Phase \\
 22 & 15 & \textbf{M7: Projektabschluss} & Schluss-Präsentation & \\
 \bottomrule
 \end{tabulary}
+
+\vspace{3em}
+
+\begin{ganttchart}[
+      title height = 1,
+      y unit title=.5cm,
+      y unit chart=.5cm,
+      bar/.append style={fill=green!20},
+      vgrid={
+        *1{blue!60},
+        *4{gray, dashed},
+        *1{blue!60},
+        *3{gray, dashed},
+        *1{blue!60},
+        *4{gray, dashed}
+      }]{1}{15}
+  \gantttitle{\hspace{-8em}\footnotesize{Kalenderwoche}}{0}{0}
+  \gantttitlelist{8,...,22}{1} \\
+  \gantttitle{\hspace{-8em}\footnotesize{Semesterwoche}}{0}{0}
+  \gantttitlelist{1,...,15}{1} \\
+
+  \ganttmilestone{M0: Projektantrag}{1} \\
+
+  \ganttgroup{Elaboration}{2}{6} \\
+
+  \ganttbar{Projektplan erstellen}{2}{2} \\
+  \ganttmilestone{M1: Projektplan}{2} \\
+  \ganttbar{Requirements erstellen}{3}{3} \\
+  \ganttmilestone{M2: Requirements}{3} \\
+  \ganttbar{Training}{4}{4} \\
+  \ganttbar{Architekturprototyp}{5}{5} \\
+  \ganttbar{Puffer}{6}{6} \\
+  \ganttmilestone{M3: End of elaboration}{6} \\
+
+  \ganttgroup{Construction}{7}{10} \\
+  \ganttbar{Grundfunktionalität}{7}{9} \\
+  \ganttbar{Optionale Features / Puffer}{10}{10} \\
+  \ganttmilestone{M4: Architektur}{10} \\
+
+  \ganttgroup{Transition}{11}{15} \\
+  \ganttbar{Usability-Tests durchführen}{11}{11} \\
+  \ganttmilestone{M5: Usability-Test}{11} \\
+  \ganttbar{Verbleibende Features}{12}{12} \\
+  \ganttbar{Puffer}{13}{13} \\
+  \ganttmilestone{M6: Feature Freeze}{13} \\
+  \ganttbar{Bugfixes/Abschluss}{14}{15} \\
+  \ganttmilestone{M7: Projektabschluss}{15}
+  
+\end{ganttchart}
 
 % Folgende Reviews müssen enthalten sein:
 % 1. Review Projektplan mit Zeitplan und aktuellen Iterationsplänen – Termin: SW03
@@ -358,6 +409,7 @@ Wir konzentrieren uns auf Testing, Dokumentation und die Behebung von Bugs. Fall
   \midrule
   3-1 & Usability-Tests durchführen & 1 Woche & M5: Usability-Tests \\
   3-2 & Letzte Features und Verbesserungen & 1 Woche & M6: Feature Freeze \\
+  % FIXME hier fehlt eine Woche
   3-3 & Projektabschluss & 2 Wochen & Sämtliche Dokumente und Abgabematerialien \\
   \bottomrule
 \end{tabulary}

@@ -277,11 +277,11 @@ KW & Sem.-Woche & Meilenstein / Tätigkeit & Review & Phase \\
 15 & 8 & & & \\
 16 & 9 & & & \\
 17 & 10 & \textbf{M4: Architektur} & & \\
-\hline
-18 & 11 & \textbf{M5: Usability-Test} & Review Architektur & 3 \\
+18 & 11 & \textbf{M5: Usability-Test} & Review Architektur & \\
 19 & 12 & & & \\
 20 & 13 & \textbf{M6: Feature-Freeze} & Review Qualität & \\
-21 & 14 & & & \\
+\hline
+21 & 14 & & & 3 \\
 22 & 15 & \textbf{M7: Projektabschluss} & Schluss-Präsentation & \\
 \bottomrule
 \end{tabulary}
@@ -297,9 +297,9 @@ KW & Sem.-Woche & Meilenstein / Tätigkeit & Review & Phase \\
         *1{blue!60},
         *4{gray, dashed},
         *1{blue!60},
-        *3{gray, dashed},
+        *6{gray, dashed},
         *1{blue!60},
-        *4{gray, dashed}
+        *1{gray, dashed}
       }]{1}{15}
   \gantttitle{\hspace{-8em}\footnotesize{Kalenderwoche}}{0}{0}
   \gantttitlelist{8,...,22}{1} \\
@@ -319,16 +319,16 @@ KW & Sem.-Woche & Meilenstein / Tätigkeit & Review & Phase \\
   \ganttbar{Puffer}{6}{6} \\
   \ganttmilestone{M3: End of elaboration}{6} \\
 
-  \ganttgroup{Construction}{7}{10} \\
+  \ganttgroup{Construction}{7}{13} \\
   \ganttbar{Grundfunktionalität}{7}{9} \\
   \ganttbar{Optionale Features / Puffer}{10}{10} \\
   \ganttmilestone{M4: Architektur}{10} \\
 
-  \ganttgroup{Transition}{11}{15} \\
   \ganttbar{Usability-Tests durchführen}{11}{11} \\
   \ganttmilestone{M5: Usability-Test}{11} \\
   \ganttbar{Verbleibende Features}{12}{12} \\
   \ganttbar{Puffer}{13}{13} \\
+  \ganttgroup{Feature freeze}{14}{15} \\
   \ganttmilestone{M6: Feature Freeze}{13} \\
   \ganttbar{Bugfixes/Abschluss}{14}{15} \\
   \ganttmilestone{M7: Projektabschluss}{15}
@@ -380,7 +380,7 @@ wobei Florian gerne beratend zur Seite steht.
 
 \paragraph{Phase 2: Construction} \strut \\[-1em]
 
-Die \emph{Construction} Phase dauert 4 Wochen und wir werde uns der hauptsächlichen Entwicklungsarbeit widmen.
+Die \emph{Construction} Phase dauert 7 Wochen und wir werden uns der hauptsächlichen Entwicklungsarbeit widmen.
 Da an den Aufgaben parallel gearbeitet wird können wir dies nicht in detaillierte Iterationen packen.
 
 Diese Phase ist am schwierigsten zu planen und die Iterationen können öfters geändert werden.
@@ -393,13 +393,16 @@ Diese Phase ist am schwierigsten zu planen und die Iterationen können öfters g
   \midrule
   2-1 & Volle Synchronisierung mit dem Skripteserver & 3 Wochen & Getestete Grundfunktionalitäten der \emph{kitovu} Applikation \\
   2-2 & Optionale Features einbauen & 1 Woche & M4: Architektur \\
+  2-3 & Usability-Tests durchführen & 1 Woche & M5: Usability-Tests \\
+  2-4 & Letzte Features/Verbesserungen & 1 Woche & M6: Feature Freeze \\
+  2-5 & Puffer & 1 Woche & \\
   \bottomrule
 \end{tabulary}
 
-\paragraph{Phase 3: Transition} \strut \\[-1em]
+\paragraph{Phase 3: Feature Freeze} \strut \\[-1em]
 
-Die \emph{Transition} Phase dauert 5 Wochen.
-Wir konzentrieren uns auf Testing, Dokumentation und die Behebung von Bugs. Falls die Usability-Tests zeigen, dass noch grundlegende Änderungen nachgeführt werden müssen, findet dies ebenfalls statt.
+Die \emph{Feature Freeze} Phase dauert 2 Wochen. Wir konzentrieren uns auf
+verbleibende Arbeiten in den Bereichen Testing, Dokumentation und die Behebung von Bugs.
 
 \subparagraph{Iterationen} \strut \\[-1em]
 
@@ -407,10 +410,7 @@ Wir konzentrieren uns auf Testing, Dokumentation und die Behebung von Bugs. Fall
   \toprule
   Nr & Beschreibung & Dauer & End-Resultat \\
   \midrule
-  3-1 & Usability-Tests durchführen & 1 Woche & M5: Usability-Tests \\
-  3-2 & Letzte Features und Verbesserungen & 1 Woche & M6: Feature Freeze \\
-  % FIXME hier fehlt eine Woche
-  3-3 & Projektabschluss & 2 Wochen & Sämtliche Dokumente und Abgabematerialien \\
+  3-1 & Projektabschluss & 2 Wochen & Sämtliche Dokumente und Abgabematerialien \\
   \bottomrule
 \end{tabulary}
 

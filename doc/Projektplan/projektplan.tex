@@ -31,6 +31,8 @@
 \title{
   Projekt: kitovu \\
   \Large{Projektplan} \\[3em]
+  % FIXME Quelle?
+  % FIXME png?
   \includegraphics[width=20em]{../../img/logo/kitovu.jpg}
 }
 \author{
@@ -99,6 +101,7 @@ Die folgende Übersicht zeigt die in späteren Kapiteln erklärten und verwendet
   TOML & \url{https://github.com/toml-lang/toml} \\ 
   Travis CI & \url{https://travis-ci.com/} \\
   yapf & \url{https://github.com/google/yapf} \\
+  % FIXME Telegram?
 \end{tabulary}
 
 \section{Projekt-Übersicht}
@@ -107,8 +110,10 @@ Die folgende Übersicht zeigt die in späteren Kapiteln erklärten und verwendet
 
 \subsection{Zweck und Ziel von kitovu}
 % <Sinn und Zweck des Projektes, sowie Zielsetzung und auch persönliche Ziele>
+% FIXME: zwar/doch in zwei Sätzen?
 An der HSR müssen sich die Studentinnen und Studenten bislang ihre Unterrichtsmaterialien vom Skripteserver, von Moodle und anderen Orten von Hand zusammensuchen. Das ist aufwändig und unübersichtlich. Zwar existiert bereits ein Synchronisationstool, \tool{OpenHSR Connect}{https://github.com/openhsr/connect}, es stellt die Inspiration für unser Projekt dar. Doch \emph{OpenHSR Connect} hat zahlreiche Unzulänglichkeiten: Dieser Client besitzt kein GUI, der Code ist weder strukturiert noch einheitlich, er ist abhängig vom Betriebssystem und funktioniert nur für den HSR-Skripteserver.
 
+% FIXME: +auch?
 \emph{Kitovu} soll das ändern: ein Client, der von verschiedenen Plattformen ausgewählte Unterrichtsmaterialien auf den eigenen Rechner synchronisiert. Er läuft auf allen gängigen Betriebssystemen und ist erweiterbar für verschiedene Plattformen, nicht nur den Skripteserver. Die Zielgruppe besteht primär aus Studierenden, sekundär Dozierenden der HSR. Der Client könnte potentiell an anderen Hochschulen eingesetzt werden.
 
 Unser Projekt bindet primär den Skripteserver ein. Der Terminal-basierte Client funktioniert mittels Profilen zu unterschiedlichen Plattformen (Moodle, Skripteserver, Studentenportal). Pro Profil sind Verbindungsdaten und eventuelle Login-Credentials im Client hinterlegt. Die Daten-Synchronisation erfolgt immer nur von Server zu Client, erfolgreiche und misslungene Datentransfers werden protokolliert. Ein rudimentäres GUI dient als Proof-of-Concept.
@@ -134,7 +139,7 @@ Optionale Features:
 \begin{description}
 \item[Nicolas Ganz] 
   Mehr Erfahrung sammeln, was das Management und die Organisation eines solchen Projekts anbelangt; zusätzlich möchte ich Erfahrungen mit Python, dessen Tools und Bibliotheken sammeln.
-\item[Florian Bruhin] Erfahrungen sammeln bei der ''Leitung'' eines kleinen
+\item[Florian Bruhin] Erfahrungen sammeln bei der ``Leitung'' eines kleinen
   Software-Teams, einige neue nützliche Tools ausprobieren, und das Endprodukt selbst benutzen: Endlich alle HSR-Dokumente zu einem Modul problemlos an einem Ort!
 \item[Méline Sieber] Verbessern der Python-Programmierfähigkeiten und -kenntnisse (nur Grundkenntnisse vorhanden); allererstes Softwareprojekt durchziehen und entsprechende Arbeitsschritte, Werkzeuge und Plattformen kennenlernen; Erfahrung im Test-Driven-Development sammeln.
 \end{description}
@@ -171,6 +176,7 @@ Optionale Features:
 % <Annahmen die für diesen Projektplan getroffen werden und Einschränkungen denen er unterliegt>
 Wir berücksichtigen keine HSR-externen Anbieter wie etwa Dropbox, OneDrive, GoogleDrive.
 
+% FIXME aus -> unter/für?
 Support für macOS ist keine Priorität, auch wenn wenn die Infrastruktur dafür grundsätzlich existiert und dies durch Python kein Problem darstellen sollte. Wir werden die Tests initial auf macOS laufen lassen, sollte es da aber zu Problemen kommen, werden wir die Tests auf macOS ausschalten.
 
 \section{Projektorganisation}
@@ -187,7 +193,8 @@ Die Betreuung des Projektes wird von Herrn Daniel Keller übernommen.
 \item[Florian Bruhin] \strut \\[-1em]
   \begin{itemize}
     \item Product Owner: Er hat den Gesamtüberblick über die Ziele und priorisiert die einzelnen Tasks.
-    \item QA Supervisor: Er prüft die Test-Coverage, die Test-Qualität und das Linting. Zudem ist er für die Code-Qualität verantwortlich, erkennt ''Bad Practices'', wie duplizierten Code oder konzeptionelle Unschönheiten.
+      % FIXME Komma vor wie?
+    \item QA Supervisor: Er prüft die Test-Coverage, die Test-Qualität und das Linting. Zudem ist er für die Code-Qualität verantwortlich, erkennt ``Bad Practices'', wie duplizierten Code oder konzeptionelle Unschönheiten.
     \item Code-Writer: Er unterstützt Méline Sieber und Nicolas Ganz bei möglichen Programmierschwierigkeiten und ist für das GUI verantwortlich.
   \end{itemize}
 \item[Nicolas Ganz] \strut \\[-1em]
@@ -218,6 +225,7 @@ Die Betreuung des Projektes wird von Herrn Daniel Keller übernommen.
     von \emph{OpenHSR Connect}, welches die
     Inspiration für unser Projekt darstellt, aber nur den Skripteserver
     unterstützt.
+    % FIXME zweiter Teilsatz redundant?
   \item Externe Tester: Für Usability- und Beta-Tests wollen wir verschiedene
     HSR-Studierende kontaktieren, ggf. auch mit einem Aufruf via E-Mail. Da das Tool von jedem HSR-Studierenden nutzbar sein soll, sollte es kein Problem darstellen, kurzfristig Probanden zu finden.
 \end{itemize}
@@ -242,7 +250,7 @@ leisten ist. \\[3em]
   \textbf{Arbeitszeit pro Woche} & $120 / 15 = 8$ Stunden pro Person \\
   \textbf{Arbeitsstunden insgesamt} & $3 \cdot 120 = 360$ Stunden \\
   \textbf{Projektstart} & Dienstag, 20. Februar 2018 \\
-  \textbf{Projektende} & Freitag, 1. Juni 2017
+  \textbf{Projektende} & Freitag, 1. Juni 2018
 \end{tabular}
 
 \pagebreak
@@ -384,6 +392,7 @@ Die \emph{Construction}-Phase dauert 7 Wochen und wir werden uns hauptsächlich 
 \paragraph{Phase 3: Feature Freeze} \strut \\[-1em]
 
 Die \emph{Feature-Freeze}-Phase dauert 2 Wochen. Wir konzentrieren uns auf
+% FIXME und die Behebung von Bugs
 verbleibende Arbeiten: Testing, Dokumentation und Bugs beheben.
 
 \subparagraph{Iterationen} \strut \\[-1em]
@@ -398,10 +407,12 @@ verbleibende Arbeiten: Testing, Dokumentation und Bugs beheben.
 
 \subsubsection{Meilensteine}
 
-Das Projekt ist in 8 Meilensteine eingeteilt, welche im JIRA in Form von ''Epics'' erfasst sind, sämtliche weitere Tickets sind gruppiert.
+% FIXME weiteren?
+Das Projekt ist in 8 Meilensteine eingeteilt, welche im JIRA in Form von ``Epics'' erfasst sind, sämtliche weitere Tickets sind gruppiert.
 
 \paragraph{M0: Projektantrag} \fulljiraissue{5}
 
+% FIXME dazu -> dafür
 Ziel dieses Meilenstein ist es, die Grundidee für das Projekt zu eruieren und einen Projektantrag dazu zu erstellen.
 
 \paragraph{M1: Projektplan} \fulljiraissue{6}
@@ -486,6 +497,7 @@ Erfahrung in grösseren Open-Source-Projekten auf. Dadurch kann er Risiken mögl
   \thispagestyle{empty}
   
   \begin{tabulary}{\linewidth}{lLLlLLLL}
+    % FIXME periods
     \toprule
     \bfseries Nr &
     \bfseries Titel &
@@ -517,7 +529,7 @@ Erfahrung in grösseren Open-Source-Projekten auf. Dadurch kann er Risiken mögl
 
     R3 & 
     Ausfall Keltec & 
-    Ausfall des keltec.ch-Servers, auf dem JIRA/Confluence liegen & 
+    Ausfall des keltec.ch-Servers, auf dem JIRA/Confluence liegen. & 
     5 & 
     0.018\% & 
     0.0009 & 
@@ -526,7 +538,7 @@ Erfahrung in grösseren Open-Source-Projekten auf. Dadurch kann er Risiken mögl
 
     R4 & 
     Moodle-Integration nicht umsetzbar & 
-    Es gibt keine nutzbare API, um auf Moodle zuzugreifen & 
+    Es gibt keine nutzbare API, um auf Moodle zuzugreifen. & 
     8 & 
     40\% & 
     3.2 & 
@@ -535,7 +547,7 @@ Erfahrung in grösseren Open-Source-Projekten auf. Dadurch kann er Risiken mögl
 
     R5 & 
     Studenten\-portal-Integration nicht umsetzbar & 
-    Es gibt keine nutzbare API, um auf das Studentenportal zuzugreifen & 
+    Es gibt keine nutzbare API, um auf das Studentenportal zuzugreifen. & 
     8 & 
     30\% & 
     2.4 & 
@@ -559,6 +571,7 @@ Erfahrung in grösseren Open-Source-Projekten auf. Dadurch kann er Risiken mögl
 
 \section{Arbeitspakete}
 
+% FIXME sind
 Die Auflistung der Arbeitspakete sind unter folgendem Link zu finden:
 
 \url{\jiraurl/projects/EPJ/issues}
@@ -680,6 +693,8 @@ der Linting/Style-Ecke, welches Probleme auch automatisiert beheben kann. Wir
 werden vermutlich primär auf \emph{pylint/flake8} setzen, aber es wäre schön, wenn wir
 auch \emph{yapf} testen könnten.
 
+% FIXME vereint
+% FIXME *es* ist
 \paragraph{coala / GitMate} \tool{Coala}{https://coala.io/} im Zusammenspiel mit \tool{GitMate}{https://gitmate.io/} vereint alle obengenannte in einem einzigen Tool vereint. Es bietet auch die Möglichkeit, Probleme automatisch als Kommentare für Pull-Requests zu verfassen. Es wäre schön, wenn wir es in unseren Workflow integrieren können, ist aber nicht zwingend notwendig.
 
 \paragraph{Paketierung} Darüber hinaus gibt es weitere Tools, welche die
@@ -862,6 +877,7 @@ eingebaut hat, vereinfacht \emph{pytest} das Verfassen von Tests ungemein.
 Wir nutzen ausserdem verschiedene Plugins für \emph{pytest}:
 
 \begin{itemize}
+  % FIXME Periods
 \item \tool{coverage.py}{https://coverage.readthedocs.io/} für
     Test-Coverage sowie \tool{codecov.io}{https://codecov.io/}
     als Online-Service (Kommentare in Pull-Requests bei geänderter Coverage).
@@ -873,6 +889,7 @@ Wir nutzen ausserdem verschiedene Plugins für \emph{pytest}:
   generiert werden. Es ist aber fraglich, inwieweit dies in unserem Projekt sinnvoll ist.
 \end{itemize}
 
+% FIXME in jedem?
 Die Tests müssen im GitHub-Pull-Request enthalten sein. Ziel ist, dass die
 Coverage bei keiner Änderung sinkt, und idealerweise am Ende des Projekts bei
 über 90\% liegt.
@@ -916,6 +933,7 @@ Wir wollen zumindest die einzelnen Use-Cases als Integrationstests abbilden. Je 
 \subsubsection{Vorgehen}
 
 Die Tests werden immer automatisch ausgeführt, wenn ein Push auf das Git-Repository gemacht wird.
+% FIXME Merge-Request
 Ein Merge-Request von einem Feature-Branch kann nur durchgeführt werden, falls sämtliche Tests erfolgreich ausgeführt wurden.
 
 Bei der Entwicklung gehen wir gemäss des Test-Driven-Developments vor.
@@ -925,12 +943,14 @@ Das bedeutet, dass bei der Umsetzung eines Features oder Beheben eines Fehlers f
   \item[Red]
     Ein Test für die noch fehlende Funktionalität wird erstellt.
     Dabei schlägt dieser Test noch fehl.
+    % FIXME und immer erfolgreich
     Damit stellen wir sicher, dass der Test nicht auf etwas Falsches prüft und immer erfolgreich ist.
   \item[Green]
     Nun wird die Funktion auf eine einfache Art und Weise gelöst.
     Es muss noch nicht schöner Code sein, sondern der Test muss einfach erfolgreich sein.
   \item[Refactor]
     Im letzten Schritt wird der geschriebene Code überarbeitet und verschönert.
+    % FIXME Merge
     Erst danach kann dieser über einen Merge-Request in dem Git-Repository landen.
 \end{description}
 

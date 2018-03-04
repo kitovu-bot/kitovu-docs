@@ -78,7 +78,7 @@ FIXME Verweise zum Projektplan einfügen, zur Domainanalyse u.a. Dokumenten, die
 	Moodle & \url{https://moodle.hsr.ch} \\
 	OpenHSR Connect & \url{https://github.com/openhsr/connect} \\
 	Studentenportal & \url{https://studentenportal.ch/} \\
-	Switch AAI & \url{https://www.switch.ch/aai/}
+	Switch AAI (Authentication and Authorization Infrastructure)& \url{https://www.switch.ch/aai/}
 	
 \end{tabulary}
 
@@ -139,14 +139,31 @@ Wir müssen annehmen, dass ein Teil der Studentinnen und Studenten darin vertrau
 \pagebreak
 \section{Use Cases}
 
+\subsection{Aktoren und Stakeholder}
+%<Aufzählung und Beschreibung der Aktoren & Stakeholder>
+\begin{tabulary}{\linewidth}{lL}
+	\toprule
+	Aktor & Beschreibung\\
+	Student & HSR-Student, der über einen HSR-Account verfügt.\\
+	Skripteserver & HSR-Plattform, in der Dozierende Unterrichtsmaterialien zur Verfügung stellen.\\
+	Studentenportal & Portal für eigene Materialien der HSR-Studierenden.\\
+	Switch-AAI & System, womit der Zugriff auf Moodle erfolgt. \\	
+	
+	\bottomrule
+\end{tabulary}
+\pagebreak
+
 \subsection{Use-Case-Diagramm}
 %<Use Case Diagramm>
 
-\subsection{Aktoren und Stakeholder}
-%<Aufzählung und Beschreibung der Aktoren & Stakeholder>
-
 \subsection{Beschreibungen (Brief)}
 %<Alle Use Cases in einzelnen Kapiteln beschreiben im Brief Format>
+
+    Konfig-File editieren
+    Login-Prozess
+    Synchronisation
+    
+    Im Diagramm: Moodle, Skripteserver und Studentenportal als Externe Services
 
 \subsubsection{<Use Case Name}
 %<Beschreibung zum Use Case im Brief Format>

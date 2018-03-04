@@ -169,21 +169,83 @@ FIXME insert definitive use case diagram, schön anordnen
 	
 \item[Use Case 1: Profil editieren (CRUD):] Die Studentin legt in einer Konfigurationsdatei die Plattform und die entsprechenden Zugangsdaten fest, mit der auf die externe Plattform zugegriffen wird.
 
-\item[Use Case 2: Zu synchronisierende Daten editieren (CRUD):] Die Studentin konfiguriert, welche Ordner und Dateien synchronisiert werden sollen.
+\item[Use Case 2: Zu synchronisierende Dateien editieren (CRUD):] Die Studentin konfiguriert, welche Ordner und Dateien synchronisiert werden sollen.
 
-\item[Use Case 2: Login-Prozess:] Die Studentin verifiziert sich bei der externen Plattform.
+\item[Use Case 3: Verbindung erstellen:] Die Studentin verifiziert sich bei der externen Plattform.
 
-\item[Use Case 3: Synchronisation der Dateien:] Die Studentin synchronisiert die Dateien von der externen Plattform auf ihren Rechner.
+\item[Use Case 4: Synchronisation der Dateien:] Die Studentin synchronisiert die Dateien von der externen Plattform auf ihren Rechner.
 \end{description}
-
-\subsubsection{<Use Case Name}
-%<Beschreibung zum Use Case im Brief Format>
 
 \subsection{Beschreibungen (Fully Dressed)}
 %<Spezielle und wichtige Use Cases in einzelnen Kapiteln beschreiben im Fully Dressed Format>
 
-\subsubsection{Use Case Name}
-%<Beschreibung zum Use Case im Fully Dressed Format>
+FIXME Tabelle in schön
+
+\subsubsection{UC1: Profil editieren}
+\begin{tabulary}{\linewidth}{lp{30em}}
+	\textbf{Goal} & Der Student editiert ein Profil zu einer externen Plattform: CRUD (Create, Read Update, Delete) \\
+	\textbf{Level} & FIXME \\
+	\textbf{Primary Actor} & Student\\
+	\textbf{Trigger} & Der Student möchte aktuelle Unterrichtsmaterialien auf seinem Rechner haben.\\
+	\textbf{Stakeholders and Interests} & FIXME \\
+	\textbf{Preconditions} & Der Student besitzt einen Account der externen Plattform mit entsprechenden Login-Daten.\\
+	\textbf{Postconditions} & FIXME \\
+	\textbf{Main Success Scenario} & Der Student erstellt ein Profil zu einer externen Plattform in \emph{kitovu}. Er kann die Zugangsdaten erstellen, speichern, abändern oder das Profil ganz entfernen. Die eingegebenen Daten werden in \emph{kitovu} gespeichert. \\
+	\textbf{Extensions} & Die externe Plattform verlangt, dass sich der Student pro Session authentisiert (Moodle).\\
+	\textbf{Special Requirements} & asdf \\
+	\textbf{Frequency of Occurrence} & asdf \\
+	\textbf{Open Issues} & Keine. \\
+\end{tabulary}
+
+\subsubsection{UC2: Dateien auswählen}
+\begin{tabulary}{\linewidth}{lp{30em}}
+	\textbf{Goal} & Die Studentin wählt aus, welche Dateien sie auf ihren Rechner synchronisieren möchte (CRUD)-\\
+	\textbf{Level} & FIXME \\
+	\textbf{Primary Actor} & Studentin\\
+	\textbf{Trigger} & Die Studentin möchte nur bestimmte Dateien und Ordner auf ihrem Rechner haben.\\
+	\textbf{Stakeholders and Interests} & FIXME \\
+	\textbf{Preconditions} & Die Studentin besitzt einen Account der externen Plattform. Sie hat bereits ein Profil der externen Plattform in \emph{kitovu} hinterlegt.\\
+	\textbf{Postconditions} & UC3 ist erfolgreich.\\
+	\textbf{Main Success Scenario} & Die Studentin wählt die zu synchronisierenden Daten aus, startet den Synchronisationsprozess und verfügt danach über die von ihr ausgewählten Unterrichtsmaterialien auf ihrem Rechner.\\
+	\textbf{Extensions} & Sie hat bereits eine  \\
+	\textbf{Special Requirements} & asdf \\
+	\textbf{Frequency of Occurrence} & Zu Beginn jedes Semesters, wenn die neuen Module beginnen. \\
+	\textbf{Open Issues} & asdf \\
+\end{tabulary}
+
+\subsubsection{UC3: Verbindung erstellen}
+\begin{tabulary}{\linewidth}{lp{30em}}
+	\textbf{Goal} & Um auf die Unterrichtsmaterialien zuzugreifen, muss der Student eine Verbindung zu externen Plattform aufnehmen. \\
+	\textbf{Level} & FIXME \\
+	\textbf{Primary Actor} & Der Student \\
+	\textbf{Trigger} & \url{https://github.com/kitovu-bot/kitovu} \\
+	\textbf{Stakeholders and Interests} & \url{\jiraurl} \\
+	\textbf{Preconditions} & Der Student hat in UC1 die Profildaten der externen Plattform hinterlegt.\\
+	\textbf{Postconditions} & keine.\\
+	\textbf{Main Success Scenario} & Der Student verbindet sich erfolgreich zur externen Plattform. \\
+	\textbf{Extensions} & \url{https://www.switch.ch/aai/} \\
+	\textbf{Special Requirements} & Der Student verfügt über einen Account der externen Plattform. \\
+	\textbf{Frequency of Occurrence} & FIXME \\
+	\textbf{Open Issues} & FIXME \\
+\end{tabulary}
+
+
+\subsubsection{UC4: Synchronisation der Dateien}
+
+\begin{tabulary}{\linewidth}{lp{30em}}
+	\textbf{Goal} & Die Studentin synchronisiert alle benötigten Unterrichtsmaterialien auf ihren Computer. \\
+	\textbf{Level} & FIXME \\
+	\textbf{Primary Actor} & Die Studentin \\
+	\textbf{Trigger} & Die Studentin möchte aktuelle Unterrichtsmaterialien auf ihrem Computer lokal abspeichern. \\
+	\textbf{Stakeholders and Interests} & FIXME \\
+	\textbf{Preconditions} & Die Studentin hat erfolgreich eine Verbindung zur externen Plattform hergestellt. \\
+	\textbf{Postconditions} & FIXME \\
+	\textbf{Main Success Scenario} & FIXME \\
+	\textbf{Extensions} & FIXME \\
+	\textbf{Special Requirements} & FIXME \\
+	\textbf{Frequency of Occurrence} & Rund jede Woche, wenn die Dozenten erneut neue Unterrichtsmaterialien bereitstellen.  \\
+	\textbf{Open Issues} & FIXME \\
+\end{tabulary}
 
 \pagebreak
 \section{Weitere Anforderungen}

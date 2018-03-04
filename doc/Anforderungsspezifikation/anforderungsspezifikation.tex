@@ -48,14 +48,40 @@
 	\toprule
 	Datum & Version & Änderung & AutorIn \\
 	\midrule
-	04.03.2018 & 1.0 & Dokument erstellt & Méline Sieber \\
+	04.03.2018 & 1.0 & Dokument erstellt, Grundgerüst von Template übernommen & Méline Sieber \\
 
 	\bottomrule
 \end{tabulary}
 \pagebreak
 
 \section{Einführung}
+Dieses Dokument beschreibt, was \emph{kitovu} genau ist. Danach veranschaulicht diese Anforderungsspezifikation, für wen der \emph{kitovu}-Client gedacht ist. Das erfolgt anhand von ``Use Cases'', einerseits in einem kurzen Format (\emph{brief}), andererseits in einer ausführlichen Beschreibung (\emph{fully dressed}). Weitere Anforderungen detaillieren, welche Qualitätsmerkmale und Schnittstellen verwendet werden sowie geltende Randbedingungen.
 
+\subsection{Gültigkeitsbereich}
+Die vorliegende Anforderungsspezifikation ist für das Engineering Projekt im Frühlingssemester 2018 gültig. Falls dem Projekt grössere Veränderungen widerfahren, wird das Dokument dementsprechend angepasst. Umfassende Änderungen werden am Anfang des Dokuments protokolliert.
+
+\subsection{Referenzen}
+
+% <Liste aller verwendeten und referenzierten Dokumente, Bücher, Links, usw.>
+% <Referenz auf ein Glossar Dokument, wo alle Abkürzungen und unklaren Begriffe erklärt werden>
+% <Die Quellen / Referenzen sollten mit dem Word Tool automatisch erstellt werden>
+
+Die Anforderungsspezifikation ist eng verbunden mit der Domainanalyse und anderen Dokumenten. Die folgende Tabelle listet die wichtigsten Referenzen auf.
+
+FIXME Verweise zum Projektplan einfügen, zur Domainanalyse u.a. Dokumenten, die wir mit der Anforderungsspezifikation abgeben
+
+\begin{tabulary}{\linewidth}{ll}
+	Domainanalyse & FIXME \\
+	Confluence & \url{\confluenceurl} \\
+	Github-Repository von \emph{kitovu} & \url{https://github.com/kitovu-bot/kitovu} \\
+	JIRA	& \url{\jiraurl} \\
+	OpenHSR Connect & \url{https://github.com/openhsr/connect} \\
+	
+\end{tabulary}
+
+Beim Logo auf der Titelseite handelt es sich um eine stark überarbeitete Version eines GIFs (\url{https://www.animateit.net/details.php?image_id=8990}). Urheber und Copyright waren nicht auffindbar.
+
+\pagebreak
 \section{Allgemeine Beschreibung}
 
 \subsection{Produktperspektive}
@@ -63,6 +89,26 @@
 
 \subsection{Produktfunktion}
 %<Allgemeine Beschreibung der Funktionen>
+\emph{Kitovu} ist ein Client, der von verschiedenen Plattformen ausgewählte Unterrichtsmaterialien auf den eigenen Rechner synchronisiert. Er läuft auf allen gängigen Betriebssystemen und funktioniert nicht nur für den HSR-Skripteserver, sondern ist auch erweiterbar für verschiedene Plattformen.
+
+Unser Projekt bindet primär den Skripteserver ein. Der Terminal-basierte Client funktioniert mittels Profilen zu unterschiedlichen Plattformen (Moodle, Skripteserver, Studentenportal). Pro Profil sind Verbindungsdaten und eventuelle Login-Credentials im Client hinterlegt. Die Daten-Synchronisation erfolgt immer nur von Server zu Client, erfolgreiche und misslungene Datentransfers werden protokolliert. Ein rudimentäres GUI dient als Proof-of-Concept.
+
+Pro Profil lässt sich Folgendes definieren:
+
+\begin{itemize}
+	\item welche Ordner/Dateien synchronisiert werden.
+	\item welche Ordner/Dateien von der Synchronisation ausgeschlossen werden.
+	\item wie mit Duplikaten/lokal bestehenden Dateien umgegangen wird.
+\end{itemize}
+
+\emph{Kitovu} ist ausbaubar und damit modular: Zusätzlich zu den beiden Plattformen (Skripteserver; Moodle oder Studentenportal) können in zukünftigen Projekten beliebig viele Plattformen als separates Plugin bzw. Profil realisiert werden.
+
+Optionale Features:
+
+\begin{itemize}
+	\item Moodle und/oder das Studentenportal. Die Implementation von Moodle oder des Studentenportals ist abhängig von den weiter unten beschriebenen Risiken.
+	\item Komplettes GUI, das der Funktionalität des Terminalprogramms entspricht.
+\end{itemize}
 
 \subsection{Benutzercharakteristik}
 %<Zielgruppe des Produktes>

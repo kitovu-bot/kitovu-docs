@@ -48,7 +48,7 @@
 	\toprule
 	Datum & Version & Änderung & AutorIn \\
 	\midrule
-	04.03.2018 & 1.0 & Dokument erstellt, Grundgerüst von Template übernommen & Méline Sieber \\
+	04.03.2018 & 1.0 & Dokument erstellt, Grundgerüst von Template übernommen, funktionale Anforderungen & Méline Sieber \\
 
 	\bottomrule
 \end{tabulary}
@@ -95,7 +95,7 @@ Beim Logo auf der Titelseite handelt es sich um eine stark überarbeitete Versio
 %<Allgemeine Beschreibung der Funktionen>
 \emph{Kitovu} ist ein Client, der von verschiedenen Plattformen ausgewählte HSR-Unterrichtsmaterialien auf den eigenen Rechner synchronisiert. Er läuft auf allen gängigen Betriebssystemen und funktioniert nicht nur für den HSR-Skripteserver, sondern ist auch erweiterbar für verschiedene Plattformen.
 
-Unser Projekt bindet primär den Skripteserver ein. Der Terminal-basierte Client funktioniert mittels Profilen zu unterschiedlichen Plattformen (Moodle, Skripteserver, Studentenportal). Pro Profil sind Verbindungsdaten und eventuelle Login-Credentials im Client hinterlegt. Die Daten-Synchronisation erfolgt immer nur von Server zu Client, erfolgreiche und misslungene Datentransfers werden protokolliert. Ein rudimentäres GUI dient als Proof-of-Concept.
+Unser Projekt bindet primär den Skripteserver ein. Der Kommandozeilen-basierte Client funktioniert mittels Profilen zu unterschiedlichen Plattformen (Moodle, Skripteserver, Studentenportal). Pro Profil sind Verbindungsdaten und eventuelle Login-Credentials im Client hinterlegt. Die Daten-Synchronisation erfolgt immer nur von Server zu Client, erfolgreiche und misslungene Datentransfers werden protokolliert. Ein rudimentäres GUI dient als Proof-of-Concept.
 
 Pro Profil lässt sich Folgendes definieren:
 
@@ -171,7 +171,7 @@ FIXME insert definitive use case diagram, schön anordnen
 
 \item[Use Case 2: Zu synchronisierende Dateien editieren (CRUD):] Die Studentin konfiguriert, welche Ordner und Dateien synchronisiert werden sollen.
 
-\item[Use Case 3: Verbindung erstellen:] Die Studentin verifiziert sich bei der externen Plattform.
+\item[Use Case 3: Verbindung erstellen:] Die Studentin authentisiert sich bei der externen Plattform.
 
 \item[Use Case 4: Synchronisation der Dateien:] Die Studentin synchronisiert die Dateien von der externen Plattform auf ihren Rechner.
 \end{description}
@@ -180,54 +180,54 @@ FIXME insert definitive use case diagram, schön anordnen
 \subsection{Beschreibungen (Fully Dressed)}
 %<Spezielle und wichtige Use Cases in einzelnen Kapiteln beschreiben im Fully Dressed Format>
 
-FIXME Tabelle in schön
+FIXME Tabelle in schön- Weggelassen: Level, weil macht irgendwie keinen Sinn
 
 \subsubsection{UC1: Profil editieren}
 \begin{tabulary}{\linewidth}{lp{30em}}
-	\textbf{Goal} & Der Student editiert ein Profil zu einer externen Plattform: CRUD (Create, Read Update, Delete) \\
-	\textbf{Level} & FIXME \\
+	\textbf{Goal} & Der Student editiert das Profil zu einer externen Plattform: CRUD (Create, Read Update, Delete). \\
+	%\textbf{Level} & FIXME \\
 	\textbf{Primary Actor} & Student\\
-	\textbf{Trigger} & Der Student möchte aktuelle Unterrichtsmaterialien auf seinem Rechner haben.\\
-	\textbf{Stakeholders and Interests} & FIXME \\
+	\textbf{Trigger} & Der Student möchte aktuelle Unterrichtsmaterialien auf seinem Rechner haben. \\
+	\textbf{Stakeholders and Interests} & \textbf{Der Student}: legt eine neue Plattform an. \textbf{Das System:} informiert den Studenten, welche Plattformen unterstützt werden und stellt sicher, dass die Plattform bereits implementiert ist. \\
 	\textbf{Preconditions} & Der Student besitzt einen Account der externen Plattform mit entsprechenden Login-Daten.\\
 	\textbf{Postconditions} & FIXME \\
 	\textbf{Main Success Scenario} & Der Student erstellt ein Profil zu einer externen Plattform in \emph{kitovu}. Er kann die Zugangsdaten erstellen, speichern, abändern oder das Profil ganz entfernen. Die eingegebenen Daten werden in \emph{kitovu} gespeichert. \\
-	\textbf{Extensions} & Die externe Plattform verlangt, dass sich der Student pro Session authentisiert (Moodle).\\
-	\textbf{Special Requirements} & asdf \\
-	\textbf{Frequency of Occurrence} & asdf \\
+	\textbf{Extensions} & \textbf{Moodle:} Die externe Plattform verlangt, dass sich der Student pro Session authentisiert. \textbf{HSR-Skripteserver:} Die externe Plattform verlangt, dass sich der Student im HSR-Netz befindet oder bereits eine VPN-Verbindung zur Plattform aufgenommen hat.\\
+	%\textbf{Special Requirements} & FIXME \\
+	\textbf{Frequency of Occurrence} & Selten, nach Bedarf. \\
 	\textbf{Open Issues} & Keine. \\
 \end{tabulary}
 
 \subsubsection{UC2: Dateien auswählen}
 \begin{tabulary}{\linewidth}{lp{30em}}
-	\textbf{Goal} & Die Studentin wählt aus, welche Dateien sie auf ihren Rechner synchronisieren möchte (CRUD)-\\
-	\textbf{Level} & FIXME \\
+	\textbf{Goal} & Die Studentin wählt aus, welche Dateien sie auf ihren Rechner synchronisieren möchte (CRUD). \\
+	%\textbf{Level} & FIXME \\
 	\textbf{Primary Actor} & Studentin\\
 	\textbf{Trigger} & Die Studentin möchte nur bestimmte Dateien und Ordner auf ihrem Rechner haben.\\
-	\textbf{Stakeholders and Interests} & FIXME \\
-	\textbf{Preconditions} & Die Studentin besitzt einen Account der externen Plattform. Sie hat bereits ein Profil der externen Plattform in \emph{kitovu} hinterlegt.\\
+	\textbf{Stakeholders and Interests} & \textbf{Die Studentin}: weiss, welche Dateien sie synchronisieren möchte. \textbf{Das System:} kann die entsprechenden Dateien lokalisieren. \\
+	\textbf{Preconditions} & UC1 ist erfolgt: Die Studentin besitzt einen Account der externen Plattform. Sie hat bereits ein Profil der externen Plattform in \emph{kitovu} hinterlegt. [FIXME linebreak] Sie weiss, welche Dateien sie synchronisieren möchte. \\
 	\textbf{Postconditions} & UC3 ist erfolgreich.\\
-	\textbf{Main Success Scenario} & Die Studentin wählt die zu synchronisierenden Daten aus, startet den Synchronisationsprozess und verfügt danach über die von ihr ausgewählten Unterrichtsmaterialien auf ihrem Rechner.\\
-	\textbf{Extensions} & Sie hat bereits eine  \\
-	\textbf{Special Requirements} & asdf \\
+	\textbf{Main Success Scenario} & Die Studentin definiert für das jeweilige Profil, welche Dateien sie synchronisiert haben möchte. \\
+	\textbf{Extensions} & FIXME\\
+	%\textbf{Special Requirements} & asdf \\
 	\textbf{Frequency of Occurrence} & Zu Beginn jedes Semesters, wenn die neuen Module beginnen. \\
-	\textbf{Open Issues} & asdf \\
+	%\textbf{Open Issues} & asdf \\
 \end{tabulary}
 
 \subsubsection{UC3: Verbindung erstellen}
 \begin{tabulary}{\linewidth}{lp{30em}}
-	\textbf{Goal} & Um auf die Unterrichtsmaterialien zuzugreifen, muss der Student eine Verbindung zu externen Plattform aufnehmen. \\
-	\textbf{Level} & FIXME \\
+	\textbf{Goal} & Um auf die Unterrichtsmaterialien zuzugreifen, muss der Student eine Verbindung zur externen Plattform herstellen. \\
+	%\textbf{Level} & FIXME \\
 	\textbf{Primary Actor} & Der Student \\
-	\textbf{Trigger} & \url{https://github.com/kitovu-bot/kitovu} \\
-	\textbf{Stakeholders and Interests} & \url{\jiraurl} \\
+	\textbf{Trigger} & Der Student möchte auf eine externe Plattform zugreifen. \\
+	\textbf{Stakeholders and Interests} & \textbf{Der Student}: weiss, von welcher Plattform er welche Dateien möchte. \textbf{Das System:} kann die Verbindung herstellen. \\
 	\textbf{Preconditions} & Der Student hat in UC1 die Profildaten der externen Plattform hinterlegt.\\
 	\textbf{Postconditions} & keine.\\
-	\textbf{Main Success Scenario} & Der Student verbindet sich erfolgreich zur externen Plattform. \\
-	\textbf{Extensions} & \url{https://www.switch.ch/aai/} \\
+	\textbf{Main Success Scenario} & Der Student verbindet sich zur externen Plattform, die Authentisierung ist erfolgreich. \\
+	\textbf{Extensions} & \textbf{Die Verbindung misslingt:} [FIXME Bulletpoint] Nicht im HSR-Netz (HSR-Skripteserver): Die Verbindung misslingt, da sich der Student nicht im HSR-Netz befindet oder nicht per VPN verbunden ist. [FIXME Bulletpoint] Moodle-Probleme: der Zugriff auf Moodle misslingt aufgrund Plattform-eigener Probleme.\\
 	\textbf{Special Requirements} & Der Student verfügt über einen Account der externen Plattform. \\
-	\textbf{Frequency of Occurrence} & FIXME \\
-	\textbf{Open Issues} & FIXME \\
+	\textbf{Frequency of Occurrence} & Rund jede Woche, wenn die Dozenten erneut neue Unterrichtsmaterialien bereitstellen. \\
+	%\textbf{Open Issues} & FIXME \\
 \end{tabulary}
 
 
@@ -235,17 +235,17 @@ FIXME Tabelle in schön
 
 \begin{tabulary}{\linewidth}{lp{30em}}
 	\textbf{Goal} & Die Studentin synchronisiert alle benötigten Unterrichtsmaterialien auf ihren Computer. \\
-	\textbf{Level} & FIXME \\
+	%\textbf{Level} & FIXME \\
 	\textbf{Primary Actor} & Die Studentin \\
 	\textbf{Trigger} & Die Studentin möchte aktuelle Unterrichtsmaterialien auf ihrem Computer lokal abspeichern. \\
-	\textbf{Stakeholders and Interests} & FIXME \\
-	\textbf{Preconditions} & Die Studentin hat erfolgreich eine Verbindung zur externen Plattform hergestellt. \\
-	\textbf{Postconditions} & FIXME \\
-	\textbf{Main Success Scenario} & FIXME \\
-	\textbf{Extensions} & FIXME \\
-	\textbf{Special Requirements} & FIXME \\
+	\textbf{Stakeholders and Interests} & \textbf{Die Studentin}: möchte stets die Version der Dateien auf ihrem Rechner haben, die sie tatsächlich will. \textbf{Das System:}  stellt sicher, dass die gespeicherten Dateien konsistent und und aktuell sind. Es modifiziert keine Dateien, ohne dass die Studentin nicht davon wüsste.\\
+	\textbf{Preconditions} & UC3: Die Studentin hat erfolgreich eine Verbindung zur externen Plattform hergestellt. \\
+	%\textbf{Postconditions} & FIXME \\
+	\textbf{Main Success Scenario} & Die Studentin startet den Synchronisationsprozess. Danach verfügt sie über die von ihr ausgewählten Unterrichtsmaterialien auf ihrem Rechner. Eine Log-Datei protokolliert den Vorgang. \\
+	\textbf{Extensions} & \textbf{Dateien schon vorhanden:} Die Studentin legt in ihrem Profil fest, wie mit bereits existierenden Dateien umgegangen werden soll. Dabei kann sie wählen, ob lokal bestehende Dateien gleichen Namens umbenannt, durch eine neuere Server-Version ersetzt oder nichts synchronisiert werden soll. Sie kann auch entscheiden, bei jedem Konflikt von \emph{kitovu} gefragt zu werden, wie sie für jede Datei entscheiden möchte. \textbf{Synchronisation schlägt fehl:} Die Synchronisation wird nicht durchgeführt, die Studentin erhält eine Benachrichtigung.\\
+	%\textbf{Special Requirements} & FIXME \\
 	\textbf{Frequency of Occurrence} & Rund jede Woche, wenn die Dozenten erneut neue Unterrichtsmaterialien bereitstellen.  \\
-	\textbf{Open Issues} & FIXME \\
+	%\textbf{Open Issues} & Moodle-Anbindung \\
 \end{tabulary}
 
 \pagebreak

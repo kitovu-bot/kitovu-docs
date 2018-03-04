@@ -71,14 +71,15 @@ Die Anforderungsspezifikation ist eng verbunden mit der Domainanalyse und andere
 FIXME Verweise zum Projektplan einfügen, zur Domainanalyse u.a. Dokumenten, die wir mit der Anforderungsspezifikation abgeben
 
 \begin{tabulary}{\linewidth}{ll}
-	Domainanalyse & FIXME \\
 	Confluence & \url{\confluenceurl} \\
+	Domainanalyse & FIXME \\
+	Draw.io & \url{https://www.draw.io/} \\
 	Github-Repository von \emph{kitovu} & \url{https://github.com/kitovu-bot/kitovu} \\
 	JIRA	& \url{\jiraurl} \\
 	Moodle & \url{https://moodle.hsr.ch} \\
 	OpenHSR Connect & \url{https://github.com/openhsr/connect} \\
 	Studentenportal & \url{https://studentenportal.ch/} \\
-	Switch AAI (Authentication and Authorization Infrastructure)& \url{https://www.switch.ch/aai/}
+	Switch AAI (Authentication and Authorization Infrastructure)& \url{https://www.switch.ch/aai/} \\
 	
 \end{tabulary}
 
@@ -142,6 +143,7 @@ Wir müssen annehmen, dass ein Teil der Studentinnen und Studenten darin vertrau
 \subsection{Aktoren und Stakeholder}
 %<Aufzählung und Beschreibung der Aktoren & Stakeholder>
 FIXME: wer sind die Stakeholder?
+
 \begin{tabulary}{\linewidth}{lL}
 	\toprule
 	Aktor & Beschreibung\\
@@ -156,22 +158,23 @@ FIXME: wer sind die Stakeholder?
 
 \subsection{Use-Case-Diagramm}
 %<Use Case Diagramm>
-FIXME insert definitive use case diagram
+
+FIXME insert definitive use case diagram, schön anordnen
+
+\includegraphics[width=40em]{../../doc/Anforderungsspezifikation/uc_diagram_kitovu.png}
 
 \subsection{Beschreibungen (Brief)}
 %<Alle Use Cases in einzelnen Kapiteln beschreiben im Brief Format>
+\begin{description}
+	
+\item[Use Case 1: Profil editieren (CRUD):] Die Studentin legt in einer Konfigurationsdatei die Plattform und die entsprechenden Zugangsdaten fest, mit der auf die externe Plattform zugegriffen wird.
 
-\begin{itemize}
-	\item[Use Case 1: Profil editieren (CRUD)]
-	\item[Use Case 3: Login-Prozess]
-	\item[Use Case 2: Synchronisation der Dateien]
-\end{itemize}
+\item[Use Case 2: Zu synchronisierende Daten editieren (CRUD):] Die Studentin konfiguriert, welche Ordner und Dateien synchronisiert werden sollen.
 
-    Konfig-File editieren
-    Login-Prozess
-    Synchronisation
-    
-    Im Diagramm: Moodle, Skripteserver und Studentenportal als Externe Services
+\item[Use Case 2: Login-Prozess:] Die Studentin verifiziert sich bei der externen Plattform.
+
+\item[Use Case 3: Synchronisation der Dateien:] Die Studentin synchronisiert die Dateien von der externen Plattform auf ihren Rechner.
+\end{description}
 
 \subsubsection{<Use Case Name}
 %<Beschreibung zum Use Case im Brief Format>

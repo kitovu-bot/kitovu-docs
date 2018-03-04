@@ -55,10 +55,10 @@
 \pagebreak
 
 \section{Einführung}
-Dieses Dokument beschreibt, was \emph{kitovu} genau ist. Danach veranschaulicht diese Anforderungsspezifikation, für wen der \emph{kitovu}-Client gedacht ist. Das erfolgt anhand von ``Use Cases'', einerseits in einem kurzen Format (\emph{brief}), andererseits in einer ausführlichen Beschreibung (\emph{fully dressed}). Weitere Anforderungen detaillieren, welche Qualitätsmerkmale und Schnittstellen verwendet werden sowie geltende Randbedingungen.
+Dieses Dokument beschreibt, was \emph{kitovu} genau ist. Danach veranschaulicht diese Anforderungsspezifikation, wer \emph{kitovu} verwendet. Das erfolgt anhand von ``Use Cases'', einerseits in einem kurzen Format (\emph{brief}), andererseits in einer ausführlichen Beschreibung (\emph{fully dressed}). Weitere Anforderungen detaillieren, welche Qualitätsmerkmale und Schnittstellen verwendet werden sowie geltende Randbedingungen.
 
 \subsection{Gültigkeitsbereich}
-Die vorliegende Anforderungsspezifikation ist für das Engineering Projekt im Frühlingssemester 2018 gültig. Falls dem Projekt grössere Veränderungen widerfahren, wird das Dokument dementsprechend angepasst. Umfassende Änderungen werden am Anfang des Dokuments protokolliert.
+Die vorliegende Anforderungsspezifikation ist für das Engineering-Projekt im Frühlingssemester 2018 gültig. Falls dem Projekt grössere Veränderungen widerfahren, wird das Dokument dementsprechend angepasst. Umfassende Änderungen werden am Anfang des Dokuments protokolliert.
 
 \subsection{Referenzen}
 
@@ -66,7 +66,7 @@ Die vorliegende Anforderungsspezifikation ist für das Engineering Projekt im Fr
 % <Referenz auf ein Glossar Dokument, wo alle Abkürzungen und unklaren Begriffe erklärt werden>
 % <Die Quellen / Referenzen sollten mit dem Word Tool automatisch erstellt werden>
 
-Die Anforderungsspezifikation ist eng verbunden mit der Domainanalyse und anderen Dokumenten. Die folgende Tabelle listet die wichtigsten Referenzen auf.
+Die Anforderungsspezifikation ist eng mit der Domainanalyse und anderen Dokumenten verbunden. Die folgende Tabelle listet die wichtigsten Referenzen auf.
 
 FIXME Verweise zum Projektplan einfügen, zur Domainanalyse u.a. Dokumenten, die wir mit der Anforderungsspezifikation abgeben
 
@@ -110,28 +110,28 @@ Pro Profil lässt sich Folgendes definieren:
 Optionale Features:
 
 \begin{itemize}
-	\item Moodle und/oder das Studentenportal. Die Implementation von Moodle oder des Studentenportals ist abhängig von den weiter unten beschriebenen Risiken.
-	\item Komplettes GUI, das der Funktionalität des Terminalprogramms entspricht.
+	\item Moodle und/oder das Studentenportal.\footnote{Die Implementation von Moodle oder des Studentenportals ist abhängig von verschiedenen Risiken, die der Projektplan genauer ausführt.} 
+	\item Komplettes GUI, das der Funktionalität des Kommandozeilen-Clients entspricht.
 \end{itemize}
 
 \subsection{Benutzercharakteristik}
 %<Zielgruppe des Produktes>
-Studentinnen und Studenten verwenden \emph{kitovu}, um ihre Unterrichtsmaterialien auf ihren Rechnern à jour zu halten. Sie verwenden verschiedene Betriebssysteme (Windows, macOS, Linux). Ihre Erfahrung mit der Kommandozeile ist unterschiedlich; manche verwenden sie nie, andere benutzen sie zur Standardinteraktion mit dem Betriebssystem.
+Studentinnen und Studenten verwenden \emph{kitovu}, um ihre Unterrichtsmaterialien auf ihren Rechnern à jour zu halten. Sie verwenden verschiedene Betriebssysteme (Windows, macOS, Linux). Ihre Erfahrung mit der Kommandozeile ist unterschiedlich; manche verwenden sie nie, andere benutzen sie zur Standardinteraktion mit ihrem Betriebssystem.
 
 Dozentinnen und Dozenten können ebenfalls \emph{kitovu} verwenden, sie sind jedoch nicht die primäre Zielgruppe.
 
 \subsection{Einschränkungen}
 %<Wo sind die Grenzen des Produkts>
-Da die Projekt-Zeitspanne kurz ist, ist die Kernfunktion von \emph{kitovu} ein Client, der über die Kommandozeile bedient wird. Es ist vorerst nur eine rudimentäre grafische Benutzeroberfläche geplant. Falls jedoch genügend Zeit bleibt, baut das Team diese aus. Uns ist bewusst, dass wir damit einen Teil der Studierenden ausschliessen, nicht alle können mit der Kommandozeile umgehen. Aufgrund der Zeitbeschränkung müssen wir das in Kauf nehmen, sehen es aber als erste Priorität, die wir implementieren, wenn bis zum Ende des Projekts genügend Zeit bleiben sollte.
+Da die Projekt-Zeitspanne kurz ist, ist die Kernfunktion von \emph{kitovu} ein Client, der über die Kommandozeile bedient wird. Es ist vorerst nur eine rudimentäre grafische Benutzeroberfläche geplant. Falls jedoch genügend Zeit bleibt, baut das Team diese aus. Uns ist bewusst, dass wir damit einen Teil der Studierenden ausschliessen, nicht alle können mit der Kommandozeile umgehen. Aufgrund der Zeitbeschränkung müssen wir das in Kauf nehmen, sehen es aber als erste Priorität. Falls genügend Zeit bleiben sollte, erweitern wir den grafischen Client auf die Funktionalität des Terminal-Clients.
 
-Eine weitere Einschränkung sind das Studentenportal und Moodle. Die Gründe dazu beschreibt bereits der Projektplan ausführlich.
+Weitere Einschränkungen sind das Studentenportal und Moodle. Die Gründe dazu beschreibt bereits der Projektplan ausführlich.
 
 
 \subsection{Annahmen}
 %<Was ist unklar und wird angenommen bezüglich des Projektes oder des Produktes>
-Eine wichtige Voraussetzung sind bereits bestehende Accounts. Wir gehen davon aus, dass die Studierenden bereits einen HSR-Account besitzen und sich damit sowohl per VPN von zu Hause als auch direkt an der HSR mit dem Skripteserver verbinden können. Das Studentenportal\footnote{https://studentenportal.ch/} verlangt einen separaten Account, der Zugriff auf Moodle\footnote{\url{https://moodle.hsr.ch}} erfolgt via Switch-AAI, der Authentisierung- und Autorisierungsschnittstelle für alle Hochschulen\footnote{\url{https://www.switch.ch/aai/}}.
+Eine wichtige Voraussetzung sind bereits bestehende Accounts. Wir gehen davon aus, dass die Studierenden bereits einen HSR-Account besitzen und sich damit sowohl per VPN von zu Hause als auch direkt an der HSR mit dem Skripteserver verbinden können. Das Studentenportal\footnote{https://studentenportal.ch/} verlangt einen separaten Account, der Zugriff auf Moodle\footnote{\url{https://moodle.hsr.ch}} erfolgt via Switch-AAI, der Authentisierung- und Autorisierungsschnittstelle für alle Schweizer Hochschulen\footnote{\url{https://www.switch.ch/aai/}}.
 
-Wir müssen annehmen, dass ein Teil der Studentinnen und Studenten darin vertraut ist, die Kommandozeile zu bedienen. Die Konfiguration von \emph{kitovu} erfolgt über ein einzelnes Konfigurationsfile - wir müssen ebenfalls davon ausgehen, dass die Studierenden damit umgehen können.
+Wir müssen annehmen, dass ein Teil der Studentinnen und Studenten vertraut ist, die Kommandozeile zu bedienen. Die Konfiguration von \emph{kitovu} erfolgt über ein einzelnes Konfigurationsfile - wir müssen ebenfalls davon ausgehen, dass die Studierenden damit umgehen können. Folglich schliesst ein Kommandozeilen-basierter Client einen Teil der Studierenden aus.
 
 \subsection{Abhängigkeiten}
 %<Von welchen Faktoren hängt das Produkt ab>
@@ -151,10 +151,10 @@ FIXME: wer sind die Stakeholder?
 	Skripteserver & HSR-Plattform, in der Dozierende Unterrichtsmaterialien zur Verfügung stellen.\\
 	Studentenportal & Portal für eigene Materialien der HSR-Studierenden.\\
 	Switch-AAI & Supporting Actor; ermöglicht Zugriff auf Moodle \\	
+	Moodle & Indirekter Actor, Zugriff nur via Switch-AAI \\
 	
 	\bottomrule
 \end{tabulary}
-\pagebreak
 
 \subsection{Use-Case-Diagramm}
 %<Use Case Diagramm>
@@ -169,11 +169,11 @@ FIXME insert definitive use case diagram, schön anordnen
 	
 \item[Use Case 1: Profil editieren (CRUD):] Die Studentin legt in einer Konfigurationsdatei die Plattform und die entsprechenden Zugangsdaten fest, mit der auf die externe Plattform zugegriffen wird.
 
-\item[Use Case 2: Zu synchronisierende Dateien editieren (CRUD):] Die Studentin konfiguriert, welche Ordner und Dateien synchronisiert werden sollen.
+\item[Use Case 2: Dateien auswählen (CRUD):] Die Studentin konfiguriert, welche Ordner und Dateien synchronisiert werden sollen.
 
-\item[Use Case 3: Verbindung erstellen:] Die Studentin authentisiert sich bei der externen Plattform.
+\item[Use Case 3: Verbindung erstellen:] Die Studentin stellt eine Verbindung zur externen Plattform her und authentisiert sich dort.
 
-\item[Use Case 4: Synchronisation der Dateien:] Die Studentin synchronisiert die Dateien von der externen Plattform auf ihren Rechner.
+\item[Use Case 4: Synchronisation:] Die Studentin synchronisiert die Dateien von der externen Plattform auf ihren Rechner.
 \end{description}
 
 \pagebreak
@@ -200,14 +200,14 @@ FIXME Tabelle in schön- Weggelassen: Level, weil macht irgendwie keinen Sinn
 
 \subsubsection{UC2: Dateien auswählen}
 \begin{tabulary}{\linewidth}{lp{30em}}
-	\textbf{Goal} & Die Studentin wählt aus, welche Dateien sie auf ihren Rechner synchronisieren möchte (CRUD). \\
+	\textbf{Goal} & Die Studentin wählt aus, welche Dateien sie auf ihren Rechner synchronisieren möchte (CRUD). Sie kann ausschliessen, welche Dateien nicht synchronisiert werden.\\
 	%\textbf{Level} & FIXME \\
 	\textbf{Primary Actor} & Studentin\\
 	\textbf{Trigger} & Die Studentin möchte nur bestimmte Dateien und Ordner auf ihrem Rechner haben.\\
 	\textbf{Stakeholders and Interests} & \textbf{Die Studentin}: weiss, welche Dateien sie synchronisieren möchte. \textbf{Das System:} kann die entsprechenden Dateien lokalisieren. \\
 	\textbf{Preconditions} & UC1 ist erfolgt: Die Studentin besitzt einen Account der externen Plattform. Sie hat bereits ein Profil der externen Plattform in \emph{kitovu} hinterlegt. [FIXME linebreak] Sie weiss, welche Dateien sie synchronisieren möchte. \\
 	\textbf{Postconditions} & UC3 ist erfolgreich.\\
-	\textbf{Main Success Scenario} & Die Studentin definiert für das jeweilige Profil, welche Dateien sie synchronisiert haben möchte. \\
+	\textbf{Main Success Scenario} & Die Studentin definiert für das jeweilige Profil, welche Dateien sie synchronisiert haben möchte und welche ausgeschlossen werden. \\
 	\textbf{Extensions} & FIXME\\
 	%\textbf{Special Requirements} & asdf \\
 	\textbf{Frequency of Occurrence} & Zu Beginn jedes Semesters, wenn die neuen Module beginnen. \\

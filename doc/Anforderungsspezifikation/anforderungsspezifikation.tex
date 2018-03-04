@@ -75,7 +75,10 @@ FIXME Verweise zum Projektplan einfügen, zur Domainanalyse u.a. Dokumenten, die
 	Confluence & \url{\confluenceurl} \\
 	Github-Repository von \emph{kitovu} & \url{https://github.com/kitovu-bot/kitovu} \\
 	JIRA	& \url{\jiraurl} \\
+	Moodle & \url{https://moodle.hsr.ch} \\
 	OpenHSR Connect & \url{https://github.com/openhsr/connect} \\
+	Studentenportal & \url{https://studentenportal.ch/} \\
+	Switch AAI & \url{https://www.switch.ch/aai/}
 	
 \end{tabulary}
 
@@ -89,7 +92,7 @@ Beim Logo auf der Titelseite handelt es sich um eine stark überarbeitete Versio
 
 \subsection{Produktfunktion}
 %<Allgemeine Beschreibung der Funktionen>
-\emph{Kitovu} ist ein Client, der von verschiedenen Plattformen ausgewählte Unterrichtsmaterialien auf den eigenen Rechner synchronisiert. Er läuft auf allen gängigen Betriebssystemen und funktioniert nicht nur für den HSR-Skripteserver, sondern ist auch erweiterbar für verschiedene Plattformen.
+\emph{Kitovu} ist ein Client, der von verschiedenen Plattformen ausgewählte HSR-Unterrichtsmaterialien auf den eigenen Rechner synchronisiert. Er läuft auf allen gängigen Betriebssystemen und funktioniert nicht nur für den HSR-Skripteserver, sondern ist auch erweiterbar für verschiedene Plattformen.
 
 Unser Projekt bindet primär den Skripteserver ein. Der Terminal-basierte Client funktioniert mittels Profilen zu unterschiedlichen Plattformen (Moodle, Skripteserver, Studentenportal). Pro Profil sind Verbindungsdaten und eventuelle Login-Credentials im Client hinterlegt. Die Daten-Synchronisation erfolgt immer nur von Server zu Client, erfolgreiche und misslungene Datentransfers werden protokolliert. Ein rudimentäres GUI dient als Proof-of-Concept.
 
@@ -112,15 +115,26 @@ Optionale Features:
 
 \subsection{Benutzercharakteristik}
 %<Zielgruppe des Produktes>
+Studentinnen und Studenten verwenden \emph{kitovu}, um ihre Unterrichtsmaterialien auf ihren Rechnern à jour zu halten. Sie verwenden verschiedene Betriebssysteme (Windows, macOS, Linux). Ihre Erfahrung mit der Kommandozeile ist unterschiedlich; manche verwenden sie nie, andere benutzen sie zur Standardinteraktion mit dem Betriebssystem.
+
+Dozentinnen und Dozenten können ebenfalls \emph{kitovu} verwenden, sie sind jedoch nicht die primäre Zielgruppe.
 
 \subsection{Einschränkungen}
 %<Wo sind die Grenzen des Produkts>
+Da die Projekt-Zeitspanne kurz ist, ist die Kernfunktion von \emph{kitovu} ein Client, der über die Kommandozeile bedient wird. Es ist vorerst nur eine rudimentäre grafische Benutzeroberfläche geplant. Falls jedoch genügend Zeit bleibt, baut das Team diese aus. Uns ist bewusst, dass wir damit einen Teil der Studierenden ausschliessen, nicht alle können mit der Kommandozeile umgehen. Aufgrund der Zeitbeschränkung müssen wir das in Kauf nehmen, sehen es aber als erste Priorität, die wir implementieren, wenn bis zum Ende des Projekts genügend Zeit bleiben sollte.
+
+Eine weitere Einschränkung sind das Studentenportal und Moodle. Die Gründe dazu beschreibt bereits der Projektplan ausführlich.
+
 
 \subsection{Annahmen}
 %<Was ist unklar und wird angenommen bezüglich des Projektes oder des Produktes>
+Eine wichtige Voraussetzung sind bereits bestehende Accounts. Wir gehen davon aus, dass die Studierenden bereits einen HSR-Account besitzen und sich damit sowohl per VPN von zu Hause als auch direkt an der HSR mit dem Skripteserver verbinden können. Das Studentenportal\footnote{https://studentenportal.ch/} verlangt einen separaten Account, der Zugriff auf Moodle\footnote{\url{https://moodle.hsr.ch}} erfolgt via Switch-AAI, der Authentisierung- und Autorisierungsschnittstelle für alle Hochschulen\footnote{\url{https://www.switch.ch/aai/}}.
+
+Wir müssen annehmen, dass ein Teil der Studentinnen und Studenten darin vertraut ist, die Kommandozeile zu bedienen. Die Konfiguration von \emph{kitovu} erfolgt über ein einzelnes Konfigurationsfile - wir müssen ebenfalls davon ausgehen, dass die Studierenden damit umgehen können.
 
 \subsection{Abhängigkeiten}
 %<Von welchen Faktoren hängt das Produkt ab>
+\emph{Kitovu} steht und fällt mit der Anbindung an die Plattformen, also den HSR-Skripteserver sowie die optionalen Plattformen Moodle oder Studentenportal.
 
 \pagebreak
 \section{Use Cases}

@@ -50,7 +50,7 @@
 	Datum & Version & Änderung & AutorIn \\
 	\midrule
 	04.03.2018 & 1.0 & Dokument erstellt, Grundgerüst von Template übernommen, funktionale Anforderungen & Méline Sieber \\
-
+	06.03.2018 & 1.1 & Überarbeitung & alle \\
 	\bottomrule
 \end{tabulary}
 \pagebreak
@@ -68,8 +68,6 @@ Die vorliegende Anforderungsspezifikation ist für das Engineering-Projekt im Fr
 % <Die Quellen / Referenzen sollten mit dem Word Tool automatisch erstellt werden>
 
 Die Anforderungsspezifikation ist eng mit der Domainanalyse und anderen Dokumenten verbunden. Die folgende Tabelle listet die wichtigsten Referenzen auf.
-
-FIXME Verweise zum Projektplan einfügen, zur Domainanalyse u.a. Dokumenten, die wir mit der Anforderungsspezifikation abgeben
 
 \begin{tabulary}{\linewidth}{ll}
 	Confluence & \url{\confluenceurl} \\
@@ -123,16 +121,16 @@ Dozentinnen und Dozenten können ebenfalls \emph{kitovu} verwenden, sie sind jed
 
 \subsection{Einschränkungen}
 %<Wo sind die Grenzen des Produkts>
-Da die Projekt-Zeitspanne kurz ist, ist die Kernfunktion von \emph{kitovu} ein Client, der über die Kommandozeile bedient wird. Es ist vorerst nur eine rudimentäre grafische Benutzeroberfläche geplant. Falls jedoch genügend Zeit bleibt, baut das Team diese aus. Uns ist bewusst, dass wir damit einen Teil der Studierenden ausschliessen, nicht alle können mit der Kommandozeile umgehen. Aufgrund der Zeitbeschränkung müssen wir das in Kauf nehmen, sehen es aber als erste Priorität. Falls genügend Zeit bleiben sollte, erweitern wir den grafischen Client auf die Funktionalität des Terminal-Clients.
+Da die Projekt-Zeitspanne kurz ist, ist die Kernfunktion von \emph{kitovu} ein Client, der über die Kommandozeile bedient wird. Es ist vorerst nur eine rudimentäre grafische Benutzeroberfläche geplant. Falls jedoch genügend Zeit bleibt, baut das Team die Benutzeroberfläche aus. Uns ist bewusst, dass wir damit einen Teil der Studierenden ausschliessen, nicht alle können mit der Kommandozeile umgehen. Aufgrund der Zeitbeschränkung müssen wir das in Kauf nehmen, sehen es aber als erste Priorität. Falls genügend Zeit bleiben sollte, erweitern wir den grafischen Client auf die Funktionalität des Terminal-Clients.
 
 Weitere Einschränkungen sind das Studentenportal und Moodle. Die Gründe dazu beschreibt bereits der Projektplan ausführlich.
 
 
 \subsection{Annahmen}
 %<Was ist unklar und wird angenommen bezüglich des Projektes oder des Produktes>
-Eine wichtige Voraussetzung sind bereits bestehende Accounts. Wir gehen davon aus, dass die Studierenden bereits einen HSR-Account besitzen und sich damit sowohl per VPN von zu Hause als auch direkt an der HSR mit dem Skripteserver verbinden können. Das Studentenportal\footnote{https://studentenportal.ch/} verlangt einen separaten Account, der Zugriff auf Moodle\footnote{\url{https://moodle.hsr.ch}} erfolgt via Switch-AAI, der Authentisierung- und Autorisierungsschnittstelle für alle Schweizer Hochschulen\footnote{\url{https://www.switch.ch/aai/}}.
+Eine wichtige Voraussetzung sind bereits bestehende Accounts. Wir gehen davon aus, dass die Studierenden bereits einen HSR-Account besitzen und sich damit sowohl per VPN von zu Hause als auch direkt an der HSR mit dem Skripteserver verbinden können. Das Studentenportal\footnote{\url{https://studentenportal.ch/}} verlangt einen separaten Account, der Zugriff auf Moodle\footnote{\url{https://moodle.hsr.ch}} erfolgt via Switch-AAI, der Authentisierung- und Autorisierungsschnittstelle für alle Schweizer Hochschulen\footnote{\url{https://www.switch.ch/aai/}}.
 
-Wir müssen annehmen, dass ein Teil der Studentinnen und Studenten vertraut ist, die Kommandozeile zu bedienen. Die Konfiguration von \emph{kitovu} erfolgt über ein einzelnes Konfigurationsfile - wir müssen ebenfalls davon ausgehen, dass die Studierenden damit umgehen können. Folglich schliesst ein Kommandozeilen-basierter Client einen Teil der Studierenden aus.
+Wir müssen annehmen, dass ein Teil der Studentinnen und Studenten damit vertraut ist, die Kommandozeile zu bedienen. Die Konfiguration von \emph{kitovu} erfolgt über ein einzelnes Konfigurationsfile -- wir müssen ebenfalls davon ausgehen, dass die Studierenden damit umgehen können. Folglich schliesst ein Kommandozeilen-basierter Client einen Teil der Studierenden aus.
 
 \subsection{Abhängigkeiten}
 %<Von welchen Faktoren hängt das Produkt ab>
@@ -143,6 +141,9 @@ Wir müssen annehmen, dass ein Teil der Studentinnen und Studenten vertraut ist,
 \begin{landscape}
   \thispagestyle{empty}
   \section{Domainanalyse}
+  
+  FIXME: schreib was hin
+  
   \subsection{Domainmodell}
   
   % https://github.com/xuyuan/pgf-umlcd/blob/master/pgf-umlcd-manual.pdf
@@ -190,16 +191,16 @@ Wir müssen annehmen, dass ein Teil der Studentinnen und Studenten vertraut ist,
 
 \subsection{Aktoren und Stakeholder}
 %<Aufzählung und Beschreibung der Aktoren & Stakeholder>
-FIXME: wer sind die Stakeholder?
 
 \begin{tabulary}{\linewidth}{lL}
 	\toprule
 	Aktor & Beschreibung\\
-	Student & HSR-Student, der über einen HSR-Account verfügt.\\
-	Skripteserver & HSR-Plattform, in der Dozierende Unterrichtsmaterialien zur Verfügung stellen.\\
+	\midrule
+	Studentin & HSR-Studentin, die über einen HSR-Account verfügt.\\
+	Skripteserver & HSR-Plattform, in der Dozenten Unterrichtsmaterialien zur Verfügung stellen.\\
 	Studentenportal & Portal für eigene Materialien der HSR-Studierenden.\\
 	Switch-AAI & Supporting Actor; ermöglicht Zugriff auf Moodle \\	
-	Moodle & Indirekter Actor, Zugriff nur via Switch-AAI \\
+	Moodle & Zugriff nur via Switch-AAI-Token\\
 	
 	\bottomrule
 \end{tabulary}
@@ -215,9 +216,9 @@ FIXME insert definitive use case diagram, schön anordnen
 %<Alle Use Cases in einzelnen Kapiteln beschreiben im Brief Format>
 \begin{description}
 	
-\item[Use Case 1: Profil editieren (CRUD):] Die Studentin legt in einer Konfigurationsdatei die Plattform und die entsprechenden Zugangsdaten fest, mit der auf die externe Plattform zugegriffen wird.
+\item[Use Case 1: Konfiguration editieren:] Die Studentin legt in einer Konfigurationsdatei alle Plattformen und die entsprechenden Verbindungsdaten fest, mit der auf die externen Plattformen zugegriffen wird.
 
-\item[Use Case 2: Dateien auswählen (CRUD):] Die Studentin konfiguriert, welche Ordner und Dateien synchronisiert werden sollen.
+\item[Use Case 2: Dateien auswählen:] Die Studentin legt in der Konfigurationsdatei fest, welche Ordner und Dateien synchronisiert werden sollen.
 
 \item[Use Case 3: Verbindung erstellen:] Die Studentin stellt eine Verbindung zur externen Plattform her und authentisiert sich dort.
 
@@ -228,35 +229,35 @@ FIXME insert definitive use case diagram, schön anordnen
 \subsection{Beschreibungen (Fully Dressed)}
 %<Spezielle und wichtige Use Cases in einzelnen Kapiteln beschreiben im Fully Dressed Format>
 
-FIXME Tabelle in schön- Weggelassen: Level, weil macht irgendwie keinen Sinn
+FIXME Nicolas Tabelle in schön- Weggelassen: Level, weil macht irgendwie keinen Sinn
+FIXME Méline: Use Cases umschreiben, Brief-Version folgend. Überall Studentin
 
-\subsubsection{UC1: Profil editieren}
+\subsubsection{UC1: Konfiguration editieren}
 \begin{tabulary}{\linewidth}{lp{30em}}
-	\textbf{Goal} & Der Student editiert das Profil zu einer externen Plattform: CRUD (Create, Read Update, Delete). \\
+	\textbf{Goal} & Der Student editiert die Konfiguration, in der alle externen Plattform enthalten ist. \\
 	%\textbf{Level} & FIXME \\
 	\textbf{Primary Actor} & Student\\
 	\textbf{Trigger} & Der Student möchte aktuelle Unterrichtsmaterialien auf seinem Rechner haben. \\
 	\textbf{Stakeholders and Interests} & \textbf{Der Student}: legt eine neue Plattform an. \textbf{Das System:} informiert den Studenten, welche Plattformen unterstützt werden und stellt sicher, dass die Plattform bereits implementiert ist. \\
 	\textbf{Preconditions} & Der Student besitzt einen Account der externen Plattform mit entsprechenden Login-Daten.\\
-	\textbf{Postconditions} & FIXME \\
-	\textbf{Main Success Scenario} & Der Student erstellt ein Profil zu einer externen Plattform in \emph{kitovu}. Er kann die Zugangsdaten erstellen, speichern, abändern oder das Profil ganz entfernen. Die eingegebenen Daten werden in \emph{kitovu} gespeichert. \\
-	\textbf{Extensions} & \textbf{Moodle:} Die externe Plattform verlangt, dass sich der Student pro Session authentisiert. \textbf{HSR-Skripteserver:} Die externe Plattform verlangt, dass sich der Student im HSR-Netz befindet oder bereits eine VPN-Verbindung zur Plattform aufgenommen hat.\\
+	\textbf{Postconditions} & Die aktualisierte Konfigurationsdatei wird gespeichert. \\
+	\textbf{Main Success Scenario} & Der Student hinterlegt in der Konfiguration von \emph{kitovu} zu einer externen Plattform in \emph{kitovu}. Er kann die Zugangsdaten erstellen, speichern, abändern oder das Profil ganz entfernen. Die eingegebenen Daten werden in \emph{kitovu} gespeichert. \\
+	\textbf{Extensions} & Die eingegebenen Daten sind ungültig. \emph{Kitovu} weist die Studentin darauf hin.\\
 	%\textbf{Special Requirements} & FIXME \\
 	\textbf{Frequency of Occurrence} & Selten, nach Bedarf. \\
-	\textbf{Open Issues} & Keine. \\
 \end{tabulary}
 
 \subsubsection{UC2: Dateien auswählen}
 \begin{tabulary}{\linewidth}{lp{30em}}
-	\textbf{Goal} & Die Studentin wählt aus, welche Dateien sie auf ihren Rechner synchronisieren möchte (CRUD). Sie kann ausschliessen, welche Dateien nicht synchronisiert werden.\\
+	\textbf{Goal} & Die Studentin schreibt in die Konfigurationsdatei, welche Dateien sie auf ihren Rechner synchronisieren möchte. Sie kann ausschliessen, welche Dateien nicht synchronisiert werden.\\
 	%\textbf{Level} & FIXME \\
 	\textbf{Primary Actor} & Studentin\\
 	\textbf{Trigger} & Die Studentin möchte nur bestimmte Dateien und Ordner auf ihrem Rechner haben.\\
 	\textbf{Stakeholders and Interests} & \textbf{Die Studentin}: weiss, welche Dateien sie synchronisieren möchte. \textbf{Das System:} kann die entsprechenden Dateien lokalisieren. \\
-	\textbf{Preconditions} & UC1 ist erfolgt: Die Studentin besitzt einen Account der externen Plattform. Sie hat bereits ein Profil der externen Plattform in \emph{kitovu} hinterlegt. [FIXME linebreak] Sie weiss, welche Dateien sie synchronisieren möchte. \\
-	\textbf{Postconditions} & UC3 ist erfolgreich.\\
+	\textbf{Preconditions} & UC1 ist erfolgt: Die Studentin besitzt einen Account der externen Plattform. Sie hat bereits ein Profil der externen Plattform in \emph{kitovu} hinterlegt. [FIXME linebreak] Sie weiss, welche Dateien sie synchronisieren möchte und wo sie auf der externen Plattform abgelegt sind. \\
+	\textbf{Postconditions} & Die aktualisierte Konfigurationsdatei wird gespeichert.\\
 	\textbf{Main Success Scenario} & Die Studentin definiert für das jeweilige Profil, welche Dateien sie synchronisiert haben möchte und welche ausgeschlossen werden. \\
-	\textbf{Extensions} & FIXME\\
+	\textbf{Extensions} & Die angegebenen Pfade existieren nicht -- die Studentin wird in UC4 darauf hingewiesen.\\
 	%\textbf{Special Requirements} & asdf \\
 	\textbf{Frequency of Occurrence} & Zu Beginn jedes Semesters, wenn die neuen Module beginnen. \\
 	%\textbf{Open Issues} & asdf \\
@@ -270,10 +271,12 @@ FIXME Tabelle in schön- Weggelassen: Level, weil macht irgendwie keinen Sinn
 	\textbf{Trigger} & Der Student möchte auf eine externe Plattform zugreifen. \\
 	\textbf{Stakeholders and Interests} & \textbf{Der Student}: weiss, von welcher Plattform er welche Dateien möchte. \textbf{Das System:} kann die Verbindung herstellen. \\
 	\textbf{Preconditions} & Der Student hat in UC1 die Profildaten der externen Plattform hinterlegt.\\
-	\textbf{Postconditions} & keine.\\
+	\textbf{Postconditions} & Keine.\\
 	\textbf{Main Success Scenario} & Der Student verbindet sich zur externen Plattform, die Authentisierung ist erfolgreich. \\
-	\textbf{Extensions} & \textbf{Die Verbindung misslingt:} [FIXME Bulletpoint] Nicht im HSR-Netz (HSR-Skripteserver): Die Verbindung misslingt, da sich der Student nicht im HSR-Netz befindet oder nicht per VPN verbunden ist. [FIXME Bulletpoint] Moodle-Probleme: der Zugriff auf Moodle misslingt aufgrund Plattform-eigener Probleme.\\
-	\textbf{Special Requirements} & Der Student verfügt über einen Account der externen Plattform. \\
+	\textbf{Extensions} & \textbf{Die Verbindung misslingt:} [FIXME Bulletpoint] Nicht im HSR-Netz (HSR-Skripteserver): Die Verbindung misslingt, da sich der Student nicht im HSR-Netz befindet oder nicht per VPN verbunden ist. [FIXME Bulletpoint] Moodle-Probleme: der Zugriff auf Moodle misslingt aufgrund Plattform-eigener Probleme. [FIXME Bulletpont] Die hinterlegten Login-Daten sind nicht korrekt.
+	\textbf{Keine Login-Daten hinterlegt:} \emph{kitovu} fordert die Studentin auf, ihre Login-Daten einzugeben.
+	\textbf{Moodle:} Die externe Plattform verlangt, dass sich der Student pro Session authentisiert. \textbf{HSR-Skripteserver:} Die externe Plattform verlangt, dass sich der Student im HSR-Netz befindet oder bereits eine VPN-Verbindung zur Plattform aufgenommen hat.\\
+	\textbf{Special Requirements} & Der Student verfügt über einen Account der externen Plattform.\\
 	\textbf{Frequency of Occurrence} & Rund jede Woche, wenn die Dozenten erneut neue Unterrichtsmaterialien bereitstellen. \\
 	%\textbf{Open Issues} & FIXME \\
 \end{tabulary}
@@ -286,7 +289,7 @@ FIXME Tabelle in schön- Weggelassen: Level, weil macht irgendwie keinen Sinn
 	%\textbf{Level} & FIXME \\
 	\textbf{Primary Actor} & Die Studentin \\
 	\textbf{Trigger} & Die Studentin möchte aktuelle Unterrichtsmaterialien auf ihrem Computer lokal abspeichern. \\
-	\textbf{Stakeholders and Interests} & \textbf{Die Studentin}: möchte stets die Version der Dateien auf ihrem Rechner haben, die sie tatsächlich will. \textbf{Das System:}  stellt sicher, dass die gespeicherten Dateien konsistent und und aktuell sind. Es modifiziert keine Dateien, ohne dass die Studentin nicht davon wüsste.\\
+	\textbf{Stakeholders and Interests} & \textbf{Die Studentin}: möchte stets die Version der Dateien auf ihrem Rechner haben, die sie tatsächlich will. \textbf{Das System:}  stellt sicher, dass die gespeicherten Dateien konsistent und aktuell sind.\\
 	\textbf{Preconditions} & UC3: Die Studentin hat erfolgreich eine Verbindung zur externen Plattform hergestellt. \\
 	%\textbf{Postconditions} & FIXME \\
 	\textbf{Main Success Scenario} & Die Studentin startet den Synchronisationsprozess. Danach verfügt sie über die von ihr ausgewählten Unterrichtsmaterialien auf ihrem Rechner. Eine Log-Datei protokolliert den Vorgang. \\

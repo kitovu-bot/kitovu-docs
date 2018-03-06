@@ -13,6 +13,7 @@
 \usepackage{tabulary}
 \usepackage{multicol}
 \usepackage{pgfgantt}
+\usepackage{pgf-umlcd}
 
 % Page breaks between sections
 \let\oldsection\section
@@ -136,6 +137,53 @@ Wir müssen annehmen, dass ein Teil der Studentinnen und Studenten vertraut ist,
 \subsection{Abhängigkeiten}
 %<Von welchen Faktoren hängt das Produkt ab>
 \emph{Kitovu} steht und fällt mit der Anbindung an die Plattformen, also den HSR-Skripteserver sowie die optionalen Plattformen Moodle oder Studentenportal.
+
+
+\pagebreak
+\begin{landscape}
+  \thispagestyle{empty}
+  \section{Domainanalyse}
+  \subsection{Domainmodell}
+  
+  % https://github.com/xuyuan/pgf-umlcd/blob/master/pgf-umlcd-manual.pdf
+  \begin{tikzpicture}
+    \begin{class}{File}{0,0}
+      \attribute{path}
+      \attribute{localDigest}
+      \attribute{remoteDigest}
+      \attribute{excluded : bool}
+    \end{class}
+  
+    \begin{class}{AbstractSyncPlugin}{9,-0.4}
+      \attribute{name : string}
+      \attribute{version}
+    \end{class}
+
+    \association{File}{}{0..*}{AbstractSyncPlugin}{0..1}{}
+  
+    \begin{class}{MoodleSyncPlugin}{9, -5}
+      \inherit{AbstractSyncPlugin}
+    \end{class}
+  
+    \begin{class}{StudentenportalSyncPlugin}{6, -3}
+      \inherit{AbstractSyncPlugin}
+    \end{class}
+  
+    \begin{class}{SkripteserverSyncPlugin}{12, -3}
+      \inherit{AbstractSyncPlugin}
+    \end{class}
+
+    \begin{class}{Profile}{14,2}
+    \end{class}
+
+    \begin{class}{Configuration}{19,0}
+    \end{class}
+
+    \association{Profile}{}{1}{Configuration}{1}{}
+    \association{Profile}{}{1}{AbstractSyncPlugin}{1}{}
+
+  \end{tikzpicture}
+\end{landscape}
 
 \pagebreak
 \section{Funktionale Anforderungen}

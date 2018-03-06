@@ -318,90 +318,86 @@ Für die Qualitätsmerkmale haben wir uns für den Standard \isourl{9126-1}{2274
   \item[Richtigkeit (accuracy)] \strut \\
     Es werden sämtliche Dateien, welche lokal nicht existieren, synchronisiert.
 
-    Bei der Erkennung von geänderten Dateien sind wir von den Daten abhängig, welche die externen Schnittstellen bieten, abhängig.
-    Dies bedeutet, dass wenn zum Beispiel nur Änderungszeitpunkte eingesehen werden können, wir diese mit der entsprechenden Genauigkeit (je nach Datumsformat).
+    Bei der Erkennung von geänderten Dateien sind wir von den Daten abhängig, welche die externen Schnittstellen bieten.
+    Dies bedeutet, unsere Kenntnis des Änderungszeitpunktes ist von der Genauigkeit des gewählten Datumsformat der externen Plattform abhängig.
     Wenn nun etwas in der selben Sekunde ändert, erkennen wir dies nicht als Änderung.
-    Zusätzlich können ÄNderungszeitpunkte verändert werden, was wir auch nicht verhindern, respektive umgehen, können.
+    Zusätzlich können Änderungszeitpunkte nachträglich verändert werden, was wir auch nicht verhindern, respektive umgehen, können.
+    
+    Je nach Plattform gibt es die Möglichkeit, Hashes, respektive Dateigrössen, zu vergleichen, um Änderungen an Dokumenten festzustellen.
+    
+    Je nach Plattform wählen wir diejenige Variante, die die grösste Genauigkeit bei den Änderungen zulässt.
   \item[Interoperabilität (interoperability)] \strut \\
     Die externen Schnittstellen werden über abgekoppelte Module angesprochen.
     Dadurch sind diese einfach testbar und austauschbar, falls eine Schnittstelle nicht mehr benötigt wird oder eine neue gewünscht ist.
   \item[Sicherheit (security)] \strut \\
-    Bei \emph{kitovu} werden Anmeldeinformationen (wie Benutzernamen, Passwörter und Login-Tokens) verschlüsselt auf dem System abgelegt.
+    Bei \emph{kitovu} werden Anmeldeinformationen (wie Passwörter und Login-Tokens) verschlüsselt auf dem System abgelegt.
 
-    Die Ablage der Daten und Konfigurationen geschieht nicht verschlüsselt, sprich es liegt in der Hand des Benutzers vorsichtig damit umzugehen.
+    Die Ablage der synchronisierten Daten und Konfigurationen geschieht nicht verschlüsselt, sprich es liegt in der Hand des Benutzers vorsichtig damit umzugehen.
     Falls Daten, welche vertraulich sind, synchronisiert werden muss der Benutzer sicherstellen, dass er es nicht z.B. auf einen öffentlichen Share synchronisiert.
   \item[Ordnungsmässigkeit (regularity)] \strut \\
     Für die Ordnungsmässigkeit halten wir uns an das Bundersgesetz über den Datenschutz (DSG\footnote{\url{https://www.admin.ch/opc/de/classified-compilation/19920153/index.html}}).
     Wir speichern die Daten immer nur auf dem Computer des Benutzers.
-    Die einzigen Daten, welche an dritte geht sind die Anmeldedaten für die entsprechende Schnittstelle, sowie die Namen der Dateien, welche synchronisiert werden müssen.
+    Die einzigen Daten, welche an Dritte gehen, sind die Anmeldedaten für die entsprechende Schnittstelle sowie die Namen der Dateien, welche synchronisiert werden müssen.
 
-    Sämtliche Änderungen an Daten werden von dem Benutzer ausgelöst und durch benennung der Funktionen wird verständlich gemacht, was geschieht.
+    Sämtliche Änderungen an Daten werden von dem Benutzer ausgelöst. Durch die akkurate Benennung der Interaktionsmöglichkeiten in \emph{kitovu} wird verständlich gemacht, welche Aktion der Benutzer auslöst.
 
     Es wird nicht mit besonders schützenswerten Personendaten hantiert.
-
-    FIXME weiteres? evt. Richtlinien von Libraries oder Schnittstellen?
-  \item[Konformität (functionality compliance)] \strut \\
-    Um die funktionale Konformität zu gewährleisten halten wir uns an die Konventionen in PEP 8\footnote{\url{https://www.python.org/dev/peps/pep-0008/}} und prüfen unseren Code mit Style-Checkern.
 \end{description}
+
+FIXME Nicolas überprüfen mit SE1
 
 \subsubsection{Zuverlässigkeit (reliability)}
 
 \begin{description}
   \item[Reife (maturity)] \strut \\
     In 99\% der Benutzer-Interaktionen sollte kein Fehler auftreten.
-    Falls doch wird dieser abgefangen und eine verständliche und hilfsreiche Fehlermeldung sollte dargestellt werden.
+    Falls doch wird dieser abgefangen und eine verständliche und hilfreiche Fehlermeldung sollte dargestellt werden.
 
     Davon ausgenommen sind Fehler bei der Synchronisation, welche von den externen Schnittstellen ausgelöst sind.
   \item[Fehlertoleranz (fault tolerance)] \strut \\
-    Falls ein Modul Fehlerhaft ausgeführt wird (zum Beispiel falls ein Server nicht erreichbar ist) wird dies dem Benutzer dargestellt, aber sämtlichen anderen Module werden ausgeführt.
+    Falls ein Modul fehlerhaft ausgeführt wird (zum Beispiel falls ein Server nicht erreichbar ist) wird dies dem Benutzer dargestellt, aber sämtlichen anderen Module werden ausgeführt.
 
     Fehlerhafte Eingaben in der Konfiguration werden dem Benutzer verständlich kommuniziert.
   \item[Wiederherstellbarkeit (recoverability)] \strut \\
     Falls eine Synchronisation nur zum Teil ausgeführt werden konnte, kann die Synchronisation erneut ausgeführt werden und die nur die fehlenden Teile werden versucht zu synchronisieren.
-    Dadurch muss ein lange daurende Synchronisierung nicht komplett erneut durchgeführt werden.
+    Dadurch muss ein lange dauernde Synchronisierung nicht erneut komplett durchgeführt werden.
 
-    Falls sämtliche Dateien verloren gegangen sind muss nur das Profil erneut geschrieben werden und der Rest wird automatisch synchronisiert.
-  \item[Konformität (reliability compliance)] \strut \\
-    FIXME Grad, in dem die Software Normen oder Vereinbarungen zur Zuverlässigkeit erfüllt
+    Falls sämtliche Dateien verloren gegangen sind, muss nur das Profil erneut geschrieben werden und der Rest wird automatisch synchronisiert.
 \end{description}
 
 \subsubsection{Benutzbarkeit (usability)}
 
 \begin{description}
   \item[Verständlichkeit (understandability)] \strut \\
-    Da \emph{kitovu} einen begränzten, übersichtlichen Funktionsumfang hat werden wir die einzelnen Optionen und Aktionen in der Benutzeroberfläche, respektive der help-Option des Kommandozeilenprogramm, beschrieben.
+    Da \emph{kitovu} einen begrenzen, übersichtlichen Funktionsumfang hat, werden wir die einzelnen Optionen und Aktionen in der Benutzeroberfläche, respektive der \verb|--help|-Option des Kommandozeilenprogramm beschrieben.
   \item[Erlernbarkeit (learnability)] \strut \\
     Die einzelnen Funktionen sind übersichtlich gruppiert und beschrieben.
   \item[Bedienbarkeit (operability)] \strut \\
-    Das erstellen des Profiles benötigt etwas aufwand, aber das eigentliche synchronisieren wird mit minimalem Aufwand ermöglicht.
+    Das Erstellen der Konfiguration benötigt etwas Aufwand, aber das eigentliche Synchronisieren wird mit minimalem Aufwand ermöglicht.
   \item[Attraktivität (attractiveness)] \strut \\
     Die Oberfläche und das Kommandozeilenprogramm sind übersichtlich strukturiert.
-  \item[Konformität (usability compliance)] \strut \\
-    FIXME Grad, in dem die Software Normen oder Vereinbarungen zur Benutzbarkeit erfüllt.
 \end{description}
 
 \subsubsection{Effizienz (efficiency)}
 
 \begin{description}
   \item[Zeitverhalten (time behaviour)] \strut \\
-    Das Zeitverhalten ist abhängig, von den externen Schnittstellen und der Internet-Leitung.
+    Das Zeitverhalten ist abhängig von den externen Schnittstellen und der Internet-Leitung.
 
-    Falls jedoch nichts geändert hat wird pro Modul immer nur ein Request abgesetzt, um die Änderung der Dateien bei der externen Schnittstelle herauszufinden.
-    Je nach dem bietet die externe Schnittstelle eine solche Funktion nicht, wodurch wir für jede Datei ein Request absetzten müssen.
+    Falls jedoch nichts geändert hat, wird pro Modul immer nur ein Request abgesetzt, um die Änderung der Dateien bei der externen Schnittstelle herauszufinden.
+    Je nach dem bietet die externe Schnittstelle eine solche Funktion nicht, wodurch wir für jede Datei ein Request absetzen müssen.
   \item[Verbrauchsverhalten (resource utilization)] \strut \\
-    Die CPU-Zeit ist minim gehalten, da die meiste Zeit in den Internet-Requests verbraucht wird.
+    Die CPU-Zeit ist minim gehalten, da die meiste Zeit mit den Internet-Requests verbraucht wird.
 
-    Im RAM und am ende auf der Festplatte werden die Änderungszeitpunkte der einzelnen Dateien gehalten, was bei grossen Ordnern zu einigem Verbrauch führszeitpunkte der einzelnen Dateien gehalten, was bei grossen Ordnern zu einigem Verbrauch führt.
-  \item[Konformität (efficiency compliance)] \strut \\
-    FIXME Grad, in dem die Software Normen oder Vereinbarungen zur Effizienz erfüllt.
+    \emph{Kitovu} speichert die Änderungszeitpunkte oder Hashes der Dateien im RAM und auf der Festplatte ab. Damit lässt sich bei einer Synchronisation vergleichen, ob die Dateien auf der externen Plattform geändert wurden.
 \end{description}
 
 \subsubsection{Änderbarkeit (maintainability)}
 
 \begin{description}
   \item[Analysierbarkeit (analyzability)] \strut \\
-    Mit einem Debug Modus können zusätzlich die Rückgabewerte der Module geloged werden.
-    Dies ermöglicht eine Einschränkung des Problemes auf entweder ein spezifisches Modul oder den Core-Teil selber.
+    Mit einem Debug-Modus können zusätzlich alle Informationen, die ein Modul liefert, aufgezeichnet werden.
+    Dies ermöglicht eine Einschränkung des Problems auf entweder ein spezifisches Modul oder den Core-Teil von \emph{kitovu}selber.
   \item[Modifizierbarkeit (changeability)] \strut \\
     Da die ganze Applikation modular aufgebaut ist, lässt diese sich leicht um neue Module erweitern oder bestimmte entfernen.
   \item[Stabilität (stability)] \strut \\
@@ -409,8 +405,6 @@ Für die Qualitätsmerkmale haben wir uns für den Standard \isourl{9126-1}{2274
   \item[Testbarkeit (testability)] \strut \\
     Dank dem modularen Aufbau können wir alle Module und den Core-Teil separat Testen.
     Dies ergänzen wir mit Integrations-Tests, welche den kompletten Ablauf testet.
-  \item[Konfromität (maintainability compliance)] \strut \\
-    FIXME Grad, in dem die Software Normen oder Vereinbarungen zur Änderbarkeit erfüllt.
 \end{description}
 
 \subsubsection{Übertragbarkeit (portability)}
@@ -419,16 +413,14 @@ Für die Qualitätsmerkmale haben wir uns für den Standard \isourl{9126-1}{2274
   \item[Anpassbarkeit (adaptability)] \strut \\
     Über neue Module lässt sich die Applikation einfach mit neuen Schnittstellen erweitern.
   \item[Installierbarkeit (installability)] \strut \\
-    Die Applikation lässt sich über ein pip-Packet \footnote{\url{https://pypi.python.org/pypi/pip}} installieren.
-    Dies installiert sämtliche Dependencies mit.
+    Die Applikation lässt sich über ein pip-Paket \footnote{\url{https://pypi.python.org/pypi/pip}} installieren. Für Windows (und allenfalls macOS) wird \emph{kitovu} als ausführbare Datei bereitgestellt.
+    Dies installiert sämtliche Abhängigkeiten mit.
   \item[Koexistenz (co-existence)] \strut \\
-    Falls eine weitere Applikation an den selben Ort Dateien schreibt werden, je nach Konfiguration des Profiles, die Dateien der anderen Applikation bei der nächsten Synchronisation einfach überschrieben.
+    Falls eine weitere Applikation an denselben Ort Dateien schreibt, werden je nach Konfiguration die Dateien der anderen Applikation bei der nächsten Synchronisation einfach überschrieben.
     Je nach dem wie die andere Applikation die Dateien bearbeitet könnte es zu einer erneuten Synchronisation der Dateien führen, aber es funktioniert weiterhin.
   \item[Austauschbarkeit (replaceability)] \strut \\
-    Es kann nicht direkt eine andere Applikation ablösen, da wir einen Stand der Schnittstellen-Daten zwischenspeichern.
+    \emph{Kitovu} kann nicht direkt eine andere, bestehende Applikation ablösen, da wir einen Stand der Schnittstellen-Daten zwischenspeichern.
     Daher müssen die Daten zu Beginn frisch synchronisiert werden.
-  \item[Konformität (Portability compliance)] \strut \\
-    FIXME Grad, in dem die Software Normen oder Vereinbarungen zur Übertragbarkeit erfüllt.
 \end{description}
 
 \subsection{Schnittstellen}
@@ -437,14 +429,14 @@ Für die Qualitätsmerkmale haben wir uns für den Standard \isourl{9126-1}{2274
 Folgende Schnittstellen werden im Projekt \emph{kitovu} zu Verfügung gestellt oder verwendet:
 
 \begin{description}
-  \item[Benutzeroberfläche]
-    Die Benutzeroberfläche ist die Schnittstelle, mit welcher die meisten Endbenutzer mit der Applikation interagieren wird.
+  \item[Grafische Benutzeroberfläche]
+    Die grafische Benutzeroberfläche ist die Schnittstelle, mit welcher die meisten Endbenutzer mit der Applikation interagieren werden.
     Diese bietet einen einfachen Weg, um die Daten zu synchronisieren.
-  \item[Command-Line-Programm]
-    Alternativ bieten wir ein Command-Line-Programm, welches ermöglicht über einfache Befehle die Synchronisation zu starten.
+  \item[Kommandozeilenprogramm]
+    Alternativ bieten wir ein Kommandozeilenprogramm, welches ermöglicht über einfache Befehle die Synchronisation zu starten.
     Dies ist besonders für Automatisierung oder für Endbenutzer, welche die Kommandozeile bevorzugen, gedacht.
   \item[Externe Schnittstellen]
-    Wir verwenden als externe Schnittstellen das Studentenportal, das Moodle und den Skripteserver, sowie das Switch AAI für die Authorisierung des Moodles.
+    Wir verwenden als externe Schnittstellen das Studentenportal, das Moodle und den Skripteserver, sowie das SwitchAAI für die Autorisierung des Moodles.
 \end{description}
 
 \subsection{Randbedingungen}
@@ -454,7 +446,7 @@ Dies technischen Randbedingungen wurden für das Projekt \emph{kitovu} festgeleg
 
 \begin{description}
   \item[Python] Version 3.6
-  \item[Betriebssystem] Hauptsächlich Linux, aber auch Windows und macOS unterstützt
+  \item[Betriebssystem] \emph{kitovu} unterstützt Windows und Linux, gegebenfalls macOS
 \end{description}
 
 \end{document}

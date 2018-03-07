@@ -14,6 +14,7 @@
 \usepackage{multicol}
 \usepackage{pgfgantt}
 \usepackage{pgf-umlcd}
+\usepackage{enumitem}
 
 % Page breaks between sections
 \let\oldsection\section
@@ -231,75 +232,109 @@ FIXME insert definitive use case diagram, schön anordnen
 \subsection{Beschreibungen (Fully Dressed)}
 %<Spezielle und wichtige Use Cases in einzelnen Kapiteln beschreiben im Fully Dressed Format>
 
-FIXME Nicolas Tabelle in schön- Weggelassen: Level, weil macht irgendwie keinen Sinn
 FIXME Méline: Use Cases umschreiben, Brief-Version folgend. Überall Studentin
 
+\SetEnumitemKey{uclist}{labelwidth=13em,leftmargin=13.5em}
+
 \subsubsection{UC1: Konfiguration editieren}
-\begin{tabulary}{\linewidth}{lp{30em}}
-	\textbf{Goal} & Der Student editiert die Konfiguration, in der alle externen Plattform enthalten ist. \\
-	%\textbf{Level} & FIXME \\
-	\textbf{Primary Actor} & Student\\
-	\textbf{Trigger} & Der Student möchte aktuelle Unterrichtsmaterialien auf seinem Rechner haben. \\
-	\textbf{Stakeholders and Interests} & \textbf{Der Student}: legt eine neue Plattform an. \textbf{Das System:} informiert den Studenten, welche Plattformen unterstützt werden und stellt sicher, dass die Plattform bereits implementiert ist. \\
-	\textbf{Preconditions} & Der Student besitzt einen Account der externen Plattform mit entsprechenden Login-Daten.\\
-	\textbf{Postconditions} & Die aktualisierte Konfigurationsdatei wird gespeichert. \\
-	\textbf{Main Success Scenario} & Der Student hinterlegt in der Konfiguration von \emph{kitovu} zu einer externen Plattform in \emph{kitovu}. Er kann die Zugangsdaten erstellen, speichern, abändern oder das Profil ganz entfernen. Die eingegebenen Daten werden in \emph{kitovu} gespeichert. \\
-	\textbf{Extensions} & Die eingegebenen Daten sind ungültig. \emph{Kitovu} weist die Studentin darauf hin.\\
-	%\textbf{Special Requirements} & FIXME \\
-	\textbf{Frequency of Occurrence} & Selten, nach Bedarf. \\
-\end{tabulary}
+\begin{description}[uclist]
+  \item[Goal] Der Student editiert die Konfiguration, in der alle externen Plattform enthalten ist.
+  %\item[Level] FIXME
+  \item[Primary Actor] Student
+  \item[Trigger] Der Student möchte aktuelle Unterrichtsmaterialien auf seinem Rechner haben.
+  \item[Stakeholders and Interests]
+    \begin{description}
+      \item[Der Student] legt eine neue Plattform an.
+      \item[Das System] informiert den Studenten, welche Plattformen unterstützt werden und stellt sicher, dass die Plattform bereits implementiert ist.
+    \end{description}
+  \item[Preconditions] Der Student besitzt einen Account der externen Plattform mit entsprechenden Login-Daten.
+  \item[Postconditions] Die aktualisierte Konfigurationsdatei wird gespeichert.
+  \item[Main Success Scenario] Der Student hinterlegt in der Konfiguration von \emph{kitovu} zu einer externen Plattform in \emph{kitovu}. Er kann die Zugangsdaten erstellen, speichern, abändern oder das Profil ganz entfernen. Die eingegebenen Daten werden in \emph{kitovu} gespeichert.
+  \item[Extensions] Die eingegebenen Daten sind ungültig. \emph{Kitovu} weist die Studentin darauf hin.
+  %\item[Special Requirements] FIXME
+  \item[Frequency of Occurrence] Selten, nach Bedarf.
+\end{description}
 
 \subsubsection{UC2: Dateien auswählen}
-\begin{tabulary}{\linewidth}{lp{30em}}
-	\textbf{Goal} & Die Studentin schreibt in die Konfigurationsdatei, welche Dateien sie auf ihren Rechner synchronisieren möchte. Sie kann ausschliessen, welche Dateien nicht synchronisiert werden.\\
-	%\textbf{Level} & FIXME \\
-	\textbf{Primary Actor} & Studentin\\
-	\textbf{Trigger} & Die Studentin möchte nur bestimmte Dateien und Ordner auf ihrem Rechner haben.\\
-	\textbf{Stakeholders and Interests} & \textbf{Die Studentin}: weiss, welche Dateien sie synchronisieren möchte. \textbf{Das System:} kann die entsprechenden Dateien lokalisieren. \\
-	\textbf{Preconditions} & UC1 ist erfolgt: Die Studentin besitzt einen Account der externen Plattform. Sie hat bereits ein Profil der externen Plattform in \emph{kitovu} hinterlegt. [FIXME linebreak] Sie weiss, welche Dateien sie synchronisieren möchte und wo sie auf der externen Plattform abgelegt sind. \\
-	\textbf{Postconditions} & Die aktualisierte Konfigurationsdatei wird gespeichert.\\
-	\textbf{Main Success Scenario} & Die Studentin definiert für das jeweilige Profil, welche Dateien sie synchronisiert haben möchte und welche ausgeschlossen werden. \\
-	\textbf{Extensions} & Die angegebenen Pfade existieren nicht -- die Studentin wird in UC4 darauf hingewiesen.\\
-	%\textbf{Special Requirements} & asdf \\
-	\textbf{Frequency of Occurrence} & Zu Beginn jedes Semesters, wenn die neuen Module beginnen. \\
-	%\textbf{Open Issues} & asdf \\
-\end{tabulary}
+\begin{description}[uclist]
+  \item[Goal] Die Studentin schreibt in die Konfigurationsdatei, welche Dateien sie auf ihren Rechner synchronisieren möchte. Sie kann ausschliessen, welche Dateien nicht synchronisiert werden.
+  %item[Level] FIXME
+  \item[Primary Actor] Studentin
+  \item[Trigger] Die Studentin möchte nur bestimmte Dateien und Ordner auf ihrem Rechner haben.
+  \item[Stakeholders and Interests]
+    \begin{description}
+      \item[Die Studentin] weiss, welche Dateien sie synchronisieren möchte.
+      \item[Das System] kann die entsprechenden Dateien lokalisieren.
+    \end{description}
+  \item[Preconditions]
+    \begin{itemize}[leftmargin=1em]
+      \item UC1 ist erfolgt: Die Studentin besitzt einen Account der externen Plattform. Sie hat bereits ein Profil der externen Plattform in \emph{kitovu} hinterlegt.
+      \item Sie weiss, welche Dateien sie synchronisieren möchte und wo sie auf der externen Plattform abgelegt sind.
+    \end{itemize}
+  \item[Postconditions] Die aktualisierte Konfigurationsdatei wird gespeichert.
+  \item[Main Success Scenario] Die Studentin definiert für das jeweilige Profil, welche Dateien sie synchronisiert haben möchte und welche ausgeschlossen werden.
+  \item[Extensions] Die angegebenen Pfade existieren nicht -- die Studentin wird in UC4 darauf hingewiesen.
+  %\item[Special Requirements] asdf
+  \item[Frequency of Occurrence] Zu Beginn jedes Semesters, wenn die neuen Module beginnen.
+  %\item[Open Issues] asdf
+\end{description}
 
 \subsubsection{UC3: Verbindung erstellen}
-\begin{tabulary}{\linewidth}{lp{30em}}
-	\textbf{Goal} & Um auf die Unterrichtsmaterialien zuzugreifen, muss der Student eine Verbindung zur externen Plattform herstellen. \\
-	%\textbf{Level} & FIXME \\
-	\textbf{Primary Actor} & Der Student \\
-	\textbf{Trigger} & Der Student möchte auf eine externe Plattform zugreifen. \\
-	\textbf{Stakeholders and Interests} & \textbf{Der Student}: weiss, von welcher Plattform er welche Dateien möchte. \textbf{Das System:} kann die Verbindung herstellen. \\
-	\textbf{Preconditions} & Der Student hat in UC1 die Profildaten der externen Plattform hinterlegt.\\
-	\textbf{Postconditions} & Keine.\\
-	\textbf{Main Success Scenario} & Der Student verbindet sich zur externen Plattform, die Authentisierung ist erfolgreich. \\
-	\textbf{Extensions} & \textbf{Die Verbindung misslingt:} [FIXME Bulletpoint] Nicht im HSR-Netz (HSR-Skripteserver): Die Verbindung misslingt, da sich der Student nicht im HSR-Netz befindet oder nicht per VPN verbunden ist. [FIXME Bulletpoint] Moodle-Probleme: der Zugriff auf Moodle misslingt aufgrund Plattform-eigener Probleme. [FIXME Bulletpont] Die hinterlegten Login-Daten sind nicht korrekt.
-	\textbf{Keine Login-Daten hinterlegt:} \emph{kitovu} fordert die Studentin auf, ihre Login-Daten einzugeben.
-	\textbf{Moodle:} Die externe Plattform verlangt, dass sich der Student pro Session authentisiert. \textbf{HSR-Skripteserver:} Die externe Plattform verlangt, dass sich der Student im HSR-Netz befindet oder bereits eine VPN-Verbindung zur Plattform aufgenommen hat.\\
-	\textbf{Special Requirements} & Der Student verfügt über einen Account der externen Plattform.\\
-	\textbf{Frequency of Occurrence} & Rund jede Woche, wenn die Dozenten erneut neue Unterrichtsmaterialien bereitstellen. \\
-	%\textbf{Open Issues} & FIXME \\
-\end{tabulary}
+\begin{description}[uclist]
+  \item[Goal] Um auf die Unterrichtsmaterialien zuzugreifen, muss der Student eine Verbindung zur externen Plattform herstellen.
+  %\item[Level] FIXME
+  \item[Primary Actor] Der Student
+  \item[Trigger] Der Student möchte auf eine externe Plattform zugreifen.
+  \item[Stakeholders and Interests]
+    \begin{description}
+      \item[Der Student] weiss, von welcher Plattform er welche Dateien möchte.
+      \item[Das System] kann die Verbindung herstellen.
+    \end{description}
+  \item[Preconditions] Der Student hat in UC1 die Profildaten der externen Plattform hinterlegt.
+  \item[Postconditions] Keine.
+  \item[Main Success Scenario] Der Student verbindet sich zur externen Plattform, die Authentisierung ist erfolgreich.
+  \item[Extensions]
+    \begin{description}
+      \item[Die Verbindung misslingt:] \strut \\[-1em]
+        \begin{itemize}[leftmargin=1em]
+          \item Nicht im HSR-Netz (HSR-Skripteserver): Die Verbindung misslingt, da sich der Student nicht im HSR-Netz befindet oder nicht per VPN verbunden ist.
+          \item Moodle-Probleme: der Zugriff auf Moodle misslingt aufgrund Plattform-eigener Probleme.
+          \item Die hinterlegten Login-Daten sind nicht korrekt.
+        \end{itemize}
+      \item[Keine Login-Daten hinterlegt:] \emph{kitovu} fordert die Studentin auf, ihre Login-Daten einzugeben.
+      \item[Moodle:] Die externe Plattform verlangt, dass sich der Student pro Session authentisiert.
+      \item[HSR-Skripteserver:] Die externe Plattform verlangt, dass sich der Student im HSR-Netz befindet oder bereits eine VPN-Verbindung zur Plattform aufgenommen hat.
+    \end{description}
+  \item[Special Requirements] Der Student verfügt über einen Account der externen Plattform.
+  \item[Frequency of Occurrence] Rund jede Woche, wenn die Dozenten erneut neue Unterrichtsmaterialien bereitstellen.
+  %\item[Open Issues] FIXME
+\end{description}
 
 
 \subsubsection{UC4: Synchronisation der Dateien}
 
-\begin{tabulary}{\linewidth}{lp{30em}}
-	\textbf{Goal} & Die Studentin synchronisiert alle benötigten Unterrichtsmaterialien auf ihren Computer. \\
-	%\textbf{Level} & FIXME \\
-	\textbf{Primary Actor} & Die Studentin \\
-	\textbf{Trigger} & Die Studentin möchte aktuelle Unterrichtsmaterialien auf ihrem Computer lokal abspeichern. \\
-	\textbf{Stakeholders and Interests} & \textbf{Die Studentin}: möchte stets die Version der Dateien auf ihrem Rechner haben, die sie tatsächlich will. \textbf{Das System:}  stellt sicher, dass die gespeicherten Dateien konsistent und aktuell sind.\\
-	\textbf{Preconditions} & UC3: Die Studentin hat erfolgreich eine Verbindung zur externen Plattform hergestellt. \\
-	%\textbf{Postconditions} & FIXME \\
-	\textbf{Main Success Scenario} & Die Studentin startet den Synchronisationsprozess. Danach verfügt sie über die von ihr ausgewählten Unterrichtsmaterialien auf ihrem Rechner. Eine Log-Datei protokolliert den Vorgang. \\
-	\textbf{Extensions} & \textbf{Dateien schon vorhanden:} Die Studentin legt in ihrem Profil fest, wie mit bereits existierenden Dateien umgegangen werden soll. Dabei kann sie wählen, ob lokal bestehende Dateien gleichen Namens umbenannt, durch eine neuere Server-Version ersetzt oder nichts synchronisiert werden soll. Sie kann auch entscheiden, bei jedem Konflikt von \emph{kitovu} gefragt zu werden, wie sie für jede Datei entscheiden möchte. \textbf{Synchronisation schlägt fehl:} Die Synchronisation wird nicht durchgeführt, die Studentin erhält eine Benachrichtigung.\\
-	%\textbf{Special Requirements} & FIXME \\
-	\textbf{Frequency of Occurrence} & Rund jede Woche, wenn die Dozenten erneut neue Unterrichtsmaterialien bereitstellen.  \\
-	%\textbf{Open Issues} & Moodle-Anbindung \\
-\end{tabulary}
+\begin{description}[uclist]
+  \item[Goal] Die Studentin synchronisiert alle benötigten Unterrichtsmaterialien auf ihren Computer.
+  %\item[Level] FIXME
+  \item[Primary Actor] Die Studentin
+  \item[Trigger] Die Studentin möchte aktuelle Unterrichtsmaterialien auf ihrem Computer lokal abspeichern.
+  \item[Stakeholders and Interests]
+    \begin{description}
+      \item[Die Studentin] möchte stets die Version der Dateien auf ihrem Rechner haben, die sie tatsächlich will.
+      \item[Das System] stellt sicher, dass die gespeicherten Dateien konsistent und aktuell sind.
+    \end{description}
+  \item[Preconditions] UC3: Die Studentin hat erfolgreich eine Verbindung zur externen Plattform hergestellt.
+  %\item[Postconditions] FIXME
+  \item[Main Success Scenario] Die Studentin startet den Synchronisationsprozess. Danach verfügt sie über die von ihr ausgewählten Unterrichtsmaterialien auf ihrem Rechner. Eine Log-Datei protokolliert den Vorgang.
+  \item[Extensions]
+    \begin{description}
+      \item[Dateien schon vorhanden:] Die Studentin legt in ihrem Profil fest, wie mit bereits existierenden Dateien umgegangen werden soll. Dabei kann sie wählen, ob lokal bestehende Dateien gleichen Namens umbenannt, durch eine neuere Server-Version ersetzt oder nichts synchronisiert werden soll. Sie kann auch entscheiden, bei jedem Konflikt von \emph{kitovu} gefragt zu werden, wie sie für jede Datei entscheiden möchte.
+      \item[Synchronisation schlägt fehl:] Die Synchronisation wird nicht durchgeführt, die Studentin erhält eine Benachrichtigung.
+    \end{description}
+  %\item[Special Requirements] FIXME
+  \item[Frequency of Occurrence] Rund jede Woche, wenn die Dozenten erneut neue Unterrichtsmaterialien bereitstellen.
+  %\item[Open Issues] Moodle-Anbindung
+\end{description}
 
 \pagebreak
 \section{Weitere Anforderungen}

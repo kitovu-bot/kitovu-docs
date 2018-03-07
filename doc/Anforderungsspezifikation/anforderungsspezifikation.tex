@@ -343,7 +343,7 @@ FIXME Méline: Use Cases umschreiben, Brief-Version folgend. Überall Studentin
 
 Für die Qualitätsmerkmale haben wir uns für den Standard \isourl{9126}{16722} entschieden. Obwohl dieser bereits mit dem Standard \isourl{25010}{35733} überarbeitet wurde, verwenden wir die ältere Version, da wir damit im Modul \emph{Software-Engineering 1} bereits Erfahrung gesammelt haben.
 
-Dabei haben wir nicht sämtliche Qualitätsmerkmale dieses Standards verwendet, sondern nur diejenigen, welche wir für \emph{kitovu} passend empfunden haben.
+Dabei haben wir nicht sämtliche Qualitätsmerkmale dieses Standards verwendet, sondern nur diejenigen, welche wir für \emph{kitovu} als passend empfunden haben.
 
 \newcommand{\metricheader}[2]{\textbf{#1} & \textbf{#2}}
 
@@ -379,7 +379,7 @@ Dabei haben wir nicht sämtliche Qualitätsmerkmale dieses Standards verwendet, 
   \midrule
 
   \metricheader{2.1.}{Fehlertoleranz (fault tolerance)} \\
-  2.1.1. & Falls ein Modul fehlerhaft ausgeführt wird -- falls beispielsweise ein Server nicht erreichbar ist -- wird dies dem Benutzer dargestellt, aber sämtlichen anderen Module werden ausgeführt. \\
+  2.1.1. & Falls ein Modul fehlerhaft ausgeführt wird -- falls beispielsweise ein Server nicht erreichbar ist -- wird dies dem Benutzer dargestellt, aber sämtlichen andere Module werden ausgeführt. \\
   2.1.2. & Fehlerhafte Eingaben in der Konfiguration werden dem Benutzer verständlich kommuniziert. \\
 
   \metricheader{2.2.}{Wiederherstellbarkeit (recoverability)} \\
@@ -395,7 +395,7 @@ Dabei haben wir nicht sämtliche Qualitätsmerkmale dieses Standards verwendet, 
   Metrik & Beschreibung \\
   \midrule
   \metricheader{3.1.}{Verständlichkeit (understandability)} \\
-  3.1.1 & Das Synchronisieren wird über die übersichtliche Oberfläche respektive mit der \verb|--help|-Option des Kommandozeilenprogramm beschreiben. \\
+  3.1.1 & Das Synchronisieren wird über eine übersichtliche grafische Oberfläche respektive mit der \verb|--help|-Option des Kommandozeilenprogramm beschreiben. \\
   3.1.2 & Das Konfigurieren der einzelnen Profile wird über eine separate Ansicht/Datei beschrieben. \\
   \metricheader{3.2.}{Bedienbarkeit (operability)} \\
   3.2.1. & Wenn die Konfigurartion erstellt ist und die Login-Daten gespeichert wurden, kann die eigentliche Synchronisation in höchstens zwei Schritten durchgeführt werden. \\
@@ -458,7 +458,7 @@ Folgende Schnittstellen werden im Projekt \emph{kitovu} zu Verfügung gestellt o
   \item[Kommandozeilenprogramm]
     Alternativ bieten wir ein Kommandozeilenprogramm, welches über einfache Befehle die Synchronisation startet.
     Dies ist besonders für die Automatisierung gedacht oder für Endbenutzer, welche die Kommandozeile bevorzugen.
-  \item[Externe Schnittstellen]
+  \item[Externe Schnittstellen ("Plugins")]
     Wir verwenden als externe Schnittstellen das Studentenportal, das Moodle und den Skripteserver, sowie das SwitchAAI für die Autorisierung des Moodles.
 \end{description}
 

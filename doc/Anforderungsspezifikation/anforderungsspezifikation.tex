@@ -334,7 +334,6 @@ FIXME Méline: Use Cases umschreiben, Brief-Version folgend. Überall Studentin
   %\item[Open Issues] Moodle-Anbindung
 \end{description}
 
-\pagebreak
 \section{Weitere Anforderungen}
 
 \subsection{Qualitätsmerkmale}
@@ -344,108 +343,108 @@ FIXME Méline: Use Cases umschreiben, Brief-Version folgend. Überall Studentin
 
 Für die Qualitätsmerkmale haben wir uns für den Standard \isourl{9126}{16722} entschieden. Obwohl dieser bereits mit dem Standard \isourl{25010}{35733} überarbeitet wurde, verwenden wir die ältere Version, da wir damit im Modul \emph{Software-Engineering 1} bereits Erfahrung gesammelt haben.
 
+Dabei haben wir nicht sämtliche Qualitätsmerkmale dieses Standards verwendet, sondern nur diejenigen, welche wir für \emph{kitovu} passend empfunden haben.
+
+\newcommand{\metricheader}[2]{\textbf{#1} & \textbf{#2}}
+
 \subsubsection{Funktionalität (functionality)}
 
-\begin{description}
-  \item[Angemessenheit (suitability)] \strut \\
-    Die Funktionen von \emph{kitovu} konzentrieren sich nur auf die Synchronisation der Dateien.
-    Dadurch ist die Applikation sehr spezialisiert, aber trotzdem erweiterbar.
-  \item[Richtigkeit (accuracy)] \strut \\
-    Es werden sämtliche Dateien, welche lokal nicht existieren und vorgängig ausgewählt wurden, synchronisiert.
+\begin{tabulary}{\linewidth}{lL}
+  \toprule
+  Metrik & Beschreibung \\
+  \midrule
 
-    Um zu erkennen, ob sich Dateien geändert haben, sind vor von den Angaben abhängig, welche die externen Schnittstellen bieten.
-    Dies bedeutet, unsere Kenntnis des Änderungszeitpunkts ist von der Genauigkeit des gewählten Datumsformat der externen Plattform abhängig. Das kann zu blinden Flecken führen: Änder etwas in derselben Sekunde, können wir das nicht als Änderung anerkennen. Zudem können wir nicht verhindern, dass Änderungszeitpunkte von Dateien nachträglich auf der externen Plattform verändert werden.
-    
-    Neben dem Änderungszeitpunkt gibt es auch die Möglichkeit, Hashes oder Dateigrössen zu vergleichen, um Änderungen an Dokumenten festzustellen. Je nach Plattform wählen wir diejenige Variante, die die externe Plattform anbietet und die grösste Genauigkeit bei den Änderungen zulässt.
-  \item[Interoperabilität (interoperability)] \strut \\
-    Die externen Schnittstellen werden über abgekoppelte Module angesprochen.
-    Dadurch sind diese einfach testbar und austauschbar, falls eine Schnittstelle nicht mehr benötigt wird oder eine neue gewünscht ist.
-  \item[Ordnungsmässigkeit (regularity)] \strut \\
-    Für die Ordnungsmässigkeit halten wir uns an das Bundesgesetz über den Datenschutz (DSG\footnote{\url{https://www.admin.ch/opc/de/classified-compilation/19920153/index.html}}). Wir speichern die Daten immer nur auf dem Computer des Benutzers.
-    Die einzigen Daten, welche an Dritte gehen, sind die Anmeldedaten für die entsprechende Schnittstelle sowie die Namen der Dateien, welche synchronisiert werden müssen.
+  \metricheader{1.1.}{Richtigkeit (accuracy)} \\
+  1.1.1 & Klar geänderten Dateien werden synchronisiert. Bei der Erkennung der Änderungen der Daten sind wir auf die Angaben der Schnittstelle angewiesen. Dies bedeutet, dass wenn wir zum Beispiel wir von der Schnittstelle nur ein Änderungsdatum erhalten können wir nicht erkennen wenn eine Datei in der selben Sekunde sich geändert hat oder das Datum nachträglich verändert wurde. \\
 
-    Sämtliche Änderungen an Daten werden von dem Benutzer ausgelöst. Durch die akkurate Benennung der Interaktionsmöglichkeiten macht \emph{kitovu} verständlich, welche Aktion der Benutzer auslöst.
+  \metricheader{1.2.}{Ordnungsmässigkeit (regularity)} \\
+  & \emph{Für die Ordnungsmässigkeit halten wir uns an das Bundesgesetz über den Datenschutz (DSG\footnotemark). Es wird nicht mit besonders schützenswerten Personendaten hantiert.} \\
+  1.2.1. & Wir speichern die Daten immer nur auf dem Computer des Benutzers. \\
+  1.2.2. & Die einzigen Daten, welche an Dritte gehen, sind die Anmeldedaten für die entsprechende Schnittstelle sowie die Namen der Dateien, welche synchronisiert werden müssen. \\
+  1.2.3. & Sämtliche Änderungen an Daten werden von dem Benutzer ausgelöst. Durch die akkurate Benennung der Interaktionsmöglichkeiten macht \emph{kitovu} verständlich, welche Aktion der Benutzer auslöst. \\
 
-    Es wird nicht mit besonders schützenswerten Personendaten hantiert.
-  \item[Sicherheit (security)] \strut \\
-    \emph{Kitovu} legt Anmeldeinformationen wie Passwörter und Login-Tokens verschlüsselt auf dem System ab.
+  \metricheader{1.3.}{Sicherheit (security)} \\
+  1.3.1. & \emph{Kitovu} legt Anmeldeinformationen wie Passwörter und Login-Tokens verschlüsselt auf dem System ab. \\
+  1.3.2. & Die Ablage der synchronisierten Daten und Konfigurationen geschieht nicht verschlüsselt. Es liegt also in der Hand des Benutzers, vorsichtig damit umzugehen. \newline Falls vertrauliche Daten synchronisiert werden, muss der Benutzer sicherstellen, dass die von der externen Plattform synchronisierten Dateien nicht an einem Ort gespeichert werden, der für unbefugte Dritte zugänglich ist. \\
+  \bottomrule
+\end{tabulary}
 
-    Die Ablage der synchronisierten Daten und Konfigurationen geschieht nicht verschlüsselt. Es liegt also in der Hand des Benutzers, vorsichtig damit umzugehen.
-    Falls vertrauliche Daten synchronisiert werden, muss der Benutzer sicherstellen, dass die von der externen Plattform synchronisierten Dateien nicht an einem Ort gespeichert werden, der für unbefugte Dritte zugänglich ist.
-\end{description}
+\footnotetext{\url{https://www.admin.ch/opc/de/classified-compilation/19920153/index.html}}
 
 \subsubsection{Zuverlässigkeit (reliability)}
 
-\begin{description}
-  \item[Reife (maturity)] \strut \\
-    In 99\% der Benutzer-Interaktionen sollte kein Fehler auftreten.
-    Falls doch, wird dieser abgefangen und von einer verständlichen und hilfreichen Fehlermeldung erklärt.
+\begin{tabulary}{\linewidth}{lL}
+  \toprule
+  Metrik & Beschreibung \\
+  \midrule
 
-    Davon ausgenommen sind Fehler bei der Synchronisation, welche die externen Plattform ausgelöst hat.
-  \item[Fehlertoleranz (fault tolerance)] \strut \\
-    Falls ein Modul fehlerhaft ausgeführt wird -- falls beispielsweise ein Server nicht erreichbar ist -- wird dies dem Benutzer dargestellt, aber sämtlichen anderen Module werden ausgeführt.
+  \metricheader{2.1.}{Fehlertoleranz (fault tolerance)} \\
+  2.1.1. & Falls ein Modul fehlerhaft ausgeführt wird -- falls beispielsweise ein Server nicht erreichbar ist -- wird dies dem Benutzer dargestellt, aber sämtlichen anderen Module werden ausgeführt. \\
+  2.1.2. & Fehlerhafte Eingaben in der Konfiguration werden dem Benutzer verständlich kommuniziert. \\
 
-    Fehlerhafte Eingaben in der Konfiguration werden dem Benutzer verständlich kommuniziert.
-  \item[Wiederherstellbarkeit (recoverability)] \strut \\
-    Falls eine Synchronisation nur zum Teil ausgeführt werden konnte, kann \emph{kitovu} die Synchronisation erneut ausführen und nur versuchen, die fehlenden Teile zu synchronisieren.
-    Dadurch muss ein lange dauernde Synchronisierung nicht erneut komplett durchgeführt werden.
-
-    Falls sämtliche Dateien verloren gegangen sind, etwa im Fall eines Festplattendefekts, muss die Konfigurationsdatei erneut geschrieben werden. Um dem vorzubeugen kann ein Backup der Konfigurationsdatei erstellt werden. 
-\end{description}
+  \metricheader{2.2.}{Wiederherstellbarkeit (recoverability)} \\
+  2.2.1. & Falls eine Synchronisation nur zum Teil ausgeführt werden konnte, kann \emph{kitovu} die Synchronisation erneut ausführen und nur versuchen, die fehlenden Teile zu synchronisieren. \\
+  2.2.2. & Falls sämtliche Dateien verloren gegangen sind, etwa im Fall eines Festplattendefekts, muss die Konfigurationsdatei erneut geschrieben werden. Um dem vorzubeugen kann ein Backup der Konfigurationsdatei erstellt werden. \\
+  \bottomrule
+\end{tabulary}
 
 \subsubsection{Benutzbarkeit (usability)}
 
-\begin{description}
-  \item[Verständlichkeit (understandability)] \strut \\
-    Da \emph{kitovu} einen begrenzen, übersichtlichen Funktionsumfang hat, werden wir die einzelnen Optionen und Aktionen in der Benutzeroberfläche respektive der \verb|--help|-Option des Kommandozeilenprogramm beschreiben.
-  \item[Erlernbarkeit (learnability)] \strut \\
-    Die einzelnen Funktionen sind übersichtlich gruppiert und beschrieben.
-  \item[Bedienbarkeit (operability)] \strut \\
-    Das Erstellen der Konfiguration benötigt etwas Aufwand, aber die  eigentliche Synchronisation wird mit minimalem Aufwand ermöglicht.
-\end{description}
+\begin{tabulary}{\linewidth}{lL}
+  \toprule
+  Metrik & Beschreibung \\
+  \midrule
+  \metricheader{3.1.}{Verständlichkeit (understandability)} \\
+  3.1.1 & Das Synchronisieren wird über die übersichtliche Oberfläche respektive mit der \verb|--help|-Option des Kommandozeilenprogramm beschreiben. \\
+  3.1.2 & Das Konfigurieren der einzelnen Profile wird über eine separate Ansicht/Datei beschrieben. \\
+  \metricheader{3.2.}{Bedienbarkeit (operability)} \\
+  3.2.1. & Wenn die Konfigurartion erstellt ist und die Login-Daten gespeichert wurden, kann die eigentliche Synchronisation in höchstens zwei Schritten durchgeführt werden. \\
+  3.2.2. & Falls die Login-Daten noch nicht eingegeben wurden wird pro Modul ein weiterer Schritt benötigt. \\
+  \bottomrule
+\end{tabulary}
 
 \subsubsection{Effizienz (efficiency)}
 
-\begin{description}
-  \item[Zeitverhalten (time behaviour)] \strut \\
-    Das Zeitverhalten ist abhängig von den externen Schnittstellen und des eigenen Internetanschlusses.
-
-    Pro Modul wird immer nur eine Anfrage abgesetzt, um herauszufinden, ob sich die Dateien auf der externen Plattform geändert haben. Je nach dem bietet die externe Schnittstelle keine solche Funktion, wodurch mehr Anfragen abgeschickt werden müssen.
-  \item[Verbrauchsverhalten (resource utilization)] \strut \\
-    Die CPU-Zeit ist minim gehalten, da die meiste Zeit mit den Internet-Anfragen verbraucht wird.
-
-    \emph{Kitovu} speichert die Änderungszeitpunkte oder Hashes der Dateien im RAM und auf der Festplatte ab. Damit lässt sich bei einer Synchronisation vergleichen, ob die Dateien auf der externen Plattform geändert wurden.
-\end{description}
+\begin{tabulary}{\linewidth}{lL}
+  \toprule
+  Metrik & Beschreibung \\
+  \midrule
+  \metricheader{4.1.}{Zeitverhalten (time behaviour)} \\
+  & \emph{Das Zeitverhalten ist abhängig von den externen Schnittstellen und des eigenen Internetanschlusses.} \\
+  4.1.1. & Pro Modul wird immer nur eine Anfrage abgesetzt, um herauszufinden, ob sich die Dateien auf der externen Plattform geändert haben. Je nach dem bietet die externe Schnittstelle keine solche Funktion, wodurch mehr Anfragen abgeschickt werden müssen. \\
+  4.1.2. & Eine Analyse der bisherigen Module zeigt, dass pro Modul über das ganze Semester verteilt ungefähr 1'000 Dateien synchronisiert werden. Dies bedeutet bei einer wöchentlichen Synchronisation mit 7 Modulen jeweils:\newline $1'000 \frac{Dateien}{Modul} * 7\ Module / 14\ Wochen = 500 \frac{Dateien}{Woche}$ \\
+  \bottomrule
+\end{tabulary}
 
 \subsubsection{Änderbarkeit (maintainability)}
 
-\begin{description}
-  \item[Analysierbarkeit (analyzability)] \strut \\
-    Mit einem Debug-Modus können zusätzlich alle Informationen, die ein Modul liefert, aufgezeichnet werden.
-    Dies ermöglicht eine Einschränkung des Problems auf entweder ein spezifisches Modul oder den Kern-Teil von \emph{kitovu}selber.
-  \item[Modifizierbarkeit (changeability)] \strut \\
-    Da die ganze Applikation modular aufgebaut ist, lässt sich diese leicht um mehr Module erweitern oder reduzieren.
-  \item[Stabilität (stability)] \strut \\
-    Eine grosse Testabdeckung (inklusive kompletter Abläufe) bieten eine Grundstabilität, so dass Änderungen bei bestimmten Funktionalitäten die Tests sofort reklamieren.
-  \item[Prüfbarkeit (testability)] \strut \\
-    Dank des modularen Aufbaus können wir alle Module und den Kern-Teil separat testen.
-    Dies ergänzen wir mit Integrationstests, welche den kompletten Ablauf testen.
-\end{description}
+\begin{tabulary}{\linewidth}{lL}
+  \toprule
+  Metrik & Beschreibung \\
+  \midrule
+  \metricheader{5.1.}{Analysierbarkeit (analyzability)} \\
+  5.1.1. & Mit einem Debug-Modus können zusätzlich alle Informationen, die ein Modul liefert, aufgezeichnet werden. Dies ermöglicht eine Einschränkung des Problems auf entweder ein spezifisches Modul oder den Kern-Teil von \emph{kitovu}selber. \\
+  \metricheader{5.2.}{Modifizierbarkeit (changeability)} \\
+  5.2.1. & Da die ganze Applikation modular aufgebaut ist, lässt sich diese leicht um mehr Module erweitern oder reduzieren. \\
+  \metricheader{5.3.}{Stabilität (stability)} \\
+  5.3.1. & Die Test-Coverage ist mindistens 90\%. \\
+  \metricheader{5.4.}{Prüfbarkeit (testability)} \\
+  5.4.1. & Dank des modularen Aufbaus werden alle Module und der Kern-Teil separat getesten. \\
+  \bottomrule
+\end{tabulary}
 
 \subsubsection{Übertragbarkeit (portability)}
 
-\begin{description}
-  \item[Anpassbarkeit (adaptability)] \strut \\
-    Über neue Module lässt sich die Applikation einfach mit neuen Schnittstellen erweitern.
-  \item[Installierbarkeit (installability)] \strut \\
-    Die Applikation lässt sich über ein pip-Paket \footnote{\url{https://pypi.python.org/pypi/pip}} installieren. Für Windows (und allenfalls macOS) wird \emph{kitovu} als ausführbare Datei bereitgestellt. Diese installiert sämtliche Abhängigkeiten mit.
-  \item[Koexistenz (co-existence)] \strut \\
-    Falls eine Dritt-Applikation an denselben Ort Dateien schreibt, werden je nach Konfiguration die Dateien dieser Dritt-Applikation bei der nächsten Synchronisation überschrieben.
-    Je nachdem wie diese Dritt-Applikation die Dateien bearbeitet, kann \emph{kitovu} eine erneuten Synchronisation der Dateien auslösen. \emph{Kitovu} funktioniert aber weiterhin.
-  \item[Austauschbarkeit (replaceability)] \strut \\
-    \emph{Kitovu} kann nicht direkt eine andere, bestehende Applikation ablösen, da wir einen Stand der Schnittstellen-Daten zwischenspeichern.
-    Daher müssen die Daten zu Beginn frisch synchronisiert werden.
-\end{description}
+\begin{tabulary}{\linewidth}{lL}
+  \toprule
+  Metrik & Beschreibung \\
+  \midrule
+  \metricheader{6.1.}{Installierbarkeit (installability)} \\
+  6.1.1. & Die Applikation lässt sich über ein pip-Paket \footnotemark installieren. \\
+  6.1.2. & Für Windows (und allenfalls macOS) wird \emph{kitovu} als ausführbare Datei bereitgestellt. Diese installiert sämtliche Abhängigkeiten mit. \\
+  \bottomrule
+\end{tabulary}
+\footnotetext{\url{https://pypi.python.org/pypi/pip}}
 
 \subsection{Schnittstellen}
 %<Beschreibung der Schnittstellen der Software>
@@ -472,5 +471,4 @@ Diese technischen Randbedingungen wurden für das Projekt \emph{kitovu} festgele
   \item[Python] Version 3.6
   \item[Betriebssystem] \emph{kitovu} unterstützt Windows und Linux, gegebenfalls macOS. Weitere technische Randbedingungen sind im Projektplan aufgeführt.
 \end{description}
-
 \end{document}

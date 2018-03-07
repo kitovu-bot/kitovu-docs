@@ -307,7 +307,7 @@ FIXME Méline: Use Cases umschreiben, Brief-Version folgend. Überall Studentin
 
 \newcommand{\isourl}[2]{ISO/IEC #1\footnote{ISO/IEC #1 \url{https://www.iso.org/standard/#2.html}}}
 
-Für die Qualitätsmerkmale haben wir uns für den Standard \isourl{9126-1}{22749} entschieden. Obwohl dieser bereits mit dem Standard \isourl{25010}{35733} überarbeitet wurde, verwenden wir die ältere Version, da wir damit bereits Erfahrung gesammelt haben.
+Für die Qualitätsmerkmale haben wir uns für den Standard \isourl{9126}{16722} entschieden. Obwohl dieser bereits mit dem Standard \isourl{25010}{35733} überarbeitet wurde, verwenden wir die ältere Version, da wir damit im Modul \emph{Software-Engineering 1} bereits Erfahrung gesammelt haben.
 
 \subsubsection{Funktionalität (functionality)}
 
@@ -329,11 +329,6 @@ Für die Qualitätsmerkmale haben wir uns für den Standard \isourl{9126-1}{2274
   \item[Interoperabilität (interoperability)] \strut \\
     Die externen Schnittstellen werden über abgekoppelte Module angesprochen.
     Dadurch sind diese einfach testbar und austauschbar, falls eine Schnittstelle nicht mehr benötigt wird oder eine neue gewünscht ist.
-  \item[Sicherheit (security)] \strut \\
-    Bei \emph{kitovu} werden Anmeldeinformationen (wie Passwörter und Login-Tokens) verschlüsselt auf dem System abgelegt.
-
-    Die Ablage der synchronisierten Daten und Konfigurationen geschieht nicht verschlüsselt, sprich es liegt in der Hand des Benutzers vorsichtig damit umzugehen.
-    Falls Daten, welche vertraulich sind, synchronisiert werden muss der Benutzer sicherstellen, dass er es nicht z.B. auf einen öffentlichen Share synchronisiert.
   \item[Ordnungsmässigkeit (regularity)] \strut \\
     Für die Ordnungsmässigkeit halten wir uns an das Bundersgesetz über den Datenschutz (DSG\footnote{\url{https://www.admin.ch/opc/de/classified-compilation/19920153/index.html}}).
     Wir speichern die Daten immer nur auf dem Computer des Benutzers.
@@ -342,9 +337,12 @@ Für die Qualitätsmerkmale haben wir uns für den Standard \isourl{9126-1}{2274
     Sämtliche Änderungen an Daten werden von dem Benutzer ausgelöst. Durch die akkurate Benennung der Interaktionsmöglichkeiten in \emph{kitovu} wird verständlich gemacht, welche Aktion der Benutzer auslöst.
 
     Es wird nicht mit besonders schützenswerten Personendaten hantiert.
-\end{description}
+  \item[Sicherheit (security)] \strut \\
+    Bei \emph{kitovu} werden Anmeldeinformationen (wie Passwörter und Login-Tokens) verschlüsselt auf dem System abgelegt.
 
-FIXME Nicolas überprüfen mit SE1
+    Die Ablage der synchronisierten Daten und Konfigurationen geschieht nicht verschlüsselt, sprich es liegt in der Hand des Benutzers vorsichtig damit umzugehen.
+    Falls Daten, welche vertraulich sind, synchronisiert werden muss der Benutzer sicherstellen, dass er es nicht z.B. auf einen öffentlichen Share synchronisiert.
+\end{description}
 
 \subsubsection{Zuverlässigkeit (reliability)}
 
@@ -374,8 +372,6 @@ FIXME Nicolas überprüfen mit SE1
     Die einzelnen Funktionen sind übersichtlich gruppiert und beschrieben.
   \item[Bedienbarkeit (operability)] \strut \\
     Das Erstellen der Konfiguration benötigt etwas Aufwand, aber das eigentliche Synchronisieren wird mit minimalem Aufwand ermöglicht.
-  \item[Attraktivität (attractiveness)] \strut \\
-    Die Oberfläche und das Kommandozeilenprogramm sind übersichtlich strukturiert.
 \end{description}
 
 \subsubsection{Effizienz (efficiency)}
@@ -402,7 +398,7 @@ FIXME Nicolas überprüfen mit SE1
     Da die ganze Applikation modular aufgebaut ist, lässt diese sich leicht um neue Module erweitern oder bestimmte entfernen.
   \item[Stabilität (stability)] \strut \\
     Eine grosse Testabdeckung (inklusive kompletter Abläufe) bieten eine grundstabilität, so dass Änderungen bei bestimmten Funktionalitäten die Tests sofort reklamieren.
-  \item[Testbarkeit (testability)] \strut \\
+  \item[Prüfbarkeit (testability)] \strut \\
     Dank dem modularen Aufbau können wir alle Module und den Core-Teil separat Testen.
     Dies ergänzen wir mit Integrations-Tests, welche den kompletten Ablauf testet.
 \end{description}

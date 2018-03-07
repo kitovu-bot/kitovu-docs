@@ -210,9 +210,8 @@ Wir müssen annehmen, dass ein Teil der Studentinnen und Studenten damit vertrau
 \subsection{Use-Case-Diagramm}
 %<Use Case Diagramm>
 
-FIXME insert definitive use case diagram, schön anordnen
 
-\includegraphics[width=40em]{./uc_diagram_kitovu.png}
+\includegraphics[width=40em]{./uc_diagram_kitovu.pdf}
 
 \subsection{Beschreibungen (Brief)}
 %<Alle Use Cases in einzelnen Kapiteln beschreiben im Brief Format>
@@ -237,18 +236,18 @@ FIXME Méline: Use Cases umschreiben, Brief-Version folgend. Überall Studentin
 
 \subsubsection{UC1: Konfiguration editieren}
 \begin{description}[uclist]
-  \item[Goal] Der Student editiert die Konfiguration, in der alle externen Plattform enthalten ist.
+  \item[Goal] Die Studentin editiert die Konfiguration, in der alle externen Plattform enthalten ist.
   %\item[Level] FIXME
-  \item[Primary Actor] Student
-  \item[Trigger] Der Student möchte aktuelle Unterrichtsmaterialien auf seinem Rechner haben.
+  \item[Primary Actor] Studentin
+  \item[Trigger] Die Studentin möchte aktuelle Unterrichtsmaterialien auf ihrem Rechner haben.
   \item[Stakeholders and Interests]
     \begin{description}
-      \item[Der Student] legt eine neue Plattform an.
-      \item[Das System] informiert den Studenten, welche Plattformen unterstützt werden und stellt sicher, dass die Plattform bereits implementiert ist.
+      \item[Die Studentin] erfasst eine neue Plattform in der Konfigurationsdatei.
+      \item[Das System] informiert die Studentin, welche Plattformen unterstützt werden und stellt sicher, dass die Plattform bereits implementiert ist.
     \end{description}
-  \item[Preconditions] Der Student besitzt einen Account der externen Plattform mit entsprechenden Login-Daten.
+  \item[Preconditions] Die Studentin besitzt einen Account der externen Plattform mit entsprechenden Login-Daten.
   \item[Postconditions] Die aktualisierte Konfigurationsdatei wird gespeichert.
-  \item[Main Success Scenario] Der Student hinterlegt in der Konfiguration von \emph{kitovu} zu einer externen Plattform in \emph{kitovu}. Er kann die Zugangsdaten erstellen, speichern, abändern oder das Profil ganz entfernen. Die eingegebenen Daten werden in \emph{kitovu} gespeichert.
+  \item[Main Success Scenario] In der Konfigurationsdatei hinterlegt die Studentin Angaben zu einer externen Plattform. Sie kann die Zugangsdaten erstellen, speichern, abändern oder das Profil ganz entfernen. Die eingegebenen Daten werden in \emph{kitovu} gespeichert.
   \item[Extensions] Die eingegebenen Daten sind ungültig. \emph{Kitovu} weist die Studentin darauf hin.
   %\item[Special Requirements] FIXME
   \item[Frequency of Occurrence] Selten, nach Bedarf.
@@ -267,46 +266,46 @@ FIXME Méline: Use Cases umschreiben, Brief-Version folgend. Überall Studentin
     \end{description}
   \item[Preconditions]
     \begin{itemize}[leftmargin=1em]
-      \item UC1 ist erfolgt: Die Studentin besitzt einen Account der externen Plattform. Sie hat bereits ein Profil der externen Plattform in \emph{kitovu} hinterlegt.
+      \item UC1 ist erfolgt: Die Studentin besitzt einen Account der externen Plattform. Sie hat bereits ein Profil der externen Plattform in der Konfigurationsdatei von \emph{kitovu} hinterlegt.
       \item Sie weiss, welche Dateien sie synchronisieren möchte und wo sie auf der externen Plattform abgelegt sind.
     \end{itemize}
   \item[Postconditions] Die aktualisierte Konfigurationsdatei wird gespeichert.
   \item[Main Success Scenario] Die Studentin definiert für das jeweilige Profil, welche Dateien sie synchronisiert haben möchte und welche ausgeschlossen werden.
   \item[Extensions] Die angegebenen Pfade existieren nicht -- die Studentin wird in UC4 darauf hingewiesen.
-  %\item[Special Requirements] asdf
+  %\item[Special Requirements]
   \item[Frequency of Occurrence] Zu Beginn jedes Semesters, wenn die neuen Module beginnen.
-  %\item[Open Issues] asdf
+  %\item[Open Issues]
 \end{description}
 
 \subsubsection{UC3: Verbindung erstellen}
 \begin{description}[uclist]
-  \item[Goal] Um auf die Unterrichtsmaterialien zuzugreifen, muss der Student eine Verbindung zur externen Plattform herstellen.
-  %\item[Level] FIXME
+  \item[Goal] Um auf die Unterrichtsmaterialien zuzugreifen, muss die Studentin eine Verbindung zur externen Plattform herstellen.
+  %\item[Level] 
   \item[Primary Actor] Der Student
   \item[Trigger] Der Student möchte auf eine externe Plattform zugreifen.
   \item[Stakeholders and Interests]
     \begin{description}
-      \item[Der Student] weiss, von welcher Plattform er welche Dateien möchte.
+      \item[Die Studentin] weiss, von welcher Plattform sie welche Dateien möchte.
       \item[Das System] kann die Verbindung herstellen.
     \end{description}
-  \item[Preconditions] Der Student hat in UC1 die Profildaten der externen Plattform hinterlegt.
+  \item[Preconditions] Die Studentin hat in UC1 die Profildaten der externen Plattform hinterlegt.
   \item[Postconditions] Keine.
-  \item[Main Success Scenario] Der Student verbindet sich zur externen Plattform, die Authentisierung ist erfolgreich.
+  \item[Main Success Scenario] Die Studentin verbindet sich zur externen Plattform, die Authentisierung ist erfolgreich.
   \item[Extensions]
     \begin{description}
       \item[Die Verbindung misslingt:] \strut \\[-1em]
         \begin{itemize}[leftmargin=1em]
-          \item Nicht im HSR-Netz (HSR-Skripteserver): Die Verbindung misslingt, da sich der Student nicht im HSR-Netz befindet oder nicht per VPN verbunden ist.
-          \item Moodle-Probleme: der Zugriff auf Moodle misslingt aufgrund Plattform-eigener Probleme.
+          \item Nicht im HSR-Netz (HSR-Skripteserver): Die Verbindung misslingt, da sich die Studentin nicht im HSR-Netz befindet oder nicht per VPN verbunden ist.
+          \item Moodle-Probleme: der Zugriff auf Moodle misslingt aufgrund Plattform-spezifischer Probleme.
           \item Die hinterlegten Login-Daten sind nicht korrekt.
         \end{itemize}
       \item[Keine Login-Daten hinterlegt:] \emph{kitovu} fordert die Studentin auf, ihre Login-Daten einzugeben.
-      \item[Moodle:] Die externe Plattform verlangt, dass sich der Student pro Session authentisiert.
-      \item[HSR-Skripteserver:] Die externe Plattform verlangt, dass sich der Student im HSR-Netz befindet oder bereits eine VPN-Verbindung zur Plattform aufgenommen hat.
+      \item[Moodle:] Die externe Plattform verlangt, dass sich die Studentin pro Session authentisiert.
+      \item[HSR-Skripteserver:] Die externe Plattform verlangt, dass sich die Studentin im HSR-Netz befindet oder bereits eine VPN-Verbindung zur Plattform aufgenommen hat.
     \end{description}
-  \item[Special Requirements] Der Student verfügt über einen Account der externen Plattform.
+  \item[Special Requirements] Die Studentin verfügt über einen Account der externen Plattform.
   \item[Frequency of Occurrence] Rund jede Woche, wenn die Dozenten erneut neue Unterrichtsmaterialien bereitstellen.
-  %\item[Open Issues] FIXME
+  %\item[Open Issues] 
 \end{description}
 
 

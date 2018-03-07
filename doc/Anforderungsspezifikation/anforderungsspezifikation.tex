@@ -49,14 +49,16 @@
 	\toprule
 	Datum & Version & Änderung & AutorIn \\
 	\midrule
-	04.03.2018 & 1.0 & Dokument erstellt, Grundgerüst von Template übernommen, funktionale Anforderungen & Méline Sieber \\
+	04.03.2018 & 1.0 & Dokument erstellt, Grundgerüst von Template übernommen, funktionale Anforderungen verfasst & Méline Sieber \\
 	06.03.2018 & 1.1 & Überarbeitung & alle \\
+	08.03.2018 & 1.2 & Lektorat & Méline Sieber\\
+	09.03.2018 & 1.3 & Abgabe & Florian Bruhin \\
 	\bottomrule
 \end{tabulary}
 \pagebreak
 
 \section{Einführung}
-Dieses Dokument beschreibt, was \emph{kitovu} genau ist. Danach veranschaulicht diese Anforderungsspezifikation, wer \emph{kitovu} verwendet. Das erfolgt anhand von ``Use Cases'', einerseits in einem kurzen Format (\emph{brief}), andererseits in einer ausführlichen Beschreibung (\emph{fully dressed}). Weitere Anforderungen detaillieren, welche Qualitätsmerkmale und Schnittstellen verwendet werden sowie geltende Randbedingungen.
+Dieses Dokument beschreibt Umfang und Funktionalitäten von \emph{kitovu}. Danach veranschaulicht diese Anforderungsspezifikation, wer \emph{kitovu} verwendet. Das erfolgt anhand von ``Use Cases'', einerseits in einem kurzen Format (\emph{brief}), andererseits in einer ausführlichen Beschreibung (\emph{fully dressed}). Eine Domainanalyse zeigt wesentliche konzeptionelle Klassen und ihre Zusammenhänge auf. Weitere Anforderungen detaillieren, welche Qualitätsmerkmale und Schnittstellen verwendet werden sowie geltende Randbedingungen.
 
 \subsection{Gültigkeitsbereich}
 Die vorliegende Anforderungsspezifikation ist für das Engineering-Projekt im Frühlingssemester 2018 gültig. Falls dem Projekt grössere Veränderungen widerfahren, wird das Dokument dementsprechend angepasst. Umfassende Änderungen werden am Anfang des Dokuments protokolliert.
@@ -82,7 +84,7 @@ Die Anforderungsspezifikation ist eng mit der Domainanalyse und anderen Dokument
 	
 \end{tabulary}
 
-Beim Logo auf der Titelseite handelt es sich um eine stark überarbeitete Version eines GIFs (\url{https://www.animateit.net/details.php?image_id=8990}). Urheber und Copyright waren nicht auffindbar.
+Beim Logo auf der Titelseite handelt es sich um eine stark überarbeitete Version eines GIFs (\url{https://www.animateit.net/details.php?image_id=8990}). Urheber und Copyright sind nicht auffindbar.
 
 \pagebreak
 \section{Allgemeine Beschreibung}
@@ -94,7 +96,7 @@ Beim Logo auf der Titelseite handelt es sich um eine stark überarbeitete Versio
 %<Allgemeine Beschreibung der Funktionen>
 \emph{Kitovu} ist ein Client, der von verschiedenen Plattformen ausgewählte HSR-Unterrichtsmaterialien auf den eigenen Rechner synchronisiert. Er läuft auf allen gängigen Betriebssystemen und funktioniert nicht nur für den HSR-Skripteserver, sondern ist auch erweiterbar für verschiedene Plattformen.
 
-Unser Projekt bindet primär den Skripteserver ein. Der Kommandozeilen-basierte Client funktioniert mittels Profilen zu unterschiedlichen Plattformen (Moodle, Skripteserver, Studentenportal). Pro Profil sind Verbindungsdaten und eventuelle Login-Credentials im Client hinterlegt. Die Daten-Synchronisation erfolgt immer nur von Server zu Client, erfolgreiche und misslungene Datentransfers werden protokolliert. Ein rudimentäres GUI dient als Proof-of-Concept.
+Unser Projekt bindet primär den Skripteserver ein. Der Kommandozeilen-basierte Client funktioniert mittels Profilen zu unterschiedlichen Plattformen (Moodle, Skripteserver, Studentenportal). Pro Profil sind Verbindungsdaten und eventuelle Login-Credentials im Client hinterlegt, alle Profile sind in einer Konfigurationsdatei gespeichert. Die Datei-Synchronisation erfolgt immer nur von Server zu Client, erfolgreiche und misslungene Datentransfers werden protokolliert. Ein rudimentäres GUI dient als Proof-of-Concept.
 
 Pro Profil lässt sich Folgendes definieren:
 
@@ -316,16 +318,12 @@ Für die Qualitätsmerkmale haben wir uns für den Standard \isourl{9126}{16722}
     Die Funktionen von \emph{kitovu} konzentrieren sich nur auf die Synchronisation der Dateien.
     Dadurch ist die Applikation sehr spezialisiert, aber trotzdem erweiterbar.
   \item[Richtigkeit (accuracy)] \strut \\
-    Es werden sämtliche Dateien, welche lokal nicht existieren, synchronisiert.
+    Es werden sämtliche Dateien, welche lokal nicht existieren und vorgängig ausgewählt wurden, synchronisiert.
 
-    Bei der Erkennung von geänderten Dateien sind wir von den Daten abhängig, welche die externen Schnittstellen bieten.
-    Dies bedeutet, unsere Kenntnis des Änderungszeitpunktes ist von der Genauigkeit des gewählten Datumsformat der externen Plattform abhängig.
-    Wenn nun etwas in der selben Sekunde ändert, erkennen wir dies nicht als Änderung.
-    Zusätzlich können Änderungszeitpunkte nachträglich verändert werden, was wir auch nicht verhindern, respektive umgehen, können.
+    Um zu erkennen, ob sich Dateien geändert haben, sind vor von den Angaben abhängig, welche die externen Schnittstellen bieten.
+    Dies bedeutet, unsere Kenntnis des Änderungszeitpunkts ist von der Genauigkeit des gewählten Datumsformat der externen Plattform abhängig. Das kann zu blinden Flecken führen: Änder etwas in derselben Sekunde, können wir das nicht als Änderung anerkennen. Zudem können wir nicht verhindern, dass Änderungszeitpunkte von Dateien nachträglich auf der externen Plattform verändert werden.
     
-    Je nach Plattform gibt es die Möglichkeit, Hashes, respektive Dateigrössen, zu vergleichen, um Änderungen an Dokumenten festzustellen.
-    
-    Je nach Plattform wählen wir diejenige Variante, die die grösste Genauigkeit bei den Änderungen zulässt.
+    Neben dem Änderungszeitpunkt gibt es auch die Möglichkeit, Hashes oder Dateigrössen zu vergleichen, um Änderungen an Dokumenten festzustellen. Je nach Plattform wählen wir diejenige Variante, die die ex grösste Genauigkeit bei den Änderungen zulässt.
   \item[Interoperabilität (interoperability)] \strut \\
     Die externen Schnittstellen werden über abgekoppelte Module angesprochen.
     Dadurch sind diese einfach testbar und austauschbar, falls eine Schnittstelle nicht mehr benötigt wird oder eine neue gewünscht ist.

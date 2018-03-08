@@ -46,7 +46,7 @@
 
 \section*{Änderungsgeschichte}
 
-FIXME TEST
+FIXME TEST4
 
 \begin{tabulary}{\linewidth}{llLl}
 	\toprule
@@ -252,13 +252,15 @@ Wir müssen annehmen, dass ein Teil der Studentinnen und Studenten damit vertrau
 %<Alle Use Cases in einzelnen Kapiteln beschreiben im Brief Format>
 \begin{description}
 	
-\item[Use Case 1: Konfiguration editieren:] Die Studentin legt in einer Konfigurationsdatei alle Plattformen und die entsprechenden Verbindungsdaten fest, mit der auf die externen Plattformen zugegriffen wird.
+\item[Use Case 1: Synchronisation:] Die Studentin synchronisiert die Dateien von der externen Plattform auf ihren Rechner.
+	
+\item[Use Case 2: Konfiguration editieren:] Die Studentin legt in einer Konfigurationsdatei alle Plattformen und die entsprechenden Verbindungsdaten fest, mit der auf die externen Plattformen zugegriffen wird.
 
-\item[Use Case 2: Dateien auswählen:] Die Studentin legt in der Konfigurationsdatei fest, welche Ordner und Dateien synchronisiert werden sollen.
+\item[Use Case 3: Dateien auswählen:] Die Studentin legt in der Konfigurationsdatei fest, welche Ordner und Dateien synchronisiert werden sollen.
 
-\item[Use Case 3: Verbindung erstellen:] Die Studentin stellt eine Verbindung zur externen Plattform her und authentisiert sich dort.
+\item[Use Case 4: Verbindung herstellen:] Die Studentin stellt eine Verbindung zur externen Plattform her und authentisiert sich dort.
 
-\item[Use Case 4: Synchronisation:] Die Studentin synchronisiert die Dateien von der externen Plattform auf ihren Rechner.
+
 \end{description}
 
 \pagebreak
@@ -269,7 +271,35 @@ FIXME Méline: Use Cases umschreiben, Brief-Version folgend. Überall Studentin
 
 \SetEnumitemKey{uclist}{labelwidth=13em,leftmargin=13.5em}
 
-\subsubsection{UC1: Konfiguration editieren}
+
+
+\subsubsection{UC1: Synchronisation der Dateien}
+
+\begin{description}[uclist]
+	\item[Goal] Die Studentin synchronisiert alle benötigten Unterrichtsmaterialien auf ihren Computer.
+	%\item[Level] FIXME
+	\item[Primary Actor] Die Studentin
+	\item[Trigger] Die Studentin möchte aktuelle Unterrichtsmaterialien auf ihrem Computer lokal abspeichern.
+	\item[Stakeholders and Interests]
+	\begin{description}
+		\item[Die Studentin] möchte stets die Version der Dateien auf ihrem Rechner haben, die sie tatsächlich will.
+		\item[Das System] stellt sicher, dass die gespeicherten Dateien konsistent und aktuell sind.
+	\end{description}
+	\item[Preconditions] UC3: Die Studentin hat erfolgreich eine Verbindung zur externen Plattform hergestellt.
+	%\item[Postconditions] FIXME
+	\item[Main Success Scenario] Die Studentin startet den Synchronisationsprozess. Danach verfügt sie über die von ihr ausgewählten Unterrichtsmaterialien auf ihrem Rechner. Eine Log-Ausgabe protokolliert den Vorgang.
+	\item[Extensions]
+	\begin{description}
+		\item[Dateien schon vorhanden:] Die Studentin legt in ihrem Profil fest, wie mit bereits existierenden Dateien umgegangen werden soll. Dabei kann sie wählen, ob lokal bestehende Dateien gleichen Namens umbenannt, durch eine neuere Server-Version ersetzt oder nichts synchronisiert werden soll. Sie kann auch entscheiden, bei jedem Konflikt von \emph{kitovu} gefragt zu werden, wie sie für jede Datei entscheiden möchte.
+		\item[Synchronisation schlägt fehl:] Die Synchronisation wird nicht durchgeführt, die Studentin erhält eine Benachrichtigung.
+	\end{description}
+	%\item[Special Requirements] FIXME
+	\item[Frequency of Occurrence] Rund jede Woche, wenn die Dozenten erneut neue Unterrichtsmaterialien bereitstellen.
+	%\item[Open Issues] Moodle-Anbindung
+\end{description}
+
+
+\subsubsection{UC2: Konfiguration editieren}
 \begin{description}[uclist]
   \item[Goal] Die Studentin editiert die Konfiguration, in der alle externen Plattform enthalten ist.
   %\item[Level] FIXME
@@ -288,7 +318,7 @@ FIXME Méline: Use Cases umschreiben, Brief-Version folgend. Überall Studentin
   \item[Frequency of Occurrence] Selten, nach Bedarf.
 \end{description}
 
-\subsubsection{UC2: Dateien auswählen}
+\subsubsection{UC3: Dateien auswählen}
 \begin{description}[uclist]
   \item[Goal] Die Studentin schreibt in die Konfigurationsdatei, welche Dateien sie auf ihren Rechner synchronisieren möchte. Sie kann ausschliessen, welche Dateien nicht synchronisiert werden.
   %item[Level] FIXME
@@ -312,7 +342,7 @@ FIXME Méline: Use Cases umschreiben, Brief-Version folgend. Überall Studentin
   %\item[Open Issues]
 \end{description}
 
-\subsubsection{UC3: Verbindung erstellen}
+\subsubsection{UC4: Verbindung erstellen}
 \begin{description}[uclist]
   \item[Goal] Um auf die Unterrichtsmaterialien zuzugreifen, muss die Studentin eine Verbindung zur externen Plattform herstellen.
   %\item[Level] 
@@ -343,32 +373,6 @@ FIXME Méline: Use Cases umschreiben, Brief-Version folgend. Überall Studentin
   \item[Special Requirements] Die Studentin verfügt über einen Account der externen Plattform.
   \item[Frequency of Occurrence] Rund jede Woche, wenn die Dozenten erneut neue Unterrichtsmaterialien bereitstellen.
   %\item[Open Issues] 
-\end{description}
-
-
-\subsubsection{UC4: Synchronisation der Dateien}
-
-\begin{description}[uclist]
-  \item[Goal] Die Studentin synchronisiert alle benötigten Unterrichtsmaterialien auf ihren Computer.
-  %\item[Level] FIXME
-  \item[Primary Actor] Die Studentin
-  \item[Trigger] Die Studentin möchte aktuelle Unterrichtsmaterialien auf ihrem Computer lokal abspeichern.
-  \item[Stakeholders and Interests]
-    \begin{description}
-      \item[Die Studentin] möchte stets die Version der Dateien auf ihrem Rechner haben, die sie tatsächlich will.
-      \item[Das System] stellt sicher, dass die gespeicherten Dateien konsistent und aktuell sind.
-    \end{description}
-  \item[Preconditions] UC3: Die Studentin hat erfolgreich eine Verbindung zur externen Plattform hergestellt.
-  %\item[Postconditions] FIXME
-  \item[Main Success Scenario] Die Studentin startet den Synchronisationsprozess. Danach verfügt sie über die von ihr ausgewählten Unterrichtsmaterialien auf ihrem Rechner. Eine Log-Ausgabe protokolliert den Vorgang.
-  \item[Extensions]
-    \begin{description}
-      \item[Dateien schon vorhanden:] Die Studentin legt in ihrem Profil fest, wie mit bereits existierenden Dateien umgegangen werden soll. Dabei kann sie wählen, ob lokal bestehende Dateien gleichen Namens umbenannt, durch eine neuere Server-Version ersetzt oder nichts synchronisiert werden soll. Sie kann auch entscheiden, bei jedem Konflikt von \emph{kitovu} gefragt zu werden, wie sie für jede Datei entscheiden möchte.
-      \item[Synchronisation schlägt fehl:] Die Synchronisation wird nicht durchgeführt, die Studentin erhält eine Benachrichtigung.
-    \end{description}
-  %\item[Special Requirements] FIXME
-  \item[Frequency of Occurrence] Rund jede Woche, wenn die Dozenten erneut neue Unterrichtsmaterialien bereitstellen.
-  %\item[Open Issues] Moodle-Anbindung
 \end{description}
 
 \section{Weitere Anforderungen}

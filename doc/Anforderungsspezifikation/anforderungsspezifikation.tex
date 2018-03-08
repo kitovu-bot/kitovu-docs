@@ -60,7 +60,7 @@
 \pagebreak
 
 \section{Einführung}
-Dieses Dokument beschreibt Umfang und Funktionalitäten von \emph{kitovu}. Danach veranschaulicht diese Anforderungsspezifikation, wer \emph{kitovu} verwendet. Das erfolgt anhand von ``Use Cases'', einerseits in einem kurzen Format (\emph{brief}), andererseits in einer ausführlichen Beschreibung (\emph{fully dressed}). Eine Domainanalyse zeigt wesentliche konzeptionelle Klassen und ihre Zusammenhänge auf. Weitere Anforderungen detaillieren, welche Qualitätsmerkmale und Schnittstellen verwendet werden sowie geltende Randbedingungen.
+Dieses Dokument beschreibt Umfang und Funktionalitäten von \emph{kitovu}. Danach veranschaulicht diese Anforderungsspezifikation, wer \emph{kitovu} verwendet. Das erfolgt anhand von ``Use Cases'', einerseits in einem kurzen Format (\emph{brief}), andererseits in einer ausführlichen Beschreibung (\emph{fully dressed}). Entwürfe zur Benutzeroberfläche zeigen, wie wir uns vorstellen, wie \emph{kitovu} aussieht. Eine Domainanalyse zeigt wesentliche konzeptionelle Klassen und ihre Zusammenhänge auf. Weitere Anforderungen detaillieren, welche Qualitätsmerkmale und Schnittstellen verwendet werden sowie geltende Randbedingungen.
 
 \subsection{Gültigkeitsbereich}
 Die vorliegende Anforderungsspezifikation ist für das Engineering-Projekt im Frühlingssemester 2018 gültig. Falls dem Projekt grössere Veränderungen widerfahren, wird das Dokument dementsprechend angepasst. Umfassende Änderungen werden am Anfang des Dokuments protokolliert.
@@ -118,7 +118,7 @@ Dozentinnen und Dozenten können ebenfalls \emph{kitovu} verwenden, sie sind jed
 
 \subsection{Einschränkungen}
 %<Wo sind die Grenzen des Produkts>
-Da die Projekt-Zeitspanne kurz ist, beschränken wir die Kernfunktion von \emph{kitovu} auf einen Client, der über die Kommandozeile (Terminal) bedient wird. Es ist vorerst nur eine rudimentäre grafische Benutzeroberfläche geplant. Falls jedoch genügend Zeit bleibt, baut das Team die Benutzeroberfläche aus. Uns ist bewusst, dass wir damit einen Teil der Studierenden ausschliessen, nicht alle können mit der Kommandozeile umgehen. Aufgrund der Zeitbeschränkung müssen wir das in Kauf nehmen, sehen es aber als erste Priorität. Falls genügend Zeit bleiben sollte, erweitern wir den grafischen Client auf die Funktionalität des Terminal-Clients.
+Da die Projekt-Zeitspanne kurz ist, beschränken wir die Kernfunktion von \emph{kitovu} auf einen Client, der über die Kommandozeile (Terminal) bedient wird. Es ist vorerst nur eine rudimentäre grafische Benutzeroberfläche geplant. Uns ist bewusst, dass wir damit einen Teil der Studierenden ausschliessen, nicht alle können mit der Kommandozeile umgehen. Aufgrund der Zeitbeschränkung müssen wir das in Kauf nehmen, sehen es aber als erste Priorität. Falls genügend Zeit bleiben sollte, erweitern wir die grafische Benutzeroberfläche um die komplette Funktionalität des Terminal-Clients.
 
 Weitere Einschränkungen sind die Unterstützung für das Studentenportal und Moodle. Die jeweiligen Gründe beschreibt bereits der Projektplan ausführlich.
 
@@ -145,19 +145,17 @@ Wir müssen annehmen, dass ein Teil der Studentinnen und Studenten damit vertrau
 
   \begin{itemize}
   \item Für die verschiedenen externen Plattformen (Skripteserver, Moodle, etc.) existieren
-    Plugins, welche die jeweilige Synchronisation implementieren. Ein Plugin bezeichnet also die in Software implementierte Anbindung an eine xterne Plattform.
+    Plugins, welche die jeweilige Synchronisation implementieren. Ein Plugin bezeichnet also die in der Software implementierte Anbindung an eine externe Plattform.
   \item Der Nutzer konfiguriert \emph{Kitovu} über eine Konfigurationsdatei,
-    \emph{Configuration}. Darin enthalten sind globale Optionen (wie eine Liste
-    von Dateien, die nie synchronisiert werden sollen, beispielsweise
-    \verb|Thumbs.db| und \verb|.DS_Store|) sowie eine Liste von Profilen
+    \emph{Configuration}. Darin enthalten sind globale Optionen, beispielsweise eine Liste
+    von Dateien, die nie synchronisiert werden sollen (\verb|Thumbs.db|, \verb|.DS_Store|) sowie eine Liste von Profilen
 (\emph{Profile}).
   \item Ein Profil enthält die Konfiguration, die spezifisch für ein Plugin
     ist -- so beispielsweise der zu verwendende Benutzername oder welche Pfade/Module synchronisiert
-    werden sollen. Das Passwort wird separat und verschlüsselt abgelegt.:thum
+    werden sollen. Das Passwort wird separat und verschlüsselt abgelegt.
   \item Die Synchronisationsplugins erzeugen \emph{File}-Objekte für
     synchronisierte Dateien. Darin wird jeweils für die lokale Datei
-    und die Datei auf dem Server ein \emph{digest} (beispielsweise
-    Grösse/Änderungszeit oder ein Hash) gespeichert. Dieser ermöglicht, Änderungen an der Datei zu erkennen.
+    und die Datei auf dem Server ein \emph{digest} (Grösse/Änderungszeit/Hash) gespeichert. Dieser ermöglicht, Änderungen an der Datei zu erkennen.
   \item Lokal wird ein \emph{FileCache} gespeichert, welcher die
     Metainformationen (Pfad/Digest, siehe oben) für alle lokalen Dateien
     enthält.
@@ -260,7 +258,7 @@ Wir müssen annehmen, dass ein Teil der Studentinnen und Studenten damit vertrau
 %<Spezielle und wichtige Use Cases in einzelnen Kapiteln beschreiben im Fully Dressed Format>
 
 \SetEnumitemKey{uclist}{labelwidth=13em,leftmargin=13.5em}
-Da \emph{kitovu} keine grosse Komplexität aufweist, verwenden eine vereinfachte Version der ausführlichen Fully-Dressed-Use-Cases, wie sie beispielsweise Karl Wiegers beschreibt (vgl. ``Use Cases for Cafeteria Ordering System, Release 1.0'', 2002).
+Da \emph{kitovu} keine grosse Komplexität aufweist, verwenden wir eine vereinfachte Version der ausführlichen ``Fully Dressed Use Cases'', wie sie beispielsweise Karl Wiegers beschreibt (vgl. ``Use Cases for Cafeteria Ordering System, Release 1.0'', 2002).
 
 
 \subsubsection{UC1: Synchronisation der Dateien}
@@ -350,7 +348,7 @@ Da \emph{kitovu} keine grosse Komplexität aufweist, verwenden eine vereinfachte
       \item[HSR-Skripteserver:] Die externe Plattform verlangt, dass sich die Studentin im HSR-Netz befindet oder bereits eine VPN-Verbindung zur Plattform aufgenommen hat.
     \end{description}
   \item[Special Requirements] Die Studentin verfügt über einen Account der externen Plattform.
-  \item[Frequency of Occurrence] Rund jede Woche, wenn die Dozenten erneut neue Unterrichtsmaterialien bereitstellen.
+  \item[Frequency of Occurrence] Rund jede Woche, wenn die Dozenten neue Unterrichtsmaterialien bereitstellen.
 \end{description}
 
 
@@ -365,16 +363,12 @@ Da \emph{kitovu} keine grosse Komplexität aufweist, verwenden eine vereinfachte
 	
 	\includegraphics[width=30em]{./mockups/gui04.png}
 
-\begin{multicols}{2} 
-	\includegraphics[width=20em]{./mockups/terminal01.png}
+	\includegraphics[width=30em]{./mockups/terminal01.png}
 	
-	\includegraphics[width=20em]{./mockups/terminal02.png}
+	\includegraphics[width=30em]{./mockups/terminal02.png}
 	
-	\includegraphics[width=20em]{./mockups/terminal03.png}
+	\includegraphics[width=30em]{./mockups/terminal03.png}
 	
-\end{multicols}
-%ev. noch ein \columnbreak oder \vfill\columnbreak falls nötig
-
 \section{Weitere Anforderungen}
 
 \subsection{Qualitätsmerkmale}
@@ -396,7 +390,7 @@ Da das Projekt klein ist, haben wir nicht sämtliche Qualitätsmerkmale dieses S
   \midrule
 
   \metricheader{1.1.}{Richtigkeit (accuracy)} \\
-  1.1.1 & Eindeutig geänderte Dateien werden synchronisiert. Um geänderte Daten zu erkennen, sind wir auf die Angaben der Schnittstelle angewiesen. Wenn also die Schnittstelle nur ein Änderungsdatum zur Verfügung stellt, können wir nicht erkennen, ob die Datei zum angegebenen Änderungsdatum modifiziert wurde oder ob das Datum nachträglich entstanden ist. \\
+  1.1.1 & Eindeutig geänderte Dateien werden synchronisiert. Um geänderte Daten zu erkennen, sind wir auf die Angaben der Schnittstelle angewiesen. Wenn also die Schnittstelle nur ein Änderungsdatum zur Verfügung stellt, können wir nicht erkennen, ob die Datei zum angegebenen Änderungsdatum tatsächlich modifiziert wurde oder ob das Datum nachträglich entstanden ist. \\
 
   \metricheader{1.2.}{Ordnungsmässigkeit (regularity)} \\
   & \emph{Für die Ordnungsmässigkeit halten wir uns an das Bundesgesetz über den Datenschutz (DSG\footnotemark). Es wird nicht mit besonders schützenswerten Personendaten hantiert.} \\
@@ -420,12 +414,12 @@ Da das Projekt klein ist, haben wir nicht sämtliche Qualitätsmerkmale dieses S
   \midrule
 
   \metricheader{2.1.}{Fehlertoleranz (fault tolerance)} \\
-  2.1.1. & Falls ein Modul fehlerhaft ausgeführt wird -- falls beispielsweise ein Server nicht erreichbar ist -- wird dies dem Benutzer dargestellt, aber sämtlichen andere Module werden ausgeführt. \\
+  2.1.1. & Falls ein Modul fehlerhaft ausgeführt wird -- falls beispielsweise ein Server nicht erreichbar ist -- wird dies dem Benutzer mitgeteilt, aber sämtliche anderen Module werden ausgeführt. \\
   2.1.2. & Fehlerhafte Eingaben in der Konfiguration werden dem Benutzer verständlich kommuniziert. \\
 
   \metricheader{2.2.}{Wiederherstellbarkeit (recoverability)} \\
   2.2.1. & Falls eine Synchronisation nur zum Teil ausgeführt werden konnte, kann \emph{kitovu} die Synchronisation erneut ausführen und nur versuchen, die fehlenden Teile zu synchronisieren. \\
-  2.2.2. & Falls sämtliche Dateien verloren gegangen sind, etwa im Fall eines Festplattendefekts, muss die Konfigurationsdatei erneut geschrieben werden. Um dem vorzubeugen kann ein Backup der Konfigurationsdatei erstellt werden. \\
+  2.2.2. & Falls sämtliche Dateien verloren gegangen sind, etwa bei einem Festplattendefekts, muss die Konfigurationsdatei erneut geschrieben werden. Um dem vorzubeugen, kann ein Backup der Konfigurationsdatei erstellt werden. \\
   \bottomrule
 \end{tabulary}
 
@@ -437,10 +431,10 @@ Da das Projekt klein ist, haben wir nicht sämtliche Qualitätsmerkmale dieses S
   \midrule
   \metricheader{3.1.}{Verständlichkeit (understandability)} \\
   3.1.1 & Das Synchronisieren wird über eine übersichtliche grafische Oberfläche respektive mit der \verb|--help|-Option des Kommandozeilenprogramm beschreiben. \\
-  3.1.2 & Das Konfigurieren der einzelnen Profile wird über eine separate Ansicht/Datei beschrieben. \\
+  3.1.2 & Die Konfiguration der einzelnen Profile erfolgt über eine separate Ansicht/Datei. \\
   \metricheader{3.2.}{Bedienbarkeit (operability)} \\
-  3.2.1. & Wenn die Konfigurartion erstellt ist und die Login-Daten gespeichert wurden, kann die eigentliche Synchronisation in höchstens zwei Schritten durchgeführt werden. \\
-  3.2.2. & Falls die Login-Daten noch nicht eingegeben wurden wird pro Modul ein weiterer Schritt benötigt. \\
+  3.2.1. & Wenn die Konfiguration erstellt ist und die Login-Daten gespeichert wurden, kann die eigentliche Synchronisation in höchstens zwei Schritten durchgeführt werden. \\
+  3.2.2. & Falls die Login-Daten noch nicht eingegeben wurden, wird pro Modul ein weiterer Schritt benötigt. \\
   \bottomrule
 \end{tabulary}
 
@@ -453,9 +447,11 @@ Da das Projekt klein ist, haben wir nicht sämtliche Qualitätsmerkmale dieses S
   \metricheader{4.1.}{Zeitverhalten (time behaviour)} \\
   & \emph{Das Zeitverhalten ist abhängig von den externen Schnittstellen und des eigenen Internetanschlusses.} \\
   4.1.1. & Pro Modul wird immer nur eine Anfrage abgesetzt, um herauszufinden, ob sich die Dateien auf der externen Plattform geändert haben. Je nach dem bietet die externe Schnittstelle keine solche Funktion, wodurch mehr Anfragen abgeschickt werden müssen. \\
-  4.1.2. & Eine Analyse der bisherigen Module zeigt, dass pro Modul über das ganze Semester verteilt ungefähr 1'000 Dateien synchronisiert werden. Dies bedeutet bei einer wöchentlichen Synchronisation mit 7 Modulen jeweils: \[ 1'000~\frac{\textrm{Dateien}}{\textrm{Modul}} * 7\ \textrm{Module} / 14\ \textrm{Wochen} = 500~\frac{\textrm{Dateien}}{\textrm{Woche}} \] \\ 
+  4.1.2. & Eine Analyse der bisherigen Unterrichtseinheiten zeigt,\footnote{Im Schulkontext ist das ein ``Modul'', jedoch führt dies zu Verwirrung mit unserer Bezeichnung von ``Modul'' für eine externe Plattform, die \emph{kitovu} einbindet.} dass pro Unterrichtseinheit über das ganze Semester verteilt ungefähr 1'000 Dateien synchronisiert werden. Dies bedeutet bei einer wöchentlichen Synchronisation mit 7 Einheiten jeweils: \[ 1'000~\frac{\textrm{Dateien}}{\textrm{Unterrichtseinheit}} * 7\ \textrm{Module} / 14\ \textrm{Wochen} = 500~\frac{\textrm{Dateien}}{\textrm{Woche}} \] \\ 
   \bottomrule
 \end{tabulary}
+
+FIXME Florian: Fussnote 10 einbinden.
 
 \subsubsection{Änderbarkeit (maintainability)}
 
@@ -466,7 +462,7 @@ Da das Projekt klein ist, haben wir nicht sämtliche Qualitätsmerkmale dieses S
   \metricheader{5.1.}{Analysierbarkeit (analyzability)} \\
   5.1.1. & Mit einem Debug-Modus können zusätzlich alle Informationen, die ein Modul liefert, aufgezeichnet werden. Dies ermöglicht eine Einschränkung des Problems auf entweder ein spezifisches Modul oder den Kern-Teil von \emph{kitovu} selber. \\
   \metricheader{5.2.}{Modifizierbarkeit (changeability)} \\
-  5.2.1. & Da die ganze Applikation modular aufgebaut ist, lässt sich diese leicht um mehr Module erweitern oder reduzieren. \\
+  5.2.1. & Da die ganze Applikation modular aufgebaut ist, lässt sich diese leicht um neue Module erweitern oder reduzieren. \\
   \metricheader{5.3.}{Stabilität (stability)} \\
   5.3.1. & Die Test-Coverage ist mindestens 90\%. \\
   \metricheader{5.4.}{Prüfbarkeit (testability)} \\
@@ -494,13 +490,13 @@ Folgende Schnittstellen werden im Projekt \emph{kitovu} zu Verfügung gestellt o
 
 \begin{description}
   \item[Grafische Benutzeroberfläche]
-    Die grafische Benutzeroberfläche ist die Schnittstelle, mit welcher die meisten Endbenutzer mit der Applikation interagieren werden.
+    Die grafische Benutzeroberfläche ist die Schnittstelle, mit der die meisten Endbenutzer mit der Applikation interagieren.
     Diese bietet einen einfachen Weg, um die Daten zu synchronisieren.
   \item[Kommandozeilenprogramm]
-    Alternativ bieten wir ein Kommandozeilenprogramm, welches über einfache Befehle die Synchronisation startet.
+    Alternativ bieten wir ein Kommandozeilenprogramm an, welches über einfache Befehle die Synchronisation startet.
     Dies ist besonders für die Automatisierung gedacht oder für Endbenutzer, welche die Kommandozeile bevorzugen.
   \item[Externe Schnittstellen ("Plugins")]
-    Wir verwenden als externe Schnittstellen das Studentenportal, das Moodle und den Skripteserver, sowie das SwitchAAI für die Autorisierung des Moodles.
+    Wir verwenden als externe Schnittstellen das Studentenportal, das Moodle und den Skripteserver sowie das Switch AAI für die Moodle-Autorisierung.
 \end{description}
 
 \subsection{Randbedingungen}

@@ -46,8 +46,6 @@
 
 \section*{Änderungsgeschichte}
 
-FIXME TEST4
-
 \begin{tabulary}{\linewidth}{llLl}
 	\toprule
 	Datum & Version & Änderung & AutorIn \\
@@ -55,8 +53,8 @@ FIXME TEST4
 	04.03.2018 & 1.0 & Dokument erstellt, Grundgerüst von Template übernommen, funktionale Anforderungen verfasst & Méline Sieber \\
 	06.03.2018 & 1.1 & Überarbeitung & alle \\
   % FIXME
-	% 08.03.2018 & 1.2 & Lektorat & Méline Sieber\\
-	% 09.03.2018 & 1.3 & Abgabe & Florian Bruhin \\
+	08.03.2018 & 1.2 & Lektorat & Méline Sieber \\
+	% 09.03.2018 & 2.0 & Abgabe & Florian Bruhin \\
 	\bottomrule
 \end{tabulary}
 \pagebreak
@@ -68,11 +66,6 @@ Dieses Dokument beschreibt Umfang und Funktionalitäten von \emph{kitovu}. Danac
 Die vorliegende Anforderungsspezifikation ist für das Engineering-Projekt im Frühlingssemester 2018 gültig. Falls dem Projekt grössere Veränderungen widerfahren, wird das Dokument dementsprechend angepasst. Umfassende Änderungen werden am Anfang des Dokuments protokolliert.
 
 \subsection{Referenzen}
-
-% <Liste aller verwendeten und referenzierten Dokumente, Bücher, Links, usw.>
-% <Referenz auf ein Glossar Dokument, wo alle Abkürzungen und unklaren Begriffe erklärt werden>
-% <Die Quellen / Referenzen sollten mit dem Word Tool automatisch erstellt werden>
-
 Die Anforderungsspezifikation ist eng mit der Domainanalyse und anderen Dokumenten verbunden. Die folgende Tabelle listet die wichtigsten Referenzen auf.
 
 \begin{tabulary}{\linewidth}{Ll}
@@ -84,7 +77,6 @@ Die Anforderungsspezifikation ist eng mit der Domainanalyse und anderen Dokument
 	OpenHSR Connect & \url{https://github.com/openhsr/connect} \\
 	Studentenportal & \url{https://studentenportal.ch/} \\
 	Switch AAI (Authentication and Authorization Infrastructure)& \url{https://www.switch.ch/aai/} \\
-	
 \end{tabulary}
 
 Beim Logo auf der Titelseite handelt es sich um eine stark überarbeitete Version eines GIFs (\url{https://www.animateit.net/details.php?image_id=8990}). Urheber und Copyright sind nicht auffindbar.
@@ -97,7 +89,7 @@ Beim Logo auf der Titelseite handelt es sich um eine stark überarbeitete Versio
 
 \subsection{Produktfunktion}
 %<Allgemeine Beschreibung der Funktionen>
-\emph{Kitovu} ist ein Client, der von verschiedenen Plattformen ausgewählte HSR-Unterrichtsmaterialien auf den eigenen Rechner synchronisiert. Er läuft auf allen gängigen Betriebssystemen und funktioniert nicht nur für den HSR-Skripteserver, sondern ist auch erweiterbar für verschiedene Plattformen.
+\emph{Kitovu} ist ein Client, der von verschiedenen Plattformen ausgewählte HSR-Unterrichtsmaterialien auf den eigenen Rechner synchronisiert, so dass sie lokal und offline verfügbar sind. Er läuft auf allen gängigen Betriebssystemen und funktioniert nicht nur für den HSR-Skripteserver, sondern ist auch erweiterbar für verschiedene Plattformen.
 
 Unser Projekt bindet primär den Skripteserver ein. Der Kommandozeilen-basierte Client funktioniert mittels Profilen zu unterschiedlichen Plattformen (Moodle, Skripteserver, Studentenportal). Pro Profil sind Verbindungsdaten und eventuelle Login-Credentials im Client hinterlegt, alle Profile sind in einer Konfigurationsdatei gespeichert. Die Datei-Synchronisation erfolgt immer nur von Server zu Client, erfolgreiche und misslungene Datentransfers werden protokolliert. Ein rudimentäres GUI dient als Proof-of-Concept.
 
@@ -120,26 +112,28 @@ Optionale Features:
 
 \subsection{Benutzercharakteristik}
 %<Zielgruppe des Produktes>
-Studentinnen und Studenten verwenden \emph{kitovu}, um ihre Unterrichtsmaterialien auf ihren Rechnern à jour zu halten. Sie verwenden verschiedene Betriebssysteme (Windows, macOS, Linux). Ihre Erfahrung mit der Kommandozeile ist unterschiedlich; manche verwenden sie nie, andere benutzen sie zur Standardinteraktion mit ihrem Betriebssystem.
+Studentinnen und Studenten verwenden \emph{kitovu}, um ihre Unterrichtsmaterialien auf ihren Rechnern à jour zu halten, so dass sie unabhängig von einer Internetverbindung eine separate Kopie der Materialien besitzen. Sie verwenden verschiedene Betriebssysteme (Windows, macOS, Linux). Ihre Erfahrung mit der Kommandozeile ist unterschiedlich; manche verwenden sie nie, andere benutzen sie zur Standardinteraktion mit ihrem Betriebssystem.
 
 Dozentinnen und Dozenten können ebenfalls \emph{kitovu} verwenden, sie sind jedoch nicht die primäre Zielgruppe.
 
 \subsection{Einschränkungen}
 %<Wo sind die Grenzen des Produkts>
-Da die Projekt-Zeitspanne kurz ist, ist die Kernfunktion von \emph{kitovu} ein Client, der über die Kommandozeile bedient wird. Es ist vorerst nur eine rudimentäre grafische Benutzeroberfläche geplant. Falls jedoch genügend Zeit bleibt, baut das Team die Benutzeroberfläche aus. Uns ist bewusst, dass wir damit einen Teil der Studierenden ausschliessen, nicht alle können mit der Kommandozeile umgehen. Aufgrund der Zeitbeschränkung müssen wir das in Kauf nehmen, sehen es aber als erste Priorität. Falls genügend Zeit bleiben sollte, erweitern wir den grafischen Client auf die Funktionalität des Terminal-Clients.
+Da die Projekt-Zeitspanne kurz ist, beschränken wir die Kernfunktion von \emph{kitovu} auf einen Client, der über die Kommandozeile (Terminal) bedient wird. Es ist vorerst nur eine rudimentäre grafische Benutzeroberfläche geplant. Falls jedoch genügend Zeit bleibt, baut das Team die Benutzeroberfläche aus. Uns ist bewusst, dass wir damit einen Teil der Studierenden ausschliessen, nicht alle können mit der Kommandozeile umgehen. Aufgrund der Zeitbeschränkung müssen wir das in Kauf nehmen, sehen es aber als erste Priorität. Falls genügend Zeit bleiben sollte, erweitern wir den grafischen Client auf die Funktionalität des Terminal-Clients.
 
-Weitere Einschränkungen sind die Unterstützung für das Studentenportal und Moodle. Die Gründe dazu beschreibt bereits der Projektplan ausführlich.
+Weitere Einschränkungen sind die Unterstützung für das Studentenportal und Moodle. Die jeweiligen Gründe beschreibt bereits der Projektplan ausführlich.
 
 
 \subsection{Annahmen}
 %<Was ist unklar und wird angenommen bezüglich des Projektes oder des Produktes>
-Eine wichtige Voraussetzung sind bereits bestehende Accounts. Wir gehen davon aus, dass die Studierenden bereits einen HSR-Account besitzen und sich damit sowohl per VPN von zu Hause als auch direkt an der HSR mit dem Skripteserver verbinden können. Das Studentenportal\footnote{\url{https://studentenportal.ch/}} verlangt einen separaten Account, der Zugriff auf Moodle\footnote{\url{https://moodle.hsr.ch}} erfolgt via Switch-AAI, der Authentisierung- und Autorisierungsschnittstelle für alle Schweizer Hochschulen\footnote{\url{https://www.switch.ch/aai/}}.
+Eine wichtige Voraussetzung sind bereits bestehende Accounts. Wir gehen davon aus, dass die Studierenden schon einen HSR-Account besitzen und sich sowohl per VPN von zu Hause als auch direkt an der HSR mit dem Skripteserver verbinden können.
+
+Das Studentenportal\footnote{\url{https://studentenportal.ch/}} verlangt einen separaten Account, der Zugriff auf Moodle\footnote{\url{https://moodle.hsr.ch}} erfolgt via Switch-AAI, der Authentisierung- und Autorisierungsschnittstelle für alle Schweizer Hochschulen\footnote{\url{https://www.switch.ch/aai/}}.
 
 Wir müssen annehmen, dass ein Teil der Studentinnen und Studenten damit vertraut ist, die Kommandozeile zu bedienen. Die Konfiguration von \emph{kitovu} erfolgt über ein einzelnes Konfigurationsfile -- wir müssen ebenfalls davon ausgehen, dass die Studierenden damit umgehen können. Folglich schliesst ein Kommandozeilen-basierter Client einen Teil der Studierenden aus.
 
 \subsection{Abhängigkeiten}
 %<Von welchen Faktoren hängt das Produkt ab>
-\emph{Kitovu} steht und fällt mit der Anbindung an die Plattformen, also den HSR-Skripteserver sowie die optionalen Plattformen Moodle oder Studentenportal.
+\emph{Kitovu} steht und fällt mit der Anbindung an die Plattformen, also den HSR-Skripteserver sowie die optionalen Plattformen Moodle oder Studentenportal. Misslingt die Anbindung, misslingt das Projekt.
 
 
 \pagebreak
@@ -150,22 +144,20 @@ Wir müssen annehmen, dass ein Teil der Studentinnen und Studenten damit vertrau
   gespeicherte Daten existieren. Die folgenden Konzepte sind darin ersichtlich:
 
   \begin{itemize}
-  \item Für die verschiedenen Services (Skripteserver, Moodle, etc.) existieren
-    Plugins, welche die jeweilige Synchronisation implementieren.
+  \item Für die verschiedenen externen Plattformen (Skripteserver, Moodle, etc.) existieren
+    Plugins, welche die jeweilige Synchronisation implementieren. Ein Plugin bezeichnet also die in Software implementierte Anbindung an eine xterne Plattform.
   \item Der Nutzer konfiguriert \emph{Kitovu} über eine Konfigurationsdatei,
     \emph{Configuration}. Darin enthalten sind globale Optionen (wie eine Liste
-    von Dateien die nie synchronisiert werden sollen, beispielsweise
+    von Dateien, die nie synchronisiert werden sollen, beispielsweise
     \verb|Thumbs.db| und \verb|.DS_Store|) sowie eine Liste von Profilen
 (\emph{Profile}).
-  \item Ein Profil enthaltet die Konfiguration, die spezifisch für ein Plugin
-    ist -- so beispielsweise der zu verwendende Benutzername (das Passwort wird
-    separat verschlüsselt abgelegt) oder welche Pfade/Module synchronisiert
-    werden sollen.
+  \item Ein Profil enthält die Konfiguration, die spezifisch für ein Plugin
+    ist -- so beispielsweise der zu verwendende Benutzername oder welche Pfade/Module synchronisiert
+    werden sollen. Das Passwort wird separat und verschlüsselt abgelegt.:thum
   \item Die Synchronisationsplugins erzeugen \emph{File}-Objekte für
     synchronisierte Dateien. Darin wird jeweils für die lokale Datei
     und die Datei auf dem Server ein \emph{digest} (beispielsweise
-    Grösse/Änderungszeit oder ein Hash) gespeichert, welcher es möglich machet,
-    Änderungen an der Datei zu erkennen.
+    Grösse/Änderungszeit oder ein Hash) gespeichert. Dieser ermöglicht, Änderungen an der Datei zu erkennen.
   \item Lokal wird ein \emph{FileCache} gespeichert, welcher die
     Metainformationen (Pfad/Digest, siehe oben) für alle lokalen Dateien
     enthält.
@@ -268,7 +260,7 @@ Wir müssen annehmen, dass ein Teil der Studentinnen und Studenten damit vertrau
 %<Spezielle und wichtige Use Cases in einzelnen Kapiteln beschreiben im Fully Dressed Format>
 
 \SetEnumitemKey{uclist}{labelwidth=13em,leftmargin=13.5em}
-
+Da \emph{kitovu} keine grosse Komplexität aufweist, verwenden eine vereinfachte Version der ausführlichen Fully-Dressed-Use-Cases, wie sie beispielsweise Karl Wiegers beschreibt (vgl. ``Use Cases for Cafeteria Ordering System, Release 1.0'', 2002).
 
 
 \subsubsection{UC1: Synchronisation der Dateien}
@@ -361,6 +353,28 @@ Wir müssen annehmen, dass ein Teil der Studentinnen und Studenten damit vertrau
   \item[Frequency of Occurrence] Rund jede Woche, wenn die Dozenten erneut neue Unterrichtsmaterialien bereitstellen.
 \end{description}
 
+
+\section{Entwürfe zur Benutzeroberfläche}
+
+
+	\includegraphics[width=30em]{./mockups/gui01.png}
+	
+	\includegraphics[width=30em]{./mockups/gui02.png}
+	
+	\includegraphics[width=30em]{./mockups/gui03.png}
+	
+	\includegraphics[width=30em]{./mockups/gui04.png}
+
+\begin{multicols}{2} 
+	\includegraphics[width=20em]{./mockups/terminal01.png}
+	
+	\includegraphics[width=20em]{./mockups/terminal02.png}
+	
+	\includegraphics[width=20em]{./mockups/terminal03.png}
+	
+\end{multicols}
+%ev. noch ein \columnbreak oder \vfill\columnbreak falls nötig
+
 \section{Weitere Anforderungen}
 
 \subsection{Qualitätsmerkmale}
@@ -370,7 +384,7 @@ Wir müssen annehmen, dass ein Teil der Studentinnen und Studenten damit vertrau
 
 Für die Qualitätsmerkmale haben wir uns für den Standard \isourl{9126}{16722} entschieden. Obwohl dieser bereits mit dem Standard \isourl{25010}{35733} überarbeitet wurde, verwenden wir die ältere Version, da wir damit im Modul \emph{Software-Engineering 1} bereits Erfahrung gesammelt haben.
 
-Dabei haben wir nicht sämtliche Qualitätsmerkmale dieses Standards verwendet, sondern nur diejenigen, welche wir für \emph{kitovu} als passend empfunden haben.
+Da das Projekt klein ist, haben wir nicht sämtliche Qualitätsmerkmale dieses Standards verwendet, sondern nur diejenigen, welche wir für \emph{kitovu} als passend empfunden haben.
 
 \newcommand{\metricheader}[2]{\textbf{#1} & \textbf{#2}}
 
@@ -382,7 +396,7 @@ Dabei haben wir nicht sämtliche Qualitätsmerkmale dieses Standards verwendet, 
   \midrule
 
   \metricheader{1.1.}{Richtigkeit (accuracy)} \\
-  1.1.1 & Klar geänderte Dateien werden synchronisiert. Bei der Erkennung der Änderungen der Daten sind wir auf die Angaben der Schnittstelle angewiesen. Dies bedeutet, dass wenn wir zum Beispiel wir von der Schnittstelle nur ein Änderungsdatum erhalten können wir nicht erkennen wenn eine Datei in der selben Sekunde sich geändert hat oder das Datum nachträglich verändert wurde. \\
+  1.1.1 & Eindeutig geänderte Dateien werden synchronisiert. Um geänderte Daten zu erkennen, sind wir auf die Angaben der Schnittstelle angewiesen. Wenn also die Schnittstelle nur ein Änderungsdatum zur Verfügung stellt, können wir nicht erkennen, ob die Datei zum angegebenen Änderungsdatum modifiziert wurde oder ob das Datum nachträglich entstanden ist. \\
 
   \metricheader{1.2.}{Ordnungsmässigkeit (regularity)} \\
   & \emph{Für die Ordnungsmässigkeit halten wir uns an das Bundesgesetz über den Datenschutz (DSG\footnotemark). Es wird nicht mit besonders schützenswerten Personendaten hantiert.} \\

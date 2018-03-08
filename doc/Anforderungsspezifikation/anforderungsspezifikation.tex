@@ -143,19 +143,47 @@ Wir müssen annehmen, dass ein Teil der Studentinnen und Studenten damit vertrau
 \begin{landscape}
   \thispagestyle{empty}
   \section{Domainanalyse}
-  
-  FIXME: schreib was hin
-  
-  \subsection{Domainmodell}
-  
+  Das Domainmodell für \emph{Kitovu} ist simpel, da wenig persistent
+  gespeicherte Daten existieren. Die folgenden Konzepte sind darin ersichtlich:
+
+  \begin{itemize}
+  \item Für die verschiedenen Services (Skripteserver, Moodle, etc.) existieren
+    Plugins, welche die jeweilige Synchronisation implementieren.
+  \item Der Nutzer konfiguriert \emph{Kitovu} über eine Konfigurationsdatei,
+    \emph{Configuration}. Darin enthalten sind globale Optionen (wie eine Liste
+    von Dateien die nie synchronisiert werden sollen, beispielsweise
+    \verb|Thumbs.db| und \verb|.DS_Store|) sowie eine Liste von Profilen
+(\emph{Profile}).
+  \item Ein Profil enthaltet die Konfiguration, die spezifisch für ein Plugin
+    ist -- so beispielsweise der zu verwendende Benutzername (das Passwort wird
+    separat verschlüsselt abgelegt) oder welche Pfade/Module synchronisiert
+    werden sollen.
+  \item Die Synchronisationsplugins erzeugen \emph{File}-Objekte für
+    synchronisierte Dateien. Darin wird jeweils für die lokale Datei
+    und die Datei auf dem Server ein \emph{digest} (beispielsweise
+    Grösse/Änderungszeit oder ein Hash) gespeichert, welcher es möglich machet,
+    Änderungen an der Datei zu erkennen.
+  \item Lokal wird ein \emph{FileCache} gespeichert, welcher die
+    Metainformationen (Pfad/Digest, siehe oben) für alle lokalen Dateien
+    enthält.
+  \end{itemize}
+
+  \vspace{1.5em}
+
   % https://github.com/xuyuan/pgf-umlcd/blob/master/pgf-umlcd-manual.pdf
-  \begin{tikzpicture}
+  \begin{tikzpicture}%[show background grid]
     \begin{class}{File}{0,0}
       \attribute{path}
       \attribute{localDigest}
       \attribute{remoteDigest}
       \attribute{excluded : bool}
     \end{class}
+
+    \begin{class}{FileCache}{0,-4}
+      \attribute{version}
+    \end{class}
+
+    \association{FileCache}{}{\hspace{1em}1}{File}{\hspace{1em}*}{}
   
     \begin{class}{AbstractSyncPlugin}{9,-0.4}
       \attribute{name : string}
@@ -164,7 +192,7 @@ Wir müssen annehmen, dass ein Teil der Studentinnen und Studenten damit vertrau
 
     \association{File}{}{0..*}{AbstractSyncPlugin}{0..1}{}
   
-    \begin{class}{MoodleSyncPlugin}{9, -5}
+    \begin{class}{MoodleSyncPlugin}{9, -4.5}
       \inherit{AbstractSyncPlugin}
     \end{class}
   
@@ -176,13 +204,17 @@ Wir müssen annehmen, dass ein Teil der Studentinnen und Studenten damit vertrau
       \inherit{AbstractSyncPlugin}
     \end{class}
 
-    \begin{class}{Profile}{14,2}
+    \begin{class}{Profile}{14,2.5}
+      \attribute{username : string}
+      \attribute{paths}
     \end{class}
 
     \begin{class}{Configuration}{19,0}
+      \attribute{excludes}
+      \attribute{conflictHandling}
     \end{class}
 
-    \association{Profile}{}{1}{Configuration}{1}{}
+    \association{Profile}{}{*}{Configuration}{1}{}
     \association{Profile}{}{1}{AbstractSyncPlugin}{1}{}
 
   \end{tikzpicture}

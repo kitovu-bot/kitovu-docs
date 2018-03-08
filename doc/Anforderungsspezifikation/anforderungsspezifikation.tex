@@ -52,8 +52,9 @@
 	\midrule
 	04.03.2018 & 1.0 & Dokument erstellt, Grundgerüst von Template übernommen, funktionale Anforderungen verfasst & Méline Sieber \\
 	06.03.2018 & 1.1 & Überarbeitung & alle \\
-	08.03.2018 & 1.2 & Lektorat & Méline Sieber\\
-	09.03.2018 & 1.3 & Abgabe & Florian Bruhin \\
+  % FIXME
+	% 08.03.2018 & 1.2 & Lektorat & Méline Sieber\\
+	% 09.03.2018 & 1.3 & Abgabe & Florian Bruhin \\
 	\bottomrule
 \end{tabulary}
 \pagebreak
@@ -72,7 +73,7 @@ Die vorliegende Anforderungsspezifikation ist für das Engineering-Projekt im Fr
 
 Die Anforderungsspezifikation ist eng mit der Domainanalyse und anderen Dokumenten verbunden. Die folgende Tabelle listet die wichtigsten Referenzen auf.
 
-\begin{tabulary}{\linewidth}{ll}
+\begin{tabulary}{\linewidth}{Ll}
 	Confluence & \url{\confluenceurl} \\
 	Draw.io & \url{https://www.draw.io/} \\
 	Github-Repository von \emph{kitovu} & \url{https://github.com/kitovu-bot/kitovu} \\
@@ -125,7 +126,7 @@ Dozentinnen und Dozenten können ebenfalls \emph{kitovu} verwenden, sie sind jed
 %<Wo sind die Grenzen des Produkts>
 Da die Projekt-Zeitspanne kurz ist, ist die Kernfunktion von \emph{kitovu} ein Client, der über die Kommandozeile bedient wird. Es ist vorerst nur eine rudimentäre grafische Benutzeroberfläche geplant. Falls jedoch genügend Zeit bleibt, baut das Team die Benutzeroberfläche aus. Uns ist bewusst, dass wir damit einen Teil der Studierenden ausschliessen, nicht alle können mit der Kommandozeile umgehen. Aufgrund der Zeitbeschränkung müssen wir das in Kauf nehmen, sehen es aber als erste Priorität. Falls genügend Zeit bleiben sollte, erweitern wir den grafischen Client auf die Funktionalität des Terminal-Clients.
 
-Weitere Einschränkungen sind das Studentenportal und Moodle. Die Gründe dazu beschreibt bereits der Projektplan ausführlich.
+Weitere Einschränkungen sind die Unterstützung für das Studentenportal und Moodle. Die Gründe dazu beschreibt bereits der Projektplan ausführlich.
 
 
 \subsection{Annahmen}
@@ -332,6 +333,8 @@ FIXME Méline: Use Cases umschreiben, Brief-Version folgend. Überall Studentin
           \item Die hinterlegten Login-Daten sind nicht korrekt.
         \end{itemize}
       \item[Keine Login-Daten hinterlegt:] \emph{kitovu} fordert die Studentin auf, ihre Login-Daten einzugeben.
+        % FIXME Unklar, ob das für Moodle wirklich korrekt ist. In der Moodle
+        % Desktop App muss man sich beispielsweise nur einmal authentisieren. Weglassen?
       \item[Moodle:] Die externe Plattform verlangt, dass sich die Studentin pro Session authentisiert.
       \item[HSR-Skripteserver:] Die externe Plattform verlangt, dass sich die Studentin im HSR-Netz befindet oder bereits eine VPN-Verbindung zur Plattform aufgenommen hat.
     \end{description}
@@ -355,7 +358,7 @@ FIXME Méline: Use Cases umschreiben, Brief-Version folgend. Überall Studentin
     \end{description}
   \item[Preconditions] UC3: Die Studentin hat erfolgreich eine Verbindung zur externen Plattform hergestellt.
   %\item[Postconditions] FIXME
-  \item[Main Success Scenario] Die Studentin startet den Synchronisationsprozess. Danach verfügt sie über die von ihr ausgewählten Unterrichtsmaterialien auf ihrem Rechner. Eine Log-Datei protokolliert den Vorgang.
+  \item[Main Success Scenario] Die Studentin startet den Synchronisationsprozess. Danach verfügt sie über die von ihr ausgewählten Unterrichtsmaterialien auf ihrem Rechner. Eine Log-Ausgabe protokolliert den Vorgang.
   \item[Extensions]
     \begin{description}
       \item[Dateien schon vorhanden:] Die Studentin legt in ihrem Profil fest, wie mit bereits existierenden Dateien umgegangen werden soll. Dabei kann sie wählen, ob lokal bestehende Dateien gleichen Namens umbenannt, durch eine neuere Server-Version ersetzt oder nichts synchronisiert werden soll. Sie kann auch entscheiden, bei jedem Konflikt von \emph{kitovu} gefragt zu werden, wie sie für jede Datei entscheiden möchte.
@@ -387,7 +390,7 @@ Dabei haben wir nicht sämtliche Qualitätsmerkmale dieses Standards verwendet, 
   \midrule
 
   \metricheader{1.1.}{Richtigkeit (accuracy)} \\
-  1.1.1 & Klar geänderten Dateien werden synchronisiert. Bei der Erkennung der Änderungen der Daten sind wir auf die Angaben der Schnittstelle angewiesen. Dies bedeutet, dass wenn wir zum Beispiel wir von der Schnittstelle nur ein Änderungsdatum erhalten können wir nicht erkennen wenn eine Datei in der selben Sekunde sich geändert hat oder das Datum nachträglich verändert wurde. \\
+  1.1.1 & Klar geänderte Dateien werden synchronisiert. Bei der Erkennung der Änderungen der Daten sind wir auf die Angaben der Schnittstelle angewiesen. Dies bedeutet, dass wenn wir zum Beispiel wir von der Schnittstelle nur ein Änderungsdatum erhalten können wir nicht erkennen wenn eine Datei in der selben Sekunde sich geändert hat oder das Datum nachträglich verändert wurde. \\
 
   \metricheader{1.2.}{Ordnungsmässigkeit (regularity)} \\
   & \emph{Für die Ordnungsmässigkeit halten wir uns an das Bundesgesetz über den Datenschutz (DSG\footnotemark). Es wird nicht mit besonders schützenswerten Personendaten hantiert.} \\
@@ -455,13 +458,13 @@ Dabei haben wir nicht sämtliche Qualitätsmerkmale dieses Standards verwendet, 
   Metrik & Beschreibung \\
   \midrule
   \metricheader{5.1.}{Analysierbarkeit (analyzability)} \\
-  5.1.1. & Mit einem Debug-Modus können zusätzlich alle Informationen, die ein Modul liefert, aufgezeichnet werden. Dies ermöglicht eine Einschränkung des Problems auf entweder ein spezifisches Modul oder den Kern-Teil von \emph{kitovu}selber. \\
+  5.1.1. & Mit einem Debug-Modus können zusätzlich alle Informationen, die ein Modul liefert, aufgezeichnet werden. Dies ermöglicht eine Einschränkung des Problems auf entweder ein spezifisches Modul oder den Kern-Teil von \emph{kitovu} selber. \\
   \metricheader{5.2.}{Modifizierbarkeit (changeability)} \\
   5.2.1. & Da die ganze Applikation modular aufgebaut ist, lässt sich diese leicht um mehr Module erweitern oder reduzieren. \\
   \metricheader{5.3.}{Stabilität (stability)} \\
-  5.3.1. & Die Test-Coverage ist mindistens 90\%. \\
+  5.3.1. & Die Test-Coverage ist mindestens 90\%. \\
   \metricheader{5.4.}{Prüfbarkeit (testability)} \\
-  5.4.1. & Dank des modularen Aufbaus werden alle Module und der Kern-Teil separat getesten. \\
+  5.4.1. & Dank des modularen Aufbaus werden alle Module und der Kern-Teil separat getestet. \\
   \bottomrule
 \end{tabulary}
 
@@ -472,7 +475,7 @@ Dabei haben wir nicht sämtliche Qualitätsmerkmale dieses Standards verwendet, 
   Metrik & Beschreibung \\
   \midrule
   \metricheader{6.1.}{Installierbarkeit (installability)} \\
-  6.1.1. & Die Applikation lässt sich über ein pip-Paket \footnotemark installieren. \\
+  6.1.1. & Die Applikation lässt sich über ein pip-Paket\footnotemark{} installieren. \\
   6.1.2. & Für Windows (und allenfalls macOS) wird \emph{kitovu} als ausführbare Datei bereitgestellt. Diese installiert sämtliche Abhängigkeiten mit. \\
   \bottomrule
 \end{tabulary}

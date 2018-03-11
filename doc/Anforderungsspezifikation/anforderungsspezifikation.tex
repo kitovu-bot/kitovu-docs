@@ -52,9 +52,9 @@
 	\midrule
 	04.03.2018 & 1.0 & Dokument erstellt, Grundgerüst von Template übernommen, funktionale Anforderungen verfasst & Méline Sieber \\
 	06.03.2018 & 1.1 & Überarbeitung & alle \\
-  % FIXME
 	08.03.2018 & 1.2 & Lektorat & Méline Sieber \\
-	% 09.03.2018 & 2.0 & Abgabe & Florian Bruhin \\
+  % FIXME Méline
+	% 12.03.2018 & 2.0 & Abgabe & Méline Sieber \\
 	\bottomrule
 \end{tabulary}
 \pagebreak
@@ -76,7 +76,7 @@ Die Anforderungsspezifikation ist eng mit der Domainanalyse und anderen Dokument
 	Moodle & \url{https://moodle.hsr.ch} \\
 	OpenHSR Connect & \url{https://github.com/openhsr/connect} \\
 	Studentenportal & \url{https://studentenportal.ch/} \\
-	Switch AAI (Authentication and Authorization Infrastructure)& \url{https://www.switch.ch/aai/} \\
+	Switch AAI \newline (Authentication and Authorization Infrastructure)& \url{https://www.switch.ch/aai/} \\
 \end{tabulary}
 
 Beim Logo auf der Titelseite handelt es sich um eine stark überarbeitete Version eines GIFs (\url{https://www.animateit.net/details.php?image_id=8990}). Urheber und Copyright sind nicht auffindbar.
@@ -84,7 +84,8 @@ Beim Logo auf der Titelseite handelt es sich um eine stark überarbeitete Versio
 \pagebreak
 \section{Allgemeine Beschreibung}
 
-\subsection{Produktperspektive}
+% FIXME
+% \subsection{Produktperspektive}
 %<Produkt Perspektive beschreiben>
 
 \subsection{Produktfunktion}
@@ -161,7 +162,7 @@ Wir müssen annehmen, dass ein Teil der Studentinnen und Studenten damit vertrau
     enthält.
   \end{itemize}
 
-  \vspace{1.5em}
+  \vspace{0.3em}
 
   % https://github.com/xuyuan/pgf-umlcd/blob/master/pgf-umlcd-manual.pdf
   \begin{tikzpicture}%[show background grid]
@@ -258,7 +259,7 @@ Wir müssen annehmen, dass ein Teil der Studentinnen und Studenten damit vertrau
 %<Spezielle und wichtige Use Cases in einzelnen Kapiteln beschreiben im Fully Dressed Format>
 
 \SetEnumitemKey{uclist}{labelwidth=13em,leftmargin=13.5em}
-Da \emph{kitovu} keine grosse Komplexität aufweist, verwenden wir eine vereinfachte Version der ausführlichen ``Fully Dressed Use Cases'', wie sie beispielsweise Karl Wiegers beschreibt (vgl. ``Use Cases for Cafeteria Ordering System, Release 1.0'', 2002).
+Da \emph{kitovu} keine grosse Komplexität aufweist, verwenden wir eine vereinfachte Version der ausführ\-lichen ``Fully Dressed Use Cases'', wie sie beispielsweise Karl Wiegers beschreibt (vgl. ``Use Cases for Cafeteria Ordering System, Release 1.0'', 2002).
 
 
 \subsubsection{UC1: Synchronisation der Dateien}
@@ -302,7 +303,7 @@ Da \emph{kitovu} keine grosse Komplexität aufweist, verwenden wir eine vereinfa
 
 \subsubsection{UC3: Dateien auswählen}
 \begin{description}[uclist]
-  \item[Goal] Die Studentin schreibt in die Konfiguration, welche Dateien sie auf ihren Rechner synchronisieren möchte. Sie kann ausschliessen, welche Dateien nicht synchronisiert werden.
+  \item[Goal] Die Studentin schreibt in die Konfiguration, welche Dateien sie auf ihren Rechner synchronisieren möchte. Sie kann auswählen, welche Dateien nicht synchronisiert werden.
   \item[Primary Actor] Die Studentin
   \item[Trigger] Die Studentin möchte nur bestimmte Dateien und Ordner auf ihrem Rechner haben.
   \item[Stakeholders and Interests]
@@ -421,7 +422,7 @@ Da das Projekt klein ist, haben wir nicht sämtliche Qualitätsmerkmale dieses S
 
   \metricheader{2.2.}{Wiederherstellbarkeit (recoverability)} \\
   2.2.1. & Falls eine Synchronisation nur zum Teil ausgeführt werden konnte, kann \emph{kitovu} die Synchronisation erneut ausführen und nur versuchen, die fehlenden Teile zu synchronisieren. \\
-  2.2.2. & Falls sämtliche Dateien verloren gegangen sind, etwa bei einem Festplattendefekts, muss die Konfigurationsdatei erneut geschrieben werden. Um dem vorzubeugen, kann ein Backup der Konfigurationsdatei erstellt werden. \\
+  2.2.2. & Falls sämtliche Dateien verloren gegangen sind, etwa bei einem Festplattendefekt, muss die Konfigurationsdatei erneut geschrieben werden. Um dem vorzubeugen, kann ein Backup der Konfigurationsdatei erstellt werden. \\
   \bottomrule
 \end{tabulary}
 
@@ -446,14 +447,14 @@ Da das Projekt klein ist, haben wir nicht sämtliche Qualitätsmerkmale dieses S
   \toprule
   Metrik & Beschreibung \\
   \midrule
+  % FIXME Meline: "Abhängig von [...] des eigenen Internetanschlusses"?
   \metricheader{4.1.}{Zeitverhalten (time behaviour)} \\
   & \emph{Das Zeitverhalten ist abhängig von den externen Schnittstellen und des eigenen Internetanschlusses.} \\
   4.1.1. & Pro Modul wird immer nur eine Anfrage abgesetzt, um herauszufinden, ob sich die Dateien auf der externen Plattform geändert haben. Je nach dem bietet die externe Schnittstelle keine solche Funktion, wodurch mehr Anfragen abgeschickt werden müssen. \\
-  4.1.2. & Eine Analyse der bisherigen Unterrichtseinheiten zeigt,\footnote{Im Schulkontext ist das ein ``Modul'', jedoch führt dies zu Verwirrung mit unserer Bezeichnung von ``Modul'' für eine externe Plattform, die \emph{kitovu} einbindet.} dass pro Unterrichtseinheit über das ganze Semester verteilt ungefähr 1'000 Dateien synchronisiert werden. Dies bedeutet bei einer wöchentlichen Synchronisation mit 7 Einheiten jeweils: \[ 1'000~\frac{\textrm{Dateien}}{\textrm{Unterrichtseinheit}} * 7\ \textrm{Module} / 14\ \textrm{Wochen} = 500~\frac{\textrm{Dateien}}{\textrm{Woche}} \] \\ 
+  4.1.2. & Eine Analyse der bisherigen Unterrichtseinheiten zeigt,\footnotemark{} dass pro Unterrichtseinheit über das ganze Semester verteilt ungefähr 1'000 Dateien synchronisiert werden. Dies bedeutet bei einer wöchentlichen Synchronisation mit 7 Einheiten jeweils: \[ 1'000~\frac{\textrm{Dateien}}{\textrm{Unterrichtseinheit}} * 7\ \textrm{Module} / 14\ \textrm{Wochen} = 500~\frac{\textrm{Dateien}}{\textrm{Woche}} \] \\ 
   \bottomrule
 \end{tabulary}
-
-FIXME Florian: Fussnote 10 einbinden.
+\footnotetext{Im Schulkontext ist das ein ``Modul'', jedoch führt dies zu Verwirrung mit unserer Bezeichnung von ``Modul'' für eine externe Plattform, die \emph{kitovu} einbindet.}
 
 \subsubsection{Änderbarkeit (maintainability)}
 

@@ -50,19 +50,19 @@
 	\toprule
 	Datum & Version & Änderung & AutorIn \\
 	\midrule
-	04.03.2018 & 1.0 & Dokument erstellt, Grundgerüst von Template übernommen & Méline Sieber \\
+	28.03.2018 & 1.0 & Dokument erstellt, Grundgerüst von Template übernommen & Méline Sieber \\
 
 	\bottomrule
 \end{tabulary}
 \pagebreak
 
 \section{Einführung}
-Viele Punkte der End of Elaboration schon im Projektplan ausgeführt (Sicherheitsrisiken, ziele des Clients etc.), deswegen aus ausführliche Darstellung verzichtet.
+Dieses Dokument schliesst die Entwicklungsphase ``End of Elaboration'' ab. Es legt dar, wie die Software-Architektur von \emph{kitovu} aufgebaut ist, beschreibt die logischen Schichten und deren Zusammenhänge. Zudem klärt es die grössten Risiken des Projekts, namentlich die Einbindung der beiden externen Plattformen (Studentenportal, Moodle). Das Dokument erläutert auch die Herausforderung, die grafische Benutzeroberfläche mit dem Kommandozeilen-Client zu verbinden (Prozesse und Threads). Als letzter Punkt wird der Aspekt der Datenspeicherung, insbesondere der Aufbau der Konfigurationsdatei besprochen.
 
-Performanz/Anforderungen an Kitovu, Grösse/Leistung
+Es bleibt eine Anmerkung: Viele Punkte der ``End of Elaboration'' definiert schon der sehr ausführliche Projektplan. Um das dieses Dokument möglichst schlank zu halten, werden deshalb gewisse Punkte aussen vor gelassen, insbesondere die Ausführungen zur Grösse und Leistung von \emph{kitovu}.
 
 \subsection{Gültigkeitsbereich}
-Die vorliegende Anforderungsspezifikation ist für das Engineering-Projekt im Frühlingssemester 2018 gültig. Falls dem Projekt grössere Veränderungen widerfahren, wird das Dokument dementsprechend angepasst. Umfassende Änderungen werden am Anfang des Dokuments protokolliert.
+Die vorliegende Architekturbeschreibung ist für das Engineering-Projekt im Frühlingssemester 2018 gültig. Falls dem Projekt grössere Veränderungen widerfahren, wird das Dokument dementsprechend angepasst. Umfassende Änderungen werden am Anfang des Dokuments protokolliert.
 
 \subsection{Referenzen}
 Die Anforderungsspezifikation ist eng mit der Domainanalyse und anderen Dokumenten verbunden. Die folgende Tabelle listet die wichtigsten Referenzen auf.
@@ -84,36 +84,21 @@ Beim Logo auf der Titelseite handelt es sich um eine stark überarbeitete Versio
 
 \section{Systemübersicht}
 
+Das folgende Kontextprogramm verdeutlicht, wie die Schnittstellen von \emph{kitovu} aussehen. Auf der einen Seite  sind die Nutzerinnen und Nutzer, die je nach Informatikkenntnissen mit der grafischen Oberfläche oder mit dem Kommandozeilenprogramm interagieren. Auf der andere Seite sind die Plattformen, die \emph{kitovu} einbindet: Der Skripteserver sowie die Moodle-Plattform, die jedoch eine Authentifikation via Switch AAI verlangt. Weshalb das Studentenportal für dieses Projekt nicht implementiert werden kann, erklärt der nächste Abschnitt.
+
+\includegraphics[width=40em]{./img/kontextdiagramm.png}
+
 % <Beschreibt die Softwarearchitektur eines Systems und wie sie sich präsentiert (am besten mit einem Bild um eine Übersicht zu ermöglichen) und einzelne Beschreibungen zu den einzelnen Elementen des Systems>
 
-Kontextdiagramm
 
 
 \section{Architektonische Ziele und Einschränkungen}
 
-Updates Risiken:
+Der Projektplan erläuterte bereits die beiden grössten Risiken: Die Einbindung des Studentenportals und von Moodle, so dass sich von beiden Plattformen auch Dokumente synchronisieren lassen.
 
-Studentenportal - das "Drama": alles ist legacy, castle inhabited by ghosts. Studentenportal hat keine API für Files. Wir müssten die von Hand hinzufügen, nur ist alles so kaputt am Studentenportal, dass es ein riesiger Zeitfaktor werden würde. Eventuell gibt es unabhängig von unserem Projekt einen Sprint, der das Studentenportal aufräumt, aber das ist Angelegenheit von OpenHSR.
+Zum Ende der Elaborationsphase zeigt sich nun, dass sich diese frühzeitige Einschränkung des Projekts gelohnt hat: Die Abklärung mit dem OpenHSR-Verein und den Betreibern des Studentenportals ergab, dass wir darauf verzichten müssen, das Portal einzubinden. Es fehlt an einer API, mit der wir Files synchronisieren könnten -- wir müssten dies von Hand hinzufügen, was den Rahmen des Projekts sprengt. Zudem sind viele Komponente des Studentenportals veraltet und sollten dringend aktualisiert werden. Ein möglicher Sprint sollte dem Abhilfe schaffen. Doch diesen organisiert die Fachschaft oder der OpenHSR-Verein und ist somit ausserhalb unseres Projekts. Das Studentenportal wird somit kein Teil von \emph{kitovu}.
 
-Moodle: Recherche von Flo, Moodle Mobile (inkl. Desktop) angesehen, läuft auf https://electronjs.org/. WebDAV-Library: Horrorkabinett und Archäologenparty. Fazit: WebDAV ist alt.
-
-Offene Ideen:
-
-Doch WebDAV?
-Andere bestehende Moodle APIs?
-socks-Proxy wrapper?
-Android App belauschen?
-RTFsourcecode
-
-Aktuelle Dokumentation zum Desktop-Client?
-
-Wie kommen wir an einen Session-Token beim Moodle-Login-Prozess?
-
-Welche Moodle-Version hat die HSR?
-
-Traffic sniffen?
-
-Flo braucht noch Zeit, um den Rest anzuschauen.
+Das zweite Risiko, die Moodle-Einbindung, ist noch in weiterer Abklärung, aber es bestätigt sich ebenfalls die erste Einschätzung: Die Einbindung wird nicht einfach. Zum einen ist die WebDAV-Schnittstelle schon älter -- wenn nicht gar veraltet --, zum anderen fehlen noch wichtige Informationen, etwa die aktuellste Dokumentation zum Moodle-Desktop-Client. Da Moodle eine wichtige Unterrichtskomponente ist, werden wir die Einbindung versuchen, soweit es unsere Kapazitäten zulassen. Die Plattform ist jedoch immer noch optional für das Gelingen des Projekts.
 
 \section{Logische Architektur}
 
@@ -152,6 +137,36 @@ Für die bessere GUI: Threads oder Python-Asynch (wahrscheinlich nicht mehr Teil
 Konfigurationsdatei: Wir wählen Plugin-Aufbau (Vorschlag  Nicolas Ganz ) und legen einen Konfig-Datei-Prototyp in EPJ-39 - Prototyp Konfiguration/Profile Au
 
 iM Vordergrund steht die Verständlichkeit,d ass auch Studierende ausserhalb Informatik das File konfigurieren können.
+
+FIXME Tabulatoren im Skript
+
+\begin{verbatim}
+root-dir: ~/Documents/HSR/semester_06
+
+global-ignore:
+	- Thumbs.db
+	- .DS_Store
+
+plugins:
+	- name: skripte-server
+		type: samba
+		# server: svm-c213.hsr.ch
+		# port: 445
+		# share: skripte
+		user: nganz
+		# ...
+
+sync:
+	- name: Engineering-Projekt
+		plugins:
+			- plugin: skripte-server
+		ignored:
+			- SubDir
+			- example.txt
+		remote_dir: Informatik/Fachbereich/Engineering-Projekt/EPJ
+		# local_dir: Engineering-Projekt
+		# file downloaded: conflict-handling todo
+\end{verbatim}
 
 
 \end{document}

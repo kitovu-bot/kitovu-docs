@@ -1,0 +1,155 @@
+\documentclass[a4paper]{article}
+\usepackage[margin=3cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{cmbright}
+\usepackage[hidelinks]{hyperref}
+\usepackage{booktabs}
+\usepackage[ngerman]{babel}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{minted}
+\usepackage{pdflscape}
+\usepackage{array}
+\usepackage{tabulary}
+\usepackage{multicol}
+\usepackage{pgfgantt}
+\usepackage{pgf-umlcd}
+\usepackage{enumitem}
+
+% Page breaks between sections
+\let\oldsection\section
+\renewcommand\section{\clearpage\oldsection}
+
+% JIRA/Confluence shortcuts
+\def\jiraurl{https://jira.keltec.ch/jira}
+\def\confluenceurl{https://jira.keltec.ch/wiki}
+\newcommand{\jiraissue}[1]{\href{\jiraurl/projects/EPJ/issues/EPJ-#1}{EPJ-#1}}
+\newcommand{\fulljiraissue}[1]{EPJ-#1 (\url{\jiraurl/projects/EPJ/issues/EPJ-#1})}
+
+% Tools
+\newcommand{\tool}[2]{\emph{#1\footnote{\url{#2}}}}
+
+\begin{document}
+	\title{
+		Projekt: kitovu \\
+		\Large{Softwarearchitektur} \\[3em]
+		\includegraphics[width=20em]{../../img/logo/kitovu.jpg}
+	}
+	\author{
+		Florian Bruhin \\ \url{florian.bruhin@hsr.ch} \and
+		Méline Sieber \\ \url{meline.sieber@hsr.ch} \and
+		Nicolas Ganz \\ \url{nicolas.ganz@hsr.ch} 
+		}
+	\date{\today}
+	
+	\maketitle
+
+\section*{Änderungsgeschichte}
+
+\begin{tabulary}{\linewidth}{llLl}
+	\toprule
+	Datum & Version & Änderung & AutorIn \\
+	\midrule
+	04.03.2018 & 1.0 & Dokument erstellt, Grundgerüst von Template übernommen & Méline Sieber \\
+
+	\bottomrule
+\end{tabulary}
+\pagebreak
+
+\section{Einführung}
+Viele Punkte der End of Elaboration schon im Projektplan ausgeführt (Sicherheitsrisiken, ziele des Clients etc.), deswegen aus ausführliche Darstellung verzichtet.
+
+Performanz/Anforderungen an Kitovu, Grösse/Leistung
+
+\subsection{Gültigkeitsbereich}
+Die vorliegende Anforderungsspezifikation ist für das Engineering-Projekt im Frühlingssemester 2018 gültig. Falls dem Projekt grössere Veränderungen widerfahren, wird das Dokument dementsprechend angepasst. Umfassende Änderungen werden am Anfang des Dokuments protokolliert.
+
+\subsection{Referenzen}
+Die Anforderungsspezifikation ist eng mit der Domainanalyse und anderen Dokumenten verbunden. Die folgende Tabelle listet die wichtigsten Referenzen auf.
+
+\begin{tabulary}{\linewidth}{Ll}
+	Confluence & \url{\confluenceurl} \\
+	Draw.io & \url{https://www.draw.io/} \\
+	Github-Repository von \emph{kitovu} & \url{https://github.com/kitovu-bot/kitovu} \\
+	JIRA	& \url{\jiraurl} \\
+	Moodle & \url{https://moodle.hsr.ch} \\
+	OpenHSR Connect & \url{https://github.com/openhsr/connect} \\
+	Studentenportal & \url{https://studentenportal.ch/} \\
+	Switch AAI \newline (Authentication and Authorization Infrastructure)& \url{https://www.switch.ch/aai/} \\
+\end{tabulary}
+
+Beim Logo auf der Titelseite handelt es sich um eine stark überarbeitete Version eines GIFs (\url{https://www.animateit.net/details.php?image_id=8990}). Urheber und Copyright sind nicht auffindbar.
+
+\pagebreak
+
+\section{Systemübersicht}
+
+% <Beschreibt die Softwarearchitektur eines Systems und wie sie sich präsentiert (am besten mit einem Bild um eine Übersicht zu ermöglichen) und einzelne Beschreibungen zu den einzelnen Elementen des Systems>
+
+Kontextdiagramm
+
+
+\section{Architektonische Ziele und Einschränkungen}
+
+Updates Risiken:
+
+Studentenportal - das "Drama": alles ist legacy, castle inhabited by ghosts. Studentenportal hat keine API für Files. Wir müssten die von Hand hinzufügen, nur ist alles so kaputt am Studentenportal, dass es ein riesiger Zeitfaktor werden würde. Eventuell gibt es unabhängig von unserem Projekt einen Sprint, der das Studentenportal aufräumt, aber das ist Angelegenheit von OpenHSR.
+
+Moodle: Recherche von Flo, Moodle Mobile (inkl. Desktop) angesehen, läuft auf https://electronjs.org/. WebDAV-Library: Horrorkabinett und Archäologenparty. Fazit: WebDAV ist alt.
+
+Offene Ideen:
+
+Doch WebDAV?
+Andere bestehende Moodle APIs?
+socks-Proxy wrapper?
+Android App belauschen?
+RTFsourcecode
+
+Aktuelle Dokumentation zum Desktop-Client?
+
+Wie kommen wir an einen Session-Token beim Moodle-Login-Prozess?
+
+Welche Moodle-Version hat die HSR?
+
+Traffic sniffen?
+
+Flo braucht noch Zeit, um den Rest anzuschauen.
+
+\section{Logische Architektur}
+
+% <Beschreibung der logischen Struktur des Projekts. Pro Subsystem/Package ein einzelner Abschnitt und ein Übersichtsdiagramm über die einzelnen Subsysteme/Packages. Aufteilung in Subsysteme/Packages (zum Beispiel: 3-Layer-Architektur mit GUI, Problem Domain und Datenhaltung). >
+
+% Weitere Punkte: Klassenstruktur, Schnittstellen, Wichtige interne Abläufe, Wichtige Abläufe
+
+\subsection{Schichten}
+
+\subsection{Sequenzdiagramm}
+
+\section{Prozesse und Threads}
+
+% <Wenn mehrere Prozesse oder Threads eingesetzt werden wird hier beschrieben, wie diese ablaufen, miteinander funktionieren, Daten austauschen, sich synchronisieren, usw.>
+
+Lösung für blockierend:
+
+zwei separate Prozesse
+zwei Threads
+egal, es blockiert
+
+Wir entscheiden:
+
+Fürs Commandline-Interface wählen wir die Variante "egal, es blockiert".
+
+Für GUI-Prototyp: 2 separate OS-Prozesse (GUI-Prozess, Kommand-Line-Interface).
+
+Für die bessere GUI: Threads oder Python-Asynch (wahrscheinlich nicht mehr Teil des EngProj, wie im Projektplan festgelegt).
+
+\section{Datenspeicherung}
+
+% <Beschreibung mit Diagramm der Datenspeicherung (Datenmodell, z.B. Datenbank)>
+
+Konfigurationsdatei: Wir wählen Plugin-Aufbau (Vorschlag  Nicolas Ganz ) und legen einen Konfig-Datei-Prototyp in EPJ-39 - Prototyp Konfiguration/Profile Au
+
+iM Vordergrund steht die Verständlichkeit,d ass auch Studierende ausserhalb Informatik das File konfigurieren können.
+
+
+\end{document}

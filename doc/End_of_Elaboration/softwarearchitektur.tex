@@ -120,19 +120,20 @@ Das zweite Risiko, die Moodle-Einbindung, ist noch in weiterer Abklärung, aber 
 
 % <Wenn mehrere Prozesse oder Threads eingesetzt werden wird hier beschrieben, wie diese ablaufen, miteinander funktionieren, Daten austauschen, sich synchronisieren, usw.>
 
-Lösung für blockierend:
+FIXME fertig stellen
 
-zwei separate Prozesse
-zwei Threads
-egal, es blockiert
+Die grafische Implementation von \emph{kitovu} stellt uns vor die Herausforderung, wie der Client die zwei Oberflächen kombiniert. Dazu gibt es zwei Lösungsansätze:
 
-Wir entscheiden:
+\begin{enumerate}
+	\item Zwei separate Prozesse
+	\item Zwei Threads
+\end{enumerate}
 
-Fürs Commandline-Interface wählen wir die Variante "egal, es blockiert".
+Zudem gilt, dass der Client blockiert ist, wenn er mit der Synchronisation beschäftigt ist oder auf einen anderen Prozess zugreift. Letzteres gilt, wenn der grafische Client auf den darunterliegenden Kommandozeilen-Client als separaten Prozess oder Thread zugreift.
 
-Für GUI-Prototyp: 2 separate OS-Prozesse (GUI-Prozess, Kommand-Line-Interface).
+Für den Kommandozeilen-Client nehmen wir in Kauf, dass der Client blockiert wird, wenn er die Synchronisation durchführt.
 
-Für die bessere GUI: Threads oder Python-Asynch (wahrscheinlich nicht mehr Teil des EngProj, wie im Projektplan festgelegt).
+Für den GUI-Protoyp wählen wir die erste Lösung oben in der Liste. Der grafische und textbasierte Client implementieren wir also als zwei separate OS-Prozesse. Für ein besseres GUI sollte dies jedoch via Threads oder Python-Asynch erfolgen. Hier folgen wir dem Projektplan und nehmen an, dass diese Implementation nicht mehr Teil des Engineering-Projekts sein wird.
 
 \section{Datenspeicherung}
 

@@ -121,20 +121,17 @@ Das zweite Risiko, die Moodle-Einbindung, ist noch in weiterer Abklärung. Ein e
 
 % <Wenn mehrere Prozesse oder Threads eingesetzt werden wird hier beschrieben, wie diese ablaufen, miteinander funktionieren, Daten austauschen, sich synchronisieren, usw.>
 
-FIXME fertig stellen
-
-Die grafische Implementation von \emph{kitovu} stellt uns vor die Herausforderung, wie der Client die zwei Oberflächen kombiniert. Dazu gibt es zwei Lösungsansätze:
+Die grafische Implementation von \emph{kitovu} stellt uns vor die Herausforderung, wie die Bibliotheken zur Synchronisation in die GUI (die nicht blockiert werden darf) eingebunden werden. Dazu gibt es mehrere Lösungsansätze:
 
 \begin{enumerate}
-	\item Zwei separate Prozesse
-	\item Zwei Threads
+	\item Zwei separate Prozesse: Das GUI läuft in einem separaten Prozess und kommuniziert mit dem CLI-Prozess, der die Synchronisation übernimmt.
+	\item Zwei Threads: Die Bibliotheken zur Synchronisation laufen in einem separaten Thread im gleichen Prozess wie die GUI.
+	\item Verwenden von asynchronen Bibliotheken (\verb|asyncio| oder \verb|twisted|), die im gleichen Thread wie die GUI die Synchronisation durchführen können, ohne die GUI zu blockieren.
 \end{enumerate}
-
-Zudem gilt, dass der Client blockiert ist, wenn er mit der Synchronisation beschäftigt ist oder auf einen anderen Prozess zugreift. Letzteres gilt, wenn der grafische Client auf den darunterliegenden Kommandozeilen-Client als separaten Prozess oder Thread zugreift.
 
 Für den Kommandozeilen-Client nehmen wir in Kauf, dass der Client blockiert wird, wenn er die Synchronisation durchführt.
 
-Für den GUI-Protoyp wählen wir die erste Lösung oben in der Liste. Der grafische und textbasierte Client implementieren wir also als zwei separate OS-Prozesse. Für ein besseres GUI sollte dies jedoch via Threads oder Python-Asynch erfolgen. Hier folgen wir dem Projektplan und nehmen an, dass diese Implementation nicht mehr Teil des Engineering-Projekts sein wird.
+Für den GUI-Protoyp wählen wir die erste Lösung oben in der Liste. Der grafische und textbasierte Client implementieren wir also als zwei separate OS-Prozesse. Für ein besseres GUI sollte dies jedoch via Threads oder einer Python-Bibliothek für asynchrone Programmierung erfolgen (dritte Variante oben). Hier folgen wir dem Projektplan und nehmen an, dass diese Implementation nicht mehr Teil des Engineering-Projekts sein wird.
 
 \section{Datenspeicherung}
 

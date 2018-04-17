@@ -32,7 +32,7 @@
 \begin{document}
 	\title{
 		Projekt: kitovu \\
-		\Large{Softwarearchitektur} \\[3em]
+		\Large{Software-Architektur} \\[3em]
 		\includegraphics[width=20em]{../../img/logo/kitovu.jpg}
 	}
 	\author{
@@ -111,6 +111,8 @@ Das zweite Risiko, die Moodle-Einbindung, ist noch in weiterer Abklärung. Ein e
 
 \subsection{Schichten}
 
+%FIXME: Nicolas korrigiert Fehler in Darstellung (moodledingens), fügt filecache und konfig-file ein
+
 \includegraphics[width=40em]{./img/schichtendiagramm.pdf}
 
 \subsection{Sequenzdiagramm}
@@ -136,42 +138,51 @@ Für den GUI-Protoyp wählen wir die erste Lösung oben in der Liste. Der grafis
 \section{Datenspeicherung}
 
 % <Beschreibung mit Diagramm der Datenspeicherung (Datenmodell, z.B. Datenbank)>
-
+\subsection{Konfigurationsdatei}
 Die Konfigurationsdatei soll so gestaltet sein, dass auch Studierende ausserhalb des Informatikstudienganges damit umgehen könnten. Die Verständlichkeit steht also im Vordergrund. 
 
-Wir folgen deshalb dem Vorschlag von Nicolas Ganz und wählen einen Plugin-Aufbau der Konfigurationsdatei aus.
+Wir folgen deshalb dem Vorschlag von Nicolas Ganz und wählen einen Plugin-Aufbau der Konfigurationsdatei.
 
-FIXME: Ausführen
-FIXME Tabulatoren im Skript
-FIXME Filecache
+\begin{minted}{yaml}
 
-\begin{verbatim}
 root-dir: ~/Documents/HSR/semester_06
 
 global-ignore:
-	- Thumbs.db
-	- .DS_Store
+  - Thumbs.db
+  - .DS_Store
 
 plugins:
-	- name: skripte-server
-		type: samba
-		# server: svm-c213.hsr.ch
-		# port: 445
-		# share: skripte
-		user: nganz
-		# ...
+  - name: skripte-server
+    type: samba
+    # hostname: svm-c213.hsr.ch
+    # port: 445
+    # share: skripte
+    username: nganz
+    # ...
 
 sync:
-	- name: Engineering-Projekt
-		plugins:
-			- plugin: skripte-server
-		ignored:
-			- SubDir
-			- example.txt
-		remote_dir: Informatik/Fachbereich/Engineering-Projekt/EPJ
-		# local_dir: Engineering-Projekt
-		# file downloaded: conflict-handling todo
-\end{verbatim}
+  - name: Engineering-Projekt
+    plugins:
+      - plugin: skripte-server
+        ignored:
+          - SubDir
+          - example.txt
+        remote-dir: Informatik/Fachbereich/Engineering-Projekt/EPJ
+        # local-dir: Engineering-Projekt
+\end{minted}
 
+\subsection{FileCache}
+
+Zum Bereich der Datenspeicherung gehört ebenfalls der \verb|FileCache|. Er ist im Wesentlichen eine lokale Speicherung des \verb|remote_digest|, der zum Zeitpunkt des letzten Synchronisationsvorgangs erstellt wurde. Anhand des \verb|FileCache| kann so zu einem späteren Zeitpunkt verglichen werden, ob sich bis dahin die lokale Datei geändert hat.
+
+Da der \verb|FileCache| von einem erfolgreichen Synchronisationsprozess abhängig ist, existiert dazu noch kein Code im Prototyp beim derzeitigen Stand des Projekts. Im Gegensatz zur Konfigurationsdatei, die als \verb|YAML|-Datei gespeichert wird, speichern wir den \verb|FileCache| als \verb|JSON|-Datei. Der Vorteil einer \verb|JSON|-Datei ist die reduzierte Dateigrösse sowie bessere Performance. Zudem ist diese Datei nicht dazu gedacht, von Personen gelesen zu werden, in Kontrast zur Konfigurationsdatei.
+
+Die Datei könnte folgendermassen aussehen:
+
+\begin{minted}{json}
+[{"plugin": "smb", "path": "EPJ/example.pdf", "digest": "123-12345"}]
+\end{minted}
+
+Gemäss unseren Berechnungen zu den Dateimengen in der Anforderungsspezifikation erwarten wir, dass diese Datei am Ende des Semesters rund 7000 Einträge umfasst, mit 1000 Einträgen pro Modul. Wir schätzen dies als eine handhabbare Grösse für den \verb|FileCache| ein.
 
 \end{document}

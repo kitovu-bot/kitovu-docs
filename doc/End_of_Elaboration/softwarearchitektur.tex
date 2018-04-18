@@ -102,6 +102,44 @@ Zum Ende der Elaborationsphase zeigt sich, dass diese frühzeitige Einschränkun
 
 Das zweite Risiko, die Moodle-Einbindung, ist noch in weiterer Abklärung. Ein erster Erfolg konnte verzeichnet werden: Der Moodle-Desktop-Client\footnote{\url{https://download.moodle.org/desktop/}} bzw. die mobile Version davon stellt bei erfolgreichem Login einen Moodle-Token zur Verfügung. Dank dieses Tokens ist es uns gelungen, via \emph{kitovu} ein File herunterzuladen. Eine erste Anbindung ist uns also gelungen. Noch offen ist, wie und ob wir die direkte Authentifikation via Switch AAI in \emph{kitovu} implementieren können; wir sind jedoch zuversichtlich, dass uns das gelingt.
 
+\subsection{Wichtige Abläufe}
+
+Synchronisationsprozesse haben einen kritischen Punkt: Die Datenintegrität. Denn die Dateien sollen immer den Zustand behalten oder annehmen, wie die Nutzerin es wünscht. Um das zu gewährleisten, haben wir die Funktionalität des \verb|FileCache| definiert -- er führt Buch über den Zustand der Dateien. Nach längeren Diskussionen haben wir folgende mögliche Fälle identifiziert, die während des Synchronisationsprozesses auftreten können:
+
+\begin{tabulary}{\linewidth}{LLLLl}
+	\toprule
+	    \bfseries Situation Remote &
+	    \bfseries Situation Lokal &
+	    \bfseries Situation &
+	    \bfseries Vorgehen &
+	    \bfseries Enum-Wert\\
+	\midrule
+nichts vorhanden &	lokal A &	remote gelöscht &	Konfliktbehandlung (delete local file) & 	REMOTE*\\ \hline
+nichts vorhanden &	lokal A' &	remote gelöscht, lokal geändert&	Konfliktbehandlung &	BOTH*\\ \hline
+remote A &	nichts &	neue Datei existiert &	download &	REMOTE\\ \hline
+remote A &	lokal A &	keine Änderungen &	nichts& 	NONE\\\hline
+remote B (neue Folien) &	lokal A (keine Änderungen) &	Folien-Update vom Dozent &	download &	REMOTE\\\hline
+remote A &	lokal A' (lokal geändert) &	lokale Notizen, kein Folien-Update &	nichts &	LOCAL\\\hline
+remote B (neue Folien) &	lokal A' (lokal geändert) &	beides geändert &	Konfliktbehandlung &	BOTH\\\hline
+remote B &	lokal B &	FileCache nicht aktuell &	nichts tun, update FileCache &	NONE*\\\hline
+
+\end{tabulary}
+
+Aus der Tabelle wird ersichtlich, dass der \verb|FileCache| primär dazu da ist, festzustellen, ob es jemals lokale Änderungen gab (aus A wurde A'). Mit anderen Worten: Wir müssen A separat -- im \verb|FileCache| -- abspeichern, um später feststellen zu können, ob sich ub der Zeit bis zum nächsten Synchronisationsprozess die Datei geändert hat. Daraus entstehen drei Digests:
+
+\begin{itemize}
+	\item Remote, der direkt aus der Remote-Datei berechnet wird
+	\item Lokal im FileCache
+	\item Lokal auf der Festplatte, i.e. der Digest, der direkt aus der Datei berechnet wird.
+\end{itemize}
+
+Der \verb|FileCache| wird jeweils geschrieben, wenn die Datei heruntergeladen wird, und enthält zwei Werte: Den Digest zum Zeitpunkt der Synchronisation sowie den lokalen Dateipfad samt Dateinamen.
+
+Die oben definierten Enum-Werte REMOTE, LOCAL, BOTH, NONE verwenden wir, um die Konfliktbehandlung zu implementieren. Diese ist nötig, sobald sich die Datei lokal geändert hat (A').
+
+In der derzeitigen Entwicklungsphase des Clients haben wir uns vorerst für die Konfkliktbehandlung ``override'' entschieden. Wenn sich also die Datei zwischen zwei Synchronisationsprozessen geändert hat, wird sie erneut von der Remote-Datei überschrieben.
+
+Es ist uns jedoch ein Anliegen, dass sich diese Konfliktbehandlung von der Nutzerin steuern lässt, also dass sie festlegen kann, wie sich bei einem Konflikt \emph{kitovu} verhalten soll (override, ignore, rename, ask).
 
 \section{Logische Architektur}
 

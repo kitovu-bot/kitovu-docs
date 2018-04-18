@@ -223,4 +223,22 @@ Die Datei könnte folgendermassen aussehen:
 
 Gemäss unseren Berechnungen zu den Dateimengen in der Anforderungsspezifikation erwarten wir, dass diese Datei am Ende des Semesters rund 7000 Einträge umfasst, mit 1000 Einträgen pro Modul. Wir schätzen dies als eine handhabbare Grösse für den \verb|FileCache| ein.
 
+\section{Skalierbarkeit}
+
+\subsection{Mehr externe Plattformen}
+
+Für das Engineering Projekt haben wir \emph{kitovu} in minimal möglichem Umfang geplant: Die Synchronisation mit dem Skripteserver muss funktionieren. Alle weiteren externen Plattformen haben wir als optional definiert, auch aufgrund möglicher Risiken -- die sich im Fall des Studentenportals als berechtigt erwiesen haben.
+
+Wir wollten zudem von Beginn weg \emph{kitovu} so entwerfen, dass er sich leicht ausbauen lässt, da ja an der HSR die Unterrichtsmaterialien von verschiedenen Quellen synchronisiert werden. Eine weitere Überlegung war, dass künftige Studierende selber \emph{kitovu} erweitern können, so dass sie neue oder andere Plattformen selbständig einbinden können. Dies veranschaulicht bereits die Persona der Leonie Egger. 
+
+Wir haben uns deswegen für eine Plugin-Architektur entschieden, so dass neue Plattformen einfach als neue Plugins geschrieben werden können, die dann in \emph{kitovu} eingehängt werden. So ist es theoretisch möglich, eine Vielzahl von externen Plattformen in \emph{kitovu} zu integrieren, ohne dass der gesamte Code umgeschrieben werden muss. Nachdem sich die ursprüngliche Plugin-Architektur \verb|pluggy| für Python als unbrauchbar erwiesen hatte, entschieden wir uns für \verb|stevedore|.\footnote{\url{https://docs.openstack.org/stevedore/latest/}}
+
+Die geplante Erweiterbarkeit zahlt sich nun aus: Entgegen unseren kalkulierten Risiken ist eine Moodle-Anbindung möglich -- und lässt sich nun dank der Plugin-Architektur problemlos integrieren. \emph{Kitovu} skaliert also problemlos für mehr als eine Plattform.
+
+\subsection{Mehr Nutzerinnen und Nutzer}
+
+Vor und während der Projektarbeit haben wir festgestellt, dass \emph{kitovu} auf grossen Anklang stösst: Viele HSR-Studentinnen und -Studenten wünschen sich eine einfache Möglichkeit, ihre Unterrichtsmaterialien à jour zu halten. Wir hoffen deshalb und erwarten, dass der Client häufig und von vielen genutzt wird.
+
+\emph{Kitovu} wird lokal bei den Nutzerinnen und Nutzern installiert, das Programm dürfte also problemlos skalieren, da mehr Nutzer keine grössere Last für den einzelnen Client bedeuten. Das einzige Problem wäre, dass die vielen Server-Anfragen von \emph{kitovu} den Skripteserver zum Erliegen bringen. Wir schätzen dieses Risiko jedoch als gering ein und erwarten von der Schulinfrastruktur, dass sie allfällige Spitzen von Netzwerkanfragen verarbeiten mag.
+
 \end{document}

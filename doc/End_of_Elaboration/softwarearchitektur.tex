@@ -120,9 +120,9 @@ Synchronisationsprozesse haben einen kritischen Punkt: Die Datenintegrität. Den
 3 & remote A &	nichts &	neue Datei existiert &	download &	REMOTE\\ \hline
 4 & remote A &	lokal A &	keine Änderungen &	nichts& 	NONE\\\hline
 5 & remote B (neue Folien) &	lokal A (keine Änderungen) &	Folien-Update vom Dozent &	download &	REMOTE\\\hline
-6 & remote A &	lokal A' (lokal geändert) &	lokale Notizen, kein Folien-Update &	nichts &	LOCAL\\\hline
+6 & remote A &	lokal A' (lokal geändert) &	lokale Notizen, kein Folien-Update &	update FileCache &	LOCAL\\\hline
 7 & remote B (neue Folien) &	lokal A' (lokal geändert) &	beides geändert &	Konfliktbehandlung &	BOTH\\\hline
-8 & remote B &	lokal B &	FileCache nicht aktuell &	nichts tun, update FileCache &	NONE*\\\hline
+8 & remote B &	lokal B &	FileCache nicht aktuell &	update FileCache &	NONE*\\\hline
 
 \end{tabulary}
 

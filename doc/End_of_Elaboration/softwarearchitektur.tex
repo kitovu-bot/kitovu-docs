@@ -106,26 +106,29 @@ Das zweite Risiko, die Moodle-Einbindung, ist noch in weiterer Abklärung. Ein e
 
 Synchronisationsprozesse haben einen kritischen Punkt: Die Datenintegrität. Denn die Dateien sollen immer den Zustand behalten oder annehmen, wie die Nutzerin es wünscht. Um das zu gewährleisten, haben wir die Funktionalität des \verb|FileCache| definiert -- er führt Buch über den Zustand der Dateien\footnote{Vgl. auch Kapitel 6.}. Nach längeren Diskussionen haben wir folgende mögliche Fälle identifiziert, die während des Synchronisationsprozesses auftreten können:
 
-\begin{tabulary}{\linewidth}{LLLLl}
+\begin{tabulary}{\linewidth}{lLLLLl}
 	\toprule
+		\bfseries Fall &
 	    \bfseries Situation Remote &
 	    \bfseries Situation Lokal &
 	    \bfseries Situation &
 	    \bfseries Vorgehen &
 	    \bfseries Enum-Wert\\
 	\midrule
-nichts vorhanden &	lokal A &	remote gelöscht &	Konfliktbehandlung (delete local file) & 	REMOTE*\\ \hline
-nichts vorhanden &	lokal A' &	remote gelöscht, lokal geändert&	Konfliktbehandlung &	BOTH*\\ \hline
-remote A &	nichts &	neue Datei existiert &	download &	REMOTE\\ \hline
-remote A &	lokal A &	keine Änderungen &	nichts& 	NONE\\\hline
-remote B (neue Folien) &	lokal A (keine Änderungen) &	Folien-Update vom Dozent &	download &	REMOTE\\\hline
-remote A &	lokal A' (lokal geändert) &	lokale Notizen, kein Folien-Update &	nichts &	LOCAL\\\hline
-remote B (neue Folien) &	lokal A' (lokal geändert) &	beides geändert &	Konfliktbehandlung &	BOTH\\\hline
-remote B &	lokal B &	FileCache nicht aktuell &	nichts tun, update FileCache &	NONE*\\\hline
+1 & nichts vorhanden &	lokal A &	remote gelöscht &	Konfliktbehandlung (delete local file) & 	REMOTE*\\ \hline
+2 & nichts vorhanden &	lokal A' &	remote gelöscht, lokal geändert&	Konfliktbehandlung &	BOTH*\\ \hline
+3 & remote A &	nichts &	neue Datei existiert &	download &	REMOTE\\ \hline
+4 & remote A &	lokal A &	keine Änderungen &	nichts& 	NONE\\\hline
+5 & remote B (neue Folien) &	lokal A (keine Änderungen) &	Folien-Update vom Dozent &	download &	REMOTE\\\hline
+6 & remote A &	lokal A' (lokal geändert) &	lokale Notizen, kein Folien-Update &	nichts &	LOCAL\\\hline
+7 & remote B (neue Folien) &	lokal A' (lokal geändert) &	beides geändert &	Konfliktbehandlung &	BOTH\\\hline
+8 & remote B &	lokal B &	FileCache nicht aktuell &	nichts tun, update FileCache &	NONE*\\\hline
 
 \end{tabulary}
 
-Aus der Tabelle wird ersichtlich, dass der \verb|FileCache| primär dazu da ist, festzustellen, ob es jemals lokale Änderungen gab (aus A wurde A'). Mit anderen Worten: Wir müssen A separat -- im \verb|FileCache| -- abspeichern, um später feststellen zu können, ob sich ub der Zeit bis zum nächsten Synchronisationsprozess die Datei geändert hat. Daraus entstehen drei Digests:
+Die mit Sternchen (*) bezeichneten Einträge sind Spezialfälle. 
+
+Aus der Tabelle wird ersichtlich, dass der \verb|FileCache| primär dazu da ist, festzustellen, ob es jemals lokale Änderungen gab (aus A wurde A'). Mit anderen Worten: Wir müssen A separat -- im \verb|FileCache| -- abspeichern, um später feststellen zu können, ob sich in der Zeit bis zum nächsten Synchronisationsprozess die Datei geändert hat. Daraus entstehen drei Digests:
 
 \begin{itemize}
 	\item Remote, der direkt aus der Remote-Datei berechnet wird
@@ -139,7 +142,7 @@ Die oben definierten Enum-Werte REMOTE, LOCAL, BOTH, NONE verwenden wir, um die 
 
 In der derzeitigen Entwicklungsphase des Clients haben wir uns vorerst für die Konfkliktbehandlung ``override'' entschieden. Wenn sich also die Datei zwischen zwei Synchronisationsprozessen geändert hat, wird sie erneut von der Remote-Datei überschrieben.
 
-Es ist uns jedoch ein Anliegen, dass sich diese Konfliktbehandlung von der Nutzerin steuern lässt, also dass sie festlegen kann, wie sich bei einem Konflikt \emph{kitovu} verhalten soll (override, ignore, rename, ask).
+Es ist uns jedoch ein Anliegen, dass sich diese Konfliktbehandlung von der Nutzerin steuern lässt, also dass sie in der Konfigurations von \emph{kitovu} festlegen kann, wie sich bei einem Konflikt das Programm verhalten soll (override, ignore, rename, ask).
 
 \section{Logische Architektur}
 

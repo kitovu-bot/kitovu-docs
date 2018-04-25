@@ -205,37 +205,46 @@ Für den GUI-Protoyp wählen wir die erste Lösung oben in der Liste. Der grafis
 
 % <Beschreibung mit Diagramm der Datenspeicherung (Datenmodell, z.B. Datenbank)>
 \subsection{Konfigurationsdatei}
-Die Konfigurationsdatei soll so gestaltet sein, dass auch Studierende ausserhalb des Informatikstudienganges damit umgehen könnten. Die Verständlichkeit steht also im Vordergrund. 
-
-FIXME Nicolas: update Konfig-File, ausführen, weshalb diese Struktur gewählt - warum dass connections konfigurierbar sind.
+Die Konfigurationsdatei soll so gestaltet sein, dass auch Studierende ausserhalb des Informatikstudienganges damit umgehen könnten. Die Verständlichkeit steht also im Vordergrund.
 
 \begin{minted}{yaml}
-
 root-dir: ~/Documents/HSR/semester_06
 
 global-ignore:
   - Thumbs.db
   - .DS_Store
 
-plugins:
+connections:
   - name: skripte-server
-    type: samba
+    plugin: smb
     # hostname: svm-c213.hsr.ch
     # port: 445
     # share: skripte
+    # domain: HSR
     username: nganz
-    # ...
+  # ...
 
-sync:
+subjects:
   - name: Engineering-Projekt
-    plugins:
-      - plugin: skripte-server
-        ignored:
+    sources:
+      - connection: skripte-server
+        ignore:
           - SubDir
           - example.txt
         remote-dir: Informatik/Fachbereich/Engineering-Projekt/EPJ
         # local-dir: Engineering-Projekt
 \end{minted}
+
+Wir haben uns für diese Struktur entschieden, da damit die Plugins dynamisch konfiguriert werden können, aber auch wieder verwendet werden für mehrere \verb|subjects|.
+
+Bei den \verb|connections| werden einzelne Plugins konfiguriert.
+Da diese einen spezifischen Namen haben können kann ein Plugin auch mehrmals verwendet werden.
+Dies ist nützlich wenn es in einer anderen Schule zum Beispiel mehrere Samba-Server hat.
+Dann kann pro Server eine \verb|connection| gesetzt weren.
+
+Die \verb|subjects| sind Gruppierungen nach besuchtem Fach.
+Diese hat mehrere \verb|sources|, welche unterschiedliche \verb|connetions| verwenden können.
+Dadurch kann für ein Fach z.B. eine Synchronisation des Skripte-Servers und des Moodles eingerichtet werden.
 
 \subsection{FileCache}
 

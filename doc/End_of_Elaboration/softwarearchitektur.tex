@@ -157,7 +157,7 @@ Die nicht-funktionalen Anforderungen, welche die Anforderungsspezifikation ausf�
   1.1.1. & Das Erkennen von geänderten Dateien ist durch den \verb|FileCache| gewährleistet. \\
   1.3.1. & Die Passwörter werden mit \verb|keyring| in den lokalen, betriebssystemspezifischen Passwort-Manager gespeichert. \\
   2.1.2. & Die Konfigurationen werden mit \verb|jsonschema| validiert und die Fehler verständlich ausgegeben. \\
-  4.1.1. & FIXME Nicolas \\
+  4.1.1. & Beim Plugin für den Skripte-Server muss um die Liste aller Dateien zu erhalten pro Ordner ein Request abgesetzt werden. Zusätzlich muss um den Remote-Digest zu berechnen ein zusätzlicher Request pro Datei gemacht werden um die Datei-Attribute zu erhalten. Por Datei welche geändert hat wird ein weiterer Request abgesetzt um den Inhalt zu laden. \[ N_{Requests} = N_{Ordner} + N_{Dateien} + N_{ge"anderte Dateien} \] \\
   \bottomrule
 \end{tabulary}
 

@@ -169,13 +169,19 @@ Die nicht-funktionalen Anforderungen, welche die Anforderungsspezifikation ausf�
 
 \subsection{Schichten}
 
-%FIXME: Nicolas korrigiert Fehler in Darstellung (moodledingens), fügt filecache und konfig-file ein
-
 \includegraphics[width=40em]{./img/schichtendiagramm.pdf}
+
+\newpage
 
 \subsection{Sequenzdiagramm}
 
-FIXME Nicolas schreibt einen schönen Satz.
+Dieses Sequenzdiagramm beschreibt wie die Funktionen eines Plugins aufgerufen werden.
+Dies sollte Plugin-Entwicklern helfen zu verstehen, wie das Ganze abläuft.
+
+Die \verb|Settings| sind aufgeführt um zu zeigen, dass die Plugins auf Grund der \verb|Settings| geladen werden.
+
+Ein grösserer Punkt, welcher fehlt ist der \verb|FileCache|.
+Dieser hat jedoch keinen Einfluss auf die Plugins, sondern es sind Auslagerungen der Funktionalitäten des \verb|syncing| Namespaces.
 
 \includegraphics[width=40em]{./img/GrobesSequenzDiagramm.pdf}
 

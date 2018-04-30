@@ -51,7 +51,7 @@
 	Datum & Version & Änderung & AutorIn \\
 	\midrule
 	28.03.2018 & 1.0 & Dokument erstellt, Grundgerüst von Template übernommen & Méline Sieber \\
-	04.04.2018 & 2.0 & Abgabe End of Elaboration & alle \\
+	02.05.2018 & 2.0 & Abgabe Architektur-Review & alle \\
 
 	\bottomrule
 \end{tabulary}
@@ -59,7 +59,7 @@
 
 \section{Einführung}
 % FIXME Ergibt so keinen Sinn...
-Dieses Dokument schliesst die Entwicklungsphase ``End of Elaboration'' ab. Es legt dar, wie die Software-Architektur von \emph{kitovu} aufgebaut ist, beschreibt die logischen Schichten und deren Zusammenhänge. Zudem klärt es die grössten Risiken des Projekts, namentlich die Einbindung der beiden externen, als optional beschriebene Plattformen (Studentenportal, Moodle). Das Dokument erläutert auch die Herausforderung, die grafische Benutzeroberfläche mit dem Kommandozeilen-Client zu verbinden (Prozesse und Threads). Als letzter Punkt wird der Aspekt der Datenspeicherung, insbesondere der Aufbau der Konfigurationsdatei besprochen.
+Dieses Dokument ... Es legt dar, wie die Software-Architektur von \emph{kitovu} aufgebaut ist, beschreibt die logischen Schichten und deren Zusammenhänge. Zudem klärt es die grössten Risiken des Projekts, namentlich die Einbindung der beiden externen, als optional beschriebene Plattformen (Studentenportal, Moodle). Das Dokument erläutert auch die Herausforderung, die grafische Benutzeroberfläche mit dem Kommandozeilen-Client zu verbinden (Prozesse und Threads). Als letzter Punkt wird der Aspekt der Datenspeicherung, insbesondere der Aufbau der Konfigurationsdatei besprochen.
 
 Es bleibt eine Anmerkung: Viele Punkte der ``End of Elaboration'' definiert schon der sehr ausführliche Projektplan. Um dieses Dokument möglichst schlank zu halten, werden deshalb gewisse Punkte aussen vor gelassen, insbesondere die Ausführungen zur Grösse und Leistung von \emph{kitovu}. Für diesen Punkt sei auf den Projektplan verwiesen.
 
@@ -231,6 +231,31 @@ Klassen im Projekt tabellarisch als grobe Kurzübersicht nochmals aufgeführt.
 	\bottomrule
 \end{tabulary}
 
+\subsection{Plugin-Architektur}
+
+Wir wollten von Beginn weg \emph{kitovu} so entwerfen, dass der Client sich leicht ausbauen lässt, da ja an der HSR die Unterrichtsmaterialien von verschiedenen Quellen synchronisiert werden. Eine weitere Überlegung war, dass künftige Studierende selber \emph{kitovu} erweitern können, so dass sie neue oder andere Plattformen selbständig einbinden können. Dies veranschaulicht bereits die Persona der Leonie Egger. 
+
+Wir haben uns deswegen für eine Plugin-Architektur entschieden, so dass neue Plattformen einfach als neue Plugins geschrieben werden können. Via des \emph{Template Method}-Pattern werden diese Plugins in \emph{kitovu} eingehängt. So ist es theoretisch möglich, eine Vielzahl von externen Plattformen in \emph{kitovu} zu integrieren, ohne dass der gesamte Code umgeschrieben werden muss.
+
+Nach einer ersten Evaluation erwies sich die ursprüngliche Plugin-Architektur \verb|pluggy| als unbrauchbar. Wir haben \verb|pluggy| verworfen, da es eine andere Architektur für Plugins
+voraussetzt, als wir benötigen: Es erwartet eine Architektur, bei der der
+Core-Teil eine Methode aufruft, und diese Methode dann in allen verfügbaren
+Plugins aufgerufen wird (\emph{Hooks}, ähnlich des \emph{Observer}-Patterns). Im Kontrast dazu
+benötigen wir eine Architektur, bei dem wir das Plugin anhand der Konfiguration
+aussuchen können -- danach interagieren wir nur noch mit diesem einen Plugin.
+
+Wir entschieden uns deshalb für \verb|stevedore|.\footnote{\url{https://docs.openstack.org/stevedore/latest/}}. Stevedore unterstutzt dies, und nennt es ein ''Driver`` pattern: \\
+
+\begin{center}
+	\includegraphics[height=8em]{img/stevedore_driver.png}
+\end{center}
+
+Als Vergleich das \emph{Hook}-Pattern von \emph{Stevedore}, welches der
+Funktionsweise von \emph{Pluggy} ähnelt:
+
+\begin{center}
+	\includegraphics[height=8em]{img/stevedore_hooks.png}
+\end{center}
 
 \section{Prozesse und Threads}
 
@@ -309,37 +334,11 @@ Gemäss unseren Berechnungen zu den Dateimengen in der Anforderungsspezifikation
 
 \section{Skalierbarkeit}
 
-\subsection{Mehr externe Plattformen -- Plugin-Architektur}
+\subsection{Mehr externe Plattformen}
 
-Für das Engineering Projekt haben wir \emph{kitovu} in minimal möglichem Umfang geplant: Die Synchronisation mit dem Skripteserver muss funktionieren. Alle weiteren externen Plattformen haben wir als optional definiert, auch aufgrund möglicher Risiken -- die sich im Fall des Studentenportals als berechtigt erwiesen haben.
+Für das Engineering Projekt haben wir \emph{kitovu} in minimal möglichem Umfang geplant: Die Synchronisation mit dem Skripteserver muss funktionieren. Alle weiteren externen Plattformen haben wir als optional definiert, auch aufgrund möglicher Risiken -- die sich im Fall des Studentenportals als berechtigt erwiesen haben. Von Anfang an planten wir jedoch die Erweiterbarkeit von \emph{kitovu}, wie wir bereits oben im Abschnitt zur Plugin-Architektur erläutert haben. 
 
-Wir wollten zudem von Beginn weg \emph{kitovu} so entwerfen, dass er sich leicht ausbauen lässt, da ja an der HSR die Unterrichtsmaterialien von verschiedenen Quellen synchronisiert werden. Eine weitere Überlegung war, dass künftige Studierende selber \emph{kitovu} erweitern können, so dass sie neue oder andere Plattformen selbständig einbinden können. Dies veranschaulicht bereits die Persona der Leonie Egger. 
-
-Wir haben uns deswegen für eine Plugin-Architektur entschieden, so dass neue Plattformen einfach als neue Plugins geschrieben werden können, die dann in \emph{kitovu} eingehängt werden (via dem \emph{Template Method}-Pattern). So ist es theoretisch möglich, eine Vielzahl von externen Plattformen in \emph{kitovu} zu integrieren, ohne dass der gesamte Code umgeschrieben werden muss.
-
-Nachdem sich die ursprüngliche Plugin-Architektur \verb|pluggy| als unbrauchbar
-erwiesen hatte, entschieden wir uns für
-\verb|stevedore|.\footnote{\url{https://docs.openstack.org/stevedore/latest/}}.
-Wir haben pluggy verworfen, da es eine andere Architektur für Plugins
-voraussetzt, als wir benötigen: Es erwartet eine Architektur, bei der der
-Core-Teil eine Methode aufruft, und diese Methode dann in allen verfügbaren
-Plugins aufgerufen wird (\emph{Hooks}, ähnlich dem \emph{Observer}-Pattern). Im Kontrast dazu
-benötigen wir eine Architektur, bei dem wir das Plugin anhand der Konfiguration
-aussuchen können -- danach interagieren wir nur noch mit diesem einen Plugin.
-Stevedore unterstutzt dies, und nennt es ein ''Driver`` pattern: \\
-
-\begin{center}
-\includegraphics[height=8em]{img/stevedore_driver.png}
-\end{center}
-
-Als Vergleich das \emph{Hook}-Pattern von \emph{Stevedore}, welches der
-Funktionsweise von \emph{Pluggy} ähnelt:
-
-\begin{center}
-\includegraphics[height=8em]{img/stevedore_hooks.png}
-\end{center}
-
-Die geplante Erweiterbarkeit zahlt sich nun aus: Entgegen unseren kalkulierten Risiken ist eine Moodle-Anbindung möglich -- und lässt sich nun dank der Plugin-Architektur problemlos integrieren. \emph{Kitovu} skaliert also problemlos für mehr als eine Plattform.
+Das ist nun problemlos möglich: Entgegen unseren kalkulierten Risiken ist eine Moodle-Anbindung möglich -- und lässt sich nun dank der Plugin-Architektur problemlos integrieren. \emph{Kitovu} skaliert also für mehr als eine Plattform.
 
 
 \subsection{Mehr Nutzerinnen und Nutzer}

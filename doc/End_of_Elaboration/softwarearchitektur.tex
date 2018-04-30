@@ -58,6 +58,7 @@
 \pagebreak
 
 \section{Einführung}
+% FIXME Ergibt so keinen Sinn...
 Dieses Dokument schliesst die Entwicklungsphase ``End of Elaboration'' ab. Es legt dar, wie die Software-Architektur von \emph{kitovu} aufgebaut ist, beschreibt die logischen Schichten und deren Zusammenhänge. Zudem klärt es die grössten Risiken des Projekts, namentlich die Einbindung der beiden externen, als optional beschriebene Plattformen (Studentenportal, Moodle). Das Dokument erläutert auch die Herausforderung, die grafische Benutzeroberfläche mit dem Kommandozeilen-Client zu verbinden (Prozesse und Threads). Als letzter Punkt wird der Aspekt der Datenspeicherung, insbesondere der Aufbau der Konfigurationsdatei besprochen.
 
 Es bleibt eine Anmerkung: Viele Punkte der ``End of Elaboration'' definiert schon der sehr ausführliche Projektplan. Um dieses Dokument möglichst schlank zu halten, werden deshalb gewisse Punkte aussen vor gelassen, insbesondere die Ausführungen zur Grösse und Leistung von \emph{kitovu}. Für diesen Punkt sei auf den Projektplan verwiesen.
@@ -94,6 +95,8 @@ Die obigen drei Personas -- Leonie Egger, Sven Färber und Reto Schmid -- beschr
 
 \section{Grafische Oberfläche}
 
+% FIXME Als sub-section von Prozesse/Threads?
+
 Als erste Iteration einer grafischen Oberfläche haben wir eine einfache GUI
 entwickelt, welche \emph{kitovu} als Subprozess ausführt:
 
@@ -122,34 +125,42 @@ Synchronisationsprozesse haben einen kritischen Punkt: Die Datenintegrität. Den
 	    \bfseries Vorgehen &
 	    \bfseries Enum-Wert\\
 	\midrule
+  % FIXME Enum-Werte aktualisieren (insbesondere Fall 3: NEW)
 1 & nichts vorhanden &	lokal A &	remote gelöscht &	Konfliktbehandlung (delete local file) & 	REMOTE*\\ \hline
-2 & nichts vorhanden &	lokal A' &	remote gelöscht, lokal geändert&	Konfliktbehandlung &	BOTH*\\ \hline
+2 & nichts vorhanden &	lokal A$'$ &	remote gelöscht, lokal geändert&	Konfliktbehandlung &	BOTH*\\ \hline
 3 & remote A &	nichts &	neue Datei existiert &	download &	REMOTE\\ \hline
 4 & remote A &	lokal A &	keine Änderungen &	nichts& 	NONE\\\hline
 5 & remote B (neue Folien) &	lokal A (keine Änderungen) &	Folien-Update vom Dozent &	download &	REMOTE\\\hline
-6 & remote A &	lokal A' (lokal geändert) &	lokale Notizen, kein Folien-Update &	update FileCache &	LOCAL\\\hline
-7 & remote B (neue Folien) &	lokal A' (lokal geändert) &	beides geändert &	Konfliktbehandlung &	BOTH\\
+6 & remote A &	lokal A$'$ (lokal geändert) &	lokale Notizen, kein Folien-Update &	update FileCache &	LOCAL\\\hline
+7 & remote B (neue Folien) &	lokal A$'$ (lokal geändert) &	beides geändert &	Konfliktbehandlung &	BOTH\\
 \bottomrule
 
 \end{tabulary}
 
 Die mit Sternchen (*) bezeichneten Einträge sind Spezialfälle. 
 
-Aus der Tabelle wird ersichtlich, dass der \verb|FileCache| primär dazu da ist, festzustellen, ob es jemals lokale Änderungen gab (aus A wurde A'). Mit anderen Worten: Wir müssen A separat -- im \verb|FileCache| -- abspeichern, um später feststellen zu können, ob sich in der Zeit bis zum nächsten Synchronisationsprozess die Datei geändert hat. Daraus entstehen drei Digests:
+Aus der Tabelle wird ersichtlich, dass der \verb|FileCache| primär dazu da ist, festzustellen, ob es jemals lokale Änderungen gab (aus A wurde A$'$). Mit anderen Worten: Wir müssen A separat -- im \verb|FileCache| -- abspeichern, um später feststellen zu können, ob sich in der Zeit bis zum nächsten Synchronisationsprozess die Datei geändert hat. Daraus entstehen drei Digests:
 
 \begin{itemize}
 	\item Remote, der direkt aus der Remote-Datei berechnet wird
 	\item Lokal im FileCache
-	\item Lokal auf der Festplatte, i.e. der Digest, der direkt aus der Datei berechnet wird.
+	\item Lokal auf der Festplatte, also der Digest, der direkt aus der Datei berechnet wird.
 \end{itemize}
 
 Der \verb|FileCache| wird jeweils geschrieben, wenn die Datei heruntergeladen wird, und enthält zwei Werte: Den Digest zum Zeitpunkt der Synchronisation sowie den lokalen Dateipfad samt Dateinamen.
 
-Die oben definierten Enum-Werte REMOTE, LOCAL, BOTH, NONE verwenden wir, um die Konfliktbehandlung zu implementieren. Diese ist nötig, sobald sich die Datei lokal geändert hat (A').
+% FIXME Werte aktualisieren
+Die oben definierten Enum-Werte REMOTE, LOCAL, BOTH, NONE verwenden wir, um die Konfliktbehandlung zu implementieren. Diese ist nötig, sobald sich die Datei lokal geändert hat (A$'$).
 
-In der derzeitigen Entwicklungsphase des Clients haben wir uns vorerst für die Konfkliktbehandlung ``override'' entschieden. Wenn sich also die Datei zwischen zwei Synchronisationsprozessen geändert hat, wird sie erneut von der Remote-Datei überschrieben.
+% FIXME override -> overwrite (schon geändert, aber wo haben wir das sonst noch falsch?)
+%
+% override: Überschreiben im Sinne von "einen Fehler ignorieren" oder
+% "einen Sicherheitsmechanismus ausser Kraft setzen"
+%
+% overwrite: Eine Datei überschreiben
+In der derzeitigen Entwicklungsphase des Clients haben wir uns vorerst für die Konfkliktbehandlung ``overwrite entschieden. Wenn sich also die Datei zwischen zwei Synchronisationsprozessen geändert hat, wird sie erneut von der Remote-Datei überschrieben.
 
-Es ist uns jedoch ein Anliegen, dass sich diese Konfliktbehandlung von der Nutzerin steuern lässt, also dass sie in der Konfigurations von \emph{kitovu} festlegen kann, wie sich bei einem Konflikt das Programm verhalten soll (override, ignore, rename, ask).
+Es ist uns jedoch ein Anliegen, dass sich diese Konfliktbehandlung von der Nutzerin steuern lässt, also dass sie in der Konfigurations von \emph{kitovu} festlegen kann, wie sich bei einem Konflikt das Programm verhalten soll (overwrite, ignore, rename, ask).
 
 \subsection{Nicht-funktionale Anforderungen}
 
@@ -162,7 +173,7 @@ Die nicht-funktionalen Anforderungen, welche die Anforderungsspezifikation ausf�
   1.1.1. & Das Erkennen von geänderten Dateien ist durch den \verb|FileCache| gewährleistet. \\
   1.3.1. & Die Passwörter werden mit \verb|keyring| in den lokalen, betriebssystemspezifischen Passwort-Manager gespeichert. \\
   2.1.2. & Die Konfigurationen werden mit \verb|jsonschema| validiert und die Fehler verständlich ausgegeben. \\
-  4.1.1. & Beim Plugin für den Skripte-Server muss um die Liste aller Dateien zu erhalten pro Ordner ein Request abgesetzt werden. Zusätzlich muss um den Remote-Digest zu berechnen ein zusätzlicher Request pro Datei gemacht werden um die Datei-Attribute zu erhalten. Por Datei welche geändert hat wird ein weiterer Request abgesetzt um den Inhalt zu laden. \[ N_{Requests} = N_{Ordner} + N_{Dateien} + N_{ge"anderte Dateien} \] \\
+  4.1.1. & Beim Plugin für den Skripte-Server muss um die Liste aller Dateien zu erhalten pro Ordner ein Request abgesetzt werden. Zusätzlich muss um den Remote-Digest zu berechnen ein zusätzlicher Request pro Datei gemacht werden um die Datei-Attribute zu erhalten. Pro Datei welche geändert hat wird ein weiterer Request abgesetzt um den Inhalt zu laden. \[ N_{Requests} = N_{Ordner} + N_{Dateien} + N_{ge"anderte Dateien} \] \\
   \bottomrule
 \end{tabulary}
 
@@ -244,7 +255,7 @@ Wir haben uns für diese Struktur entschieden, da damit die Plugins dynamisch ko
 
 Bei den \verb|connections| werden einzelne Plugins konfiguriert.
 Da diese einen spezifischen Namen haben können kann ein Plugin auch mehrmals verwendet werden.
-Dies ist nützlich wenn es in einer anderen Schule zum Beispiel mehrere Samba-Server hat.
+Dies ist nützlich wenn es in einer anderen Schule zum Beispiel mehrere SMB-Server hat.
 Dann kann pro Server eine \verb|connection| gesetzt weren.
 
 Die \verb|subjects| sind Gruppierungen nach besuchtem Fach.
@@ -285,6 +296,6 @@ Die geplante Erweiterbarkeit zahlt sich nun aus: Entgegen unseren kalkulierten R
 
 Vor und während der Projektarbeit haben wir festgestellt, dass \emph{kitovu} auf grossen Anklang stösst: Viele HSR-Studentinnen und -Studenten wünschen sich eine einfache Möglichkeit, ihre Unterrichtsmaterialien à jour zu halten. Wir hoffen deshalb und erwarten, dass der Client häufig und von vielen genutzt wird.
 
-\emph{Kitovu} wird lokal bei den Nutzerinnen und Nutzern installiert, das Programm dürfte also problemlos skalieren, da mehr Nutzer keine grössere Last für den einzelnen Client bedeuten. Das einzige Problem wäre, dass die vielen Server-Anfragen von \emph{kitovu} den Skripteserver zum Erliegen bringen. Wir schätzen dieses Risiko jedoch als gering ein und erwarten von der Schulinfrastruktur, dass sie allfällige Spitzen von Netzwerkanfragen verarbeiten mag.
+\emph{Kitovu} wird lokal bei den Nutzerinnen und Nutzern installiert, das Programm dürfte also problemlos skalieren, da mehr Nutzer keine grössere Last für den einzelnen Client bedeuten. Das einzige Problem wäre, dass die vielen Server-Anfragen von \emph{kitovu} den Skripteserver zum Erliegen bringen. Wir schätzen dieses Risiko jedoch als gering ein und erwarten von der Schulinfrastruktur, dass sie allfällige Spitzen von Netzwerkanfragen verarbeiten mag. Wir erwarten sogar, dass  \emph{kitovu} den Skripteserver \emph{weniger} belastet: Momentan laden viele Studierende alle Dateien oft neu herunter, während \emph{kitovu} nur geänderte Dateien herunterlädt.
 
 \end{document}

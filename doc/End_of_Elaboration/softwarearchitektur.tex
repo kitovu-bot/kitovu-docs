@@ -284,10 +284,29 @@ Für das Engineering Projekt haben wir \emph{kitovu} in minimal möglichem Umfan
 
 Wir wollten zudem von Beginn weg \emph{kitovu} so entwerfen, dass er sich leicht ausbauen lässt, da ja an der HSR die Unterrichtsmaterialien von verschiedenen Quellen synchronisiert werden. Eine weitere Überlegung war, dass künftige Studierende selber \emph{kitovu} erweitern können, so dass sie neue oder andere Plattformen selbständig einbinden können. Dies veranschaulicht bereits die Persona der Leonie Egger. 
 
-Wir haben uns deswegen für eine Plugin-Architektur entschieden, so dass neue Plattformen einfach als neue Plugins geschrieben werden können, die dann in \emph{kitovu} eingehängt werden. So ist es theoretisch möglich, eine Vielzahl von externen Plattformen in \emph{kitovu} zu integrieren, ohne dass der gesamte Code umgeschrieben werden muss. Nachdem sich die ursprüngliche Plugin-Architektur \verb|pluggy| für Python als unbrauchbar erwiesen hatte, entschieden wir uns für \verb|stevedore|.\footnote{\url{https://docs.openstack.org/stevedore/latest/}}
+Wir haben uns deswegen für eine Plugin-Architektur entschieden, so dass neue Plattformen einfach als neue Plugins geschrieben werden können, die dann in \emph{kitovu} eingehängt werden (via dem \emph{Template Method}-Pattern). So ist es theoretisch möglich, eine Vielzahl von externen Plattformen in \emph{kitovu} zu integrieren, ohne dass der gesamte Code umgeschrieben werden muss.
 
-FIXME Florian: ausführen, warum pluggy verworfen
-FIXME Florian: Software Pattern?
+Nachdem sich die ursprüngliche Plugin-Architektur \verb|pluggy| als unbrauchbar
+erwiesen hatte, entschieden wir uns für
+\verb|stevedore|.\footnote{\url{https://docs.openstack.org/stevedore/latest/}}.
+Wir haben pluggy verworfen, da es eine andere Architektur für Plugins
+voraussetzt, als wir benötigen: Es erwartet eine Architektur, bei der der
+Core-Teil eine Methode aufruft, und diese Methode dann in allen verfügbaren
+Plugins aufgerufen wird (\emph{Hooks}, ähnlich dem \emph{Observer}-Pattern). Im Kontrast dazu
+benötigen wir eine Architektur, bei dem wir das Plugin anhand der Konfiguration
+aussuchen können -- danach interagieren wir nur noch mit diesem einen Plugin.
+Stevedore unterstutzt dies, und nennt es ein ''Driver`` pattern: \\
+
+\begin{center}
+\includegraphics[height=8em]{img/stevedore_driver.png}
+\end{center}
+
+Als Vergleich das \emph{Hook}-Pattern von \emph{Stevedore}, welches der
+Funktionsweise von \emph{Pluggy} ähnelt:
+
+\begin{center}
+\includegraphics[height=8em]{img/stevedore_hooks.png}
+\end{center}
 
 Die geplante Erweiterbarkeit zahlt sich nun aus: Entgegen unseren kalkulierten Risiken ist eine Moodle-Anbindung möglich -- und lässt sich nun dank der Plugin-Architektur problemlos integrieren. \emph{Kitovu} skaliert also problemlos für mehr als eine Plattform.
 

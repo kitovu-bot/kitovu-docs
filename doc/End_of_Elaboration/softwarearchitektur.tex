@@ -201,6 +201,37 @@ Dieser hat jedoch keinen Einfluss auf die Plugins, sondern es sind Auslagerungen
 
 \includegraphics[width=40em]{./img/GrobesSequenzDiagramm.pdf}
 
+\subsection{Wichtigste Klassen}
+
+Die Domainanalyse aus der Anforderungsspezifikation ist bis auf einige kleine
+Änderungen weiterhin so gültig. Deshalb verzichten wir in diesem Dokument
+darauf, ein erneutes Domainmodell aufzuführen. Nachfolgend sind die wichtigsten
+Klassen im Projekt tabellarisch als grobe Kurzübersicht nochmals aufgeführt.
+
+\begin{tabulary}{\linewidth}{llLl}
+	\toprule
+	Klasse & Package & Funktion \\
+	\midrule
+  \verb|StartScreen| & \verb|gui| & Die verschiedenen Ansichten der GUI. \\
+  \verb|SyncScreen| & & \\
+  \verb|ConfScreen| & & \\
+  \hline
+  \verb|AbstractSyncPlugin| & \verb|sync| & Abstrakte Basisklasse für Synchronisations-Plugins. \\
+  \verb|SmbPlugin| & \verb|sync| & Implentation des Plugins für SMB-Kommunikation (Skripteserver). \\
+  \verb|MoodlePlugin| & \verb|sync| & Implentation des Plugins für Moodle-Kommunikation. \\
+  \verb|DummyPlugin| & \verb|tests.helpers| & Implementation eines Plugins mit fake-Daten für Tests. \\
+  \hline
+  \verb|Settings| & \verb|sync| & Code für das Einlesen und Abfragen der Konfiguration. \\
+  \verb|ConnectionSettings| & \verb|sync| & Konfiguration für eine einzelne Verbindung. \\
+  \hline
+  \verb|FileCache| & \verb|sync| & Zuständig dafür, Änderungen in Dateien (lokal/remote) nachzuverfolgen. \\
+  \hline
+  \verb|AbstractReporter| & \verb|utils| & Abstrakte Basisklasse für die Meldung von Warnungen an den Core-Teil aus einem Plugin. \\
+  \verb|CliReporter| & \verb|utils| & Fehler-Reporting für das Commandline-Interface. \\
+	\bottomrule
+\end{tabulary}
+
+
 \section{Prozesse und Threads}
 
 % <Wenn mehrere Prozesse oder Threads eingesetzt werden wird hier beschrieben, wie diese ablaufen, miteinander funktionieren, Daten austauschen, sich synchronisieren, usw.>

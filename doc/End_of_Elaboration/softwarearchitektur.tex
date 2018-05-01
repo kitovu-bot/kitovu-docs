@@ -108,9 +108,9 @@ entwickelt, welche \emph{kitovu} als Subprozess ausführt:
 
 Der Projektplan erläuterte bereits die beiden grössten Risiken: Die Einbindung des Studentenportals und von Moodle, so dass sich von beiden Plattformen auch Dokumente synchronisieren lassen.
 
-Zum Ende der Elaborationsphase zeigt sich, dass diese frühzeitige Einschränkung des Projekts sinnvoll war: Die Abklärung mit dem OpenHSR-Verein und den Betreibern des Studentenportals ergab, dass wir darauf verzichten müssen, das Portal einzubinden. Es fehlt an einer API, mit der wir Files synchronisieren können -- wir müssten dies von Hand hinzufügen, was jenseits des Projektumfangs liegt. Zudem sind viele Komponente des Studentenportals veraltet und sollten dringend aktualisiert werden. Ein möglicher Sprint sollte dem Abhilfe schaffen. Doch diesen organisiert die Fachschaft oder der OpenHSR-Verein und ist somit ausserhalb unseres Projekts. Das Studentenportal wird somit kein Teil von \emph{kitovu}.
+Zum Ende der Elaborationsphase zeigt sich, dass diese frühzeitige Einschränkung des Projekts sinnvoll war: Die Abklärung mit dem OpenHSR-Verein und den Betreibern des Studentenportals ergab, dass wir darauf verzichten müssen, das Portal einzubinden. Es fehlt an einer API, mit der wir Files synchronisieren können -- wir müssten diese von Hand hinzufügen, was jenseits des Projektumfangs liegt. Zudem sind viele Komponenten des Studentenportals veraltet und sollten dringend aktualisiert werden. Ein möglicher Sprint sollte dem Abhilfe schaffen. Doch diesen organisiert die Fachschaft oder der OpenHSR-Verein und ist somit ausserhalb unseres Projekts. Das Studentenportal wird somit kein Teil von \emph{kitovu}. 
 
-Das zweite Risiko, die Moodle-Einbindung, ist noch in weiterer Abklärung. Ein erster Erfolg konnte verzeichnet werden: Der Moodle-Desktop-Client\footnote{\url{https://download.moodle.org/desktop/}} bzw. die mobile Version davon stellt bei erfolgreichem Login einen Moodle-Token zur Verfügung. Dank dieses Tokens ist es uns gelungen, via \emph{kitovu} ein File herunterzuladen. Eine erste Anbindung ist uns also gelungen. Noch offen ist, wie und ob wir die direkte Authentifikation via Switch AAI in \emph{kitovu} implementieren können; wir sind jedoch zuversichtlich, dass uns das gelingt.
+Das zweite Risiko, die Moodle-Einbindung, ist noch in weiterer Abklärung. Ein erster Erfolg konnte verzeichnet werden: Der Moodle-Desktop-Client\footnote{\url{https://download.moodle.org/desktop/}} bzw. die mobile Version davon stellt bei erfolgreichem Login einen Moodle-Token zur Verfügung. Dank dieses Tokens ist es uns gelungen, Moodle als Plugin in \emph{kitovu} einzubinden. Noch offen ist, wie und ob wir die direkte Authentifikation via Switch AAI in \emph{kitovu} implementieren können; wir sind jedoch zuversichtlich, dass uns das gelingt.
 
 \subsection{Wichtige Abläufe}
 
@@ -131,13 +131,13 @@ Synchronisationsprozesse haben einen kritischen Punkt: Die Datenintegrität. Den
 3 & remote A &	nichts &	neue Datei existiert &	download &	\verb|NEW|\\ \hline
 4 & remote B (neue Folien) &	lokal A (keine Änderungen) &	Folien-Update vom Dozent &	download &	\verb|REMOTE_CHANGED|\\\hline
 5 & remote A &	lokal A &	keine Änderungen &	nichts& 	\verb|NO_CHANGES|\\\hline
-6 & remote A &	lokal A$'$ (lokal geändert) &	lokale Notizen, kein Folien-Update &	update FileCache &	\verb|LOCAL_CHANGED|\\\hline
+6 & remote A &	lokal A$'$ (lokal geändert) &	lokale Notizen, kein Folien-Update & nichts &	\verb|LOCAL_CHANGED|\\\hline
 7 & remote B (neue Folien) &	lokal A$'$ (lokal geändert) &	beides geändert &	Konfliktbehandlung &	\verb|BOTH_CHANGED|\\
 \bottomrule
 
 \end{tabulary}
 
-Die mit Sternchen (*) bezeichneten Einträge sind Spezialfälle. 
+Die mit Sternchen (*) bezeichneten Einträge sind Spezialfälle und momentan noch nicht umgesetzt.
 
 Aus der Tabelle wird ersichtlich, dass der \verb|FileCache| primär protokolliert, ob es jemals lokale Änderungen gab (aus A wurde A$'$). Mit anderen Worten: Wir müssen A separat -- im \verb|FileCache| -- abspeichern, um später feststellen zu können, ob sich in der Zeit bis zum nächsten Synchronisationsprozess die Datei geändert hat. 
 
@@ -147,7 +147,7 @@ Daraus entstehen drei Digests:
 
 \begin{itemize}
 	\item Remote, der direkt aus der Remote-Datei berechnet wird
-	\item Lokal im FileCache
+	\item Lokal im \verb|FileCache|
 	\item Lokal auf der Festplatte, also der Digest, der direkt aus der Datei berechnet wird.
 \end{itemize}
 
@@ -170,8 +170,8 @@ Die nicht-funktionalen Anforderungen, welche die Anforderungsspezifikation ausf�
   \midrule
   1.1.1. & Der \verb|FileCache| gewährleistet, geänderte Dateien zu erkennen. \\
   1.3.1. & Die Passwörter werden mit \verb|keyring| in den lokalen, betriebssystemspezifischen Passwort-Manager gespeichert. \\
-  2.1.2. & \verb|Jsonschema| validiert die Konfigurationen und gibt die Fehler verständlich aus. \\
-  4.1.1. & In Bezug auf das Skripteserver-Plugin muss pro Ordner ein Request abgesetzt werden, um die Liste aller Dateien zu erhalten. Ein zusätzlicher Request pro Datei ist nötig, um den Remote-Digest zu berechnen -- nur so können Datei-Attribute für den Digest abgefragt werden. Pro Datei, welche sich geändert hat, wird ein weiterer Request abgesetzt um den Inhalt zu laden. \[ N_{Requests} = N_{Ordner} + N_{Dateien} + N_{ge"anderte Dateien} \] \\
+  2.1.2. & Die \verb|jsonschema|-Bibliothek validiert die Konfigurationen und gibt die Fehler verständlich aus. \\
+  4.1.1. & In Bezug auf das Skripteserver-Plugin muss pro Ordner ein Request abgesetzt werden, um die Liste aller Dateien zu erhalten. Ein zusätzlicher Request pro Datei ist nötig, um den Remote-Digest zu berechnen -- nur so können Datei-Attribute für den Digest abgefragt werden. Pro Datei, welche sich geändert hat, wird ein weiterer Request abgesetzt, um den Inhalt zu laden. \[ N_{Requests} = N_{Ordner} + N_{Dateien} + N_{ge"anderte Dateien} \] \\
   \bottomrule
 \end{tabulary}
 
@@ -198,7 +198,7 @@ Die \verb|Settings| sind aufgeführt um zu zeigen, dass die Plugins in Abhängig
 
 Ein grösserer Punkt ist der \verb|FileCache| -- dieser fehlt bewusst im Diagramm.
 Dieser hat keinen direkten Einfluss auf die Plugins.
-Der \verb|FileCache| unterstützt nur den Synchronisationsprozess (\verb|syncing|-Namespace), um geänderten Dateien zu erkennen.
+Der \verb|FileCache| unterstützt nur den Synchronisationsprozess (\verb|syncing|-Namespace), um geänderte Dateien zu erkennen.
 
 \includegraphics[width=40em]{./img/GrobesSequenzDiagramm.pdf}
 
@@ -227,9 +227,12 @@ Klassen im Projekt tabellarisch als Kurzübersicht nochmals aufgeführt.
   \verb|ConnectionSettings| & \verb|sync| & Konfiguration für eine einzelne Verbindung. \\
   \hline
   \verb|FileCache| & \verb|sync| & Zuständig dafür, Änderungen in Dateien (lokal/remote) nachzuverfolgen. \\
-  \hline
-  \verb|AbstractReporter| & \verb|utils| & Abstrakte Basisklasse für die Meldung von Warnungen an den Core-Teil aus einem Plugin. \\
-  \verb|CliReporter| & \verb|utils| & Fehler-Reporting für den Kommandozeilen-Client. \\
+  % FIXME Wollen wir wahrscheinlich rausnehmen, weil wir uns nicht sicher sind,
+  % wie das schlussendlich aussehen soll.
+  % \hline
+  % \verb|AbstractReporter|* & \verb|utils| & Abstrakte Basisklasse für die Meldung von Warnungen an den Core-Teil aus einem Plugin. \\
+  % \verb|CliReporter|* & \verb|utils| & Fehler-Reporting für den Kommandozeilen-Client. \\
+  \verb|syncing| (Modul) & \verb|sync| & Steuert den gesamten Synchronisationsprozess \\
 	\bottomrule
 \end{tabulary}
 
@@ -272,7 +275,7 @@ Chancen für einen Übertragungsfehler sehr gering ein. Wir können bereits auf 
 (TCP, SMB, HTTP) und erwarten deswegen eine zuverlässige Datenübertragung. Dieses Problem ist also von uns abstrahiert.
 
 In anderen Sprachen werden oft ``Error-Objekte'' selbst konstruiert. Werden
-zusätzliche Informationen benötigt -- beispielsweise welche Funktion genau fehlschlug --, so muss dies mühsam von Hand übergeben werden.
+zusätzliche Informationen benötigt -- beispielsweise welche Funktion genau fehlschlug -- so muss dies mühsam von Hand übergeben werden.
 
 In Python werden oft Exceptions als solche Error-Objekte benutzt. Es handelt
 sich bei Exceptions in Python um \emph{first-class
@@ -285,7 +288,7 @@ Wichtig für die Architektur ist die Entscheidung, bei welchen Problemen wir
 welche Operation abbrechen wollen:
 
 \begin{itemize}
-  \item Jegliche unbehandelte Exception (Bug) $\rightarrow$ ganzes Programm bricht ab
+  \item Jegliche unbehandelte Exception (Bug) $\rightarrow$ ganzes Programm bricht ab.
   \item Verbindung zum Server bricht im Plugin ab $\rightarrow$ nur das
     entsprechende Plugin wird ignoriert. Error-Handling-Code soll möglichst
     simpel sein; neuer Verbindungsaufbau nach Verbindungsabbruch macht
@@ -295,7 +298,7 @@ welche Operation abbrechen wollen:
 \end{itemize}
 
 Gerade bei Verbindungsfehlern enthält die Exception, die die entsprechende
-Library (PySMB, requests, etc.) wirft, schon nützliche Informationen. Deshalb
+Library (\verb|PySMB|, \verb|requests|, etc.) wirft, schon nützliche Informationen. Deshalb
 ist es sinnvoll, diese Exception beizubehalten und zu behandeln, damit diese
 Informationen nicht verloren gehen, da sie z.B. auch für Debugging-Zwecke verwendet werden können.
 
@@ -319,7 +322,7 @@ Für den GUI-Protoyp wählen wir die erste Lösung oben in der Liste. Der grafis
 
 % <Beschreibung mit Diagramm der Datenspeicherung (Datenmodell, z.B. Datenbank)>
 \subsection{Konfigurationsdatei}
-Die Konfigurationsdatei soll so gestaltet sein, dass auch Studierende ausserhalb des Informatikstudienganges damit umgehen könnten. Die Verständlichkeit steht also im Vordergrund. So ist sie aufgebaut:
+Die Konfigurationsdatei soll so gestaltet sein, dass auch Studierende ausserhalb des Informatikstudienganges damit umgehen könnten. Die Verständlichkeit steht also im Vordergrund. Sie ist wie folgt aufgebaut:
 
 \begin{minted}{yaml}
 root-dir: ~/Documents/HSR/semester_06
@@ -353,8 +356,8 @@ Wir haben uns für diese Struktur entschieden, da damit die Plugins dynamisch ko
 
 Der Abschnitt zu \verb|connections| konfiguriert einzelne Plugins.
 Da diese einen spezifischen Namen haben, kann ein Plugin auch mehrmals verwendet werden.
-Dies ist nützlich, wenn es in einer anderen Schule zum Beispiel mehrere SMB-Server hat.
-Dann kann pro Server eine \verb|connection| gesetzt weren.
+Dies ist nützlich, wenn es in einer anderen Schule beispielsweise mehrere
+SMB-Server hat -- dann kann pro Server eine \verb|connection| angegeben werden.
 
 Die \verb|subjects| sind Gruppierungen nach besuchtem Fach.
 Ein Fach hat so mehrere \verb|sources|, welche unterschiedliche \verb|connections| verwenden können.
@@ -373,12 +376,15 @@ Im Gegensatz zur Konfigurationsdatei, die als \verb|YAML|-Datei gespeichert wird
 Ein Eintrag in der \verb|filecache.json|-Datei sieht nun folgendermassen aus:
 
 \begin{minted}[breaklines]{json}
-{"/home/legger/kitovu/EPJ/SoftwareArchitektur.docx": 
-	{"plugin": "smb", 
-	"digest": "36837-1525097547"}}
+{
+  "/home/legger/kitovu/EPJ/SoftwareArchitektur.docx":  {
+    "plugin": "smb",
+    "digest": "36837-1525097547"
+  }
+}
 \end{minted}
 
-Er wird je nach Betriebssystem an einem anderen Ort hinterlegt: 
+Die Datei wird je nach Betriebssystem an einem passenden Ort hinterlegt: 
 
 Für Linux: \verb|~/.local/share/kitovu/filecache.json|,
 
@@ -392,7 +398,7 @@ Gemäss unseren Berechnungen zu den Dateimengen in der Anforderungsspezifikation
 
 Für das Engineering Projekt haben wir \emph{kitovu} in minimal möglichem Umfang geplant: Die Synchronisation mit dem Skripteserver muss funktionieren. Alle weiteren externen Plattformen haben wir als optional definiert, auch aufgrund möglicher Risiken -- die sich im Fall des Studentenportals als berechtigt erwiesen haben. Von Anfang an planten wir jedoch die Erweiterbarkeit von \emph{kitovu}, wie wir bereits oben im Abschnitt zur Plugin-Architektur erläutert haben. 
 
-Das ist nun problemlos möglich: Entgegen unseren kalkulierten Risiken ist eine Moodle-Anbindung möglich -- und lässt sich nun dank der Plugin-Architektur problemlos integrieren. \emph{Kitovu} skaliert also für mehr als eine Plattform.
+Das ist nun problemlos möglich: Entgegen unseren kalkulierten Risiken ist eine Moodle-Anbindung umsetzbar -- und lässt sich nun dank der Plugin-Architektur problemlos integrieren. \emph{Kitovu} skaliert also für mehr als eine Plattform.
 
 
 \subsection{Mehr Nutzerinnen und Nutzer}

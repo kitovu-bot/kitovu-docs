@@ -59,15 +59,15 @@
 \pagebreak
 
 \section{Einführung}
-Dieses Dokument legt dar, wie die Software-Architektur von \emph{kitovu} aufgebaut ist. Ein Abschnitt beschreibt die grafische Oberfläche, die wir zusätzlich zum Kommandozeilen-Client implementiert haben. Auch gehen wir auf die wichtigsten Abläufe des Clients ein. Im Kapitel zur logischen Architektur erläutern wir anhand von Grafiken die logischen Schichten von \emph{kitovu} und deren Zusammenhänge. Zudem klärt das Architekturdokument die grössten Risiken des Projekts, namentlich die Einbindung der beiden externen, als optional definierten Plattformen (Studentenportal, Moodle). Weiter erläutern wir auch die Herausforderung, die grafische Benutzeroberfläche mit dem Kommandozeilen-Client zu verbinden (Prozesse und Threads). Ein weiterer Punkt ist die Datenspeicherung, insbesondere der Aufbau der Konfigurationsdatei und des FileCache. Als letztes gehen wir noch auf die Skalierbarkeit ein, also, ob \emph{kitovu} auch für mehr Benutzerinnen und bei grösserem Synchronisationsaufwand zu gebrauchen ist.
+Dieses Dokument legt dar, wie die Software-Architektur von \emph{kitovu} aufgebaut ist. Ein Abschnitt beschreibt die grafische Oberfläche, die wir zusätzlich zum Kommandozeilen-Client implementiert haben. Auch gehen wir auf die wichtigsten Abläufe des Clients ein. Im Kapitel zur logischen Architektur erläutern wir anhand von Grafiken die logischen Schichten von \emph{kitovu} und deren Zusammenhänge. Zudem klärt das Architekturdokument die grössten Risiken des Projekts, namentlich die Einbindung der beiden externen, als optional definierten Plattformen (Studentenportal, Moodle). Weiter erläutern wir auch die Herausforderung, die grafische Benutzeroberfläche mit dem Kommandozeilen-Client zu verbinden (Prozesse und Threads). Ein weiterer Punkt ist die Datenspeicherung, insbesondere der Aufbau der Konfigurationsdatei und des \verb|FileCache|. Als letztes gehen wir noch auf die Skalierbarkeit ein, also, ob \emph{kitovu} auch für mehr Benutzerinnen und bei grösserem Synchronisationsaufwand zu gebrauchen ist.
 
-Es bleibt eine Anmerkung: Viele Punkte der ``End of Elaboration'' definiert schon der sehr ausführliche Projektplan. Um dieses Dokument möglichst schlank zu halten, werden deshalb gewisse Punkte aussen vor gelassen, insbesondere die Ausführungen zur Grösse und Leistung von \emph{kitovu}. Für diesen Punkt sei auf den Projektplan verwiesen.
+Es bleibt eine Anmerkung: Viele Punkte haben wir bereits ausführlich im Projektplan und der Anforderungsspezifikation besprochen. Um dieses Dokument möglichst schlank zu halten, werden deshalb gewisse Punkte aussen vor gelassen, und wir verweisen auf die entsprechenden, bereits bestehenden Dokumente.
 
 \subsection{Gültigkeitsbereich}
 Die vorliegende Architekturbeschreibung ist für das Engineering-Projekt im Frühlingssemester 2018 gültig. Falls dem Projekt grössere Veränderungen widerfahren, wird das Dokument dementsprechend angepasst. Umfassende Änderungen werden am Anfang des Dokuments protokolliert.
 
 \subsection{Referenzen}
-Die Anforderungsspezifikation ist eng mit der Domainanalyse und anderen Dokumenten verbunden. Die folgende Tabelle listet die wichtigsten Referenzen auf.
+Die folgende Tabelle listet die wichtigsten Referenzen auf.
 
 \begin{tabulary}{\linewidth}{Ll}
 	Confluence & \url{\confluenceurl} \\
@@ -87,7 +87,7 @@ Beim Logo auf der Titelseite handelt es sich um eine stark überarbeitete Versio
 
 \section{Systemübersicht}
 
-Das folgende Kontextprogramm verdeutlicht, wie die Schnittstellen von \emph{kitovu} aussehen. Auf der einen Seite  sind die Nutzerinnen und Nutzer, die je nach Informatikkenntnissen mit der grafischen Oberfläche oder mit dem Kommandozeilenprogramm interagieren. Auf der andere Seite sind die Plattformen, die \emph{kitovu} einbindet: Der Skripteserver sowie die Moodle-Plattform, die jedoch eine Authentifikation via Switch AAI verlangt. Weshalb das Studentenportal für dieses Projekt nicht implementiert werden kann, erklärt der nächste Abschnitt. \\
+Das folgende Kontextdiagramm verdeutlicht, wie die Schnittstellen von \emph{kitovu} aussehen. Auf der einen Seite  sind die Nutzerinnen und Nutzer, die je nach Informatikkenntnissen mit der grafischen Oberfläche oder mit dem Kommandozeilenprogramm interagieren. Auf der andere Seite sind die Plattformen, die \emph{kitovu} einbindet: Der Skripteserver sowie die Moodle-Plattform, die jedoch eine Authentifikation via Switch AAI verlangt. Weshalb das Studentenportal für dieses Projekt nicht implementiert werden kann, erklärt wir weiter unten. \\
 
 \includegraphics[width=40em]{./img/kontextdiagramm.png} \\
 
@@ -114,7 +114,7 @@ Das zweite Risiko, die Moodle-Einbindung, ist noch in weiterer Abklärung. Ein e
 
 \subsection{Wichtige Abläufe}
 
-Synchronisationsprozesse haben einen kritischen Punkt: Die Datenintegrität. Denn die Daten sollen immer den Zustand behalten oder annehmen, wie die Nutzerin es sich wünscht. Um das zu gewährleisten, haben wir die Funktionalität des \verb|FileCache| definiert -- er führt Buch über den Zustand der Dateien\footnote{Vgl. auch Kapitel 6.}. Nach längeren Diskussionen haben wir folgende mögliche Fälle identifiziert, die während des Synchronisationsprozesses auftreten können:
+Synchronisationsprozesse haben einen kritischen Punkt: Die Datenintegrität. Denn die Daten sollen immer den Zustand behalten oder annehmen, wie die Nutzerin es sich wünscht. Um das zu gewährleisten, haben wir die Funktionalität des \verb|FileCache| definiert -- er führt Buch über den Zustand der Dateien\footnote{Vgl. auch Kapitel 8.}. Nach längeren Diskussionen haben wir folgende mögliche Fälle identifiziert, die während des Synchronisationsprozesses auftreten können:
 
 \begin{tabulary}{\linewidth}{lLLLLl}
 	\toprule
@@ -151,10 +151,10 @@ Daraus entstehen drei Digests:
 	\item Lokal auf der Festplatte, also der Digest, der direkt aus der Datei berechnet wird.
 \end{itemize}
 
-Der \verb|FileCache| wird jeweils geschrieben, wenn die Datei heruntergeladen wird, und enthält zwei Werte: Den Digest zum Synchronisationszeitpunkt sowie den lokalen Dateipfad samt Dateinamen.
+Der \verb|FileCache| wird jeweils geschrieben, wenn die Datei heruntergeladen wird, und enthält zwei Werte: Den Digest zum Synchronisationszeitpunkt sowie den relativen, lokalen Dateipfad samt Dateinamen.
 
 % FIXME Werte aktualisieren
-Die oben definierten Enum-Werte \verb|NEW|, \verb|REMOTE_CHANGED|, \verb|LOCAL_CHANGED|, \verb|BOTH_CHANGED|, \verb|NO_CHANGES| verwenden wir, um die Konfliktbehandlung zu implementieren. Diese ist nötig, sobald sich die Datei lokal geändert hat (A$'$).
+Die oben definierten Enum-Werte \verb|NEW|, \verb|NO_CHANGES|, \verb|REMOTE_CHANGED|, \verb|LOCAL_CHANGED|, \verb|BOTH_CHANGED|  verwenden wir, um die Konfliktbehandlung zu implementieren. Diese ist nötig, sobald sich die Datei lokal geändert hat (A$'$).
 
 In der derzeitigen Entwicklungsphase des Clients haben wir uns vorerst für die Konfliktbehandlung ``overwrite'' entschieden. Selbst wenn sich die Datei zwischen zwei Synchronisationsprozessen geändert hat, wird sie also erneut von der Remote-Datei überschrieben.
 
@@ -197,8 +197,8 @@ Dies sollte Plugin-Entwicklern helfen zu verstehen, wie die Synchronisation abl�
 Die \verb|Settings| sind aufgeführt um zu zeigen, dass die Plugins in Abhängigkeit zu den \verb|Settings| geladen werden.
 
 Ein grösserer Punkt ist der \verb|FileCache| -- dieser fehlt bewusst im Diagramm.
-Dieser hat jedoch keinen direkten Einfluss auf die Plugins.
-Der \verb|FileCache| unterstützt den \verb|syncing| Namespaces beim Erkennen von geänderten Dateien.
+Dieser hat keinen direkten Einfluss auf die Plugins.
+Der \verb|FileCache| unterstützt nur den Synchronisationsprozess (\verb|syncing|-Namespace), um geänderten Dateien zu erkennen.
 
 \includegraphics[width=40em]{./img/GrobesSequenzDiagramm.pdf}
 
@@ -208,7 +208,7 @@ Der \verb|FileCache| unterstützt den \verb|syncing| Namespaces beim Erkennen vo
 Die Domainanalyse aus der Anforderungsspezifikation ist bis auf einige kleine
 Änderungen weiterhin so gültig. Deshalb verzichten wir in diesem Dokument
 darauf, ein erneutes Domainmodell aufzuführen. Nachfolgend sind die wichtigsten
-Klassen im Projekt tabellarisch als grobe Kurzübersicht nochmals aufgeführt.
+Klassen im Projekt tabellarisch als Kurzübersicht nochmals aufgeführt.
 
 \begin{tabulary}{\linewidth}{llLl}
 	\toprule
@@ -296,7 +296,7 @@ welche Operation abbrechen wollen:
 
 Gerade bei Verbindungsfehlern enthält die Exception, die die entsprechende
 Library (PySMB, requests, etc.) wirft, schon nützliche Informationen. Deshalb
-macht es Sinn, diese Exception beizubehalten und zu behandeln, damit diese
+ist es sinnvoll, diese Exception beizubehalten und zu behandeln, damit diese
 Informationen nicht verloren gehen, da sie z.B. auch für Debugging-Zwecke verwendet werden können.
 
 \section{Prozesse und Threads}
@@ -306,7 +306,7 @@ Informationen nicht verloren gehen, da sie z.B. auch für Debugging-Zwecke verwe
 Die grafische Implementation von \emph{kitovu} stellt uns vor die Herausforderung, wie die Bibliotheken zur Synchronisation in die GUI eingebunden werden, da diese nicht blockiert werden darf. Dazu gibt es mehrere Lösungsansätze:
 
 \begin{enumerate}
-	\item Zwei separate Prozesse: Die GUI läuft in einem separaten Prozess und kommuniziert mit dem Kommandozeilen-Prozesses, der die Synchronisation übernimmt.
+	\item Zwei separate Prozesse: Die GUI läuft in einem separaten Prozess und kommuniziert mit dem Kommandozeilen-Prozesse, der die Synchronisation übernimmt.
 	\item Zwei Threads: Die Bibliotheken zur Synchronisation laufen in einem separaten Thread im gleichen Prozess wie die GUI.
 	\item Verwenden von asynchronen Bibliotheken (\verb|asyncio| oder \verb|twisted|), die im gleichen Thread wie die GUI die Synchronisation durchführen können, ohne die GUI zu blockieren.
 \end{enumerate}
@@ -349,7 +349,7 @@ subjects:
         # local-dir: Engineering-Projekt
 \end{minted}
 
-Wir haben uns für diese Struktur entschieden, da damit die Plugins sehr dynamisch konfiguriert werden können.
+Wir haben uns für diese Struktur entschieden, da damit die Plugins dynamisch konfiguriert werden können.
 
 Der Abschnitt zu \verb|connections| konfiguriert einzelne Plugins.
 Da diese einen spezifischen Namen haben, kann ein Plugin auch mehrmals verwendet werden.
@@ -357,10 +357,10 @@ Dies ist nützlich, wenn es in einer anderen Schule zum Beispiel mehrere SMB-Ser
 Dann kann pro Server eine \verb|connection| gesetzt weren.
 
 Die \verb|subjects| sind Gruppierungen nach besuchtem Fach.
-Ein Fach hat so mehrere \verb|sources|, welche unterschiedliche \verb|connetions| verwenden können.
-Dadurch kann für ein Fach z.B. die Synchronisation des Skripte-Servers als auch von Moodle eingerichtet werden.
+Ein Fach hat so mehrere \verb|sources|, welche unterschiedliche \verb|connections| verwenden können.
+Dadurch kann für ein Fach z.B. sowohl die Synchronisation des Skripte-Servers als auch von Moodle eingerichtet werden.
 
-Ein \verb|subject| bezeichnet also ein Unterrichtsmodul an der HSR -- aufgrund möglicher Begriffskonfusionen haben wir uns für den abstrakteren Begriff entschieden, statt Bezeichnungen wie \verb|location|, \verb|module| oder \verb|places|.
+Ein \verb|subject| bezeichnet also ein Unterrichtsmodul an der HSR -- aufgrund möglicher Begriffskonfusionen haben wir uns für diesen abstrakteren Begriff entschieden, statt Bezeichnungen wie \verb|location|, \verb|module| oder \verb|places|.
 
 \pagebreak
 
@@ -370,7 +370,7 @@ Zum Bereich der Datenspeicherung gehört ebenfalls der \verb|FileCache|, dess Fu
 
 Im Gegensatz zur Konfigurationsdatei, die als \verb|YAML|-Datei gespeichert wird, speichern wir den \verb|FileCache| als \verb|JSON|-Datei. Der Vorteil einer \verb|JSON|-Datei ist die reduzierte Dateigrösse sowie bessere Performance. Zudem ist diese Datei nicht dazu gedacht, von Personen gelesen zu werden, in Kontrast zur Konfigurationsdatei.
 
-Ein Eintrag in der \verb|filecache.json| sieht nun folgendermassen aus:
+Ein Eintrag in der \verb|filecache.json|-Datei sieht nun folgendermassen aus:
 
 \begin{minted}[breaklines]{json}
 {"/home/legger/kitovu/EPJ/SoftwareArchitektur.docx": 
@@ -378,7 +378,7 @@ Ein Eintrag in der \verb|filecache.json| sieht nun folgendermassen aus:
 	"digest": "36837-1525097547"}}
 \end{minted}
 
-Er wird je nach Betriebssystem an einem anderen Ort hinterlegt. 
+Er wird je nach Betriebssystem an einem anderen Ort hinterlegt: 
 
 Für Linux: \verb|~/.local/share/kitovu/filecache.json|,
 

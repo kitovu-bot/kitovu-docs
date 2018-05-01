@@ -197,8 +197,8 @@ Dies sollte Plugin-Entwicklern helfen zu verstehen, wie die Synchronisation abl�
 Die \verb|Settings| sind aufgeführt um zu zeigen, dass die Plugins in Abhängigkeit zu den \verb|Settings| geladen werden.
 
 Ein grösserer Punkt ist der \verb|FileCache| -- dieser fehlt bewusst im Diagramm.
-Dieser hat jedoch keinen Einfluss auf die Plugins, sondern es sind Auslagerungen der Funktionalitäten des \verb|syncing| Namespaces.
-%FIXME verständlichkeit?
+Dieser hat jedoch keinen direkten Einfluss auf die Plugins.
+Der \verb|FileCache| unterstützt den \verb|syncing| Namespaces beim Erkennen von geänderten Dateien.
 
 \includegraphics[width=40em]{./img/GrobesSequenzDiagramm.pdf}
 

@@ -257,6 +257,47 @@ Funktionsweise von \emph{Pluggy} ähnelt:
 	\includegraphics[height=8em]{img/stevedore_hooks.png}
 \end{center}
 
+\section{Fehlerbehandlung}
+Wir haben uns dafür entschieden, die Fehlerbehandlung grösstenteils basierend
+auf Exceptions zu implementieren -- ein Vorgehen, welches in der Python-Welt
+vermutlich weiter verbreitet ist als in der Java-Welt. Die genaueren Gründe für
+dieses Vorgehen werden nachfolgend dargelegt.
+
+Sofern keine entsprechenden Bugs in \emph{kitovu} vorhanden sind, schätzen wir die
+Chancen für einen Übertragungsfehler sehr gering ein. Dank robusten Protokollen
+(TCP, SMB, HTTP), auf die wir aufbauen können, ist eine zuverlässige
+Datenübertragung zu erwarten, und dieses Problem ist von uns abstrahiert.
+
+In anderen Sprachen werden oft ``Error-Objekte'' selbst konstruiert. Werden
+zusätzliche Informationen benötigt (wie beispielsweise welche Funktion genau
+fehlschlug), so muss dies mühsam von Hand übergeben werden.
+
+In Python werden oft Exceptions als solche Error-Objekte benutzt. Es handelt
+sich bei Exceptions in Python um \emph{first-class
+  objects}\footnote{\url{https://en.wikipedia.org/wiki/First-class_object}}, sie
+können also auch problemlos in einer Liste gespeichert und weitergegeben werden.
+Ausserdem sind Exceptions (im Gegensatz zu z.B.
+Java\footnote{\url{https://shipilev.net/blog/2014/exceptional-performance/}})
+sehr leichtgewichtige Konstrukte,
+
+Wichtig für die Architektur ist die Entscheidung, bei welchen Problemen wir
+welche Operation abbrechen wollen:
+
+\begin{itemize}
+  \item Jegliche unbehandelte Exception (Bug) $\rightarrow$ ganzes Programm bricht ab
+  \item Verbindung zum Server bricht im Plugin ab $\rightarrow$ nur das
+    entsprechende Plugin wird ignoriert. (Error-Handling code soll möglichst
+    simpel sein; neuer Verbindungsaufbau nach Verbindungsabbruch macht
+    vermutlich mehr Probleme, als es löst)
+  \item Fehler beim Herunterladen einer Datei $\rightarrow$ Datei wird
+    übersprungen, der Rest des Plugins läuft trotzdem weiter.
+\end{itemize}
+
+Gerade bei Verbindungsfehlern enthält die Exception, die die entsprechende
+Library (PySMB, requests, etc.) wirft, schon nützliche Informationen. Deshalb
+macht es Sinn, diese Exception beizubehalten und zu behandeln, damit diese
+Informationen (z.B. auch für Debugging-Zwecke) nicht verloren gehen.
+
 \section{Prozesse und Threads}
 
 % <Wenn mehrere Prozesse oder Threads eingesetzt werden wird hier beschrieben, wie diese ablaufen, miteinander funktionieren, Daten austauschen, sich synchronisieren, usw.>

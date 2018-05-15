@@ -1,0 +1,270 @@
+\documentclass[a4paper]{article}
+\usepackage[margin=3cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{cmbright}
+\usepackage[hidelinks]{hyperref}
+\usepackage{booktabs}
+\usepackage[ngerman]{babel}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{minted}
+\usepackage{pdflscape}
+\usepackage{array}
+\usepackage{tabulary}
+\usepackage{multicol}
+\usepackage{pgfgantt}
+\usepackage{pgf-umlcd}
+\usepackage{enumitem}
+\usepackage{pifont}
+\usepackage{threeparttable}
+
+% Page breaks between sections
+\let\oldsection\section
+\renewcommand\section{\clearpage\oldsection}
+
+% JIRA/Confluence shortcuts
+\def\jiraurl{https://jira.keltec.ch/jira}
+\def\confluenceurl{https://jira.keltec.ch/wiki}
+\newcommand{\jiraissue}[1]{\href{\jiraurl/projects/EPJ/issues/EPJ-#1}{EPJ-#1}}
+\newcommand{\fulljiraissue}[1]{EPJ-#1 (\url{\jiraurl/projects/EPJ/issues/EPJ-#1})}
+
+% Tools
+\newcommand{\tool}[2]{\emph{#1\footnote{\url{#2}}}}
+
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+
+\begin{document}
+  \title{
+    Projekt: kitovu \\
+    \Large{Software-Architektur} \\[3em]
+    \includegraphics[width=20em]{../../img/logo/kitovu.jpg}
+  }
+  \author{
+    Florian Bruhin \\ \url{florian.bruhin@hsr.ch} \and
+    Méline Sieber \\ \url{meline.sieber@hsr.ch} \and
+    Nicolas Ganz \\ \url{nicolas.ganz@hsr.ch}
+    }
+  \date{\today}
+
+  \maketitle
+
+  \section*{Änderungsgeschichte}
+
+  \begin{tabulary}{\linewidth}{llLl}
+    \toprule
+    Datum & Version & Änderung & AutorIn \\
+    \midrule
+    15.05.2018 & 1.0 & Dokument und Testprotokoll erstellt & Nicolas Ganz \\
+    \bottomrule
+  \end{tabulary}
+
+  \pagebreak
+
+  \section{Testprotokoll}
+
+  Zusätzlich zu den automatisierten Tests haben wir hier Testprotokolle zusammengetragen, mit welchen man komplette Abläufe testen kann.
+
+  Die Konfigurationsdateien sind am Ende des Kapitels beschrieben.
+
+  \subsection{Test 1: Synchronisation}
+
+  Dieser Test überprüft die grundsätzliche Funktionalität der Synchronisation.
+
+  \subsubsection{Ablauf}
+
+  \begin{enumerate}
+    \item Falls vorhanden alle Dateien löschen
+    \item Konfiguration erstellen mit \verb|kitovu edit| und die Konfigurationsdatei 1 einfügen
+    \item Synchronisieren mit \verb|kitovu sync|
+    \item Erneut synchronisieren mit \verb|kitovu sync|
+  \end{enumerate}
+
+  \subsubsection{Resultat}
+
+  \begin{threeparttable}
+    \begin{tabulary}{\linewidth}{lL|l}
+      \toprule
+      \textbf{Nr} & \textbf{Erwartet} & \textbf{\cmark / \xmark} \\
+      \midrule
+      1 & Sämtliche Dateien von EPJ und SE2 werden synchronisiert & \cmark \\
+      2 & Die Dateien wurden korrekt heruntergeladen und sind lesbar & \cmark\tnote{1} \\
+      3 & Beim SE2 werden die Daten vom Moodle sowie vom Skripte-Server heruntergeladen & \cmark \\
+      4 & Beim EPJ werden die Daten nur vom Skripte-Server heruntergeladen & \cmark \\
+      5 & Beim ersten Synchronisieren wird jede Datei aufgelistet, dass sie heruntergeladen wird & \cmark \\
+      6 & Beim zweiten Synchronisieren wird nur angezeigt, dass es die Module synchronisiert werden, aber keine Dateien werden aufgelistet & \cmark \\
+      \bottomrule
+    \end{tabulary}
+
+    \begin{tablenotes}
+      \item[1] Unter anderem funktionieren PDF-Dateien einwandfrei
+    \end{tablenotes}
+  \end{threeparttable}
+
+  \subsection{Test 2: Abgebrochene Synchronisation}
+
+  Dieser Test überprüft die Funktionalität der Synchronisation nach einem Abbruch.
+
+  \subsubsection{Ablauf}
+
+  \begin{enumerate}
+    \item Falls vorhanden alle Dateien löschen
+    \item Konfiguration erstellen mit \verb|kitovu edit| und die Konfigurationsdatei 1 einfügen
+    \item Synchronisieren mit \verb|kitovu sync| und während der Ausführung das Probramm mit \verb|CTRL+C| abbrechen
+    \item Erneut synchronisieren mit \verb|kitovu sync|
+  \end{enumerate}
+
+  \subsubsection{Resultat}
+
+  \begin{threeparttable}
+    \begin{tabulary}{\linewidth}{lL|l}
+      \toprule
+      \textbf{Nr} & \textbf{Erwartet} & \textbf{\cmark / \xmark} \\
+      \midrule
+      1 & In der ersten Synchronisation werden nur die ersten Dateien heruntergeladen & \cmark \\
+      2 & In der zweiten Synchronisation werden nur die noch nicht heruntergeladenen Dateien heruntergeladen & \cmark \\
+      3 & Die zweite Synchronisation zeigt keine Dateien an, welche bereits in der ersten Synchronisation heruntergeladen wurden & \cmark \\
+      \bottomrule
+    \end{tabulary}
+
+    %\begin{tablenotes}
+    %  \item[1]
+    %\end{tablenotes}
+  \end{threeparttable}
+
+  \subsection{Test 3: Ungültige Konfigurationsdatei}
+
+  Dieser Test überprüft die Validierung der Konfigurationsdatei.
+
+  \subsubsection{Ablauf}
+
+  \begin{enumerate}
+    \item Falls vorhanden alle Dateien löschen
+    \item Konfiguration erstellen mit \verb|kitovu edit| und die Konfiugrationsdatei 2 einfügen
+    \item Die Datei mit \verb|kitovu validate| überprüfen
+    \item Synchronisieren mit \verb|kitovu sync|
+  \end{enumerate}
+
+  \subsubsection{Resultat}
+
+  \begin{threeparttable}
+    \begin{tabulary}{\linewidth}{lL|l}
+      \toprule
+      \textbf{Nr} & \textbf{Erwartet} & \textbf{\cmark / \xmark} \\
+      \midrule
+      1 & Das Validieren der Konfigurationsdatei gibt eine Fehermeldung aus, welche beschreibt, dass in der Skripte-Server-Connection das Property \verb|plugin| fehlt & \cmark\tnote{1} \\
+      2 & Bei der Synchronisation wird die gleiche Fehlermeldung angezeigt und nichts wird synchronisiert & \cmark \\
+      \bottomrule
+    \end{tabulary}
+
+    \begin{tablenotes}
+      \item[1] Es wird grundsätzlich beschrieben lässt sich aber noch klarer formulieren
+    \end{tablenotes}
+  \end{threeparttable}
+
+  \subsection{Test 4: Synchronisation über das GUI}
+
+  Dieser Test überprüft die grundsätzliche Funktionalität der Synchronisation.
+
+  \subsubsection{Ablauf}
+
+  \begin{enumerate}
+    \item Falls vorhanden alle Dateien löschen
+    \item Das GUI starten mit \verb|kitovu gui|
+    \item Konfiguration erstellen über ``Konfiguration verwalten'', die Konfigurationsdatei 1 einfügen und über ``Speichern und zurück'' speichern
+    \item Synchronisieren mit ``Dateien synchronisieren''
+    \item Erneut synchronisieren mit ``Dateien synchronisieren''
+  \end{enumerate}
+
+  \subsubsection{Resultat}
+
+  \begin{threeparttable}
+    \begin{tabulary}{\linewidth}{lL|l}
+      \toprule
+      \textbf{Nr} & \textbf{Erwartet} & \textbf{\cmark / \xmark} \\
+      \midrule
+      1 & Sämtliche Dateien von EPJ und SE2 werden synchronisiert & \cmark \\
+      2 & Die Dateien wurden korrekt heruntergeladen und sind lesbar & \cmark\tnote{1} \\
+      3 & Beim SE2 werden die Daten vom Moodle sowie vom Skripte-Server heruntergeladen & \cmark \\
+      4 & Beim EPJ werden die Daten nur vom Skripte-Server heruntergeladen & \cmark \\
+      5 & Beim ersten Synchronisieren wird jede Datei aufgelistet, dass sie heruntergeladen wird & \cmark \\
+      6 & Beim zweiten Synchronisieren wird nur angezeigt, dass es die Module synchronisiert werden, aber keine Dateien werden aufgelistet & \cmark \\
+      \bottomrule
+    \end{tabulary}
+
+    \begin{tablenotes}
+      \item[1] Unter anderem funktionieren PDF-Dateien einwandfrei
+    \end{tablenotes}
+  \end{threeparttable}
+
+  \pagebreak
+
+  \subsection{Konfigurationsdateien}
+
+  \subsubsection{Konfigurationsdatei 1}
+
+  \begin{minted}[
+    gobble=4,
+    frame=single,
+  ]{yaml}
+    root-dir: ~/Documents/HSR/Test/semester_06
+
+    global-ignore:
+      - Thumbs.db
+      - .DS_Store
+
+    connections:
+      - name: skripte-server
+        plugin: smb
+        username: nganz
+      - name: moodle
+        plugin: moodle
+
+    subjects:
+      - name: Engineering Projekt
+        sources:
+        - connection: skripte-server
+          remote-dir: Informatik/Fachbereich/Engineering-Projekt/EPJ
+      - name: Software Engineering 2
+        sources:
+          - connection: moodle
+            remote-dir: Software-Engineering 2 FS2018
+          - connection: skripte-server
+            remote-dir: Informatik/Fachbereich/Software-Engineering_2/SE2
+  \end{minted}
+
+  \subsubsection{Konfigurationsdatei 2}
+
+  \begin{minted}[
+    gobble=4,
+    frame=single,
+  ]{yaml}
+    root-dir: ~/Documents/HSR/Test/semester_06
+
+    connections:
+      - name: skripte-server
+        username: nganz
+
+    subjects: []
+  \end{minted}
+
+  \section{Performance-Tests}
+
+  % FIXME
+  \begin{threeparttable}
+    \begin{tabulary}{\linewidth}{Llll}
+      \toprule
+      Modul & Anzahl Dateien & Sync 1 (min:s) \tnote{1} & Sync 2 (min:s) \tnote{2} \\
+      \midrule
+      Software Engineering 2 & 80 & TBD & TBD \\
+      Web Engineering + Design & 651 & TBD & TBD \\
+      Ganzes Semester (5 Module) & 1'086 & TBD & TBD \\
+      \bottomrule
+    \end{tabulary}
+
+    \begin{tablenotes}
+      \item[1] Synchronisation wo die Dateien nicht existieren und heruntergeladen werden
+      \item[2] Synchronisation wo die Dateien bereits existieren
+    \end{tablenotes}
+  \end{threeparttable}
+\end{document}

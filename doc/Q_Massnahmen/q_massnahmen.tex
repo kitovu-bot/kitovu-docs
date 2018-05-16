@@ -63,7 +63,7 @@
 
   \section{Testprotokoll}
 
-  Zusätzlich zu den automatisierten Tests haben wir hier Testprotokolle zusammengetragen, mit welchen man komplette Abläufe testen kann.
+  Um die Benutzbarkeit von \emph{kitovu} zu prüfen, haben wir den Client verschiedenen Tests unterzogen. Zusätzlich zu den automatisierten Tests haben wir hier Testprotokolle zusammengetragen, mit welchen wir komplette Abläufe getestet haben. Test 1 bis 3 erfolgten mit der Kommandozeilenversion von \emph{kitovu}, Test 4 mit der grafischen Oberfläche.
 
   Die Konfigurationsdateien sind am Ende des Kapitels beschrieben.
 
@@ -74,10 +74,10 @@
   \subsubsection{Ablauf}
 
   \begin{enumerate}
-    \item Falls vorhanden alle Dateien löschen
-    \item Konfiguration erstellen mit \verb|kitovu edit| und die Konfigurationsdatei 1 einfügen
-    \item Synchronisieren mit \verb|kitovu sync|
-    \item Erneut synchronisieren mit \verb|kitovu sync|
+    \item Alle Dateien löschen, falls vorhanden.
+    \item Konfiguration erstellen mit \verb|kitovu edit| und die Konfigurationsdatei 1 einfügen.
+    \item Synchronisieren mit \verb|kitovu sync|.
+    \item Erneut synchronisieren mit \verb|kitovu sync|.
   \end{enumerate}
 
   \subsubsection{Resultat}
@@ -87,17 +87,17 @@
       \toprule
       \textbf{Nr} & \textbf{Erwartet} & \textbf{\cmark / \xmark} \\
       \midrule
-      1 & Sämtliche Dateien von EPJ und SE2 werden synchronisiert & \cmark \\
-      2 & Die Dateien wurden korrekt heruntergeladen und sind lesbar & \cmark\tnote{1} \\
-      3 & Beim SE2 werden die Daten vom Moodle sowie vom Skripte-Server heruntergeladen & \cmark \\
-      4 & Beim EPJ werden die Daten nur vom Skripte-Server heruntergeladen & \cmark \\
-      5 & Beim ersten Synchronisieren wird jede Datei aufgelistet, dass sie heruntergeladen wird & \cmark \\
-      6 & Beim zweiten Synchronisieren wird nur angezeigt, dass es die Module synchronisiert werden, aber keine Dateien werden aufgelistet & \cmark \\
+      1 & Sämtliche Dateien von EPJ und SE2 werden synchronisiert. & \cmark \\
+      2 & Die Dateien wurden korrekt heruntergeladen und sind lesbar. & \cmark\tnote{1} \\
+      3 & Beim SE2 werden die Daten von Moodle sowie vom Skripte-Server heruntergeladen. & \cmark \\
+      4 & Beim EPJ werden die Daten nur vom Skripte-Server heruntergeladen. & \cmark \\
+      5 & Während der ersten Synchronisation wird jede Datei ausgegeben, die heruntergeladen wird. & \cmark \\
+      6 & Während der zweiten Synchronisation wird nur angezeigt, dass die Module synchronisiert werden.  Die Dateien werden nur aufgelistet, aber nicht heruntergeladen. & \cmark \\
       \bottomrule
     \end{tabulary}
 
     \begin{tablenotes}
-      \item[1] Unter anderem funktionieren PDF-Dateien einwandfrei
+      \item[1] Unter anderem funktionieren PDF-Dateien einwandfrei.
     \end{tablenotes}
   \end{threeparttable}
 
@@ -108,10 +108,10 @@
   \subsubsection{Ablauf}
 
   \begin{enumerate}
-    \item Falls vorhanden alle Dateien löschen
-    \item Konfiguration erstellen mit \verb|kitovu edit| und die Konfigurationsdatei 1 einfügen
-    \item Synchronisieren mit \verb|kitovu sync| und während der Ausführung das Probramm mit \verb|CTRL+C| abbrechen
-    \item Erneut synchronisieren mit \verb|kitovu sync|
+    \item Alle Dateien löschen, falls vorhanden.
+    \item Konfiguration erstellen mit \verb|kitovu edit| und die Konfigurationsdatei 1 einfügen.
+    \item Synchronisieren mit \verb|kitovu sync|, während der Ausführung das Programm mit \verb|CTRL+C| abbrechen.
+    \item Erneut synchronisieren mit \verb|kitovu sync|.
   \end{enumerate}
 
   \subsubsection{Resultat}
@@ -121,9 +121,9 @@
       \toprule
       \textbf{Nr} & \textbf{Erwartet} & \textbf{\cmark / \xmark} \\
       \midrule
-      1 & In der ersten Synchronisation werden nur die ersten Dateien heruntergeladen & \cmark \\
-      2 & In der zweiten Synchronisation werden nur die noch nicht heruntergeladenen Dateien heruntergeladen & \cmark \\
-      3 & Die zweite Synchronisation zeigt keine Dateien an, welche bereits in der ersten Synchronisation heruntergeladen wurden & \cmark \\
+      1 & Während der ersten Synchronisation werden nur die ersten Dateien bis zum Abbruch heruntergeladen. & \cmark \\
+      2 & Während der zweiten Synchronisation werden nur diejenigen Dateien heruntergeladen, die im ersten Durchgang fehlten. & \cmark \\
+      3 & Die zweite Synchronisation zeigt keine Dateien an, welche bereits in der ersten Synchronisation heruntergeladen wurden. & \cmark \\
       \bottomrule
     \end{tabulary}
 
@@ -139,10 +139,10 @@
   \subsubsection{Ablauf}
 
   \begin{enumerate}
-    \item Falls vorhanden alle Dateien löschen
-    \item Konfiguration erstellen mit \verb|kitovu edit| und die Konfiugrationsdatei 2 einfügen
-    \item Die Datei mit \verb|kitovu validate| überprüfen
-    \item Synchronisieren mit \verb|kitovu sync|
+    \item Alle Dateien löschen, falls vorhanden.
+    \item Konfiguration erstellen mit \verb|kitovu edit| und die Konfiugrationsdatei 2 einfügen.
+    \item Die Datei mit \verb|kitovu validate| überprüfen.
+    \item Synchronisieren mit \verb|kitovu sync|.
   \end{enumerate}
 
   \subsubsection{Resultat}
@@ -152,28 +152,28 @@
       \toprule
       \textbf{Nr} & \textbf{Erwartet} & \textbf{\cmark / \xmark} \\
       \midrule
-      1 & Das Validieren der Konfigurationsdatei gibt eine Fehermeldung aus, welche beschreibt, dass in der Skripte-Server-Connection das Property \verb|plugin| fehlt & \cmark\tnote{1} \\
-      2 & Bei der Synchronisation wird die gleiche Fehlermeldung angezeigt und nichts wird synchronisiert & \cmark \\
+      1 & Die Validierung der Konfigurationsdatei führt zu einer Fehlermeldung, welche beschreibt, dass in der Skripte-Server-Connection der Eintrag \verb|plugin| fehlt & \cmark\tnote{1}. \\
+      2 & Während der Synchronisation wird die gleiche Fehlermeldung angezeigt, es wird nichts synchronisiert. & \cmark \\
       \bottomrule
     \end{tabulary}
 
     \begin{tablenotes}
-      \item[1] Es wird grundsätzlich beschrieben lässt sich aber noch klarer formulieren
+      \item[1] Es wird grundsätzlich beschrieben und liesse sich aber noch klarer formulieren.
     \end{tablenotes}
   \end{threeparttable}
 
-  \subsection{Test 4: Synchronisation über das GUI}
+  \subsection{Test 4: Synchronisation über die GUI}
 
   Dieser Test überprüft die grundsätzliche Funktionalität der Synchronisation.
 
   \subsubsection{Ablauf}
 
   \begin{enumerate}
-    \item Falls vorhanden alle Dateien löschen
-    \item Das GUI starten mit \verb|kitovu gui|
-    \item Konfiguration erstellen über ``Konfiguration verwalten'', die Konfigurationsdatei 1 einfügen und über ``Speichern und zurück'' speichern
-    \item Synchronisieren mit ``Dateien synchronisieren''
-    \item Erneut synchronisieren mit ``Dateien synchronisieren''
+    \item Ale Dateien löschen, falls vorhanden.
+    \item GUI starten mit \verb|kitovu gui|
+    \item Konfiguration erstellen über ``Konfiguration verwalten'', die Konfigurationsdatei 1 einfügen und über ``Speichern und zurück'' speichern.
+    \item Synchronisieren mit ``Dateien synchronisieren''.
+    \item Erneut synchronisieren mit ``Dateien synchronisieren''.
   \end{enumerate}
 
   \subsubsection{Resultat}
@@ -183,17 +183,17 @@
       \toprule
       \textbf{Nr} & \textbf{Erwartet} & \textbf{\cmark / \xmark} \\
       \midrule
-      1 & Sämtliche Dateien von EPJ und SE2 werden synchronisiert & \cmark \\
-      2 & Die Dateien wurden korrekt heruntergeladen und sind lesbar & \cmark\tnote{1} \\
-      3 & Beim SE2 werden die Daten vom Moodle sowie vom Skripte-Server heruntergeladen & \cmark \\
-      4 & Beim EPJ werden die Daten nur vom Skripte-Server heruntergeladen & \cmark \\
-      5 & Beim ersten Synchronisieren wird jede Datei aufgelistet, dass sie heruntergeladen wird & \cmark \\
-      6 & Beim zweiten Synchronisieren wird nur angezeigt, dass es die Module synchronisiert werden, aber keine Dateien werden aufgelistet & \cmark \\
+      1 & Sämtliche Dateien von EPJ und SE2 werden synchronisiert. & \cmark \\
+      2 & Die Dateien wurden korrekt heruntergeladen und sind lesbar. & \cmark\tnote{1} \\
+      3 & Beim SE2 werden die Daten von Moodle sowie vom Skripte-Server heruntergeladen. & \cmark \\
+      4 & Beim EPJ werden die Daten nur vom Skripte-Server heruntergeladen. & \cmark \\
+	  5 & Während der ersten Synchronisation wird jede Datei ausgegeben, die heruntergeladen wird. & \cmark \\
+	  6 & Während der zweiten Synchronisation wird nur angezeigt, dass die Module synchronisiert werden.  Die Dateien werden nur aufgelistet, aber nicht heruntergeladen. & \cmark \\
       \bottomrule
     \end{tabulary}
 
     \begin{tablenotes}
-      \item[1] Unter anderem funktionieren PDF-Dateien einwandfrei
+      \item[1] Unter anderem funktionieren PDF-Dateien einwandfrei.
     \end{tablenotes}
   \end{threeparttable}
 
@@ -263,8 +263,8 @@
     \end{tabulary}
 
     \begin{tablenotes}
-      \item[1] Synchronisation wo die Dateien nicht existieren und heruntergeladen werden
-      \item[2] Synchronisation wo die Dateien bereits existieren
+      \item[1] Synchronisation, bei der die Dateien noch nicht lokal existieren und heruntergeladen werden.
+      \item[2] Synchronisation, bei der die Dateien bereits existieren.
     \end{tablenotes}
   \end{threeparttable}
 \end{document}

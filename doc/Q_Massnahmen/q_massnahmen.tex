@@ -64,58 +64,60 @@
   \pagebreak
 
   \section{Usability Tests}
+  
+  Die Usability-Tests wurden ohne Referenz zur bereits bestehenden, externe Dokumentation durchgeführt.\footnote{\url{https://kitovu.readthedocs.io/}} Die Testpersonen haben nur mit den bestehenden Hinweisen gearbeitet, die das Programm selbst gibt.
 
   \subsection{Test 1}
 
-  Dieser Test wurde mit einem vollzeit Informatik-Student im 4. Semester durchgeführt und umfasst das Kommandozeileinprogramm, sowie die graphische Benutzeroberfläche.
+  Dieser Test wurde mit einem Vollzeit-Informatikstudenten im 4. Semester durchgeführt und umfasst das Kommandozeilenprogramm sowie die graphische Benutzeroberfläche.
 
   \begin{itemize}
-    \item \verb|kitovu sync| geht etwas unter bei all den Optionen mit \verb|--help|.
-    \item ``With the given configuration'' ist verwirrend, weil man ja normalerweise keine Datei angibt.
+    \item \verb|kitovu sync| geht etwas unter bei all den Optionen, die \verb|--help| bietet.
+    \item Die Angabe ``with the given configuration'' ist verwirrend, weil man ja normalerweise keine Datei angibt.
     \item ``Enter password for smb plugin'' -- was ist smb denn eigentlich?
-    \item Hat die Synchronisation funktioniert? Abruptes Ende ohne success-Nachricht.
-    \item Tab in der graphischen Benutzeroberfläche macht einen Tab anstatt 2 Spaces, was YAML erwartet.
-    \item YAML ist als Format für die Konfigurationsdatei etwas problematisch. Vorallem bezüglich der exakt benötigten Einrückung.
-    \item Der Konfigurations-Editor in der graphischen Benutzeroberfläche hat keine Zeilennummern. Diese würden bei Fehlermeldungen helfen.
-    \item In der graphischen Benutzeroberfläche ist es nicht ganz klar, ob die Datei erfolgreich gespeichert wurde.
+    \item Hat die Synchronisation funktioniert? Abruptes Ende ohne Nachricht für eine erfolgreiche Synchronisation.
+    \item YAML ist als Format für die Konfigurationsdatei etwas problematisch, vor allem bezüglich der exakt benötigten Einrückung.
     \item ``Synchronisation erfolgreich beendet'' wird angezeigt, auch wenn es Plugin-Fehler gab.
+    \item Graphische Benutzeroberfläche: Tabulatortaste macht einen Tab anstatt 2 Spaces, was YAML erwartet.
+    \item Graphische Benutzeroberfläche: Der Konfigurationseditor hat keine Zeilennummern. Diese würden bei Fehlermeldungen helfen.
+    \item Graphische Benutzeroberfläche: Es ist nicht ganz klar, ob die Konfigurationsdatei erfolgreich gespeichert wurde.
   \end{itemize}
 
   \subsection{Test 2}
 
-  Dieser Test wurde mit einer Raumplanungs-Studentin im zweiten Semester durchgeführt. Es wurde nur die graphische Benutzeroberfläche getestet und das Editieren der Konfiguration wurde grösstenteils ausgelassen.
+  Dieser Test wurde mit einer Studentin der Raumplanung im 2. Semester durchgeführt. Es wurde nur die graphische Benutzeroberfläche getestet und das Editieren der Konfiguration wurde grösstenteils ausgelassen.
 
   \begin{itemize}
-    \item Mit ``Speichern'' passiert nichts wenn die Konfiguration bearbeitet wurde. Erwartet war dass es zurück geht. Sie hat ``Speichern und zurück'' zuerst nicht gesehen.
-    \item Warum gibt es nach dem Synchronisieren ein ``Zurück''-Button?
-    \item Warum wählt man nach dem Synchronisieren nicht aus, wo die Dateien jetzt gespeichert werden sollen?
+    \item Mit ``Speichern'' passiert nichts, wenn die Konfiguration bearbeitet wurde. Sie erwartete, dass ``speichern'' automatisch zurück zum Startbildschirm führt. ``Speichern und zurück'' hat sie zuerst übersehen.
+    \item Warum gibt es nach der Synchronisation einen ``Zurück''-Button?
+    \item Der Zusammenhang zwischen Konfiguration und Synchronisation wurde nicht erkannt: Warum wählt man nach der Synchronisation nicht aus, wo die Dateien jetzt gespeichert werden sollen?
     \item Konzept der Konfiguration war zuerst unklar. Der ``Konfiguration editieren''-Knopf wurde zuerst nicht gefunden.
   \end{itemize}
 
   \subsection{Test 3}
 
-  Dieser Test wurde mit einem Raumplanungs-Student im zweiten Semester durchgeführt. Auch hier wurde nur die graphische Benutzeroberfläche getestet, zusätzlich jedoch unter etwas Anleitung das Bearbeiten der Konfigurationsdatei.
+  Dieser Test wurde mit einem Student der Raumplanung im 2. Semester durchgeführt. Auch hier wurde nur die graphische Benutzeroberfläche getestet, zusätzlich, wie die Konfigurationsdatei zu bearbeiten war, allerdings unter etwas Anleitung.
 
   \begin{itemize}
-    \item Output grundsätzlich verständlich. Es würde helfen wenn die Modul/Source Gruppen hervorgehoben werden.
+    \item Output grundsätzlich verständlich. Es würde helfen, die Module bzw. ``Sources''-Gruppen hervorzuheben.
     \item Die Aktionen waren alle klar, auch wie man sie findet.
-    \item Das Editieren ist jedoch unverständlich, er konnte es aber mit wenig Anleitung selbständig machen.
+    \item Das Editieren ist jedoch unverständlich, mit etwas Anleitung konnte er es selbständig durchführen.
   \end{itemize}
 
   \subsection{Test 4}
 
-  Dieser Test wurde mit einem Informatik-Teilzeitstudent im 6. Semestern durchgeführt. Er Umfasst das Kommandozeilenprogramm, sowie die graphische Benutzeroberfläche.
+  Dieser Test wurde mit einem Teilzeit-Informatikstudent im 6. Semestern durchgeführt. Der Test umfasste das Kommandozeilenprogramm  sowie die graphische Benutzeroberfläche.
 
   \begin{itemize}
-    \item YAML-Fehlermeldung sind etwas kompliziert zu verstehen.
-    \item Es wurde alles gfunden mit \verb|–-help| und \verb|[cmd] --help|.
-    \item Der Log Output ist verständlich.
-    \item In der graphischen Benutzeroberfläche wurde nach dem Synchronisieren anstatt ``Zurück'' zu verwenden das Fenster geschlossen.
+    \item Die YAML-Fehlermeldungen sind etwas kompliziert zu verstehen.
+    \item Es wurde alles gefunden via \verb|--help| und \verb|[cmd] --help|.
+    \item Der Log-Output ist verständlich.
+    \item Graphische Benutzeroberfläche: Statt nach der Synchronisation ``Zurück'' zu drücken, wurde das zu verwendende Fenster geschlossen.
   \end{itemize}
 
   \subsection{Auswertung}
 
-  Die genaue Auswertung haben wir im entsprechenden Jira-Issue zusammen gefasst. Zusätzlich haben wir die Punkte zu effektiven Issues gruppiert und diese jeweils mit dem Jira-Issue der Usability Tests verknüpft.
+  Die genaue Auswertung haben wir in entsprechenden Jira-Issues zusammengefasst und mit dem Issue der Usability-Tests verknüpft.
 
   Das Issue ist unter \url{https://jira.keltec.ch/jira/browse/EPJ-23} zu finden.
 

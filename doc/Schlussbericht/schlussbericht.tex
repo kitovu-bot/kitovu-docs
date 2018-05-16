@@ -1,0 +1,64 @@
+\documentclass[a4paper]{article}
+\usepackage[margin=3cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{cmbright}
+\usepackage[hidelinks]{hyperref}
+\usepackage{booktabs}
+\usepackage[ngerman]{babel}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{minted}
+\usepackage{pdflscape}
+\usepackage{array}
+\usepackage{tabulary}
+\usepackage{multicol}
+\usepackage{pgfgantt}
+\usepackage{pgf-umlcd}
+\usepackage{enumitem}
+\usepackage{pifont}
+\usepackage{threeparttable}
+
+% Page breaks between sections
+\let\oldsection\section
+\renewcommand\section{\clearpage\oldsection}
+
+% JIRA/Confluence shortcuts
+\def\jiraurl{https://jira.keltec.ch/jira}
+\def\confluenceurl{https://jira.keltec.ch/wiki}
+\newcommand{\jiraissue}[1]{\href{\jiraurl/projects/EPJ/issues/EPJ-#1}{EPJ-#1}}
+\newcommand{\fulljiraissue}[1]{EPJ-#1 (\url{\jiraurl/projects/EPJ/issues/EPJ-#1})}
+
+% Tools
+\newcommand{\tool}[2]{\emph{#1\footnote{\url{#2}}}}
+
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+
+\begin{document}
+  \title{
+    Projekt: kitovu \\
+    \Large{Schlussbericht} \\[3em]
+    \includegraphics[width=20em]{../../img/logo/kitovu.jpg}
+  }
+  \author{
+    Florian Bruhin \\ \url{florian.bruhin@hsr.ch} \and
+    Méline Sieber \\ \url{meline.sieber@hsr.ch} \and
+    Nicolas Ganz \\ \url{nicolas.ganz@hsr.ch}
+    }
+  \date{\today}
+
+  \maketitle
+
+  \section*{Änderungsgeschichte}
+
+  \begin{tabulary}{\linewidth}{llLl}
+    \toprule
+    Datum & Version & Änderung & AutorIn \\
+    \midrule
+    16.05.2018 & 1.0 & Dokument erstellt und Struktur aus der Vorlage übernommen & Nicolas Ganz \\
+    \bottomrule
+  \end{tabulary}
+
+  \pagebreak
+
+\end{document}

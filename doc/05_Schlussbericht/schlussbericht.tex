@@ -63,24 +63,33 @@
 
   \section{Zielerreichung}
 
-  % FIXME: <Objektive Zielerreichung beschreiben>
+Dieses Projekt ist wohl eines der Ausnahmen in der Softwareentwicklung: 
 
-Wir hatten die richtigen Entscheidungen getroffen, zu jedem Zeitpunkt des Projekts. Die Kommunikation verlief reibungslos, sowohl online wie auch offline. Es gab keine nennenswerten Konflikte. Wir haben unsere Ziele erreicht und sogar übertroffen.
+\begin{itemize}
+	\item Wir haben alle gesetzten Ziele erreicht, sogar übertroffen, und das innerhalb der gesetzten Zeit.
+	\item Die Kommunikation verlief reibungslos, sowohl online wie auch offline.
+	\item Keine nennenswerten Konflikte innerhalb des Teams.
+	\item Wir haben so gut wie immer die richtigen Entscheidungen gefällt, zu jedem Zeitpunkt des Projekts (Plugin-Architektur, Verteilung von Aufgaben, Grundsatzentscheidungen).
+\end{itemize}
 
-  \section{Allgemeiner Erfahrungsbericht}
+Als Hauptziel haben wir uns gesetzt, den Skripteserver anzubinden und eine erfolgreiche Synchronisation der benötigten Unterrichtsmaterialien durchzuführen. Das ist uns gelungen. Die beiden optionalen Erweiterungen, wie wir sie im Projektplan definiert haben, sind gleichzeitig die grösste Überraschung und grösste Enttäuschung:
 
-  % FIXME: <Allgemeine Erfahrungen, welche als Team gesammelt wurden (z.B. in Meetings, beim Auftreten von Problemen, usw.)>
-  
-  grösste überraschung: moodle
-  
-  
-  physische Kommunikation
-  wöchentliche Meetings
-  
-  
-Code-Statistik
-  
-  
+Zu unserer grössten Überraschung haben wir es geschafft, Moodle in \emph{kitovu} einzubinden, was wir im Projektplan als grösstes Risiko identifiziert hatten. Unsere grösste Enttäuschung war hingegen, dass wir sehr bald das Studentenportal von unseren optionalen Anbindungen streichen mussten.
+
+\section{Allgemeiner Erfahrungsbericht}
+
+Wir haben \emph{kitovu} als kleines Projekt geplant, um einen möglichst hohen Lerneffekt zu erzielen: Für alle war es in der einen oder anderen Weise das erste, selber geführte Software-Projekt in einem kleinen Team. Es hat sich gelohnt, die Latte nicht zu hoch zu legen -- mit dem Resultat, dass wir alle Ziele erreicht haben und nun für die HSR ein nützliches Werkzeug bereitstellen können.
+
+Folgende wichtige Entscheidungen haben auch dazu beigetragen:
+\begin{description}
+	\item[Erweiterbarkeit via Plugin-Architektur:] Erleichterte das Testen, aber auch die stückweise Erweiterung, zuerst mit dem Skripteserver, dann mit Moodle.
+	\item[Code-Regeln setzen:] Wir setzten uns selber hohe Hürden, bis es Code in den Master-Branch schaffte: Pull-Requests, dann Code-Review eines Teammitglieds; gleichzeitig  Style-Prüfung mit Mypy, Flake8 und Pylint. Erst wenn der Code all diese Prüfungen passiert hatte, wurde er Teil des Masters.
+	\item [Wöchentliche Meetings:] Sich jede Woche mindestens einmal zu dritt zu treffen hat sich ausbezahlt. Wir klärten viele Fragen, glichen unsere Projektvision an und konnten immer rechtzeitig den Verlauf anpassen.
+	\item[Pair-Programming:] Sowohl erfahrene Programmierer wie Florian und Nicolas als auch Méline konnten viel voneinander lernen und profitieren.
+	\item[Beschlüsse gemeinsam treffen:] Wichtige Designentscheide (FileCache, Error-Handling) haben wir gemeinsam im Team getroffen.
+\end{description}
+
+Alles in Allem nehmen wir alle drei sehr positive Erinnerungen von diesem Projekt mit, haben viel gelernt und werden nach Projektabschluss sicher noch daran weiterarbeiten. Und natürlich hoffen wir, dass viele HSR-Studentinnen und -Studenten \emph{kitovu} einsetzen werden.
 
   \section{Persönliche Erfahrungen}
 
@@ -94,7 +103,7 @@ Der Einstieg war erwartungsgemäss steil, das Wasser kalt. Viele Konzepte aus de
 
 Ein unverzichtbarer, äusserst wertvoller Teil des Lernprozesses war das Pair-Programming mit Florian und Nicolas. Beide nahmen sich viel Zeit, meine Hürden gemeinsam zu nehmen. Das senkte die Berührungsängste vor der für mich anspruchsvollen Aufgabe und gab mir die nötige Denkroutine. Hier auch ein grosser Dank an die beiden: Sie beantworteten geduldig jegliche Fragen. Trotz meiner mangelnden Erfahrung habe ich mich nie als unnützes Rad am Projektwagen gefühlt, ich wurde in alle Diskussionen mit einbezogen, meine Meinung hatte gleiches Gewicht wie das der anderen. Eine weitere, wichtige Erkenntnis war wohl, dass auch erfahrene Programmierer nur mit Wasser kochen. Wo ich selber die meisten Probleme hatte, lagen meist die allgemeinen Knacknüsse des Projekts, auch für Florian und Nicolas.
 
-Die weniger technische Seite des Projekts verlief ebenfalls wunschgemäss. Die wichtigste Entscheidung haben wir schon zu Beginn getroffen, nämlich auf ein weiteres Team-Mitglied zu verzichten. Die Dreiergruppe passte zum Projektumfang, da wir von Anfang an das Projekt klein, aber ausbaubar gehalten haben. Das hat sich ausbezahlt: Wir haben sowohl das Kernziel erfüllt (Skripteserver-Einbindung) als auch die Optionen (Moodle-Einbindung). Dass Moodle geklappt hat, war wohl meine grösste Überraschung -- ich hatte mit viel mehr Hindernissen gerechnet.
+Die weniger technische Seite des Projekts verlief ebenfalls wunschgemäss. Die wichtigste Entscheidung haben wir schon zu Beginn getroffen, nämlich auf ein weiteres Team-Mitglied zu verzichten. Die Dreiergruppe passte zum Projektumfang, da wir von Anfang an das Projekt klein, aber ausbaubar gehalten haben. Das hat sich ausbezahlt, wie weiter oben unter den erreichten Zielen beschrieben wurde.
 
 SE1 betonte, wie wichtig die physische Nähe der Teammitglieder ist -- das hat sich bestätigt. Die virtuelle Kommunikation via Telegram war eine gute Unterstützung, aber die wöchentlichen Sitzungen haben sich mehr als ausbezahlt. Oft merkten wir erst dann, dass wir nicht vom Gleichen sprachen und konnten uns so auf übereinstimmende Bedeutungen einigen. Das wurde vor allem in Bezug auf die Fehlerbehandlung klar: Wir hatten uns nicht in einer solchen Sitzung abgesprochen, sondern nur über Telegram. Das führte zu einem Missverständnis und einigem Refactoring, was aber zum Glück keine grossen Auswirkungen hatte -- eine Lehre war es allemal.
 

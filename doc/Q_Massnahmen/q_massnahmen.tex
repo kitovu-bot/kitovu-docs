@@ -63,7 +63,7 @@
 
   \section{Testprotokoll}
 
-  Um die Benutzbarkeit von \emph{kitovu} zu prüfen, haben wir den Client verschiedenen Tests unterzogen. Zusätzlich zu den automatisierten Tests haben wir hier Testprotokolle zusammengetragen, mit welchen wir komplette Abläufe getestet haben. Test 1 bis 3 erfolgten mit der Kommandozeilenversion von \emph{kitovu}, Test 4 mit der grafischen Oberfläche.
+  Um die Benutzbarkeit von \emph{kitovu} zu prüfen, haben wir den Client verschiedenen Tests unterzogen. Zusätzlich zu separaten, automatisierten Tests haben wir hier Testprotokolle zusammengetragen, mit welchen wir komplette Abläufe getestet haben. Test 1 bis 3 erfolgten mit der Kommandozeilenversion von \emph{kitovu}, Test 4 mit der grafischen Oberfläche.
 
   Die Konfigurationsdateien sind am Ende des Kapitels beschrieben.
 
@@ -74,7 +74,7 @@
   \subsubsection{Ablauf}
 
   \begin{enumerate}
-    \item Lösche Dateien früherer Tests.
+    \item Dateien früherer Tests löschen.
     \item Konfiguration erstellen mit \verb|kitovu edit| und die Konfigurationsdatei 1 einfügen.
     \item Synchronisieren mit \verb|kitovu sync|.
     \item Erneut synchronisieren mit \verb|kitovu sync|.
@@ -108,7 +108,7 @@
   \subsubsection{Ablauf}
 
   \begin{enumerate}
-    \item Lösche Dateien früherer Tests.
+    \item Dateien früherer Tests löschen.
     \item Konfiguration erstellen mit \verb|kitovu edit| und die Konfigurationsdatei 1 einfügen.
     \item Synchronisieren mit \verb|kitovu sync|, während der Ausführung das Programm mit \verb|CTRL+C| abbrechen.
     \item Erneut synchronisieren mit \verb|kitovu sync|.
@@ -139,7 +139,7 @@
   \subsubsection{Ablauf}
 
   \begin{enumerate}
-    \item Lösche Dateien früherer Tests. Dateien löschen, falls vorhanden.
+    \item Dateien früherer Tests löschen.
     \item Konfiguration erstellen mit \verb|kitovu edit| und die Konfiugrationsdatei 2 einfügen.
     \item Die Datei mit \verb|kitovu validate| überprüfen.
     \item Synchronisieren mit \verb|kitovu sync|.
@@ -152,7 +152,7 @@
       \toprule
       \textbf{Nr} & \textbf{Erwartet} & \textbf{\cmark / \xmark} \\
       \midrule
-      1 & Die Validierung der Konfigurationsdatei führt zu einer Fehlermeldung, welche beschreibt, dass in der Skripte-Server-Connection der Eintrag \verb|plugin| fehlt & \cmark\tnote{1}. \\
+      1 & Die Validierung der Konfigurationsdatei führt zu einer Fehlermeldung, welche beschreibt, dass in der Skripte-Server-Connection der Eintrag \verb|plugin| fehlt. & \cmark\tnote{1}. \\
       2 & Während der Synchronisation wird die gleiche Fehlermeldung angezeigt, es wird nichts synchronisiert. & \cmark \\
       \bottomrule
     \end{tabulary}
@@ -169,7 +169,7 @@
   \subsubsection{Ablauf}
 
   \begin{enumerate}
-    \item Lösche Dateien früherer Tests.
+    \item Dateien früherer Tests löschen.
     \item GUI starten mit \verb|kitovu gui|
     \item Konfiguration erstellen über ``Konfiguration verwalten'', die Konfigurationsdatei 1 einfügen und über ``Speichern und zurück'' speichern.
     \item Synchronisieren mit ``Dateien synchronisieren''.

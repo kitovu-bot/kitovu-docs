@@ -57,10 +57,67 @@
     \midrule
     15.05.2018 & 1.0 & Dokument und Testprotokoll erstellt & Nicolas Ganz \\
     16.05.2018 & 1.1 & Testprotokoll überarbeitet und Performance Tests hinzugefügt & alle drei \\
+    16.05.2018 & 1.2 & Usability Test Resultate übernommen & Nicolas Ganz \\
     \bottomrule
   \end{tabulary}
 
   \pagebreak
+
+  \section{Usability Tests}
+
+  \subsection{Test 1}
+
+  Dieser Test wurde mit einem vollzeit Informatik-Student im 4. Semester durchgeführt und umfasst das Kommandozeileinprogramm, sowie die graphische Benutzeroberfläche.
+
+  \begin{itemize}
+    \item \verb|kitovu sync| geht etwas unter bei all den Optionen mit \verb|--help|.
+    \item ``With the given configuration'' ist verwirrend, weil man ja normalerweise keine Datei angibt.
+    \item ``Enter password for smb plugin'' -- was ist smb denn eigentlich?
+    \item Hat die Synchronisation funktioniert? Abruptes Ende ohne success-Nachricht.
+    \item Tab in der graphischen Benutzeroberfläche macht einen Tab anstatt 2 Spaces, was YAML erwartet.
+    \item YAML ist als Format für die Konfigurationsdatei etwas problematisch. Vorallem bezüglich der exakt benötigten Einrückung.
+    \item Der Konfigurations-Editor in der graphischen Benutzeroberfläche hat keine Zeilennummern. Diese würden bei Fehlermeldungen helfen.
+    \item In der graphischen Benutzeroberfläche ist es nicht ganz klar, ob die Datei erfolgreich gespeichert wurde.
+    \item ``Synchronisation erfolgreich beendet'' wird angezeigt, auch wenn es Plugin-Fehler gab.
+  \end{itemize}
+
+  \subsection{Test 2}
+
+  Dieser Test wurde mit einer Raumplanungs-Studentin im zweiten Semester durchgeführt. Es wurde nur die graphische Benutzeroberfläche getestet und das Editieren der Konfiguration wurde grösstenteils ausgelassen.
+
+  \begin{itemize}
+    \item Mit ``Speichern'' passiert nichts wenn die Konfiguration bearbeitet wurde. Erwartet war dass es zurück geht. Sie hat ``Speichern und zurück'' zuerst nicht gesehen.
+    \item Warum gibt es nach dem Synchronisieren ein ``Zurück''-Button?
+    \item Warum wählt man nach dem Synchronisieren nicht aus, wo die Dateien jetzt gespeichert werden sollen?
+    \item Konzept der Konfiguration war zuerst unklar. Der ``Konfiguration editieren''-Knopf wurde zuerst nicht gefunden.
+  \end{itemize}
+
+  \subsection{Test 3}
+
+  Dieser Test wurde mit einem Raumplanungs-Student im zweiten Semester durchgeführt. Auch hier wurde nur die graphische Benutzeroberfläche getestet, zusätzlich jedoch unter etwas Anleitung das Bearbeiten der Konfigurationsdatei.
+
+  \begin{itemize}
+    \item Output grundsätzlich verständlich. Es würde helfen wenn die Modul/Source Gruppen hervorgehoben werden.
+    \item Die Aktionen waren alle klar, auch wie man sie findet.
+    \item Das Editieren ist jedoch unverständlich, er konnte es aber mit wenig Anleitung selbständig machen.
+  \end{itemize}
+
+  \subsection{Test 4}
+
+  Dieser Test wurde mit einem Informatik-Teilzeitstudent im 6. Semestern durchgeführt. Er Umfasst das Kommandozeilenprogramm, sowie die graphische Benutzeroberfläche.
+
+  \begin{itemize}
+    \item YAML-Fehlermeldung sind etwas kompliziert zu verstehen.
+    \item Es wurde alles gfunden mit \verb|–-help| und \verb|[cmd] --help|.
+    \item Der Log Output ist verständlich.
+    \item In der graphischen Benutzeroberfläche wurde nach dem Synchronisieren anstatt ``Zurück'' zu verwenden das Fenster geschlossen.
+  \end{itemize}
+
+  \subsection{Auswertung}
+
+  Die genaue Auswertung haben wir im entsprechenden Jira-Issue zusammen gefasst. Zusätzlich haben wir die Punkte zu effektiven Issues gruppiert und diese jeweils mit dem Jira-Issue der Usability Tests verknüpft.
+
+  Das Issue ist unter \url{https://jira.keltec.ch/jira/browse/EPJ-23} zu finden.
 
   \section{Testprotokoll}
 

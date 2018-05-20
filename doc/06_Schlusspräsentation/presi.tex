@@ -39,12 +39,48 @@
     \frametitle{Demo}
     Live-Demo...
     % Demo: 2x synchronisieren (Demo mit CLI, GUI sekundär deswegen als Zweites zeigen), Performance Nicolas Ganz
+    \pnote{- CMD: Einmal Sync ohne Daten -> langsam}
+    \pnote{- CMD: Zweiter Sync -> schnell & weniger Output}
+    \pnote{- GUI: Zeigen, dass es den selben Output hat}
   \end{frame}
 
   \begin{frame}
-    \frametitle{Kitovu ist plattformunabhängig}
+    \frametitle{Plattformunabhängigkeit}
+
     % Plattformunabhängigkeit: Dahinterliegende Technologie: Python, was ist SMB, PySMB Nicolas Ganz
     % Idee Flo: Ev. Logos von Python und Qt?
+    \begin{itemize}
+      \item
+        \includegraphics[height=1.5em]{./img/python-logo-small.png}
+        \begin{itemize}
+          \item Konzeptionell Platformunabhängig
+          \item Unterstützung bei Pfad-Definitionen
+        \end{itemize}
+      \item
+        \includegraphics[height=1.5em]{./img/Qt-logo.png}
+        \begin{itemize}
+          \item Framework für GUIs
+          \item Verwendet mit \emph{pyqt}
+        \end{itemize}
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Plattformunabhängigkeit - Externe Schnittstellen}
+
+    \begin{itemize}
+      \item Moodle
+        \begin{itemize}
+          \item REST ähnlich
+          \item Eingebaut mit \emph{requests}
+        \end{itemize}
+      \item Skripte Server
+        \begin{itemize}
+          \item SMB - Server Message Block
+          \item Unter anderem für Dateiaustausch
+          \item Bei uns mit \emph{pysmb}
+        \end{itemize}
+    \end{itemize}
   \end{frame}
 
   \begin{frame}

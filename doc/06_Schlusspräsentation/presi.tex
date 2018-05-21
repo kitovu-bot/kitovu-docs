@@ -13,128 +13,248 @@
 \date{30. Mai 2018}
 
 \begin{document}
-  \frame{\titlepage}
+	
+	\begin{frame}
+	\frametitle{Das Problem}
+	% Ausgangsproblem: Files synchronisieren, schwierig, Florian Bruhin
+	% Bisheriges: eigene Skripte (rsync), von Hand (mühsam), OpenHSR Connect (schwierig zum handhaben) - und: Moodle moosam Florian Bruhin
+	\end{frame}
+	
+	\begin{frame}
+	\frametitle{Unsere Lösung: Kitovu}
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{../../img/logo/kitovu.jpg}
+	\end{center}
+	\end{frame}
 
-  \begin{frame}
-    \frametitle{Das Problem}
-    % Ausgangsproblem: Files synchronisieren, schwierig, Florian Bruhin
-    % Bisheriges: eigene Skripte (rsync), von Hand (mühsam), OpenHSR Connect (schwierig zum handhaben) - und: Moodle moosam Florian Bruhin
-  \end{frame}
+	\begin{frame}
+		\frametitle{Unsere Lösung: Kitovu}
+		\begin{center}
+			\includegraphics[width=0.5\linewidth]{./img/kitofu.png}
+		\end{center}
+	\end{frame}
 
-  \begin{frame}
-    \frametitle{Unsere Lösung: Kitovu}
-    \begin{center}
-    \includegraphics[width=0.5\linewidth]{../../img/logo/kitovu.jpg}
-    % Unsere Lösung: Kitovu-Logo zeigen - künstlicher Intelligenz-Tofu (haha), Worterklärung, was unser Tool kann Méline Sieber
-    \end{center}
-  \end{frame}
+		\begin{frame}
+			\frametitle{Unsere Lösung: Kitovu}
+			\begin{center}
+				\includegraphics[width=0.5\linewidth]{../../img/logo/kitovu.jpg}\newline
+				\textbf{Swahili: Knotenpunkt, Bauchnabel, "hub"}
+			\end{center}
+		\end{frame}
+	
+	\begin{frame}
+ 	\frametitle{Wer benutzt kitovu?}
+	 	\begin{columns}
+%	 		\column[placement]{column width}
+	 		\column{.5\textwidth}
+	 		\includegraphics[width=0.4\linewidth]{./img/sven.png}
+			\column{.5\textwidth}
+			\textbf{Sven Färber, 20}
+			\begin{itemize}
+				\item Maturand
+				\item Informatik, Vollzeit
+				\item Windows-Nutzer (GUI)
+			\end{itemize}
+			
+	 	\end{columns}
+	 	\pause
+		\begin{columns}
+			%	 		\column[placement]{column width}
+			\column{.5\textwidth}
+			\includegraphics[width=0.4\linewidth]{./img/leonie.png}
+			\column{.5\textwidth}
+			\textbf{Leonie Egger, 24}
+			\begin{itemize}
+				\item gelernte Floristin
+				\item Informatik, Teilzeit
+				\item erfahrene Arch-Linux-Nutzerin
+			\end{itemize}
+		\end{columns}
+		\pause
+		\begin{columns}
+			\column{.5\textwidth}
+			\includegraphics[width=0.4\linewidth]{./img/reto.png}
+			\column{.5\textwidth}
+			\textbf{Reto Schmid}
+		\begin{itemize}
+			\item gelernter Grafiker, Vollzeitvater von drei Kindern
+			\item Landschaftsarchitektur, Teilzeit
+			\item Windows-Neuling, Mac-Nutzer
+		\end{itemize}
+		
+		\end{columns}
+	\end{frame}
+	
+	\begin{frame}
+	\frametitle{Kitovu im Kontext}
+	\includegraphics[width=\linewidth]{../03_End_of_Elaboration/img/kontextdiagramm.png}
+	% Kontextdiagramm: Personas erklären, dann Funktionalität von Kitovu erklären Méline Sieber
+	\end{frame}
+	
+	\begin{frame}
+	\frametitle{Demo}
+	Live-Demo...
+	% Demo: 2x synchronisieren (Demo mit CLI, GUI sekundär deswegen als Zweites zeigen), Performance Nicolas Ganz
+	\pnote{- CMD: Einmal Sync ohne Daten -> langsam}
+	\pnote{- CMD: Zweiter Sync -> schnell & weniger Output}
+	\pnote{- GUI: Zeigen, dass es den selben Output hat}
+	\end{frame}
+	
+	\begin{frame}
+	\frametitle{Plattformunabhängigkeit}
+	
+	% Plattformunabhängigkeit: Dahinterliegende Technologie: Python, was ist SMB, PySMB Nicolas Ganz
+	% Idee Flo: Ev. Logos von Python und Qt?
+	\begin{itemize}
+	  \item
+	    \includegraphics[height=1.5em]{./img/python-logo-small.png}
+	    \begin{itemize}
+	      \item Konzeptionell Platformunabhängig
+	      \item Unterstützung bei Pfad-Definitionen
+	    \end{itemize}
+	  \item
+	    \includegraphics[height=1.5em]{./img/Qt-logo.png}
+	    \begin{itemize}
+	      \item Framework für GUIs
+	      \item Verwendet mit \emph{pyqt}
+	    \end{itemize}
+	\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+	\frametitle{Plattformunabhängigkeit - Externe Schnittstellen}
+	
+	\begin{itemize}
+	  \item Moodle
+	    \begin{itemize}
+	      \item REST ähnlich
+	      \item Eingebaut mit \emph{requests}
+	    \end{itemize}
+	  \item Skripte Server
+	    \begin{itemize}
+	      \item SMB - Server Message Block
+	      \item Unter anderem für Dateiaustausch
+	      \item Bei uns mit \emph{pysmb}
+	    \end{itemize}
+	\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+	\frametitle{Kitovu ist erweiterbar}
+	% Kontextdiagramm: Erweiterbarkeit wichtig => Plugin-Architektur Florian Bruhin
+	\includegraphics[width=\linewidth]{../03_End_of_Elaboration/img/kontextdiagramm.png}
+	\end{frame}
+	
+	\begin{frame}
+	\frametitle{Kitovu ist erweiterbar}
+	\includegraphics[height=0.9\textheight]{../03_End_of_Elaboration/img/GrobesSequenzDiagramm.pdf}
+	\end{frame}
+	
+	\begin{frame}
+	\frametitle{Unser Workflow}
+	% Workflow: Github, Jira, Travis/Appveyor; Tools: Mypy (Typing), Pylint/Flake8, Pytest Florian Bruhin
+	\end{frame}
+	
+	\begin{frame}
+	\frametitle{Projektumfang}
+	\begin{itemize}
+		\item Ablauf der Software-Entwicklung lernen
+		\item Kleines Projekt, aber ausbaubar
+			\begin{itemize}
+				\item Handvoll Klassen
+			\end{itemize}
+		\pause
+		\item Skripteserver: muss funktionieren
+			\begin{itemize}
+				\item Optional: Moodle, Studentenportal
+			\end{itemize}
+		\item Kommandozeile: muss funktionieren
+			\begin{itemize}
+				\item Optional: grafische Benutzeroberfläche (rudimentär)
+			\end{itemize}
+	\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+	\frametitle{Fazit und Erfahrungen}
+	% Fazit & Erfahrungen (3 Erfahungsberichte) Méline Sieber Gesamt: Moodle war grösste Überraschung, Studentenportal grösste Enttäuschung. Allergrösste Überraschung: alles reibungslos <3, Pair Programming super nützlich, Code Reviews, persönliche Kommunikation total wichtig (Meetings)
+	% persönliche Erfahrungsberichte Méline Sieber / Nicolas Ganz / Florian Bruhin
+	\begin{center}
+	\includegraphics[width=20 em]{./img/unicorn.png}
+	\end{center}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Fazit und Erfahrungen}
+		\begin{columns}
+				\column{.5\textwidth}
+			Alle Ziele erreicht
+				\begin{itemize}
+					    \item Grösste Überraschung: Moodle
+					    \item Grösste Enttäuschung: Studentenportal
+				\end{itemize}
+			Sehr gute Teamdynamik
+			\begin{itemize}
+				\item Wochen-Meetings	
+				\item Pair-Programming
+			\end{itemize}
+			Code-Style-Regeln, strenge Code-Reviews
+			\column{.5\textwidth}
+			\includegraphics[width=0.9\linewidth]{./img/unicorn.png}
+		\end{columns}
 
-  \begin{frame}
-    \frametitle{Kitovu im Kontext}
-    \includegraphics[width=\linewidth]{../03_End_of_Elaboration/img/kontextdiagramm.png}
-    % Kontextdiagramm: Personas erklären, dann Funktionalität von Kitovu erklären Méline Sieber
-  \end{frame}
-
-  \begin{frame}
-    \frametitle{Demo}
-    Live-Demo...
-    % Demo: 2x synchronisieren (Demo mit CLI, GUI sekundär deswegen als Zweites zeigen), Performance Nicolas Ganz
-    \pnote{- CMD: Einmal Sync ohne Daten -> langsam}
-    \pnote{- CMD: Zweiter Sync -> schnell & weniger Output}
-    \pnote{- GUI: Zeigen, dass es den selben Output hat}
-  \end{frame}
-
-  \begin{frame}
-    \frametitle{Plattformunabhängigkeit}
-
-    % Plattformunabhängigkeit: Dahinterliegende Technologie: Python, was ist SMB, PySMB Nicolas Ganz
-    % Idee Flo: Ev. Logos von Python und Qt?
-    \begin{itemize}
-      \item
-        \includegraphics[height=1.5em]{./img/python-logo-small.png}
-        \begin{itemize}
-          \item Konzeptionell Platformunabhängig
-          \item Unterstützung bei Pfad-Definitionen
-        \end{itemize}
-      \item
-        \includegraphics[height=1.5em]{./img/Qt-logo.png}
-        \begin{itemize}
-          \item Framework für GUIs
-          \item Verwendet mit \emph{pyqt}
-        \end{itemize}
-    \end{itemize}
-  \end{frame}
-
-  \begin{frame}
-    \frametitle{Plattformunabhängigkeit - Externe Schnittstellen}
-
-    \begin{itemize}
-      \item Moodle
-        \begin{itemize}
-          \item REST ähnlich
-          \item Eingebaut mit \emph{requests}
-        \end{itemize}
-      \item Skripte Server
-        \begin{itemize}
-          \item SMB - Server Message Block
-          \item Unter anderem für Dateiaustausch
-          \item Bei uns mit \emph{pysmb}
-        \end{itemize}
-    \end{itemize}
-  \end{frame}
-
-  \begin{frame}
-    \frametitle{Kitovu ist erweiterbar}
-    % Kontextdiagramm: Erweiterbarkeit wichtig => Plugin-Architektur Florian Bruhin
-    \includegraphics[width=\linewidth]{../03_End_of_Elaboration/img/kontextdiagramm.png}
-  \end{frame}
-
-  \begin{frame}
-    \frametitle{Kitovu ist erweiterbar}
-    % FIXME ist ggf. etwas zu überladen für ne Folie
-    \includegraphics[height=0.9\textheight]{../03_End_of_Elaboration/img/GrobesSequenzDiagramm.pdf}
-  \end{frame}
-
-  \begin{frame}
-    \frametitle{Unser Workflow}
-    % Workflow: Github, Jira, Travis/Appveyor; Tools: Mypy (Typing), Pylint/Flake8, Pytest Florian Bruhin
-  \end{frame}
-
-  \begin{frame}
-    \frametitle{Projektumfang}
-    % Umfang/Aufwand: kleines Projekt (weil Lerneffekt, Fokus Softwareentwicklungsablauf), hat sich gelohnt nicht zu hoch zu zielen, Zeitaufwand; Klassen Méline Sieber
-  \end{frame}
-
-  \begin{frame}
-    \frametitle{Fazit und Erfahrungen}
-    % Fazit & Erfahrungen (3 Erfahungsberichte) Méline Sieber Gesamt: Moodle war grösste Überraschung, Studentenportal grösste Enttäuschung. Allergrösste Überraschung: alles reibungslos <3, Pair Programming super nützlich, Code Reviews, persönliche Kommunikation total wichtig (Meetings)
-    % persönliche Erfahrungsberichte Méline Sieber / Nicolas Ganz / Florian Bruhin
-  \end{frame}
-
-  \begin{frame}
-    \frametitle{Kitovu lebt weiter}
-    % Ausblick: schönere GUI machen => Usability hat das gezeigt, Release für HSR-Studis, Sommerprojekt Nicolas Ganz
-
-    Grössere offene Punkte:
-    \begin{itemize}
-      \item GUI verbessern
-      \item Konfliktbehandlung
-    \end{itemize}
-
-    Entwicklung:
-    \begin{itemize}
-      \item Sommerprojekt
-      \item Ziel: Nächstes Semester einsatzbereit
-    \end{itemize}
-  \end{frame}
-
-  \begin{frame}
-    \frametitle{Kontakt}
-    \begin{itemize}
-      \item Florian Bruhin \\ \url{florian.bruhin@hsr.ch} \\[2em]
-      \item Méline Sieber \\ \url{meline.sieber@hsr.ch} \\[2em]
-      \item Nicolas Ganz \\ \url{nicolas.ganz@hsr.ch}
-    \end{itemize}
-  \end{frame}
-
+	\end{frame}
+	\begin{frame}
+	  	\frametitle{Persönliche Erfahrungen: Méline Sieber}
+	  	Ausgangslage: 
+		\begin{itemize}
+			\item Wenig Programmiererfahrung, etwas Python-Skripting
+			\item Quereinsteigerin
+		\end{itemize}
+		\pause
+		Projektende:
+			\begin{itemize}
+				\item Pair Programming unverzichtbar
+				\item Wöchentliche Meetings an HSR
+				\item Programmierroutine erreicht
+			\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+	   	\frametitle{Persönliche Erfahrungen: Florian Bruhin}
+	   	% Fazit & Erfahrungen (3 Erfahungsberichte) Méline Sieber Gesamt: Moodle war grösste Überraschung, Studentenportal grösste Enttäuschung. Allergrösste Überraschung: alles reibungslos <3, Pair Programming super nützlich, Code Reviews, persönliche Kommunikation total wichtig (Meetings)
+	   	% persönliche Erfahrungsberichte Méline Sieber / Nicolas Ganz / Florian Bruhin
+	\end{frame}
+	\begin{frame}
+	    	\frametitle{Persönliche Erfahrungen: Nicolas Ganz}
+	    	% Fazit & Erfahrungen (3 Erfahungsberichte) Méline Sieber Gesamt: Moodle war grösste Überraschung, Studentenportal grösste Enttäuschung. Allergrösste Überraschung: alles reibungslos <3, Pair Programming super nützlich, Code Reviews, persönliche Kommunikation total wichtig (Meetings)
+	    	% persönliche Erfahrungsberichte Méline Sieber / Nicolas Ganz / Florian Bruhin
+	\end{frame}
+	
+	
+	\begin{frame}
+	\frametitle{Kitovu lebt weiter}
+	% Ausblick: schönere GUI machen => Usability hat das gezeigt, Release für HSR-Studis, Sommerprojekt Nicolas Ganz
+	
+	Grössere offene Punkte:
+	\begin{itemize}
+	  \item GUI verbessern
+	  \item Konfliktbehandlung
+	\end{itemize}
+	
+	Entwicklung:
+	\begin{itemize}
+	  \item Sommerprojekt
+	  \item Ziel: Nächstes Semester einsatzbereit
+	\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+	\frametitle{Kontakt}
+	\begin{itemize}
+	  \item Florian Bruhin \\ \url{florian.bruhin@hsr.ch} \\[2em]
+	  \item Méline Sieber \\ \url{meline.sieber@hsr.ch} \\[2em]
+	  \item Nicolas Ganz \\ \url{nicolas.ganz@hsr.ch}
+	\end{itemize}
+	\end{frame}
 \end{document}

@@ -183,17 +183,37 @@ Unser Projekt ist mit 2'582 netto Codezeilen um einiges kleiner als das typische
 
 %FIXME
  ("geschätzt/tatsächlich gemacht")
-%Aus der EPJ-Kurzanleitung:
-%Ein typisches, d.h. durchschnittliches Engineering-Projekt weist die folgenden Kennwerte auf:
-%10 Use Cases (inkl. CRUD)
-%120 Arbeitspakete (User Stories) insgesamt im Backlog während der gesamten Projektdauer
-%7 Iterationen/Sprints
-%8 Domain-Klassen im Domainmodell
-%2 wichtige, komplexe Screens, plus mehrere weniger wichtige Screens (z.B. CRUD oder
-%einfache Listen)
-%4000 Lines of Code (Netto Codezeilen, ohne Leerzeilen, ohne Kommentarzeilen)
-%4 Personen im Team
-%500 Arbeitsstunden (d.h. ca. 5% mehr als die vorgegebenen 120 Std./Person)
+
+
+\subsection{Installationsanleitung}
+
+Folgende Installationsanleitung ist für die Leserinnen und Leser dieses Dokuments gedacht, die \emph{kitovu} ``in Echt'' ausprobieren möchten. Sie ist noch nicht für die effektive Verwendung gedacht, sondern für fortgeschrittene Nutzer, die das Projekt nachvollziehen möchten.
+
+Die Installation setzt eine funktionierende, aktuelle Python-Umgebung in Version 3.6 voraus. Um diese Version parallel zu einer anderen Python-Version zu installieren, kann \emph{pyenv} verwendet werden.
+
+Damit diese Projektversion einfach installiert und deinstalliert werden kann, erfolgt die Installation idealerweise via einer virtuellen Umgebung (\verb|virtualenv|)\footnote{Eine ausführliche Erklärung findet sich hier: \url{http://docs.python-guide.org/en/latest/dev/virtualenvs/}.}:
+
+\begin{enumerate}
+	\item Ordner mit beliebigem Namen erstellen, in dem die virtuelle Umgebung und das Projekt installiert wird, z.B. ``kitovu-test''.
+	\item \verb|$ pip install virtualenv| \newline
+	installiert das Python-Modul, um virtuelle Umgebungen zu erzeugen.
+	\item In den Ordner ``kitovu-test'' wechseln.
+	\item \verb|$ virtualenv kitovu| \newline 
+	setzt die virtuelle Umgebung auf, in einem Unterordner namens ``kitovu''.
+	\item \verb|$ virtualenv -p /usr/bin/python3.6 kitovu| \newline
+	definiert die zu verwendende Python-Version für die virtuelle Umgebung.
+	\item \verb|$ source kitovu/bin/activate| \newline
+	aktiviert die virtuelle Umgebung.
+	\item \verb|$ pip install kitovu| \newline 
+	installiert \emph{kitovu}.
+	\item Eine Dokumentation zur Verwendung findet sich hier: \url{https://kitovu.readthedocs.io/}.
+\end{enumerate}
+
+Via \verb|pip install kitovu| wird \emph{kitovu} auf dem Zielrechner installiert.
+
+Deinstallation: 
+
+\verb|$ deactivate| deaktiviert die virtuelle Umgebung, danach kann der Ordner ``kitovu-test'' gelöscht werden.
 
 \end{document}
 

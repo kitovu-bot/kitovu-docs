@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage{graphicx}
+\usepackage{minted}
 \usepackage[duration=25m]{pdfpcnotes} % write Notes with \pnote{My custom note}
 
 \title{Kitovu %\\[1em]
@@ -13,11 +14,19 @@
 \date{30. Mai 2018}
 
 \begin{document}
+
+  \maketitle
 	
 	\begin{frame}
-	\frametitle{Das Problem}
+	\frametitle{Das Problem: Skripte synchronisieren}
 	% Ausgangsproblem: Files synchronisieren, schwierig, Florian Bruhin
 	% Bisheriges: eigene Skripte (rsync), von Hand (mühsam), OpenHSR Connect (schwierig zum handhaben) - und: Moodle moosam Florian Bruhin
+    \begin{itemize}
+      \item Herunterladen von Hand
+      \item HSR Mapper \& ``alles ersetzen''
+      \item OpenHSR connect
+      \item Moodle Desktop
+    \end{itemize}
 	\end{frame}
 	
 	\begin{frame}
@@ -37,7 +46,7 @@
 		\begin{frame}
 			\frametitle{Unsere Lösung: Kitovu}
 			\begin{center}
-				\includegraphics[width=0.5\linewidth]{../../img/logo/kitovu.jpg}\newline
+				\includegraphics[width=0.5\linewidth]{../../img/logo/kitovu.jpg} \\
 				\textbf{Swahili: Knotenpunkt, Bauchnabel, "hub"}
 			\end{center}
 		\end{frame}
@@ -106,17 +115,18 @@
 	% Plattformunabhängigkeit: Dahinterliegende Technologie: Python, was ist SMB, PySMB Nicolas Ganz
 	% Idee Flo: Ev. Logos von Python und Qt?
 	\begin{itemize}
-	  \item
+	  \item[]
 	    \includegraphics[height=1.5em]{./img/python-logo-small.png}
 	    \begin{itemize}
-	      \item Konzeptionell Platformunabhängig
+	      \item Konzeptionell Plattformunabhängig
 	      \item Unterstützung bei Pfad-Definitionen
 	    \end{itemize}
-	  \item
+      \vspace{1em}
+	  \item[]
 	    \includegraphics[height=1.5em]{./img/Qt-logo.png}
 	    \begin{itemize}
 	      \item Framework für GUIs
-	      \item Verwendet mit \emph{pyqt}
+	      \item Verwendet mit \emph{PyQt}
 	    \end{itemize}
 	\end{itemize}
 	\end{frame}
@@ -134,7 +144,7 @@
 	    \begin{itemize}
 	      \item SMB - Server Message Block
 	      \item Unter anderem für Dateiaustausch
-	      \item Bei uns mit \emph{pysmb}
+	      \item Bei uns mit \emph{PySMB}
 	    \end{itemize}
 	\end{itemize}
 	\end{frame}
@@ -151,9 +161,52 @@
 	\end{frame}
 	
 	\begin{frame}
-	\frametitle{Unser Workflow}
+	\frametitle{Unser Workflow - GitHub \& Codecov}
 	% Workflow: Github, Jira, Travis/Appveyor; Tools: Mypy (Typing), Pylint/Flake8, Pytest Florian Bruhin
+	\includegraphics[height=\textheight]{img/github.png}
 	\end{frame}
+
+	\begin{frame}
+	\frametitle{Unser Workflow - Travis und AppVeyor}
+	\includegraphics[width=\linewidth]{img/github-checks.png}
+	\end{frame}
+
+	\begin{frame}[fragile]
+	\frametitle{Unser Workflow - pytest}
+  \begin{verbatim}
+tests/test_cli.py ............                     [  9%]
+tests/test_dummyplugin.py .........                [ 16%]
+tests/test_filecache.py ..............             [ 27%]
+tests/test_utils.py .........                      [ 34%]
+tests/gui/test_confscreen.py .....                 [ 37%]
+tests/gui/test_mainwindow.py ...                   [ 40%]
+tests/gui/test_startscreen.py ...                  [ 42%]
+tests/gui/test_syncscreen.py .......               [ 48%]
+tests/sync/test_moodle.py ........................ [ 66%]
+tests/sync/test_settings.py .....                  [ 70%]
+tests/sync/test_smb.py ....................        [ 86%]
+tests/sync/test_syncing.py ..................      [100%]
+
+============== 129 passed in 2.48 seconds ==============
+  \end{verbatim}
+	\end{frame}
+
+  \begin{frame}[fragile]
+    \frametitle{Unser Workflow - mypy}
+
+    % https://github.com/gpoore/minted/issues/70#issuecomment-111729930
+    \begingroup
+    \catcode`\!=\active
+    \def!#1!{\colorbox{yellow}{#1}}
+    \begin{minted}[escapeinside=||]{python}
+def retrieve_file(self, path: |!pathlib.PurePath!|,
+                  fileobj: |!typing.IO[bytes]!|) ->
+                  |!typing.Optional[int]!|:
+    moodle_file: |!MoodleFile!| = self._files[path]
+    # [...]
+    \end{minted}
+    \endgroup
+  \end{frame}
 	
 	\begin{frame}
 	\frametitle{Projektumfang}

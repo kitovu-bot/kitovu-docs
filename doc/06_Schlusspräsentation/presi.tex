@@ -199,9 +199,8 @@ tests/sync/test_syncing.py ..................      [100%]
     \catcode`\!=\active
     \def!#1!{\colorbox{yellow}{#1}}
     \begin{minted}[escapeinside=||]{python}
-def retrieve_file(self, path: |!pathlib.PurePath!|,
-                  fileobj: |!typing.IO[bytes]!|) ->
-                  |!typing.Optional[int]!|:
+def retrieve_file(self, path: |!PurePath!|,
+                  fileobj: |!IO[bytes]!|) -> |!Optional[int]!|:
     moodle_file: |!MoodleFile!| = self._files[path]
     # [...]
     \end{minted}

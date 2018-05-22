@@ -85,7 +85,7 @@
 			\column{.2\textwidth}
 			\includegraphics[width=0.9\linewidth]{./img/reto.png}
 			\column{.8\textwidth}
-			\textbf{Reto Schmid}
+			\textbf{Reto Schmid, 41}
 		\begin{itemize}
 			\item gelernter Grafiker, Vollzeitvater von drei Kindern
 			\item Landschaftsarchitektur, Teilzeit
@@ -109,6 +109,35 @@
 	\pnote{- CMD: Zweiter Sync -> schnell & weniger Output}
 	\pnote{- GUI: Zeigen, dass es den selben Output hat}
 	\end{frame}
+
+	\begin{frame}
+		\frametitle{Projektumfang}
+		\begin{itemize}
+			\item Ablauf der Software-Entwicklung lernen
+			\item Kleines Projekt, aber ausbaubar
+			\begin{itemize}
+				\item \emph{kitovu}-Code: 1'177 Zeilen
+				\item Test-Code: 1'405 Zeilen
+			\end{itemize}
+			\pause
+			\item Skripteserver: muss funktionieren
+			\begin{itemize}
+				\item Optional: Moodle, Studentenportal
+			\end{itemize}
+			\item Kommandozeile: muss funktionieren
+			\begin{itemize}
+				\item Optional: grafische Benutzeroberfläche (rudimentär)
+			\end{itemize}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Zeitplan}
+		\vspace{-1em}
+		\begin{center}
+			\includegraphics[height=0.9\textheight]{./img/zeitplan.png}
+		\end{center}
+	\end{frame}
 	
 	\begin{frame}
 	\frametitle{Plattformunabhängigkeit}
@@ -119,7 +148,7 @@
 	  \item[]
 	    \includegraphics[height=1.5em]{./img/python-logo-small.png}
 	    \begin{itemize}
-	      \item Konzeptionell Plattformunabhängig
+	      \item Konzeptionell plattformunabhängig
 	      \item Unterstützung bei Pfad-Definitionen
 	    \end{itemize}
       \vspace{1em}
@@ -138,12 +167,12 @@
 	\begin{itemize}
 	  \item Moodle
 	    \begin{itemize}
-	      \item REST ähnlich
+	      \item REST-ähnlich
 	      \item Eingebaut mit \emph{requests}
 	    \end{itemize}
-	  \item Skripte Server
+	  \item Skripteserver
 	    \begin{itemize}
-	      \item SMB - Server Message Block
+	      \item SMB - Server Message Block: Windows-Netzwerkordner
 	      \item Unter anderem für Dateiaustausch
 	      \item Bei uns mit \emph{PySMB}
 	    \end{itemize}
@@ -158,11 +187,13 @@
 	
 	\begin{frame}
 	\frametitle{Kitovu ist erweiterbar}
+	%FIXME Florian: Funktionennamen statt bild
 	\includegraphics[height=0.9\textheight]{../03_End_of_Elaboration/img/GrobesSequenzDiagramm.pdf}
 	\end{frame}
 	
 	\begin{frame}
 		\frametitle{Unser Workflow - Jira \& Confluence}
+		%FIXME Nicolas
 	\end{frame}
 	
 	\begin{frame}
@@ -213,33 +244,6 @@ def retrieve_file(self, path: |!PurePath!|,
 \end{frame}
 	
 	\begin{frame}
-	\frametitle{Projektumfang}
-	\begin{itemize}
-		\item Ablauf der Software-Entwicklung lernen
-		\item Kleines Projekt, aber ausbaubar
-			\begin{itemize}
-				\item \emph{kitovu}-Code: 1'177 Zeilen
-				\item Test-Code: 1'405 Zeilen
-			\end{itemize}
-		\pause
-		\item Skripteserver: muss funktionieren
-			\begin{itemize}
-				\item Optional: Moodle, Studentenportal
-			\end{itemize}
-		\item Kommandozeile: muss funktionieren
-			\begin{itemize}
-				\item Optional: grafische Benutzeroberfläche (rudimentär)
-			\end{itemize}
-	\end{itemize}
-	\end{frame}
-	\begin{frame}
-	\frametitle{Zeitplan}
-	\begin{center}
-		\includegraphics[height=0.8\textheight]{./img/zeitplan.png}
-	\end{center}
-	\end{frame}
-	
-	\begin{frame}
 	\frametitle{Fazit und Erfahrungen}
 	% Fazit & Erfahrungen (3 Erfahungsberichte) Méline Sieber Gesamt: Moodle war grösste Überraschung, Studentenportal grösste Enttäuschung. Allergrösste Überraschung: alles reibungslos <3, Pair Programming super nützlich, Code Reviews, persönliche Kommunikation total wichtig (Meetings)
 	% persönliche Erfahrungsberichte Méline Sieber / Nicolas Ganz / Florian Bruhin
@@ -269,6 +273,11 @@ def retrieve_file(self, path: |!PurePath!|,
 		\end{columns}
 	\end{frame}
 
+	\begin{frame}
+		\frametitle{Fazit: Zeiterfassung}
+		%FIXME Nicolas sagt was kurz zur Zeiterfassung
+	\end{frame}
+
   % persönliche Erfahrungsberichte Méline Sieber / Nicolas Ganz / Florian Bruhin
 	\begin{frame}
 	  	\frametitle{Persönliche Erfahrungen: Méline Sieber}
@@ -291,7 +300,7 @@ def retrieve_file(self, path: |!PurePath!|,
       \begin{itemize}
         \item Viele ``soziale'' Dinge, aber auch technische.
         \item Geniales Team!
-        \item Es ist so viel Wert, sich regelmässig zu sehen!
+        \item Es ist so viel wert, sich regelmässig zu sehen!
         \item ``End of elaboration'' ist keine schlechte Idee
       \end{itemize}
 	\end{frame}
@@ -316,7 +325,7 @@ def retrieve_file(self, path: |!PurePath!|,
     Projektidee:
     \begin{itemize}
       \item Motiviert
-      \item Studiengangübergreiffendes Interesse
+      \item Studiengangübergreifendes Interesse
     \end{itemize}
   \end{frame}
 

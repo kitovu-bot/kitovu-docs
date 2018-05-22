@@ -4,12 +4,11 @@
 \usepackage{graphicx}
 \usepackage{minted}
 \usepackage[duration=25m]{pdfpcnotes} % write Notes with \pnote{My custom note}
-
+\usepackage{pgfgantt}
+\usepackage{tikz}
 \usetheme{kitovu}
 
-\title{Kitovu %\\[1em]
-  %\includegraphics[width=8em]{../../img/logo/kitovu.jpg}
-}
+\title{Kitovu}
 \subtitle{Engineering-Projekt FS 2018}
 \author{Florian Bruhin \and Méline Sieber \and Nicolas Ganz}
 \institute{HSR Hochschule für Technik Rapperswil}
@@ -163,13 +162,17 @@
 	\end{frame}
 	
 	\begin{frame}
+		\frametitle{Unser Workflow - Jira \& Confluence}
+	\end{frame}
+	
+	\begin{frame}
 	\frametitle{Unser Workflow - GitHub \& Codecov}
 	% Workflow: Github, Jira, Travis/Appveyor; Tools: Mypy (Typing), Pylint/Flake8, Pytest Florian Bruhin
 	\includegraphics[height=\textheight]{img/github.png}
 	\end{frame}
 
 	\begin{frame}
-	\frametitle{Unser Workflow - Travis und AppVeyor}
+	\frametitle{Unser Workflow - Travis \& AppVeyor}
 	\includegraphics[width=\linewidth]{img/github-checks.png}
 	\end{frame}
 
@@ -215,7 +218,8 @@ def retrieve_file(self, path: |!PurePath!|,
 		\item Ablauf der Software-Entwicklung lernen
 		\item Kleines Projekt, aber ausbaubar
 			\begin{itemize}
-				\item Handvoll Klassen
+				\item \emph{kitovu}-Code: 1'177 Zeilen
+				\item Test-Code: 1'405 Zeilen
 			\end{itemize}
 		\pause
 		\item Skripteserver: muss funktionieren
@@ -227,6 +231,12 @@ def retrieve_file(self, path: |!PurePath!|,
 				\item Optional: grafische Benutzeroberfläche (rudimentär)
 			\end{itemize}
 	\end{itemize}
+	\end{frame}
+	\begin{frame}
+	\frametitle{Zeitplan}
+	\begin{center}
+		\includegraphics[height=0.8\textheight]{./img/zeitplan.png}
+	\end{center}
 	\end{frame}
 	
 	\begin{frame}
@@ -242,7 +252,7 @@ def retrieve_file(self, path: |!PurePath!|,
     % Fazit & Erfahrungen (3 Erfahungsberichte) Méline Sieber Gesamt: Moodle war grösste Überraschung, Studentenportal grösste Enttäuschung. Allergrösste Überraschung: alles reibungslos <3, Pair Programming super nützlich, Code Reviews, persönliche Kommunikation total wichtig (Meetings)
 		\frametitle{Fazit und Erfahrungen}
 		\begin{columns}
-				\column{.5\textwidth}
+				\column{.45\textwidth}
 			Alle Ziele erreicht
 				\begin{itemize}
 					    \item Grösste Überraschung: Moodle
@@ -254,7 +264,7 @@ def retrieve_file(self, path: |!PurePath!|,
 				\item Pair-Programming
 			\end{itemize}
 			Code-Style-Regeln, strenge Code-Reviews
-			\column{.5\textwidth}
+			\column{.45\textwidth}
 			\includegraphics[width=0.9\linewidth]{./img/unicorn.png}
 		\end{columns}
 	\end{frame}

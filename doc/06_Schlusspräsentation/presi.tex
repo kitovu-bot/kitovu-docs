@@ -8,6 +8,8 @@
 \usepackage{tikz}
 \usetheme{kitovu}
 
+\newcommand{\py}[1]{\mintinline{python}{#1}}
+
 \title{Kitovu}
 \subtitle{Engineering-Projekt FS 2018}
 \author{Florian Bruhin \and Méline Sieber \and Nicolas Ganz}
@@ -22,17 +24,23 @@
 	\frametitle{Das Problem: Skripte synchronisieren}
 	% Ausgangsproblem: Files synchronisieren, schwierig, Florian Bruhin
 	% Bisheriges: eigene Skripte (rsync), von Hand (mühsam), OpenHSR Connect (schwierig zum handhaben) - und: Moodle moosam Florian Bruhin
+  \begin{columns}
+    \column{0.55\linewidth}
     \begin{itemize}
       \item Herunterladen von Hand
       \item HSR Mapper \& ``alles ersetzen''
       \item OpenHSR connect
       \item Moodle Desktop
     \end{itemize}
+    \column{0.4\linewidth}
+    \includegraphics[width=\linewidth]{./img/windows_copy_dialog.png}
+  \end{columns}
 	\end{frame}
 	
 	\begin{frame}
 	\frametitle{Unsere Lösung: Kitovu}
 	\begin{center}
+    \vspace{-1.7em}
 		\includegraphics[width=0.5\linewidth]{../../img/logo/kitovu.jpg}
 	\end{center}
 	\end{frame}
@@ -46,6 +54,7 @@
 
 		\begin{frame}
 			\frametitle{Unsere Lösung: Kitovu}
+      \vspace{-0.8em}
 			\begin{center}
 				\includegraphics[width=0.5\linewidth]{../../img/logo/kitovu.jpg} \\
 				\textbf{Swahili: Knotenpunkt, Bauchnabel, "hub"}
@@ -103,7 +112,7 @@
 	
 	\begin{frame}
 	\frametitle{Demo}
-	Live-Demo...
+	Live-Demo!
 	% Demo: 2x synchronisieren (Demo mit CLI, GUI sekundär deswegen als Zweites zeigen), Performance Nicolas Ganz
 	\pnote{- CMD: Einmal Sync ohne Daten -> langsam}
 	\pnote{- CMD: Zweiter Sync -> schnell & weniger Output}
@@ -185,11 +194,19 @@
 	\includegraphics[width=\linewidth]{../03_End_of_Elaboration/img/kontextdiagramm.png}
 	\end{frame}
 	
-	\begin{frame}
+	\begin{frame}[fragile]
 	\frametitle{Kitovu ist erweiterbar}
-	%FIXME Florian: Funktionennamen statt bild
-	\includegraphics[height=0.9\textheight]{../03_End_of_Elaboration/img/GrobesSequenzDiagramm.pdf}
-	\end{frame}
+
+  \begin{itemize}
+    \item \py{configure(self, info: Dict[str, Any]) -> None}
+    \item \py{connect(self) -> None}
+    \item \py{list_path(self, path: PurePath) -> Iterable[PurePath]}
+    \item \py{create_local_digest(self, path: Path) -> str}
+    \item \py{create_remote_digest(self, path: PurePath) -> str}
+    \item \py{retrieve_file(self, path: PurePath,} \\ \hspace{7em} \py{fileobj: IO[bytes]) -> Optional[int]}
+    \item \py{disconnect(self) -> None}
+  \end{itemize}
+\end{frame}
 	
 	\begin{frame}
 		\frametitle{Unser Workflow - Jira \& Confluence}
@@ -198,8 +215,9 @@
 	
 	\begin{frame}
 	\frametitle{Unser Workflow - GitHub \& Codecov}
-	% Workflow: Github, Jira, Travis/Appveyor; Tools: Mypy (Typing), Pylint/Flake8, Pytest Florian Bruhin
-	\includegraphics[height=\textheight]{img/github.png}
+  \begin{center}
+	\includegraphics[height=0.8\textheight]{img/github.png}
+  \end{center}
 	\end{frame}
 
 	\begin{frame}
@@ -348,10 +366,16 @@ def retrieve_file(self, path: |!PurePath!|,
 
   \begin{frame}
   \frametitle{Kontakt}
-  \begin{itemize}
-    \item Florian Bruhin \\ \url{florian.bruhin@hsr.ch} \\[2em]
-    \item Méline Sieber \\ \url{meline.sieber@hsr.ch} \\[2em]
-    \item Nicolas Ganz \\ \url{nicolas.ganz@hsr.ch}
-  \end{itemize}
+  \begin{columns}
+    \column{0.45\linewidth}
+    \begin{itemize}
+      \item Florian Bruhin \\ \url{florian.bruhin@hsr.ch} \\[2em]
+      \item Méline Sieber \\ \url{meline.sieber@hsr.ch} \\[2em]
+      \item Nicolas Ganz \\ \url{nicolas.ganz@hsr.ch}
+    \end{itemize}
+
+    \column{0.5\linewidth}
+		\includegraphics[width=\linewidth]{../../img/logo/kitovu.jpg}
+  \end{columns}
   \end{frame}
 \end{document}

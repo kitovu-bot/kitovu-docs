@@ -50,6 +50,7 @@
 		\begin{center}
 			\includegraphics[width=0.5\linewidth]{./img/kitofu.png}
 		\end{center}
+		\pnote{-Logo aus Wortspiel entstanden...}
 	\end{frame}
 
 		\begin{frame}
@@ -59,6 +60,13 @@
 				\includegraphics[width=0.5\linewidth]{../../img/logo/kitovu.jpg} \\
 				\textbf{Swahili: Knotenpunkt, Bauchnabel, "hub"}
 			\end{center}
+		\pnote{Swahili: Knotenpunkt, Bauchnabel, "hub"}
+		\pnote{1 Client, 1 Knotenpunkt,  mit dem von verschiedenen Quellen Unterrichtsmaterialien synchronisiert werden können,
+			das mit 1 Click}
+		\pnote{Ziel: Studentinnen und Studenten der HSR möglichst einfach, möglichst ohne Aufwand 
+			immer alle Materialien 
+			auf dem eigenen Rechner haben,
+			immer aktuellste Version}
 		\end{frame}
 	
 	\begin{frame}
@@ -74,7 +82,7 @@
 				\item Informatik, Vollzeit
 				\item Windows-Nutzer (GUI)
 			\end{itemize}
-			
+		\pnote{FIKTIVE Persönlichkeiten ausgedacht}
 	 	\end{columns} \vspace{1em}
 	 	\pause
 		\begin{columns}
@@ -100,19 +108,25 @@
 			\item Landschaftsarchitektur, Teilzeit
 			\item Windows-Neuling, Mac-Nutzer
 		\end{itemize}
-		
 		\end{columns}
+		\pnote{Daraus: verschiedene Bedürfnisse abgeleitet}
+		\pnote{* Leonie will Synchronisation automatisieren, selber mal kitovu erweitern}
+		\pnote{* Sven: 1 Werkzeug für alle Plattformen}
+		\pnote{* Reto: pendelt => zu Hause Unterrichtsmaterialien herunterladen, im Zug anschauen}
 	\end{frame}
 	
 	\begin{frame}
 	\frametitle{Kitovu im Kontext}
 	\includegraphics[width=\linewidth]{../03_End_of_Elaboration/img/kontextdiagramm.png}
-	% Kontextdiagramm: Personas erklären, dann Funktionalität von Kitovu erklären Méline Sieber
+	\pnote{* Knotenpunkt, Zentrum, um von verschiedenen Quellen Unterrichtsmaterialien herunterzuladen, möglichst wenig Aufwand}
+	\pnote{*  Anfang Semester, einmal Konfiguration schreiben, was synchronisiert werden soll}
+	\pnote{* dann Rest des Semesters: 1 klick pro Woche, pro Tag und neue Unterrichtsmaterialien werden auf den eigenen Laptop heruntergeladen}
+	\pnote{* gehen später darauf ein, weshalb Studentenportal durchgestrichen.}
 	\end{frame}
-	
+
 	\begin{frame}
 	\frametitle{Demo}
-	Live-Demo!
+	Demo!
 	% Demo: 2x synchronisieren (Demo mit CLI, GUI sekundär deswegen als Zweites zeigen), Performance Nicolas Ganz
 	\pnote{- CMD: Einmal Sync ohne Daten -> langsam}
 	\pnote{- CMD: Zweiter Sync -> schnell & weniger Output}
@@ -138,6 +152,13 @@
 				\item Optional: grafische Benutzeroberfläche (rudimentär)
 			\end{itemize}
 		\end{itemize}
+	\pnote{* Fokus darauf, Ablauf der Software-Entwicklung lernen}
+	\pnote{* Nur zu dritt: klein, aber ausbaubar => handvoll Klassen, rund 1000 Zeilen Code, gleich viel Test-Code}
+	\pnote{* Kernziel: Skripteserver anbinden, optional definiert: Moodle, Studentenportal}
+	\pnote{* Kommandoziele muss funktionieren, optional: grafische Benutzeroberfläche}
+	\pnote{=> Herangehensweise gelohnt => sehen wir beim Projekt-Fazit}
+	\pnote{* Zeit: Nicolas, ich: arbeiten beide, Florian: Vollzeitstudent }
+	\pnote{=> nicht so flexibel, kluge Zeitplanung ein Muss}
 	\end{frame}
 	
 	\begin{frame}
@@ -146,13 +167,17 @@
 		\begin{center}
 			\includegraphics[height=0.9\textheight]{./img/zeitplan.png}
 		\end{center}
+		\pnote{* extra Trainingsphase => gelohnt}
+		\pnote{* End of Elaboration: erster Prototyp, da klar, welche Plattformen funktionieren werden}
+		\pnote{* Flo war nach Ostern 2 Wochen krank, grad Beginn Construction-Phase}
+		\pnote{=>, trotzdem geklappt und vorangekommen}
+		\pnote{* Architektur um 1 Woche verschoben, damit auch Usability-Tests}
 	\end{frame}
 	
 	\begin{frame}
 	\frametitle{Plattformunabhängigkeit}
 	
 	% Plattformunabhängigkeit: Dahinterliegende Technologie: Python, was ist SMB, PySMB Nicolas Ganz
-	% Idee Flo: Ev. Logos von Python und Qt?
 	\begin{itemize}
 	  \item[]
 	    \includegraphics[height=1.5em]{./img/python-logo-small.png}
@@ -263,11 +288,10 @@ def retrieve_file(self, path: |!PurePath!|,
 	
 	\begin{frame}
 	\frametitle{Fazit und Erfahrungen}
-	% Fazit & Erfahrungen (3 Erfahungsberichte) Méline Sieber Gesamt: Moodle war grösste Überraschung, Studentenportal grösste Enttäuschung. Allergrösste Überraschung: alles reibungslos <3, Pair Programming super nützlich, Code Reviews, persönliche Kommunikation total wichtig (Meetings)
-	% persönliche Erfahrungsberichte Méline Sieber / Nicolas Ganz / Florian Bruhin
-	\begin{center}
+\begin{center}
 	\includegraphics[width=20 em]{./img/unicorn.png}
 	\end{center}
+	\pnote{voller positiven Überraschungen, wie Einhorn, weil so selten}
 	\end{frame}
 	
 	\begin{frame}
@@ -289,6 +313,11 @@ def retrieve_file(self, path: |!PurePath!|,
 			\column{.45\textwidth}
 			\includegraphics[width=0.9\linewidth]{./img/unicorn.png}
 		\end{columns}
+		\pnote{* Alle Ziele erreicht! Grösste Überraschung: Moodle; Grösste Enttäuschung: Studentenportal}
+		\pnote{* Gute Teamdynamik:}
+		\pnote{=> Wöchentliche Besprechungen, Entscheidungen von allen getragen}
+		\pnote{=> Pair-Programming => zeigt sich in Zeiterfassung Soll/Ist, weil Zeit doppelt}
+		\pnote{=> Code-Style-Regeln gesetzt, strenge Code-Reviews}
 	\end{frame}
 
 	\begin{frame}
@@ -296,7 +325,6 @@ def retrieve_file(self, path: |!PurePath!|,
 		%FIXME Nicolas sagt was kurz zur Zeiterfassung
 	\end{frame}
 
-  % persönliche Erfahrungsberichte Méline Sieber / Nicolas Ganz / Florian Bruhin
 	\begin{frame}
 	  	\frametitle{Persönliche Erfahrungen: Méline Sieber}
 	  	Ausgangslage: 
@@ -307,10 +335,18 @@ def retrieve_file(self, path: |!PurePath!|,
 		\pause
 		Projektende:
 			\begin{itemize}
-				\item Pair Programming unverzichtbar
-				\item Wöchentliche Meetings an HSR
-				\item Programmierroutine erreicht
+				\item Pair-Programming unverzichtbar
+				\item Team-Chemie stimmt, Wochenmeetings
+				\item Programmierroutine: Ziel erreicht
+				\item Riesenspass :)
 			\end{itemize}
+		\pnote{* Wasser war sehr kalt => mehr schwimmen => wärmer}
+		\pnote{* Wenig Programmiererfahrung}
+		\pnote{=> Pair-Programming: sehr viel gelernt, Probleme zusammen gelöst => danke}
+		\pnote{=> meine grösseren Problem => Knacknüsse des Projekts}
+		\pnote{* Wochenmeetings enorm wichtig, gemerkt, wann wir nicht vom gleichen sprachen, aufeinander Vision abstimmen}
+		\pnote{* Ziel: Programmierroutine erreicht}
+		\pnote{FUUUUN}
 	\end{frame}
 	
 	\begin{frame}

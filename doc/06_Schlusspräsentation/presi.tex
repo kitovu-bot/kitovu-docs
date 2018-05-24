@@ -6,6 +6,7 @@
 \usepackage[duration=25m]{pdfpcnotes} % write Notes with \pnote{My custom note}
 \usepackage{pgfgantt}
 \usepackage{tikz}
+\usepackage{pdfpc-commands}
 \usetheme{kitovu}
 
 \newcommand{\py}[1]{\mintinline{python}{#1}}
@@ -126,15 +127,19 @@
 	\pnote{NEXT UP: Nicolas}
 	\end{frame}
 
-	\begin{frame}
-	\frametitle{Demo}
-	Demo!
-	% Demo: 2x synchronisieren (Demo mit CLI, GUI sekundär deswegen als Zweites zeigen), Performance Nicolas Ganz
-	\pnote{- CMD: Einmal Sync ohne Daten -> langsam}
-	\pnote{- CMD: Zweiter Sync -> schnell & weniger Output}
-	\pnote{- GUI: Zeigen, dass es den selben Output hat}
-	\pnote{NEXT UP: Méline}
-	\end{frame}
+  \begin{frame}
+    \frametitle{Demo}
+    \vspace{-0.5em}
+    \begin{center}
+      % Additional options: loop
+      \inlineMovie[autostart&start=4]{img/demo.mp4}{img/blank.png}{width=0.85\linewidth, height=0.6375\linewidth}
+    \end{center}
+
+    \pnote{- CMD: Einmal Sync ohne Daten -> langsam}
+    \pnote{- CMD: Zweiter Sync -> schnell & weniger Output}
+    \pnote{- GUI: Zeigen, dass es den selben Output hat}
+    \pnote{NEXT UP: Méline}
+  \end{frame}
 
 	\begin{frame}
 		\frametitle{Projektumfang}

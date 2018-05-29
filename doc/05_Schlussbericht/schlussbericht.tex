@@ -263,16 +263,13 @@ Damit diese Projektversion einfach installiert und deinstalliert werden kann, er
 	\item \verb|$ pip install virtualenv| \newline
 	installiert das Python-Modul, um virtuelle Umgebungen zu erzeugen.
 	\item In den Ordner ``kitovu-test'' wechseln.
-	\item \verb|$ virtualenv kitovu| \newline 
-	setzt die virtuelle Umgebung auf, in einem Unterordner namens ``kitovu''.
-  % FIXME: Das setzt auch ein neues venv auf!
 	\item \verb|$ virtualenv -p /usr/bin/python3.6 kitovu| \newline
-	definiert die zu verwendende Python-Version für die virtuelle Umgebung.
+	setzt die virtuelle Umgebung auf, in einem Unterordner namens ``kitovu'', und definiert die zu verwendende Python-Version für die virtuelle Umgebung.
 	\item \verb|$ source kitovu/bin/activate| \newline
 	aktiviert die virtuelle Umgebung.
 	\item \verb|$ pip install kitovu| \newline 
 	installiert \emph{kitovu}.
-	\item Eine Dokumentation zur Verwendung findet sich hier: \url{https://kitovu.readthedocs.io/}.
+	\item Eine Dokumentation zur Verwendung findet sich hier: \url{https://kitovu.readthedocs.io/}. Eine Beispielkonfiguration findet sich auf der nächsten Seite.
 \end{enumerate}
 
 Via \verb|pip install kitovu| wird \emph{kitovu} auf dem Zielrechner installiert.
@@ -280,6 +277,40 @@ Via \verb|pip install kitovu| wird \emph{kitovu} auf dem Zielrechner installiert
 Deinstallation: 
 
 \verb|$ deactivate| deaktiviert die virtuelle Umgebung, danach kann der Ordner ``kitovu-test'' gelöscht werden.
+
+\newpage
+
+\subsection{Beispielkonfiguration}
+	\begin{minted}[
+	gobble=4,
+	frame=single,
+	]{yaml}
+	root-dir: ~/kitovu-test/HSR
+	
+	global-ignore:
+	  - Thumbs.db
+	  - .DS_Store
+	
+	connections:
+	  - name: skripte-server
+	    plugin: smb
+	    username: msieber
+	  - name: moodle
+	    plugin: moodle
+	
+	subjects:
+	  - name: EPJ
+	    sources:
+	    - connection: skripte-server
+	      remote-dir: Informatik/Fachbereich/Engineering-Projekt/EPJ
+	  - name: Software Engineering 2
+	    sources:
+	    - connection: moodle
+	      remote-dir: Software-Engineering 2 FS2018
+	    - connection: skripte-server
+	      remote-dir: Informatik/Fachbereich/Software-Engineering_2/SE2
+	\end{minted}
+
 
 \end{document}
 

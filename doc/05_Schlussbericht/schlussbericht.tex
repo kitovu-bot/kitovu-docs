@@ -250,6 +250,51 @@ Bei einer positiven Abweichung haben wir weniger Zeit benötigt als geschätzt u
 Ein grosser Brocken bei welchem wir uns verschätzt haben ist der \verb|FileCache|.
 Dabei haben wir mit Pair-Programming, Besprechungen und genaues analysieren von Edge-Cases mehr Zeit benötigt als erwartet.
 
+
+\subsection{Risikoauswertung}
+
+Im Projektplan wurden verschiedene Risiken des Projekts
+identifiziert\footnote{Projektplan, 5.2 ``Risiken''} welche zum Zeitpunkt der
+\emph{End of elaboration} schon genauer untersucht wurden\footnote{End of
+Elaboration / Software-Architektur-Dokument, 4. ``Architektonische Ziele und
+Einschränkungen''}. Hier soll nochmals eine abschliessende Beurteilung der
+Risiken vorgenommen werden.
+
+Schon beim \emph{End of Elaboration}-Meilenstein zeigte sich, dass die
+Einbindung des Studentenportals\footnote{\url{https://www.studentenportal.ch/}}
+nicht funktionieren wird. Durch unsere Anfrage haben wir jedoch eine grössere
+Diskussion zur Zukunft des Studentenportals
+losgetreten\footnote{\url{https://github.com/studentenportal/web/issues/206}; \\
+\url{https://github.com/studentenportal/web/issues/207}}. Wir sind erfreut, dass
+dadurch eine Organisation für einen gemeinsamen Code-Sprint in die Gänge
+geleitet wurde -- dadurch sollte das Studentenportal hoffentlich in nicht allzu
+ferner Zukunft wieder wartbarer werden, als es momentan ist. Sobald dies der
+Fall ist, steht nichts mehr im Wege, Support für Dokumente aus dem
+Studentenportal zu \emph{kitovu} hinzuzufügen.
+
+Ebenfalls zeigte sich durch einen ersten Prototyp, dass eine Integration von
+Moodle machbar wird. Es traten einige kleinere Probleme mit der Moodle-API auf,
+aber die Integration von Moodle in \emph{kitovu} funktioniert grundsätzlich. Es
+fehlte uns die Zeit, um den Login-Prozess noch vollständig zu implementieren,
+jedoch haben wir einen einfachen Workaround gefunden, bei dem die Nutzerin sich
+via Browser einloggt und ein Authentifizierungs-Token aus den Einstellungen kopiert.
+
+Als weitere Punkte hatten wir einen Ausfall verschiedener Infrastruktur
+aufgelistet (CI/GitHub/JIRA), da diese Infrastruktur für unseren Workflow
+zentral war und einige verschiedene Anbieter umspannt. Es sind keine solchen
+Ausfälle aufgetreten -- jedoch fiel der Messenger-Dienst \emph{Telegram} für
+unseren Chat teilweise für kurze Zeit aus. Dies stellte aber kein grösseres
+Problem dar.
+
+Schlussendlich haben wir Probleme mit den verwendenten Bibliotheken und Tools
+als Risiko identifiziert -- hier trat tatsächlich ein Problem auf. Das Tool
+\emph{coala} welches Probleme von Code-Style-Checkern direkt in
+Pull-Requests auf der richtigen Zeile kommentiert liess sich nicht korrekt
+installieren. Wir haben dieses Problem
+gemeldet\footnote{\url{https://github.com/coala/coala-bears/issues/2336}}, eine
+Lösung steht aber weiterhin aus. Da dieses Tool nicht essentiell für unseren
+Workflow war, konnten wir gut darauf verzichten.
+
 \subsection{Codestatistik}
 
 Laut der EPJ-Kurzanleitung sind typische Werte 4'000 Codezeilen (Netto Codezeilen, ohne Leerzeilen, ohne Kommentarzeilen). \emph{Kitovu} hat zum Zeitpunkt des Feature Freeze (16.5.2018) folgende Statistik:

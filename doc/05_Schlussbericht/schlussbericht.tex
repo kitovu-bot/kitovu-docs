@@ -295,7 +295,9 @@ gemeldet\footnote{\url{https://github.com/coala/coala-bears/issues/2336}}, eine
 Lösung steht aber weiterhin aus. Da dieses Tool nicht essentiell für unseren
 Workflow war, konnten wir gut darauf verzichten.
 
-\subsection{Codestatistik}
+\subsection{Code-Statistiken}
+
+\subsubsection{Zeilen}
 
 Laut der EPJ-Kurzanleitung sind typische Werte 4'000 Codezeilen (Netto Codezeilen, ohne Leerzeilen, ohne Kommentarzeilen). \emph{Kitovu} hat zum Zeitpunkt des Feature Freeze (16.5.2018) folgende Statistik:
 
@@ -313,6 +315,57 @@ Laut der EPJ-Kurzanleitung sind typische Werte 4'000 Codezeilen (Netto Codezeile
 Die Statistik stammt aus der PyCharm IDE und wurde mittels des ``Statistics''-Plugins erhoben.
 
 Unser Projekt ist mit 2'582 netto Codezeilen um einiges kleiner als das typische EPJ-Projekt, andererseits haben wir auch eine Person weniger als der Durchschnitt (drei statt vier Team-Mitglieder).
+
+\subsubsection{GitHub-Aktivität}
+
+Auf GitHub konnte die folgende Aktivität verzeichnet werden:
+
+\begin{tabulary}{\linewidth}{lll}
+  \toprule
+  \textbf{Repository} & \textbf{Commits} & \textbf{Pull-Requests} \\
+  \midrule
+  kitovu & 519 & 46 \\
+  kitovu-docs & 223 & -- \\
+  \bottomrule
+\end{tabulary}
+
+\pagebreak
+
+\subsubsection{Testabdeckung}
+
+Da wir schon von Beginn an einen hohen Wert auf Tests gelegt haben, fiel es uns
+leicht, eine hohe Coverage mit hochqualitativen Tests zu halten:
+
+\includegraphics[width=\linewidth]{img/coverage.png}
+
+Bei genauerer Betrachtung der Grafik fallen einige Ausreisser auf:
+
+\begin{itemize}
+  \item Wir setzten unsere Toolchain schon ganz zu Beginn des Projekts auf --
+    dadurch ergaben sich am Anfang grosse Coverage-Schwankungen, da wir erstmal
+    das Grundgerüst des Projekts aufgebaut haben.
+  \item Die GUI wurde erst als ``proof of concept'' ohne Tests implementiert,
+    diese wurden im darauffolgenden Commit aber noch nachgereicht -- die Grafik
+    zeigt commits aus allen Branches, nicht nur dem \emph{master}-Branch.
+  \item Zum Schluss fokussierten wir uns für das Qualitätssicherungs-Review noch
+    einmal genauer auf die Tests, und ergänzten fehlende interessante Testfälle,
+    was die Abdeckung nochmals verbesserte.
+\end{itemize}
+
+Wenn man die Abdeckung von einzelnen Dateien betrachtet, fällt auf, dass nur bei
+der GUI/CLI kleine Teile nicht getestet sind (siehe Abbildung \ref{img:files})
+
+\begin{figure}
+  \label{img:files}
+  \caption{Testabdeckung aufgeteilt auf Dateien}
+\includegraphics[width=\linewidth]{img/coverage_files.png}
+\end{figure}
+
+Unser starke Fokus auf gute Tests wurde extrem vereinfacht durch die von uns
+ausgewählten Tools (pytest sowie codecov). Eine gute Testsuite war uns sehr
+wichtig -- schliesslich berühren wir mit \emph{kitovu} Daten, die für Studenten
+im Fehlerfall (mit persönlichen Notizen) Verluste von bis zu einem Semester
+Arbeit bedeuten können. Diese Verantwortung nehmen wir ernst.
 
 \subsection{Soll/Ist-Vergleiche}
 

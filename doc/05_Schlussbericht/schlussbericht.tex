@@ -87,7 +87,7 @@ Folgende wichtige Entscheidungen haben auch dazu beigetragen:
  Erleichterte das Testen, aber auch die stückweise Erweiterung, zuerst mit dem Skripteserver, dann mit Moodle.
 
 \paragraph{Code-Regeln setzen}
- Wir setzten uns selber hohe Hürden, bis es Code in den Master-Branch schaffte: Pull-Requests, dann Code-Review eines Teammitglieds; gleichzeitig  Style-Prüfung mit Mypy, Flake8 und Pylint. Erst wenn der Code all diese Prüfungen passiert hatte, wurde er Teil des Masters. Das führte zu sauberem, gut wartbarem Code, der sich einfach umschreiben liess (Refactoring).
+ Wir setzten uns selber hohe Hürden, bis es Code in den Master-Branch schaffte: Pull-Requests, dann Code-Review eines Teammitglieds; gleichzeitig  Style-Prüfung mit Mypy, Flake8 und Pylint. Erst wenn der Code all diese Prüfungen passiert hatte, wurde er Teil des Masters. Das führte zu sauberem, gut wartbarem Code.
 
 \paragraph{Wöchentliche Meetings} Sich jede Woche mindestens einmal zu dritt zu treffen hat sich ausbezahlt. Wir klärten viele Fragen, glichen unsere Projektvision an und konnten immer rechtzeitig den Verlauf anpassen.
 
@@ -107,11 +107,11 @@ Nach diesem Engineering-Projekt weiss ich: Es gibt Einhörner.
 Gruppenarbeitseinhörner. Solche Team-Arbeiten, in denen einfach alles rund und perfekt läuft. Ich staune noch jetzt, wie reibungslos alles lief. Als Quereinsteigerin war für mich so gut wie alles neu, so gut wie alles machte ich zum ersten Mal: Werkzeuge wie Jira, Github, Travis verwenden; ein Programm von Grund auf schreiben, also mehr als nur einen fehlenden Programmausschnitt ergänzen; im Team Software entwickeln.
 
 Der Einstieg war erwartungsgemäss steil, das Wasser kalt. Viele Konzepte aus der Elaborationsphase verstand ich erst in der Anwendung (Travis, AppVeyor). Erst nach etwa zwei Sprints erhielt ich langsam ein Gefühl für die Arbeitsabläufe (Pull-Requests, Code-Reviews etc.). Glück im Unglück war der FileCache: Aufgrund krankheitsbedingter Abwesenheit von Florian fiel mir dieser anspruchsvolle Teil von \emph{kitovu} zu. 
-Dank dieser Aufgabe erreichte ich endlich die Programmierroutine, die ich mir zu Projektbeginn selber als Ziel gesetzt hatte. Des Weiteren wurde mir klar, wie wichtig Tests sind: Diese ermöglichen einem zu verstehen, wie Code funktioniert, den ich nicht selber geschrieben habe.
+Dank dieser Aufgabe erreichte ich endlich die Programmierroutine, die ich mir zu Projektbeginn selber als Ziel gesetzt hatte. Des Weiteren wurde mir klar, wie wichtig Tests sind: Diese ermöglichten mir zu verstehen, wie Code funktioniert, den ich nicht selber geschrieben habe.
 
 Ein unverzichtbarer, äusserst wertvoller Teil des Lernprozesses war das Pair-Programming mit Florian und Nicolas. Beide nahmen sich viel Zeit, meine Hürden gemeinsam mit mir zu überwinden. Das senkte die Berührungsängste vor der für mich anspruchsvollen Aufgabe und gab mir die nötige Denkroutine. Hier auch ein grosser Dank an die beiden: Sie beantworteten geduldig jegliche Fragen. Trotz meiner mangelnden Erfahrung habe ich mich nie als unnützes Rad am Projektwagen gefühlt, ich wurde in alle Diskussionen mit einbezogen, meine Meinung hatte gleiches Gewicht wie das der anderen. Eine weitere, wichtige Erkenntnis war wohl, dass auch erfahrene Programmierer nur mit Wasser kochen. Wo ich selber die meisten Probleme hatte, lagen meist die allgemeinen Knacknüsse des Projekts, auch für Florian und Nicolas.
 
-Die weniger technische Seite des Projekts verlief ebenfalls wunschgemäss. Die wichtigste Entscheidung haben wir schon zu Beginn getroffen, nämlich auf ein weiteres Team-Mitglied zu verzichten, das nach kurz nach Projektbeginn zu uns stossen wollte. Die Dreiergruppe passte zum Projektumfang, da wir von Anfang an das Projekt klein, aber ausbaubar gehalten haben.
+Die weniger technische Seite des Projekts verlief ebenfalls wunschgemäss. Die wichtigste Entscheidung haben wir schon zu Beginn getroffen, nämlich auf ein weiteres Team-Mitglied zu verzichten, das noch kurz nach Projektbeginn zu uns stossen wollte. Die Dreiergruppe passte zum Projektumfang, da wir von Anfang an das Projekt klein, aber ausbaubar gehalten haben.
 
 Das Modul SE1 betonte, wie wichtig die physische Nähe der Teammitglieder ist -- das hat sich bestätigt. Die virtuelle Kommunikation via Telegram war eine gute Unterstützung, aber die wöchentlichen Sitzungen haben sich mehr als ausbezahlt. Oft merkten wir erst dann, dass wir nicht vom Gleichen sprachen und konnten uns so auf übereinstimmende Bedeutungen einigen. Das wurde vor allem in Bezug auf die Fehlerbehandlung klar: Wir hatten uns nicht in einer solchen Sitzung abgesprochen, sondern nur über Telegram. Das führte zu einem Missverständnis und einigem Refactoring, was aber zum Glück keine grossen Auswirkungen hatte -- eine Lehre war es allemal.
 
@@ -123,7 +123,6 @@ Kurzum, das Engineering Projekt kann ich mit der Erkenntnis abschliessen: Einhö
 
 \subsection{Florian Bruhin}
 
-% FIXME Flo: Treffende Formulierung, die nicht zu arrogant klingt? :D
 Eigentlich bin ich kein Fan von Gruppenarbeiten -- ich bin eher derjenige, der bei Gruppenarbeiten anpackt und auch solche mitzieht, die nicht so recht
 mitmachen wollen. Dies kann aber oft anstrengend werden, weshalb ich viele Projekte deshalb lieber alleine durchgezogen habe. Auch bei meinem
 Open-Source-Projekt\footnote{qutebrowser, \url{https://www.qutebrowser.org/}}
@@ -144,8 +143,8 @@ Ebenfalls hat sich ausbezahlt, gleich bei Beginn (trotz grossen Visionen) uns
 nicht zu viel vorzunehmen. Vielmehr haben wir uns den Lerneffekt des gesamten
 Projektablaufes als eines der Hauptziele definiert. Unser Projekt ist im Umfang etwas unter dem Durchschnittsprojekt, aber wir waren uns einig, dass wir lieber auf Qualität als auf Quantität setzen.
 
-Durch meine bisherigen umfangreichen Arbeiten an Open-Source-Projekten habe ich bereits viel Erfahrung mit ins Team eingebracht. Ein Kollege von mir behauptete, ich könne wohl nicht mehr viel Neues beim Engineering-Projekt lernen. Diese Aussage kann ich so definitiv nicht stehen lassen. Natürlich ist es so, dass aus technischer Sicht Méline und Nicolas wohl mehr neues Wissen aufgenommen
-haben wie ich -- wobei ich auch da bewusst einige mir unbekannte Tools
+Durch meine bisherigen umfangreichen Arbeiten an Open-Source-Projekten habe ich bereits viel Erfahrung mit ins Team eingebracht. Ein Kollege von mir behauptete, ich könne wohl nicht mehr viel Neues beim Engineering-Projekt lernen. Diese Aussage kann ich so definitiv nicht stehen lassen. Natürlich ist es so, dass aus technischer Sicht Méline und Nicolas vermutlich mehr neues Wissen aufgenommen
+haben als ich -- wobei ich auch da bewusst einige mir unbekannte Tools
 eingesetzt habe (\verb|mypy| und \verb|Pipenv|), die ich nun besser kenne und auch selbst für
 andere Projekte verwenden will.
 
@@ -153,8 +152,7 @@ Viele neue Erkenntnisse hatte ich jedoch zu den ganzen sozialen und
 Projektmanagements-Aspekten -- wohl zu viele, um dem
 in einigen Worten Rechnung zu tragen. Ich habe gelernt, wie wertvoll es ist,
 auch gleich zu Beginn in einem Projekt eine Zweit- und Drittmeinung zu
-komplizierteren Dingen zu haben. Gerade in Open-Source-Projekten ist sowas gerade zu
-Beginn nicht möglich. Ich habe gemerkt, wie wertvoll es ist, sich
+komplizierteren Dingen zu haben. Gerade in Open-Source-Projekten ist sowas besonders zu Beginn nicht möglich. Ich habe gemerkt, wie wertvoll es ist, sich
 wenigstens einmal pro Woche im ganzen Team treffen zu können, selbst wenn auch
 die Kommunikation via Text (Telegram-Gruppenchat, GitHub, JIRA) exzellent
 funktioniert. Ich habe erfahren, wie gut Pair-Programming funktioniert,
@@ -183,7 +181,7 @@ Erfahrungen reicher wurden.
 
 \subsubsection{Umstellung zu Python}
 
-Ich bin mir Ruby gewohnt, was grundsätzlich ähnlich ist, sich aber doch in diversen Kleinigkeiten unterscheidet.
+Ich bin mir Ruby gewohnt, was grundsätzlich ähnlich zu Python ist, sich aber doch in diversen Kleinigkeiten unterscheidet.
 Für mich ist es einfacher auf eine Sprache umzustellen, welche komplett anders ist, wie zum Beispiel Java.
 Da weiss ich, dass es etwas komplett anderes ist, aber bei Python vergleiche ich es fast schon zu fest mit Ruby.
 
@@ -229,12 +227,11 @@ Sicherlich werde ich mich an der Weiterentwicklung von \emph{kitovu} auch ausser
 
 Die obige Grafik illustriert sämtliche Zeitaufwände pro Person. Marco Zollinger hat unser Projekt aufgrund administrativer Hürden nach der ersten Woche verlassen.
 
-Bemerktenswert ist die Spitze in der zweiten Woche: Hier investierten wir besonders viel Zeit für den Projektplan.
+Bemerkenswert ist die Spitze in der zweiten Woche: Hier investierten wir besonders viel Zeit für den Projektplan.
 Wir haben uns dabei bereits sehr viele Gedanken gemacht, wie wir das Projekt angehen und aufbauen möchten und welche Tools wir genau verwenden. Dieser hohe Zeitaufwand ist dem restlichen Projektverlauf definitiv zugute gekommen.
 
 Zu Beginn haben wir geschätzt, dass wir durchschnittlich 8 Stunden pro Person
-und Woche aufwenden. Rückblickend konnten wir gut Mass halten: durchschnittlich haben wir 8.2 Stunden pro Woche und pro Person benötigt.
-% FIXME rephrase?
+und Woche aufwenden. Rückblickend konnten wir gut Mass halten: Durchschnittlich haben wir 8.2 Stunden pro Woche und pro Person benötigt.
 Genauere Angaben sind im Dokument \verb|KitovuTimesheet.xlsx| zu finden.
 
 \subsection{Zeitauswertung}
@@ -283,14 +280,14 @@ via Browser einloggt und ein Authentifizierungs-Token aus den Einstellungen kopi
 
 Als weitere Risikopunkte hatten wir einen Ausfall verschiedener Infrastrukturen
 aufgelistet (CI, GitHub, JIRA), da diese für unseren Workflow
-zentral waren und verschiedene Anbieter umspannt. Es sind keine solchen
+zentral waren und verschiedene Anbieter umspannen. Es sind keine solchen
 Ausfälle aufgetreten -- jedoch fiel der Messenger-Dienst \emph{Telegram} für
 unseren Chat teilweise für kurze Zeit aus. Dies stellte aber kein grösseres
 Problem dar.
 
 Schliesslich haben wir Probleme mit den verwendeten Bibliotheken und Tools
-als Risiko identifiziert -- hier trat tatsächlich ein Problem auf. Das Tool
-\emph{coala}, welches Probleme von Code-Style-Checkern direkt in
+als Risiko identifiziert -- hier trat tatsächlich ein Problem auf: Das Tool
+\verb|coala|, welches Probleme von Code-Style-Checkern direkt in
 Pull-Requests auf der richtigen Zeile kommentiert, liess sich nicht korrekt
 installieren. Wir haben dieses Problem
 gemeldet\footnote{\url{https://github.com/coala/coala-bears/issues/2336}}, eine
@@ -306,7 +303,7 @@ Betrachtet man den zeitlichen Verlauf der JIRA-Vorgänge (Arbeitspakete, Bugs, e
 Ebenfalls sticht heraus, dass noch diverse Aufgaben offen sind -- zum Zeitpunkt
 der Abgabe noch rund 25 Stück. Dabei handelt es sich um Ideen für weitere, zukünftige
 Verbesserungen, welche bewusst nicht als Teil des
-Engineering-Projekts umgesetzt wurden. Es ist geplant, diese Pläne zu
+Engineering-Projekts umgesetzt wurden. Es ist geplant, diese Aufgaben zu
 GitHub-Issues zu migrieren, damit auch externe Personen mithelfen können.
 
 \subsection{Code-Statistiken}
@@ -395,7 +392,7 @@ Damit die Nutzerin diese Projektversion einfach installieren und deinstallieren 
 	installiert das Python-Modul, um virtuelle Umgebungen zu erzeugen.
 	\item \verb|$ cd kitovu-test| \newline
 	wechselt in den Ordner ``kitovu-test''.
-	\item \verb|$ virtualenv -p /usr/bin/python3.6 kitovu| \newline
+	\item \verb|$ virtualenv -p python3.6 kitovu| \newline
 	setzt die virtuelle Umgebung auf, und zwar in einem Unterordner namens ``kitovu'', und definiert die zu verwendende Python-Version für die virtuelle Umgebung.
 	\item \verb|$ source kitovu/bin/activate| \newline
 	aktiviert die virtuelle Umgebung.
@@ -423,7 +420,7 @@ Damit die Nutzerin diese Projektversion einfach installieren und deinstallieren 
 	connections:
 	  - name: skripte-server
 	    plugin: smb
-	    username: msieber
+	    username: legger
 	  - name: moodle
 	    plugin: moodle
 	

@@ -56,6 +56,7 @@
     Datum & Version & Änderung & AutorIn \\
     \midrule
     16.05.2018 & 1.0 & Dokument erstellt und Struktur aus der Vorlage übernommen & Nicolas Ganz \\
+    01.06.2018 & 2.0 & Überarbeitung und Abgabe & alle \\
     \bottomrule
   \end{tabulary}
 
@@ -72,7 +73,7 @@ Dieses Projekt ist wohl eines der Ausnahmen in der Softwareentwicklung:
   \item Wir haben so gut wie immer die richtigen Entscheidungen gefällt, zu jedem Zeitpunkt des Projekts (Plugin-Architektur, Verteilung von Aufgaben, Grundsatzentscheidungen).
 \end{itemize}
 
-Als Hauptziel haben wir uns gesetzt, den Skripteserver anzubinden und eine erfolgreiche Synchronisation der benötigten Unterrichtsmaterialien durchzuführen. Das ist uns gelungen. Die beiden optionalen Erweiterungen, wie wir sie im Projektplan definiert haben, sind gleichzeitig die grösste Überraschung und grösste Enttäuschung:
+Als Hauptziel haben wir uns gesetzt, den Skripteserver anzubinden und eine erfolgreiche Synchronisation der benötigten Unterrichtsmaterialien durchzuführen. Das ist uns gelungen. Die beiden optionalen Erweiterungen, wie wir sie im Projektplan definiert haben, sind gleichzeitig grösste Überraschung und Enttäuschung:
 
 Zu unserer grössten Überraschung haben wir es geschafft, Moodle in \emph{kitovu} einzubinden, was wir im Projektplan als grösstes Risiko identifiziert hatten. Unsere grösste Enttäuschung war hingegen, dass wir sehr bald das Studentenportal von unseren optionalen Anbindungen streichen mussten.
 
@@ -86,7 +87,7 @@ Folgende wichtige Entscheidungen haben auch dazu beigetragen:
  Erleichterte das Testen, aber auch die stückweise Erweiterung, zuerst mit dem Skripteserver, dann mit Moodle.
 
 \paragraph{Code-Regeln setzen}
- Wir setzten uns selber hohe Hürden, bis es Code in den Master-Branch schaffte: Pull-Requests, dann Code-Review eines Teammitglieds; gleichzeitig  Style-Prüfung mit Mypy, Flake8 und Pylint. Erst wenn der Code all diese Prüfungen passiert hatte, wurde er Teil des Masters.
+ Wir setzten uns selber hohe Hürden, bis es Code in den Master-Branch schaffte: Pull-Requests, dann Code-Review eines Teammitglieds; gleichzeitig  Style-Prüfung mit Mypy, Flake8 und Pylint. Erst wenn der Code all diese Prüfungen passiert hatte, wurde er Teil des Masters. Das führte zu sauberem, gut wartbarem Code, der sich einfach umschreiben liess (Refactoring).
 
 \paragraph{Wöchentliche Meetings} Sich jede Woche mindestens einmal zu dritt zu treffen hat sich ausbezahlt. Wir klärten viele Fragen, glichen unsere Projektvision an und konnten immer rechtzeitig den Verlauf anpassen.
 
@@ -105,15 +106,16 @@ Nach diesem Engineering-Projekt weiss ich: Es gibt Einhörner.
 
 Gruppenarbeitseinhörner. Solche Team-Arbeiten, in denen einfach alles rund und perfekt läuft. Ich staune noch jetzt, wie reibungslos alles lief. Als Quereinsteigerin war für mich so gut wie alles neu, so gut wie alles machte ich zum ersten Mal: Werkzeuge wie Jira, Github, Travis verwenden; ein Programm von Grund auf schreiben, also mehr als nur einen fehlenden Programmausschnitt ergänzen; im Team Software entwickeln.
 
-Der Einstieg war erwartungsgemäss steil, das Wasser kalt. Viele Konzepte aus der Elaborationsphase verstand ich erst in der Anwendung (Travis, AppVeyor). Erst nach etwa zwei Sprints erhielt ich langsam ein Gefühl für die Arbeitsabläufe (Pull Requests, Code Reviews etc.). Glück im Unglück war der FileCache: Aufgrund krankheitsbedingter Abwesenheit von Florian fiel mir dieser anspruchsvolle Teil von kitovu zu. Dank dieser Aufgabe erreichte ich endlich die benötigte Programmierroutine. Das zu Beginn mir selber gesetzte Ziel habe ich erreicht, mehr Routine zu erlangen und flüssiger programmieren zu können. Des Weiteren wurde mir klar, wie wichtig Tests sind -- denn anhand dieser verstand ich nebenbei, wie Code funktioniert, den ich nicht selber geschrieben habe.
+Der Einstieg war erwartungsgemäss steil, das Wasser kalt. Viele Konzepte aus der Elaborationsphase verstand ich erst in der Anwendung (Travis, AppVeyor). Erst nach etwa zwei Sprints erhielt ich langsam ein Gefühl für die Arbeitsabläufe (Pull-Requests, Code-Reviews etc.). Glück im Unglück war der FileCache: Aufgrund krankheitsbedingter Abwesenheit von Florian fiel mir dieser anspruchsvolle Teil von \emph{kitovu} zu. 
+Dank dieser Aufgabe erreichte ich endlich die Programmierroutine, die ich mir zu Projektbeginn selber als Ziel gesetzt hatte. Des Weiteren wurde mir klar, wie wichtig Tests sind: Diese ermöglichen einem zu verstehen, wie Code funktioniert, den ich nicht selber geschrieben habe.
 
 Ein unverzichtbarer, äusserst wertvoller Teil des Lernprozesses war das Pair-Programming mit Florian und Nicolas. Beide nahmen sich viel Zeit, meine Hürden gemeinsam mit mir zu überwinden. Das senkte die Berührungsängste vor der für mich anspruchsvollen Aufgabe und gab mir die nötige Denkroutine. Hier auch ein grosser Dank an die beiden: Sie beantworteten geduldig jegliche Fragen. Trotz meiner mangelnden Erfahrung habe ich mich nie als unnützes Rad am Projektwagen gefühlt, ich wurde in alle Diskussionen mit einbezogen, meine Meinung hatte gleiches Gewicht wie das der anderen. Eine weitere, wichtige Erkenntnis war wohl, dass auch erfahrene Programmierer nur mit Wasser kochen. Wo ich selber die meisten Probleme hatte, lagen meist die allgemeinen Knacknüsse des Projekts, auch für Florian und Nicolas.
 
-Die weniger technische Seite des Projekts verlief ebenfalls wunschgemäss. Die wichtigste Entscheidung haben wir schon zu Beginn getroffen, nämlich auf ein weiteres Team-Mitglied zu verzichten. Die Dreiergruppe passte zum Projektumfang, da wir von Anfang an das Projekt klein, aber ausbaubar gehalten haben. Das hat sich ausbezahlt, wie weiter oben unter den erreichten Zielen beschrieben wurde.
+Die weniger technische Seite des Projekts verlief ebenfalls wunschgemäss. Die wichtigste Entscheidung haben wir schon zu Beginn getroffen, nämlich auf ein weiteres Team-Mitglied zu verzichten, das nach kurz nach Projektbeginn zu uns stossen wollte. Die Dreiergruppe passte zum Projektumfang, da wir von Anfang an das Projekt klein, aber ausbaubar gehalten haben.
 
-SE1 betonte, wie wichtig die physische Nähe der Teammitglieder ist -- das hat sich bestätigt. Die virtuelle Kommunikation via Telegram war eine gute Unterstützung, aber die wöchentlichen Sitzungen haben sich mehr als ausbezahlt. Oft merkten wir erst dann, dass wir nicht vom Gleichen sprachen und konnten uns so auf übereinstimmende Bedeutungen einigen. Das wurde vor allem in Bezug auf die Fehlerbehandlung klar: Wir hatten uns nicht in einer solchen Sitzung abgesprochen, sondern nur über Telegram. Das führte zu einem Missverständnis und einigem Refactoring, was aber zum Glück keine grossen Auswirkungen hatte -- eine Lehre war es allemal.
+Das Modul SE1 betonte, wie wichtig die physische Nähe der Teammitglieder ist -- das hat sich bestätigt. Die virtuelle Kommunikation via Telegram war eine gute Unterstützung, aber die wöchentlichen Sitzungen haben sich mehr als ausbezahlt. Oft merkten wir erst dann, dass wir nicht vom Gleichen sprachen und konnten uns so auf übereinstimmende Bedeutungen einigen. Das wurde vor allem in Bezug auf die Fehlerbehandlung klar: Wir hatten uns nicht in einer solchen Sitzung abgesprochen, sondern nur über Telegram. Das führte zu einem Missverständnis und einigem Refactoring, was aber zum Glück keine grossen Auswirkungen hatte -- eine Lehre war es allemal.
 
-Textualität ist auch bei Softwareprojekten wichtig, stellte ich erfreut fest. Wir haben mehrere Dokumente verfasst (Projektplan, Anforderungen, Architektur), die auch intern sehr nützlich waren und die wir häufig referenzierten. Erst wenn es schriftlich ist, ist es definitiv: Das half, die Dinge zu Ende zu denken.
+Textualität ist auch bei Softwareprojekten wichtig, stellte ich erfreut fest. Wir haben mehrere Dokumente verfasst (Projektplan, Anforderungen, Architektur), die auch intern sehr nützlich waren und die wir häufig konsultierten. Erst wenn es schriftlich ist, ist es definitiv: Das half, die Dinge zu Ende zu denken.
 
 Kurzum, das Engineering Projekt kann ich mit der Erkenntnis abschliessen: Einhörner sind möglich.
 
@@ -122,10 +124,8 @@ Kurzum, das Engineering Projekt kann ich mit der Erkenntnis abschliessen: Einhö
 \subsection{Florian Bruhin}
 
 % FIXME Flo: Treffende Formulierung, die nicht zu arrogant klingt? :D
-Eigentlich bin ich kein Fan von Gruppenarbeiten -- ich bin eher derjenige, der
-bei Gruppenarbeiten anpackt und auch solche mitzieht, die nicht so recht
-mitmachen wollen. Dies kann aber oft anstrengend werden, weshalb ich viele Projekte
-deshalb lieber alleine durchgezogen habe. Auch bei meinem
+Eigentlich bin ich kein Fan von Gruppenarbeiten -- ich bin eher derjenige, der bei Gruppenarbeiten anpackt und auch solche mitzieht, die nicht so recht
+mitmachen wollen. Dies kann aber oft anstrengend werden, weshalb ich viele Projekte deshalb lieber alleine durchgezogen habe. Auch bei meinem
 Open-Source-Projekt\footnote{qutebrowser, \url{https://www.qutebrowser.org/}}
 gibt es natürlich eine gewisse Kollaboration, aber meine Rolle im Projekt ist
 doch am besten mit dem ``wohlwollenden Diktator auf
@@ -134,52 +134,44 @@ Lebenszeit''\footnote{Wikipedia: \emph{BDFL; deutsch ``Wohlwollender Diktator au
 \emph{Eigentlich} -- denn in diesem Projekt kam alles anders. Ich übertreibe
 nicht, wenn ich sage, dass noch nie ein schulisches Gruppenprojekt so gut
 funktioniert hat. Ich habe schnell gemerkt, dass wir alle drei gleich hohe
-Qualitätsstandards haben, sowohl was Code als auch Dokumentation angeht --
-anfangs hatte ich noch einige Bedenken, weil ich bei anderen Gruppenprojekten
-auch schon enttäuscht wurde und im letzten Moment einspringen musste. Doch hier
-wurde schnell klar, dass die Chemie im Team einfach super stimmt.
+Qualitätsstandards haben, sowohl was Code als auch Dokumentation angeht. Anfangs hatte ich noch einige Bedenken, weil ich bei anderen Gruppenprojekten
+auch schon enttäuscht wurde und im letzten Moment einspringen musste. Doch hier wurde schnell klar, dass die Chemie im Team einfach super stimmt.
 
 Ich denke, wir haben von Anfang an vieles richtig gemacht: Es hat sich
-gelohnt, von Anfang an die entsprechende Toolchain (Travis CI, style checker,
-etc.) einzurichten, damit wir konsistent eine hohe Qualität halten können.
+gelohnt, von Anfang an die entsprechende Toolchain (Travis CI, Style-Checker
+etc.) einzurichten, damit wir konsistent eine hohe Qualität halten konnten.
 Ebenfalls hat sich ausbezahlt, gleich bei Beginn (trotz grossen Visionen) uns
 nicht zu viel vorzunehmen. Vielmehr haben wir uns den Lerneffekt des gesamten
-Projekts als eines der Hauptziele definiert. Unser Projekt ist im Umfang etwas
-unter dem Durchschnittsprojekt, aber wir waren uns einig, dass wir lieber auf
-Qualität als auf Quantität setzen.
+Projektablaufes als eines der Hauptziele definiert. Unser Projekt ist im Umfang etwas unter dem Durchschnittsprojekt, aber wir waren uns einig, dass wir lieber auf Qualität als auf Quantität setzen.
 
-Durch meine bisherigen umfangreichen Arbeiten an Open-Source-Projekten habe ich
-bereits viel Erfahrung mit ins Team eingebracht. Ein Kollege von mir behauptete,
-ich könne wohl nicht mehr viel neues beim Engineering-Projekt gelernt. Diese
-Aussage kann ich so definitiv nicht stehen lassen. Es ist wohl etwas dran, dass
-aus technischer Sicht Méline und Nicolas wohl mehr neues Wissen aufgenommen
+Durch meine bisherigen umfangreichen Arbeiten an Open-Source-Projekten habe ich bereits viel Erfahrung mit ins Team eingebracht. Ein Kollege von mir behauptete, ich könne wohl nicht mehr viel Neues beim Engineering-Projekt lernen. Diese Aussage kann ich so definitiv nicht stehen lassen. Natürlich ist es so, dass aus technischer Sicht Méline und Nicolas wohl mehr neues Wissen aufgenommen
 haben wie ich -- wobei ich auch da bewusst einige mir unbekannte Tools
-eingesetzt habe (mypy und Pipenv), die ich nun besser kenne und auch selbst für
+eingesetzt habe (\verb|mypy| und \verb|Pipenv|), die ich nun besser kenne und auch selbst für
 andere Projekte verwenden will.
 
-Viele neue Erkenntnisse hatte ich jedoch zu den ganzen sozialen- und
-Projektmanagements-Aspekten bei einem solchen Projekt -- wohl zu viele, um dem
-in einigen Worten Rechnung zu tragen. Ich habe gelernt, wie viel es Wert ist,
-auch gleich zu Anfang in einem Projekt eine Zweit- und Drittmeinung zu
-komplizierteren Dingen zu haben (etwas, was in Open-Source-Projekten gerade zu
-Beginn nicht möglich ist). Ich habe gemerkt, wie viel es Wert ist, sich
+Viele neue Erkenntnisse hatte ich jedoch zu den ganzen sozialen und
+Projektmanagements-Aspekten -- wohl zu viele, um dem
+in einigen Worten Rechnung zu tragen. Ich habe gelernt, wie wertvoll es ist,
+auch gleich zu Beginn in einem Projekt eine Zweit- und Drittmeinung zu
+komplizierteren Dingen zu haben. Gerade in Open-Source-Projekten ist sowas gerade zu
+Beginn nicht möglich. Ich habe gemerkt, wie wertvoll es ist, sich
 wenigstens einmal pro Woche im ganzen Team treffen zu können, selbst wenn auch
 die Kommunikation via Text (Telegram-Gruppenchat, GitHub, JIRA) exzellent
-funktioniert. Ich habe erfahren, wie gut dass pair programming funktioniert,
+funktioniert. Ich habe erfahren, wie gut Pair-Programming funktioniert,
 gerade auch als Lehrmittel um anderen Leuten eine neue Programmiersprache
 beizubringen -- etwas, was mir offensichtlich liegt und was ich in Zukunft gerne
 öfters machen würde.
 
 Das Engineering-Projekt hat auch meine Perspektive geändert, was die
 Notwendigkeit von Planung zu einem Software-Projekt betrifft. Dass das
-Wasserfall-Modell oft nicht wirklich taugt war ja schon länger klar -- ich war
+Wasserfall-Modell oft nicht wirklich taugt, ist ja schon länger klar -- ich war
 lange der Überzeugung, dass jegliche Planung eher kritisch zu beachten ist, weil
-Code schnell wieder geändert ist. Im Projekt hat sich aber gezeigt, wie wertvoll
+sich Code schnell ändern lässt. Im Projekt hat sich aber gezeigt, wie wertvoll
 es sein kann, eben doch einige Dinge im Voraus zu planen, gerade in einem
 Gruppenprojekt. Wir haben anfangs überdurchschnittlich viel Zeit in den
 Projektplan investiert. Dies hat sich aber ohne Zweifel gelohnt, da wir unsere
 Dokumente sehr oft auch in Diskussionen wieder verwenden konnten, um uns sicher
-zu sein, dass wir über die gleiche Sache sprechen.
+zu sein, dass wir vom Gleichen sprechen.
 
 Ich glaube ich spreche für uns alle, wenn ich sage, dass das Projekt
 unglaublich Spass gemacht hat, und wir dadurch alle um viele unbezahlbare
@@ -195,9 +187,9 @@ Ich bin mir Ruby gewohnt, was grundsätzlich ähnlich ist, sich aber doch in div
 Für mich ist es einfacher auf eine Sprache umzustellen, welche komplett anders ist, wie zum Beispiel Java.
 Da weiss ich, dass es etwas komplett anderes ist, aber bei Python vergleiche ich es fast schon zu fest mit Ruby.
 
-Die Python Guidelines waren für mich daher zu Beginn mühsam.
+Die Python-Guidelines waren für mich daher zu Beginn mühsam.
 Da die Tools mich aber immer wieder an die Guidelines erinnerten, konnte ich mir diese besser merken.
-Mittlerweilen sind sie mir auch ziemlich geläufig und ich konnte meinen Fortschritt von Pull Request zu Pull Request bemerken.
+Mittlerweilen sind sie mir auch ziemlich geläufig und ich konnte meinen Fortschritt von Pull-Request zu Pull-Request bemerken.
 
 \subsubsection{Kommunikation im Team}
 
@@ -208,13 +200,13 @@ Besonders geschätzt habe ich die Diskussionen über Konzeptentscheide.
 Sämtliche Teammitglieder haben sich daran aktiv beteiligt und sind kompromissbereit gewesen.
 Dadurch haben wir einen soliden und sauberen Grundstein für einen neuen Synchronisations-Client gelegt.
 
-Auch die Code-Reviews über die Github Pull Requests waren sehr nützlich und der Code wurde dabei immer gründlich geprüft.
+Auch die Code-Reviews über die Github-Pull-Requests waren sehr nützlich und der Code wurde dabei immer gründlich geprüft.
 Davon konnte ich sehr profitieren, da Python für mich noch nicht so gängig ist und so diverse Kleinigkeiten hervorkamen, welche wir optimieren konnten.
 
 \subsubsection{Projektidee}
 
 Da ich dieses Projekt zukünftig verwenden will, war meine Motivation sehr hoch.
-Es hat mir auch die Motivation gegeben, diese Applikation so umzusetzen, dass sie in Zukunft wartbar und erweiterbar ist.
+Es hat mir auch den Ansporn gegeben, diese Applikation so umzusetzen, dass sie in Zukunft wartbar und erweiterbar ist.
 
 Es war auch sehr motivierend bei den Usability-Tests zu erkennen, dass ein Bedürfnis für eine solche Applikation auch studiengangsübergreifend vorhanden ist.
 
@@ -223,7 +215,7 @@ Es war auch sehr motivierend bei den Usability-Tests zu erkennen, dass ein Bedü
 Alles im Allem war dieses Projekt für mich ein grosser Erfolg.
 Ich konnte stark profitieren, habe Diverses gelernt und vor allem hat es wirklich Spass gemacht.
 
-Sicherlich werde ich mich an der Weiterentwicklung des Projektes auch ausserhalb des Engineering Projektes beteiligen.
+Sicherlich werde ich mich an der Weiterentwicklung von \emph{kitovu} auch ausserhalb des Engineering Projektes beteiligen.
 
 \section{Projektmonitoring}
 
@@ -235,15 +227,14 @@ Sicherlich werde ich mich an der Weiterentwicklung des Projektes auch ausserhalb
 \end{figure}
 \footnotetext{Stand: 31. Mai 2018, 14:23 Uhr}
 
-In dieser Grafik sind sämtliche Zeitaufwände pro Person dargestellt.
+Die obige Grafik illustriert sämtliche Zeitaufwände pro Person.
 
-Es zeigt, dass wir besonders für den Projektplan in der zweiten Woche sehr viel investiert haben.
-Wir haben uns dabei bereits sehr viele Gedanken gemacht, wie wir das Projekt angehen und aufbauen möchten und welche Tools wir genau verwenden. Dies ist uns im Verlauf des Projekts klar zugunsten gekommen.
+Bemerktenswert ist die Spitze in der zweiten Woche: Hier investierten wir besonders viel Zeit für den Projektplan.
+Wir haben uns dabei bereits sehr viele Gedanken gemacht, wie wir das Projekt angehen und aufbauen möchten und welche Tools wir genau verwenden. Dieser hohe Zeitaufwand ist dem restlichen Projektverlauf definitiv zugute gekommen.
 
 Zu Beginn haben wir geschätzt, dass wir durchschnittlich 8 Stunden pro Person
-und Woche aufwenden.
+und Woche aufwenden. Rückblickend konnten wir gut Mass halten: durchschnittlich haben wir 8.2 Stunden pro Woche und pro Person benötigt.
 % FIXME rephrase?
-Jetzt haben wir jeweils durchschnittlich 8.2 Stunden benötigt.
 Genauere Angaben sind im Dokument \verb|KitovuTimesheet.xlsx| zu finden.
 
 \subsection{Zeitauswertung}
@@ -254,13 +245,13 @@ Genauere Angaben sind im Dokument \verb|KitovuTimesheet.xlsx| zu finden.
 \end{figure}
 \footnotetext{Stand: 31. Mai 2018, 14:23 Uhr}
 
-In dieser Auswertung werden die Zeitschätzungen mit den effektiven Zeiten verglichen.
+Obige Auswertung vergleicht die Zeitschätzungen mit dem effektiven Aufwand pro JIRA-Issue.
 Wenn die Abweichung 0\% ist, sind die Zeitschätzungen und die effektiven Zeiten gleich.
 Bei einer positiven Abweichung haben wir weniger Zeit benötigt als geschätzt;
 bei einer negativen Abweichung haben wir mehr Zeit benötigt.
 
 Eine grosse Diskrepanz zeigt sich beim \verb|FileCache|.
-Dabei haben wir mit Pair-Programming, Besprechungen und genauem Analysieren von Edge-Cases mehr Zeit benötigt als erwartet.
+Dabei haben wir mit Pair-Programming, Besprechungen und genauen Analysen von Edge-Cases mehr Zeit benötigt als erwartet.
 
 \subsection{Risikoauswertung}
 
@@ -284,23 +275,23 @@ Fall ist, steht nichts mehr im Wege, Support für Dokumente aus dem
 Studentenportal zu \emph{kitovu} hinzuzufügen.
 
 Ebenfalls zeigte sich durch einen ersten Prototyp, dass eine Integration von
-Moodle machbar wird. Es traten einige kleinere Probleme mit der Moodle-API auf,
+Moodle machbar ist. Es traten einige kleinere Probleme mit der Moodle-API auf,
 aber die Integration von Moodle in \emph{kitovu} funktioniert grundsätzlich. Es
 fehlte uns die Zeit, um den Login-Prozess noch vollständig zu implementieren,
 jedoch haben wir einen einfachen Workaround gefunden, bei dem die Nutzerin sich
 via Browser einloggt und ein Authentifizierungs-Token aus den Einstellungen kopiert.
 
-Als weitere Punkte hatten wir einen Ausfall verschiedener Infrastruktur
-aufgelistet (CI/GitHub/JIRA), da diese Infrastruktur für unseren Workflow
-zentral war und einige verschiedene Anbieter umspannt. Es sind keine solchen
+Als weitere Risikopunkte hatten wir einen Ausfall verschiedener Infrastrukturen
+aufgelistet (CI, GitHub, JIRA), da diese für unseren Workflow
+zentral waren und verschiedene Anbieter umspannt. Es sind keine solchen
 Ausfälle aufgetreten -- jedoch fiel der Messenger-Dienst \emph{Telegram} für
 unseren Chat teilweise für kurze Zeit aus. Dies stellte aber kein grösseres
 Problem dar.
 
-Schliesslich haben wir Probleme mit den verwendenten Bibliotheken und Tools
+Schliesslich haben wir Probleme mit den verwendeten Bibliotheken und Tools
 als Risiko identifiziert -- hier trat tatsächlich ein Problem auf. Das Tool
-\emph{coala} welches Probleme von Code-Style-Checkern direkt in
-Pull-Requests auf der richtigen Zeile kommentiert liess sich nicht korrekt
+\emph{coala}, welches Probleme von Code-Style-Checkern direkt in
+Pull-Requests auf der richtigen Zeile kommentiert, liess sich nicht korrekt
 installieren. Wir haben dieses Problem
 gemeldet\footnote{\url{https://github.com/coala/coala-bears/issues/2336}}, eine
 Lösung steht aber weiterhin aus. Da dieses Tool nicht essentiell für unseren
@@ -308,14 +299,13 @@ Workflow war, konnten wir gut darauf verzichten.
 
 \subsection{JIRA-Vorgänge}
 
-Wenn man den zeitlichen Verlauf der JIRA-Vorgänge (Arbeitspakete, Bugs, etc.)
-betrachtet, ist unser zweiwöchentlicher Sprint-Zyklus schön ersichtlich: \\
+Betrachtet man den zeitlichen Verlauf der JIRA-Vorgänge (Arbeitspakete, Bugs, etc.), ist unser zweiwöchentlicher Sprint-Zyklus schön ersichtlich: \\
 
 \includegraphics[width=\linewidth]{img/issues.png}
 
 Ebenfalls sticht heraus, dass noch diverse Aufgaben offen sind -- zum Zeitpunkt
-der Abgabe noch rund 25 Stück. Dabei handelt es sich um Ideen für weitere
-Verbesserungen in Zukunft, welche bewusst nicht als Teil des
+der Abgabe noch rund 25 Stück. Dabei handelt es sich um Ideen für weitere, zukünftige
+Verbesserungen, welche bewusst nicht als Teil des
 Engineering-Projekts umgesetzt wurden. Es ist geplant, diese Pläne zu
 GitHub-Issues zu migrieren, damit auch externe Personen mithelfen können.
 
@@ -323,7 +313,7 @@ GitHub-Issues zu migrieren, damit auch externe Personen mithelfen können.
 
 \subsubsection{Zeilen}
 
-Laut der EPJ-Kurzanleitung sind typische Werte 4'000 Codezeilen (Netto Codezeilen, ohne Leerzeilen, ohne Kommentarzeilen). \emph{Kitovu} hat zum Zeitpunkt des Feature Freeze (16.5.2018) folgende Statistik:
+Laut der EPJ-Kurzanleitung sind typische Projektwerte 4'000 Codezeilen (Netto Codezeilen, ohne Leerzeilen, ohne Kommentarzeilen). \emph{Kitovu} hat zum Zeitpunkt des Feature Freeze (16.5.2018) folgende Statistik:
 
 \begin{tabulary}{\linewidth}{lll}
   \toprule
@@ -355,8 +345,7 @@ Auf GitHub konnte die folgende Aktivität verzeichnet werden:
 
 \subsubsection{Testabdeckung}
 
-Da wir schon von Beginn an einen hohen Wert auf Tests gelegt haben, fiel es uns
-leicht, eine hohe Coverage mit hochqualitativen Tests zu halten:
+Da wir schon von Beginn an einen hohen Wert auf Tests gelegt haben, fiel es uns leicht, eine hohe Testabdeckung (Coverage) mit hochqualitativen Tests zu halten:
 
 \includegraphics[width=\linewidth]{img/coverage.png}
 
@@ -364,13 +353,12 @@ Bei genauerer Betrachtung der Grafik fallen einige Ausreisser auf:
 
 \begin{itemize}
   \item Wir setzten unsere Toolchain schon ganz zu Beginn des Projekts auf --
-    dadurch ergaben sich am Anfang grosse Coverage-Schwankungen, da wir erstmal
-    das Grundgerüst des Projekts aufgebaut haben.
+    dadurch ergaben sich am Anfang grosse Coverage-Schwankungen, da wir erst einmal das Grundgerüst des Projekts aufgebaut haben.
   \item Die GUI wurde erst als ``proof of concept'' ohne Tests implementiert,
     diese wurden im darauffolgenden Commit aber noch nachgereicht -- die Grafik
-    zeigt commits aus allen Branches, nicht nur dem \emph{master}-Branch.
-  \item Zum Schluss fokussierten wir uns für das Qualitätssicherungs-Review noch
-    einmal genauer auf die Tests, und ergänzten fehlende interessante Testfälle,
+    zeigt Commits aus allen Branches, nicht nur dem \emph{master}-Branch.
+  \item Zum Schluss fokussierten wir uns für das Review zur Qualitätssicherung noch
+    einmal genauer auf die Tests und ergänzten fehlende interessante Testfälle,
     was die Abdeckung nochmals verbesserte.
 \end{itemize}
 
@@ -381,13 +369,12 @@ der GUI/CLI kleine Teile nicht getestet sind.
 \includegraphics[width=0.97\linewidth]{img/coverage_files.png}
 \end{figure}
 
-Unser starke Fokus auf gute Tests wurde extrem vereinfacht durch die von uns
-ausgewählten Tools (pytest sowie codecov). Eine gute Testsuite war uns sehr
+Unser starke Fokus auf gute Tests wurde extrem vereinfacht durch die Tools, die wir ausgewählt haben (pytest sowie codecov). Eine gute Testsuite war uns sehr
 wichtig -- schliesslich berühren wir mit \emph{kitovu} Daten, die für Studenten
 im Fehlerfall (mit persönlichen Notizen) Verluste von bis zu einem Semester
 Arbeit bedeuten können. Diese Verantwortung nehmen wir ernst.
 
-\section{Screenshots}
+\section{Screenshots von kitovu}
 
 \includegraphics[width=0.5\linewidth]{./img/screenshots/gui1.png} \hspace{1em}
 \includegraphics[width=0.5\linewidth]{./img/screenshots/gui2.png} \\[1em]
@@ -396,31 +383,29 @@ Arbeit bedeuten können. Diese Verantwortung nehmen wir ernst.
 
 \section{Installationsanleitung}
 
-Folgende Installationsanleitung ist für die Leserinnen und Leser dieses Dokuments gedacht, die \emph{kitovu} ``in Echt'' ausprobieren möchten. Sie ist noch nicht für die effektive Verwendung gedacht, sondern für fortgeschrittene Nutzer, die das Projekt nachvollziehen möchten.
+Folgende Installationsanleitung ist für die Leserinnen und Leser dieses Dokuments gedacht, die \emph{kitovu} ``in Echt'' ausprobieren möchten. Sie ist noch nicht für die effektive Verwendung gedacht, sondern für Fortgeschrittene, die das Projekt nachvollziehen möchten.
 
-Die Installation setzt eine funktionierende, aktuelle Python-Umgebung in Version 3.6 voraus. Um diese Version parallel zu einer anderen Python-Version zu installieren, kann \emph{pyenv} verwendet werden.
+Die Installation setzt eine funktionierende, aktuelle Python-Umgebung in Version 3.6 voraus. Um diese Version parallel zu einer anderen Python-Version zu installieren, kann \verb|pyenv| verwendet werden.
 
-Damit diese Projektversion einfach installiert und deinstalliert werden kann, erfolgt die Installation idealerweise via einer virtuellen Umgebung (\verb|virtualenv|)\footnote{Eine ausführliche Erklärung findet sich hier: \url{http://docs.python-guide.org/en/latest/dev/virtualenvs/}.}:
+Damit die Nutzerin diese Projektversion einfach installieren und deinstallieren kann, erfolgt die Installation idealerweise via einer virtuellen Umgebung (\verb|virtualenv|)\footnote{Eine ausführliche Erklärung findet sich hier: \url{http://docs.python-guide.org/en/latest/dev/virtualenvs/}.}:
 
 \begin{enumerate}
 	\item Ordner mit beliebigem Namen erstellen, in dem die virtuelle Umgebung und das Projekt installiert wird, z.B. ``kitovu-test''.
 	\item \verb|$ pip install virtualenv| \newline
 	installiert das Python-Modul, um virtuelle Umgebungen zu erzeugen.
-	\item In den Ordner ``kitovu-test'' wechseln.
+	\item \verb|$ cd kitovu-test| \newline
+	wechselt in den Ordner ``kitovu-test''.
 	\item \verb|$ virtualenv -p /usr/bin/python3.6 kitovu| \newline
-	setzt die virtuelle Umgebung auf, in einem Unterordner namens ``kitovu'', und definiert die zu verwendende Python-Version für die virtuelle Umgebung.
+	setzt die virtuelle Umgebung auf, und zwar in einem Unterordner namens ``kitovu'', und definiert die zu verwendende Python-Version für die virtuelle Umgebung.
 	\item \verb|$ source kitovu/bin/activate| \newline
 	aktiviert die virtuelle Umgebung.
 	\item \verb|$ pip install kitovu| \newline 
 	installiert \emph{kitovu}.
-	\item Eine Dokumentation zur Verwendung findet sich hier: \url{https://kitovu.readthedocs.io/}. Eine Beispielkonfiguration findet sich auf der nächsten Seite.
+	\item Eine Dokumentation zur Verwendung findet sich hier: \url{https://kitovu.readthedocs.io/}. Eine Beispielkonfiguration ist führt die nächste Seite auf.
+	\item Deinstallation: \verb|$ deactivate| \newline
+	deaktiviert die virtuelle Umgebung, danach kann der Ordner ``kitovu-test'' gelöscht werden.
 \end{enumerate}
 
-Via \verb|pip install kitovu| wird \emph{kitovu} auf dem Zielrechner installiert.
-
-Deinstallation: 
-
-\verb|$ deactivate| deaktiviert die virtuelle Umgebung, danach kann der Ordner ``kitovu-test'' gelöscht werden.
 
 \newpage
 
@@ -445,14 +430,14 @@ Deinstallation:
 	subjects:
 	  - name: EPJ
 	    sources:
-	    - connection: skripte-server
-	      remote-dir: Informatik/Fachbereich/Engineering-Projekt/EPJ
+	      - connection: skripte-server
+	        remote-dir: Informatik/Fachbereich/Engineering-Projekt/EPJ
 	  - name: Software Engineering 2
 	    sources:
-	    - connection: moodle
-	      remote-dir: Software-Engineering 2 FS2018
-	    - connection: skripte-server
-	      remote-dir: Informatik/Fachbereich/Software-Engineering_2/SE2
+	      - connection: moodle
+	        remote-dir: Software-Engineering 2 FS2018
+	      - connection: skripte-server
+	        remote-dir: Informatik/Fachbereich/Software-Engineering_2/SE2
 	\end{minted}
 
 \section{Projekt-Links}
